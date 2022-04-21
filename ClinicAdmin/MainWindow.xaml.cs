@@ -38,5 +38,21 @@ namespace ClinicAdmin
             int index = int.Parse(((Button)e.Source).Uid);
             MainSectionControl.SelectedIndex = index;
         }
+
+        // MacOS UI cheap moment
+        private void WindowButton_Close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void WindowButton_Minimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void WindowButton_FullScreen_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }
