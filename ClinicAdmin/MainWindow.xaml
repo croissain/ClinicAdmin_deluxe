@@ -60,7 +60,7 @@
 
                     <StackPanel Margin="10 0 0 0"
                                 VerticalAlignment="Center">
-                        <TextBlock Text="Tho Le"
+                        <TextBlock Text="Oh Sehun"
                                    FontSize="15"
                                    Margin="0 0 0 5"
                                    Foreground="White" />
