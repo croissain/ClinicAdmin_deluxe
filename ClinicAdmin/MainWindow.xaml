@@ -32,10 +32,25 @@
             </Border.Background>
 
             <StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            Margin="5">
+                    <Button Foreground="#f0723e"
+                            Style="{StaticResource windowButton}"
+                            Click="WindowButton_Close_Click">
+                    </Button>
+                    <Button Foreground="#f2eb80"
+                            Style="{StaticResource windowButton}"
+                            Click="WindowButton_Minimize_Click">
+                    </Button>
+                    <Button Foreground="#88f280"
+                            Style="{StaticResource windowButton}"
+                            Click="WindowButton_FullScreen_Click">
+                    </Button>
+                </StackPanel>
 
                 <StackPanel Orientation="Horizontal"
-                            HorizontalAlignment="Center"
-                            Margin="0 35 0 0">
+                            HorizontalAlignment="Left"
+                            Margin="20 35 0 0">
                     <!--Username-->
                     <Border CornerRadius="10"
                             Width="40"
@@ -49,7 +64,7 @@
                                               Offset="1" />
                             </LinearGradientBrush>
                         </Border.Background>
-                        <TextBlock Text="TL"
+                        <TextBlock Text="OS"
                                    Foreground="White"
                                    FontSize="22"
                                    FontWeight="SemiBold"
@@ -75,21 +90,28 @@
                            Margin="20 30"
                            Background="#cde0c9" />
 
+                <!--Menu Button-->
                 <StackPanel Orientation="Vertical"
                             VerticalAlignment="Top">
                     <Button Uid="0"
-                            Click="ButtonNav_Click">
+                            Click="ButtonNav_Click"
+                            Style="{StaticResource menuButtonActive}">
                         <StackPanel Orientation="Horizontal">
-                            <fa:IconImage Icon="Home" />
-                            <TextBlock Text="Dashboard" />
+                            <fa:IconImage Icon="Home"
+                                          Style="{StaticResource menuButtonIcon}" />
+                            <TextBlock Text="Dashboard"
+                                       Style="{StaticResource menuButtonText}" />
                         </StackPanel>
                     </Button>
 
                     <Button Uid="1"
-                            Click="ButtonNav_Click">
+                            Click="ButtonNav_Click"
+                            Style="{StaticResource menuButton}">
                         <StackPanel Orientation="Horizontal">
-                            <fa:IconImage Icon="UserCircle" />
-                            <TextBlock Text="Account" />
+                            <fa:IconImage Icon="UserCircle"
+                                          Style="{StaticResource menuButtonIcon}" />
+                            <TextBlock Text="Account"
+                                       Style="{StaticResource menuButtonText}" />
                         </StackPanel>
                     </Button>
 
@@ -114,7 +136,40 @@
                 <TabControl.Items>
                     <TabItem x:Name="DashboardTab"
                              Visibility="Collapsed">
-                        <TextBlock Text="Tab1 Content" />
+                        <Border Background="White"
+                                Margin="50"
+                                CornerRadius="5">
+                            <DataGrid x:Name="StaffsList"
+                                      IsReadOnly="False"
+                                      AutoGenerateColumns="False"
+                                      ItemsSource="{Binding }"
+                                      materialDesign:ShadowAssist.ShadowDepth="Depth5"
+                                      >
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Username"
+                                                        MinWidth="150"
+                                                        Width="*" />
+                                    <DataGridTextColumn Header="Full Name"
+                                                        MinWidth="150"
+                                                        Width="*" />
+                                    <DataGridTextColumn Header="Role"
+                                                        MinWidth="100"
+                                                        Width="0.5*" />
+                                    <DataGridTextColumn Header="Address"
+                                                        MinWidth="150"
+                                                        Width="*" />
+                                    <DataGridTextColumn Header="Email"
+                                                        MinWidth="150"
+                                                        Width="*" />
+                                    <DataGridTextColumn Header="Phone Number"
+                                                        MinWidth="150"
+                                                        Width="*" />
+                                    <DataGridTextColumn Header="Action"
+                                                        MinWidth="100"
+                                                        Width="0.5*" />
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </Border>
                     </TabItem>
                     <TabItem x:Name="AccountTab"
                              Visibility="Collapsed"
@@ -152,7 +207,7 @@
                                                 Margin="10">
                                             <Border.Background>
                                                 <ImageBrush Stretch="Fill"
-                                                            ImageSource="Assest/Image/avatar.png" />
+                                                            ImageSource="Assets/Images/Tuan.jpeg" />
                                             </Border.Background>
                                         </Border>
                                     </StackPanel>
