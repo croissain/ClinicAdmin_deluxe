@@ -1,0 +1,38 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ClinicAdmin.Themes">
+
+    <!-- Background Colors -->
+    <SolidColorBrush x:Key="PrimaryBackgroundColor"
+                     Color="#CDE0C9" />
+    <SolidColorBrush x:Key="SecondaryBackgroundColor"
+                     Color="#68b2a0" />
+
+    <!-- Primary Colors -->
+    <SolidColorBrush x:Key="PrimaryGreenColor"
+                     Color="#CDE0C9" />
+
+    <!-- Typograhy Colors -->
+    <SolidColorBrush x:Key="PrimaryTextColor"
+                     Color="#11221e" />
+    <SolidColorBrush x:Key="SecondaryTextColor"
+                     Color="#8A94A6" />
+    <SolidColorBrush x:Key="TertiaryTextColor"
+                     Color="#b3b3b3" />
+    <SolidColorBrush x:Key="QuaternaryTextColor"
+                     Color="White" />
+
+    <!-- Icon Colors -->
+    <SolidColorBrush x:Key="PrimaryIconColor"
+                     Color="white" />
+    <SolidColorBrush x:Key="SecondaryIconColor"
+                     Color="#CDE0C9" />
+    <SolidColorBrush x:Key="TertiaryIconColor"
+                     Color="#56a995" />
+    <SolidColorBrush x:Key="QuaternaryIconColor"
+                     Color="#346559" />
+
+    <SolidColorBrush x:Key="btnClose"
+                     Color="#F72626" />
+
+</ResourceDictionary>
