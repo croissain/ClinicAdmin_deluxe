@@ -150,10 +150,10 @@
                                                 Height="100"
                                                 HorizontalAlignment="Left"
                                                 Margin="10">
-                                            <Border.Background>
+                                            <!--<Border.Background>
                                                 <ImageBrush Stretch="Fill"
                                                             ImageSource="Assest/Image/avatar.png" />
-                                            </Border.Background>
+                                            </Border.Background>-->
                                         </Border>
                                     </StackPanel>
 
