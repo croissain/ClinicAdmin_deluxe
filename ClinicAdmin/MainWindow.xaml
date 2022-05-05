@@ -64,45 +64,45 @@
                         <!-- Username-->
                         <Grid Grid.Row="1">
                             <StackPanel Orientation="Vertical">
-                                
-                            <StackPanel Orientation="Horizontal"
+
+                                <StackPanel Orientation="Horizontal"
                                         HorizontalAlignment="Left"
                                         Margin="17 0 0 0">
 
-                                <Border CornerRadius="10"
+                                    <Border CornerRadius="10"
                                         Width="40"
                                         Height="40">
-                                    <Border.Background>
-                                        <LinearGradientBrush StartPoint="0,0"
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0,0"
                                                              EndPoint="1,2">
-                                            <GradientStop Color="#138086"
+                                                <GradientStop Color="#138086"
                                                           Offset="0" />
-                                            <GradientStop Color="#534666"
+                                                <GradientStop Color="#534666"
                                                           Offset="1" />
-                                        </LinearGradientBrush>
-                                    </Border.Background>
-                                    <TextBlock Text="OS"
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                        <TextBlock Text="OS"
                                                Foreground="White"
                                                FontSize="22"
                                                FontWeight="SemiBold"
                                                TextAlignment="Center"
                                                VerticalAlignment="Center"
                                                Margin="0 0 0 3" />
-                                </Border>
+                                    </Border>
 
-                                <StackPanel Margin="20 0 0 0"
+                                    <StackPanel Margin="20 0 0 0"
                                             VerticalAlignment="Center">
-                                    <TextBlock Text="Oh Sehun"
+                                        <TextBlock Text="Oh Sehun"
                                                FontSize="15"
                                                Margin="0 0 0 5"
                                                Foreground="White" />
-                                    <TextBlock Text="Administrator"
+                                        <TextBlock Text="Administrator"
                                                FontSize="11"
                                                Margin="0 0 0 5"
                                                Foreground="#e0ecde" />
+                                    </StackPanel>
                                 </StackPanel>
-                            </StackPanel>
-                            <Separator DockPanel.Dock="Top"
+                                <Separator DockPanel.Dock="Top"
                                        Height="1"
                                        Margin="20 20"
                                        Background="#cde0c9" />

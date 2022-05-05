@@ -14,11 +14,46 @@
             <Label DockPanel.Dock="Top"
                    Content="Account"
                    FontFamily="Segoe UI Semibold"
-                   Margin="0 0 0 20"
                    FontSize="36"
                    VerticalAlignment="Stretch"
                    HorizontalAlignment="Center"
                    FontWeight="Bold" />
+
+            <Border DockPanel.Dock="Top"
+                    CornerRadius="50"
+                    Width="80"
+                    Height="80"
+                    HorizontalAlignment="Center"
+                    Margin="10">
+                <Border.Background>
+                    <ImageBrush Stretch="Fill"
+                                    ImageSource="/Assets/Images/Tuan.jpeg" />
+                </Border.Background>
+            </Border>
+            <!--<Label Content="Name"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Left"></Label>-->
+
+            <!--<Grid DockPanel.Dock="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0"
+                            Margin="0 0 15 0"
+                            Orientation="Vertical">
+                    
+                </StackPanel>
+
+                <StackPanel Grid.Column="1"
+                            Margin="15 0 0 0"
+                            Orientation="Vertical">
+                   
+
+                   
+                </StackPanel>
+            </Grid>-->
 
             <Grid DockPanel.Dock="Top">
                 <Grid.ColumnDefinitions>
@@ -27,25 +62,6 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0"
                             Margin="0 0 15 0"
-                            Orientation="Vertical">
-                    <Label Content="Avatar"
-                           FontSize="18"
-                           FontWeight="SemiBold"
-                           HorizontalAlignment="Left"></Label>
-                    <Border CornerRadius="50"
-                            Width="100"
-                            Height="100"
-                            HorizontalAlignment="Left"
-                            Margin="10">
-                        <Border.Background>
-                            <ImageBrush Stretch="Fill"
-                                        ImageSource="/Assets/Images/Tuan.jpeg" />
-                        </Border.Background>
-                    </Border>
-                </StackPanel>
-
-                <StackPanel Grid.Column="1"
-                            Margin="15 0 0 0"
                             Orientation="Vertical">
                     <Label Content="User name"
                            FontSize="18"
@@ -56,33 +72,7 @@
                              Padding="15 10"
                              Margin="0 0 0 10"
                              BorderBrush="#68b2a0"></TextBox>
-
-                    <Label Content="Role"
-                           FontSize="18"
-                           FontWeight="SemiBold"
-                           HorizontalAlignment="Left"></Label>
-                    <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                             FontSize="20"
-                             Padding="15 10"
-                             Margin="0 0 0 10"
-                             IsEnabled="False"
-                             BorderBrush="#68b2a0"></TextBox>
-                </StackPanel>
-            </Grid>
-
-            <Separator DockPanel.Dock="Top"
-                       Height="1"
-                       Margin="0 20"
-                       Background="#cde0c9" />
-
-            <Grid DockPanel.Dock="Top">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0"
-                            Margin="0 0 15 0"
-                            Orientation="Vertical">
+                    
                     <Label Content="Full Name"
                            FontSize="18"
                            FontWeight="SemiBold"
@@ -105,6 +95,17 @@
                 <StackPanel Grid.Column="1"
                             Margin="15 0 0 0"
                             Orientation="Vertical">
+                    <Label Content="Role"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Left"></Label>
+                    <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                             FontSize="20"
+                             Padding="15 10"
+                             Margin="0 0 0 10"
+                             IsEnabled="False"
+                             BorderBrush="#68b2a0"></TextBox>
+                    
                     <Label Content="Address"
                            FontSize="18"
                            FontWeight="SemiBold"
@@ -134,7 +135,7 @@
                         Width="150"
                         Height="45"
                         Margin="0 0 15 0"></Button>
-                <Button Content="Save Changes"
+                <Button Content="Update Account"
                         Style="{StaticResource MaterialDesignPaperDarkButton}"
                         Width="150"
                         Height="45"
