@@ -1,0 +1,18 @@
+﻿<Page x:Class="ClinicAdmin.Pages.Home"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:ClinicAdmin.Pages"
+      mc:Ignorable="d"
+      Title="Home">
+
+    <Border CornerRadius="5">
+        <TextBlock Text="Nếu các người đã thành tâm muốn biết&#xA;Thì bọn ta cũng nhất quyết trả lời&#xA;Đề phòng hủy diệt muôn nơi&#xA;Cầu cho thế giới đời đời bình yên&#xA;Bọn ta đây chính là phe phản diện&#xA;Đẹp ngất ngây ôi chết điếng lòng người&#xA;Musahi, Kojiro&#xA;Luôn yêu đời và bên nhau mãi mãi&#xA;Băng hoả tiễn tung hoành dải ngân hà&#xA;Tương lai tươi sáng phía xa đang chờ ta đó&#xA;Đang chờ ta đó&#xA;SOOONASU!!!"
+                   FontSize="30"
+                   Foreground="{DynamicResource PrimaryTextColor}"
+                   FontWeight="Bold"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center" />
+    </Border>
+</Page>

@@ -1,4 +1,5 @@
 ﻿<Window x:Class="ClinicAdmin.MainWindow"
+        xmlns:ctls="clr-namespace:ClinicAdmin.Controls"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -14,251 +15,210 @@
         AllowsTransparency="True"
         Background="Transparent">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+        <Border Background="{DynamicResource PrimaryBackgroundColor}"
+                CornerRadius="8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-        <!--Sidebar-->
-        <Border CornerRadius="10 0 0 10">
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0.5,0"
-                                     EndPoint="0.5,1">
-                    <GradientStop Color="#68b2a0"
-                                  Offset="0" />
-                    <GradientStop Color="#2C6975"
-                                  Offset="1" />
-                </LinearGradientBrush>
-            </Border.Background>
+                <!--Side bar-->
+                <Border Grid.Column="0"
+                        CornerRadius="8 0 0 8">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0.5,0"
+                                             EndPoint="0.5,1">
+                            <GradientStop Color="#68b2a0"
+                                          Offset="0" />
+                            <GradientStop Color="#2C6975"
+                                          Offset="1" />
+                        </LinearGradientBrush>
+                    </Border.Background>
+                    <Grid x:Name="GridNav"
+                          Width="75">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="70" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
 
-            <StackPanel>
+                        <Grid Grid.Row="0">
+                            <StackPanel Orientation="Horizontal"
+                                        Margin="5">
+                                <Button Foreground="#f0723e"
+                                        Style="{StaticResource windowButton}"
+                                        Click="WindowButton_Close_Click">
+                                </Button>
+                                <Button Foreground="#f2eb80"
+                                        Style="{StaticResource windowButton}"
+                                        Click="WindowButton_Minimize_Click">
+                                </Button>
+                                <Button Foreground="#88f280"
+                                        Style="{StaticResource windowButton}"
+                                        Click="WindowButton_FullScreen_Click">
+                                </Button>
+                            </StackPanel>
+                        </Grid>
 
-                <StackPanel Orientation="Horizontal"
-                            HorizontalAlignment="Center"
-                            Margin="0 35 0 0">
-                    <!--Username-->
-                    <Border CornerRadius="10"
-                            Width="40"
-                            Height="40">
-                        <Border.Background>
-                            <LinearGradientBrush StartPoint="0,0"
-                                                 EndPoint="1,2">
-                                <GradientStop Color="#138086"
-                                              Offset="0" />
-                                <GradientStop Color="#534666"
-                                              Offset="1" />
-                            </LinearGradientBrush>
-                        </Border.Background>
-                        <TextBlock Text="TL"
-                                   Foreground="White"
-                                   FontSize="22"
-                                   FontWeight="SemiBold"
-                                   TextAlignment="Center"
-                                   VerticalAlignment="Center"
-                                   Margin="3 0 0 2" />
-                    </Border>
+                        <!-- Username-->
+                        <Grid Grid.Row="1">
+                            <StackPanel Orientation="Vertical">
+                                
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Left"
+                                        Margin="17 0 0 0">
 
-                    <StackPanel Margin="10 0 0 0"
-                                VerticalAlignment="Center">
-                        <TextBlock Text="Oh Sehun"
-                                   FontSize="15"
-                                   Margin="0 0 0 5"
-                                   Foreground="White" />
-                        <TextBlock Text="Administrator"
-                                   FontSize="11"
-                                   Margin="0 0 0 5"
-                                   Foreground="#e0ecde" />
-                    </StackPanel>
-                </StackPanel>
-
-                <Separator Height="0.8"
-                           Margin="20 30"
-                           Background="#cde0c9" />
-
-                <StackPanel Orientation="Vertical"
-                            VerticalAlignment="Top">
-                    <Button Uid="0"
-                            Click="ButtonNav_Click">
-                        <StackPanel Orientation="Horizontal">
-                            <fa:IconImage Icon="Home" />
-                            <TextBlock Text="Dashboard" />
-                        </StackPanel>
-                    </Button>
-
-                    <Button Uid="1"
-                            Click="ButtonNav_Click">
-                        <StackPanel Orientation="Horizontal">
-                            <fa:IconImage Icon="UserCircle" />
-                            <TextBlock Text="Account" />
-                        </StackPanel>
-                    </Button>
-
-                </StackPanel>
-            </StackPanel>
-        </Border>
-
-        <!--Main Section-->
-        <Border Grid.Column="1"
-                CornerRadius="0 10 10 0"
-                MouseDown="Border_MouseDown">
-            <Border.Background>
-                <LinearGradientBrush StartPoint="1,0"
-                                     EndPoint="0,1">
-                    <GradientStop Color="#CDE0C9"
-                                  Offset="0" />
-                    <GradientStop Color="#68b2a0"
-                                  Offset="1" />
-                </LinearGradientBrush>
-            </Border.Background>
-            <TabControl x:Name="MainSectionControl">
-                <TabControl.Items>
-                    <TabItem x:Name="DashboardTab"
-                             Visibility="Collapsed">
-                        <TextBlock Text="Tab1 Content" />
-                    </TabItem>
-                    <TabItem x:Name="AccountTab"
-                             Visibility="Collapsed"
-                             FontFamily="Segoe UI">
-                        <Border Background="White"
-                                Margin="50"
-                                CornerRadius="5">
-                            <DockPanel Margin="25 15"
-                                       LastChildFill="False">
-                                <Label DockPanel.Dock="Top"
-                                       Content="Account"
-                                       FontFamily="Segoe UI Semibold"
-                                       Margin="0 0 0 20"
-                                       FontSize="36"
-                                       VerticalAlignment="Stretch"
-                                       HorizontalAlignment="Center"
-                                       FontWeight="Bold" />
-
-                                <Grid DockPanel.Dock="Top">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition></ColumnDefinition>
-                                        <ColumnDefinition></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-                                    <StackPanel Grid.Column="0"
-                                                Margin="0 0 15 0"
-                                                Orientation="Vertical">
-                                        <Label Content="Avatar"
-                                               FontSize="18"
+                                <Border CornerRadius="10"
+                                        Width="40"
+                                        Height="40">
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0"
+                                                             EndPoint="1,2">
+                                            <GradientStop Color="#138086"
+                                                          Offset="0" />
+                                            <GradientStop Color="#534666"
+                                                          Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <TextBlock Text="OS"
+                                               Foreground="White"
+                                               FontSize="22"
                                                FontWeight="SemiBold"
-                                               HorizontalAlignment="Left"></Label>
-                                        <Border CornerRadius="50"
-                                                Width="100"
-                                                Height="100"
-                                                HorizontalAlignment="Left"
-                                                Margin="10">
-                                            <!--<Border.Background>
-                                                <ImageBrush Stretch="Fill"
-                                                            ImageSource="Assest/Image/avatar.png" />
-                                            </Border.Background>-->
-                                        </Border>
-                                    </StackPanel>
+                                               TextAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               Margin="0 0 0 3" />
+                                </Border>
 
-                                    <StackPanel Grid.Column="1"
-                                                Margin="15 0 0 0"
-                                                Orientation="Vertical">
-                                        <Label Content="User name"
-                                               FontSize="18"
-                                               FontWeight="SemiBold"
-                                               HorizontalAlignment="Left"></Label>
-                                        <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                                 FontSize="20"
-                                                 Padding="15 10"
-                                                 Margin="0 0 0 10"
-                                                 BorderBrush="#68b2a0"></TextBox>
-
-                                        <Label Content="Role"
-                                               FontSize="18"
-                                               FontWeight="SemiBold"
-                                               HorizontalAlignment="Left"></Label>
-                                        <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                                 FontSize="20"
-                                                 Padding="15 10"
-                                                 Margin="0 0 0 10"
-                                                 IsEnabled="False"
-                                                 BorderBrush="#68b2a0"></TextBox>
-                                    </StackPanel>
-                                </Grid>
-
-                                <Separator DockPanel.Dock="Top"
-                                           Height="1"
-                                           Margin="0 20"
-                                           Background="#cde0c9" />
-
-                                <Grid DockPanel.Dock="Top">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition></ColumnDefinition>
-                                        <ColumnDefinition></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
-                                    <StackPanel Grid.Column="0"
-                                                Margin="0 0 15 0"
-                                                Orientation="Vertical">
-                                        <Label Content="Full Name"
-                                               FontSize="18"
-                                               FontWeight="SemiBold"
-                                               HorizontalAlignment="Left"></Label>
-                                        <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                                 FontSize="20"
-                                                 Padding="15 10"
-                                                 Margin="0 0 0 10"
-                                                 BorderBrush="#68b2a0"></TextBox>
-
-                                        <Label Content="Email"
-                                               FontSize="18"
-                                               FontWeight="SemiBold"
-                                               HorizontalAlignment="Left"></Label>
-                                        <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                                 FontSize="20"
-                                                 Padding="15 10"
-                                                 BorderBrush="#68b2a0"></TextBox>
-                                    </StackPanel>
-                                    <StackPanel Grid.Column="1"
-                                                Margin="15 0 0 0"
-                                                Orientation="Vertical">
-                                        <Label Content="Address"
-                                               FontSize="18"
-                                               FontWeight="SemiBold"
-                                               HorizontalAlignment="Left"></Label>
-                                        <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                                 FontSize="20"
-                                                 Padding="15 10"
-                                                 Margin="0 0 0 10"
-                                                 BorderBrush="#68b2a0"></TextBox>
-
-                                        <Label Content="Phone"
-                                               FontSize="18"
-                                               FontWeight="SemiBold"
-                                               HorizontalAlignment="Left"></Label>
-                                        <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                                 FontSize="20"
-                                                 Padding="15 10"
-                                                 BorderBrush="#68b2a0"></TextBox>
-                                    </StackPanel>
-                                </Grid>
-                                <StackPanel DockPanel.Dock="Bottom"
-                                            Orientation="Horizontal"
-                                            Margin="0 15"
-                                            HorizontalAlignment="Right">
-                                    <Button Content="Change Password"
-                                            Style="{StaticResource MaterialDesignPaperDarkButton}"
-                                            Width="150"
-                                            Height="45"
-                                            Margin="0 0 15 0"></Button>
-                                    <Button Content="Save Changes"
-                                            Style="{StaticResource MaterialDesignPaperDarkButton}"
-                                            Width="150"
-                                            Height="45"
-                                            Background="#68b2a0"
-                                            Foreground="White"></Button>
+                                <StackPanel Margin="20 0 0 0"
+                                            VerticalAlignment="Center">
+                                    <TextBlock Text="Oh Sehun"
+                                               FontSize="15"
+                                               Margin="0 0 0 5"
+                                               Foreground="White" />
+                                    <TextBlock Text="Administrator"
+                                               FontSize="11"
+                                               Margin="0 0 0 5"
+                                               Foreground="#e0ecde" />
                                 </StackPanel>
-                            </DockPanel>
-                        </Border>
-                    </TabItem>
-                </TabControl.Items>
-            </TabControl>
+                            </StackPanel>
+                            <Separator DockPanel.Dock="Top"
+                                       Height="1"
+                                       Margin="20 20"
+                                       Background="#cde0c9" />
+                            </StackPanel>
+                        </Grid>
+
+
+                        <!-- MenuItem -->
+                        <StackPanel Grid.Row="2"
+                                    Margin="-1 20 0 20">
+
+                            <Button x:Name="btnHome"
+                                    Style="{DynamicResource PopupButtonStyle}"
+                                    MouseEnter="btnHome_MouseEnter"
+                                    MouseLeave="btnHome_MouseLeave"
+                                    Click="btnHome_Click">
+                                <ctls:MenuItem GroupName="MenuItem"
+                                               IndicatorBrush="{DynamicResource PrimaryGreenColor}"
+                                               Icon="{DynamicResource home}"
+                                               IconWidth="16"
+                                               Text="Home"
+                                               VerticalAlignment="Center" />
+                            </Button>
+                            <Button x:Name="btnDashboard"
+                                    Style="{DynamicResource PopupButtonStyle}"
+                                    MouseEnter="btnDashboard_MouseEnter"
+                                    MouseLeave="btnDashboard_MouseLeave"
+                                    Click="btnDashboard_Click">
+                                <ctls:MenuItem GroupName="MenuItem"
+                                               IndicatorBrush="{DynamicResource PrimaryGreenColor}"
+                                               Icon="{DynamicResource dashboard}"
+                                               IconWidth="16"
+                                               Text="Dashboard"
+                                               VerticalAlignment="Center" />
+                            </Button>
+                            <Button x:Name="btnAccount"
+                                    Style="{DynamicResource PopupButtonStyle}"
+                                    MouseEnter="btnAccount_MouseEnter"
+                                    MouseLeave="btnAccount_MouseLeave"
+                                    Click="btnAccount_Click">
+                                <ctls:MenuItem GroupName="MenuItem"
+                                               IndicatorBrush="{DynamicResource PrimaryGreenColor}"
+                                               Icon="{DynamicResource account}"
+                                               IconWidth="16"
+                                               Text="Account"
+                                               VerticalAlignment="Center" />
+                            </Button>
+                        </StackPanel>
+
+                        <!-- Popup User Control -->
+                        <Popup x:Name="Popup"
+                               AllowsTransparency="True"
+                               HorizontalOffset="0"
+                               VerticalOffset="10">
+                            <ctls:UserPopup x:Name="Header"
+                                            Foreground="{DynamicResource PrimaryTextColor}" />
+                        </Popup>
+
+                    </Grid>
+                </Border>
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <ToggleButton x:Name="Tg_Btn"
+                                  Grid.Column="1"
+                                  VerticalAlignment="Center"
+                                  Style="{DynamicResource iToggleButtonStyle}"
+                                  HorizontalAlignment="Left"
+                                  BorderThickness="0"
+                                  Background="Transparent"
+                                  Margin="10,15,0,15"
+                                  Height="30"
+                                  Width="30">
+                        <ToggleButton.Triggers>
+                            <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                                <BeginStoryboard>
+                                    <Storyboard x:Name="HideStackPanel">
+                                        <DoubleAnimation Storyboard.TargetName="GridNav"
+                                                         Storyboard.TargetProperty="Width"
+                                                         BeginTime="0:0:0"
+                                                         From="210"
+                                                         To="75"
+                                                         Duration="0:0:0.5">
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="ToggleButton.Checked">
+                                <BeginStoryboard>
+                                    <Storyboard x:Name="ShowStackPanel">
+                                        <DoubleAnimation Storyboard.TargetName="GridNav"
+                                                         Storyboard.TargetProperty="Width"
+                                                         BeginTime="0:0:0"
+                                                         From="75"
+                                                         To="210"
+                                                         Duration="0:0:0.5">
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ToggleButton.Triggers>
+                    </ToggleButton>
+
+                    <Frame Grid.Row="1"
+                           Name="fContainer"
+                           Margin="20"
+                           NavigationUIVisibility="Hidden">
+
+                    </Frame>
+
+                </Grid>
+            </Grid>
         </Border>
     </Grid>
 </Window>
