@@ -10,25 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ClinicAdmin.Pages
+namespace ClinicAdmin
 {
     /// <summary>
-    /// Interaction logic for StaffsList.xaml
+    /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class StaffsList : Page
+    public partial class Addnew : Window
     {
-        public StaffsList()
+        public Addnew()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var screen = new ClinicAdmin.Addnew();
-            screen.ShowDialog();
         }
     }
 }
