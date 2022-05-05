@@ -8,8 +8,8 @@
         xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Height="740"
-        Width="1280"
+        Height="910"
+        Width="1440"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -64,45 +64,45 @@
                         <!-- Username-->
                         <Grid Grid.Row="1">
                             <StackPanel Orientation="Vertical">
-
-                                <StackPanel Orientation="Horizontal"
+                                
+                            <StackPanel Orientation="Horizontal"
                                         HorizontalAlignment="Left"
                                         Margin="17 0 0 0">
 
-                                    <Border CornerRadius="10"
+                                <Border CornerRadius="10"
                                         Width="40"
                                         Height="40">
-                                        <Border.Background>
-                                            <LinearGradientBrush StartPoint="0,0"
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0"
                                                              EndPoint="1,2">
-                                                <GradientStop Color="#138086"
+                                            <GradientStop Color="#138086"
                                                           Offset="0" />
-                                                <GradientStop Color="#534666"
+                                            <GradientStop Color="#534666"
                                                           Offset="1" />
-                                            </LinearGradientBrush>
-                                        </Border.Background>
-                                        <TextBlock Text="OS"
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <TextBlock Text="OS"
                                                Foreground="White"
                                                FontSize="22"
                                                FontWeight="SemiBold"
                                                TextAlignment="Center"
                                                VerticalAlignment="Center"
                                                Margin="0 0 0 3" />
-                                    </Border>
+                                </Border>
 
-                                    <StackPanel Margin="20 0 0 0"
+                                <StackPanel Margin="20 0 0 0"
                                             VerticalAlignment="Center">
-                                        <TextBlock Text="Oh Sehun"
+                                    <TextBlock Text="Oh Sehun"
                                                FontSize="15"
                                                Margin="0 0 0 5"
                                                Foreground="White" />
-                                        <TextBlock Text="Administrator"
+                                    <TextBlock Text="Administrator"
                                                FontSize="11"
                                                Margin="0 0 0 5"
                                                Foreground="#e0ecde" />
-                                    </StackPanel>
                                 </StackPanel>
-                                <Separator DockPanel.Dock="Top"
+                            </StackPanel>
+                            <Separator DockPanel.Dock="Top"
                                        Height="1"
                                        Margin="20 20"
                                        Background="#cde0c9" />
@@ -126,16 +126,28 @@
                                                Text="Home"
                                                VerticalAlignment="Center" />
                             </Button>
-                            <Button x:Name="btnDashboard"
+                            <Button x:Name="btnStaffList"
                                     Style="{DynamicResource PopupButtonStyle}"
-                                    MouseEnter="btnDashboard_MouseEnter"
-                                    MouseLeave="btnDashboard_MouseLeave"
-                                    Click="btnDashboard_Click">
+                                    MouseEnter="btnStaffList_MouseEnter"
+                                    MouseLeave="btnStaffList_MouseLeave"
+                                    Click="btnStaffList_Click">
                                 <ctls:MenuItem GroupName="MenuItem"
                                                IndicatorBrush="{DynamicResource PrimaryGreenColor}"
                                                Icon="{DynamicResource dashboard}"
                                                IconWidth="16"
-                                               Text="Dashboard"
+                                               Text="DS Nhân Viên"
+                                               VerticalAlignment="Center" />
+                            </Button>
+                            <Button x:Name="btnMedicalList"
+                                    Style="{DynamicResource PopupButtonStyle}"
+                                    MouseEnter="btnMedicalList_MouseEnter"
+                                    MouseLeave="btnMedicalList_MouseLeave"
+                                    Click="btnMedicalList_Click">
+                                <ctls:MenuItem GroupName="MenuItem"
+                                               IndicatorBrush="{DynamicResource PrimaryGreenColor}"
+                                               Icon="{DynamicResource pill}"
+                                               IconWidth="16"
+                                               Text="DS Thuốc/VTYT"
                                                VerticalAlignment="Center" />
                             </Button>
                             <Button x:Name="btnAccount"
@@ -147,7 +159,19 @@
                                                IndicatorBrush="{DynamicResource PrimaryGreenColor}"
                                                Icon="{DynamicResource account}"
                                                IconWidth="16"
-                                               Text="Account"
+                                               Text="Tài Khoản"
+                                               VerticalAlignment="Center" />
+                            </Button>
+                            <Button x:Name="btnBilling"
+                                    Style="{DynamicResource PopupButtonStyle}"
+                                    MouseEnter="btnBilling_MouseEnter"
+                                    MouseLeave="btnBilling_MouseLeave"
+                                    Click="btnBilling_Click">
+                                <ctls:MenuItem GroupName="MenuItem"
+                                               IndicatorBrush="{DynamicResource PrimaryGreenColor}"
+                                               Icon="{DynamicResource billing}"
+                                               IconWidth="16"
+                                               Text="Hóa Đơn"
                                                VerticalAlignment="Center" />
                             </Button>
                         </StackPanel>
@@ -189,7 +213,7 @@
                                                          BeginTime="0:0:0"
                                                          From="210"
                                                          To="75"
-                                                         Duration="0:0:0.5">
+                                                         Duration="0:0:0.3">
                                         </DoubleAnimation>
                                     </Storyboard>
                                 </BeginStoryboard>
@@ -202,7 +226,7 @@
                                                          BeginTime="0:0:0"
                                                          From="75"
                                                          To="210"
-                                                         Duration="0:0:0.5">
+                                                         Duration="0:0:0.3">
                                         </DoubleAnimation>
                                     </Storyboard>
                                 </BeginStoryboard>
