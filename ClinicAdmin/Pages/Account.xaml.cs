@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClinicAdmin.GUI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,12 @@ namespace ClinicAdmin.Pages
         public Account()
         {
             InitializeComponent();
+        }
+
+        private void BtnChangePassword_Click(object sender, RoutedEventArgs e)
+        {
+            ChangePassword dialog = new ChangePassword();
+            dialog.ShowDialog();
         }
     }
 }

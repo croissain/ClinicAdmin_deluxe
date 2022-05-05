@@ -80,13 +80,28 @@
         </LinearGradientBrush>
     </Window.Background>
     <Grid>
+        <StackPanel Orientation="Horizontal"             
+                        Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Button Foreground="#f0723e"
+                                        Style="{StaticResource windowButton}"
+                                        Click="WindowButton_Close_Click">
+            </Button>
+            <Button Foreground="#f2eb80"
+                                        Style="{StaticResource windowButton}"
+                                        Click="WindowButton_Minimize_Click">
+            </Button>
+            <Button Foreground="#88f280"
+                                        Style="{StaticResource windowButton}"
+                                        Click="WindowButton_FullScreen_Click">
+            </Button>
+        </StackPanel>
         <StackPanel Margin="50">
             <!--<Image Source="/Assets/logo2.png" Width="96" Height="96"/>-->
             <Border Background="White"
                     Margin="10 20"
                     CornerRadius="5">
                 <StackPanel Margin="25">
-                    <Label Content="Sign In"
+                    <Label Content="Đăng nhập"
                            FontFamily="Segoe UI Semibold"
                            FontSize="32"
                            Margin="0,10"
@@ -99,7 +114,7 @@
                                                  VerticalAlignment="Center"
                                                  Foreground="#68b2a0" />
                         <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                 materialDesign:HintAssist.Hint="Username"
+                                 materialDesign:HintAssist.Hint="Tên đăng nhập"
                                  Margin="5"
                                  Width="210"
                                  SelectionBrush="#FF68B2A0"
@@ -112,7 +127,7 @@
                                                  VerticalAlignment="Center"
                                                  Foreground="#68b2a0" />
                         <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
-                                     materialDesign:HintAssist.Hint="Password"
+                                     materialDesign:HintAssist.Hint="Mật khẩu"
                                      Width="210"
                                      Margin="5"
                                      SelectionBrush="#FF68B2A0"
@@ -120,7 +135,8 @@
                                      FontFamily="Champagne &amp; Limousines"
                                      FontSize="16" />
                     </StackPanel>
-                    <CheckBox Content="Remember me"
+                   
+                    <CheckBox Content="Ghi nhớ tài khoản."
                               Margin="15"
                               Foreground="#707070"
                               Background="#FF68B2A0" />
@@ -130,30 +146,30 @@
                             Width="120"
                             Height="35"
                             Padding="25 0"
-                            Content="SIGN IN"
+                            Content="ĐĂNG NHẬP"
                             Click="ButtonSignIn_Click"
                             Foreground="White"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Style="{DynamicResource RoundCorner}"
                             Opacity="0.9">
-                        <!--<Button.Background>
+                        <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.2,0" Opacity="1">
                                 <GradientStop Color="#FF68B2A0"/>
                                 <GradientStop Color="#FF2C6975" Offset="1"/>
                             </LinearGradientBrush>
-                        </Button.Background>-->
+                        </Button.Background>
                     </Button>
 
                     <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center">
-                        <TextBlock Text="Don't have an account?"
+                        <TextBlock Text="Bạn chưa có tài khoản?"
                                    Foreground="#98abda"
                                    Margin="15 15 0 15" />
                         <Label Margin="0 12 15 15"
                                Foreground="#68b2a0">
-                            <Hyperlink>Create</Hyperlink>
+                            <Hyperlink>Tạo mới</Hyperlink>
                         </Label>
                     </StackPanel>
 

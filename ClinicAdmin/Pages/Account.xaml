@@ -12,7 +12,7 @@
         <DockPanel Margin="25 15"
                    LastChildFill="False">
             <Label DockPanel.Dock="Top"
-                   Content="Account"
+                   Content="Tài khoản"
                    FontFamily="Segoe UI Semibold"
                    FontSize="36"
                    VerticalAlignment="Stretch"
@@ -63,7 +63,7 @@
                 <StackPanel Grid.Column="0"
                             Margin="0 0 15 0"
                             Orientation="Vertical">
-                    <Label Content="User name"
+                    <Label Content="Tên đăng nhập"
                            FontSize="18"
                            FontWeight="SemiBold"
                            HorizontalAlignment="Left"></Label>
@@ -73,7 +73,7 @@
                              Margin="0 0 0 10"
                              BorderBrush="#68b2a0"></TextBox>
                     
-                    <Label Content="Full Name"
+                    <Label Content="Họ tên"
                            FontSize="18"
                            FontWeight="SemiBold"
                            HorizontalAlignment="Left"></Label>
@@ -95,7 +95,7 @@
                 <StackPanel Grid.Column="1"
                             Margin="15 0 0 0"
                             Orientation="Vertical">
-                    <Label Content="Role"
+                    <Label Content="Vai trò"
                            FontSize="18"
                            FontWeight="SemiBold"
                            HorizontalAlignment="Left"></Label>
@@ -106,7 +106,7 @@
                              IsEnabled="False"
                              BorderBrush="#68b2a0"></TextBox>
                     
-                    <Label Content="Address"
+                    <Label Content="Địa chỉ"
                            FontSize="18"
                            FontWeight="SemiBold"
                            HorizontalAlignment="Left"></Label>
@@ -116,7 +116,7 @@
                              Margin="0 0 0 10"
                              BorderBrush="#68b2a0"></TextBox>
 
-                    <Label Content="Phone"
+                    <Label Content="Số điện thoại"
                            FontSize="18"
                            FontWeight="SemiBold"
                            HorizontalAlignment="Left"></Label>
@@ -130,12 +130,14 @@
                         Orientation="Horizontal"
                         Margin="0 15"
                         HorizontalAlignment="Right">
-                <Button Content="Change Password"
+                <Button Content="Đổi mật khẩu"
+                        x:Name="BtnChangePassword"
+                        Click="BtnChangePassword_Click"
                         Style="{StaticResource MaterialDesignPaperDarkButton}"
                         Width="150"
                         Height="45"
                         Margin="0 0 15 0"></Button>
-                <Button Content="Update Account"
+                <Button Content="Cập nhật"
                         Style="{StaticResource MaterialDesignPaperDarkButton}"
                         Width="150"
                         Height="45"
