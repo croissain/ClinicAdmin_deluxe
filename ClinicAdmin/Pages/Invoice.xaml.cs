@@ -16,19 +16,13 @@ using System.Windows.Shapes;
 namespace ClinicAdmin.Pages
 {
     /// <summary>
-    /// Interaction logic for StaffsList.xaml
+    /// Interaction logic for Invoice.xaml
     /// </summary>
-    public partial class StaffsList : Page
+    public partial class Invoice : Page
     {
-        public StaffsList()
+        public Invoice()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var screen = new ClinicAdmin.Addnew();
-            screen.ShowDialog();
         }
     }
 }

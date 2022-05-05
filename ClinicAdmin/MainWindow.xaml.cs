@@ -83,21 +83,38 @@ namespace ClinicAdmin
             Popup.IsOpen = false;
         }
 
-        private void btnDashboard_MouseEnter(object sender, MouseEventArgs e)
+        private void btnStaffList_MouseEnter(object sender, MouseEventArgs e)
         {
             if (Tg_Btn.IsChecked == false)
             {
-                Popup.PlacementTarget = btnDashboard;
+                Popup.PlacementTarget = btnStaffList;
                 Popup.Placement = PlacementMode.Right;
                 Popup.IsOpen = true;
-                Header.PopupText.Text = "Staffs list";
+                Header.PopupText.Text = "DS Nhân Viên";
             }
         }
-
-        private void btnDashboard_MouseLeave(object sender, MouseEventArgs e)
+        
+        private void btnStaffList_MouseLeave(object sender, MouseEventArgs e)
         {
             Popup.Visibility = Visibility.Collapsed;
             Popup.IsOpen = false;
+        }
+
+        private void btnMedicalList_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
+        }
+
+        private void btnMedicalList_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Tg_Btn.IsChecked == false)
+            {
+                Popup.PlacementTarget = btnMedicalList;
+                Popup.Placement = PlacementMode.Right;
+                Popup.IsOpen = true;
+                Header.PopupText.Text = "DS Thuốc/VTYT";
+            }
         }
 
         private void btnAccount_MouseEnter(object sender, MouseEventArgs e)
@@ -107,11 +124,28 @@ namespace ClinicAdmin
                 Popup.PlacementTarget = btnAccount;
                 Popup.Placement = PlacementMode.Right;
                 Popup.IsOpen = true;
-                Header.PopupText.Text = "Account";
+                Header.PopupText.Text = "Tài Khoản";
             }
         }
 
         private void btnAccount_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
+        }
+
+        private void btnBilling_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Tg_Btn.IsChecked == false)
+            {
+                Popup.PlacementTarget = btnBilling;
+                Popup.Placement = PlacementMode.Right;
+                Popup.IsOpen = true;
+                Header.PopupText.Text = "Hóa Đơn";
+            }
+        }
+
+        private void btnBilling_MouseLeave(object sender, MouseEventArgs e)
         {
             Popup.Visibility = Visibility.Collapsed;
             Popup.IsOpen = false;
@@ -123,14 +157,24 @@ namespace ClinicAdmin
             fContainer.Navigate(new System.Uri("Pages/Home.xaml", UriKind.RelativeOrAbsolute));
         }
 
-        private void btnDashboard_Click(object sender, RoutedEventArgs e)
+        private void btnStaffList_Click(object sender, RoutedEventArgs e)
         {
             fContainer.Navigate(new System.Uri("Pages/StaffsList.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        private void btnMedicalList_Click(object sender, RoutedEventArgs e)
+        {
+            fContainer.Navigate(new System.Uri("Pages/MedicinesList.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void btnAccount_Click(object sender, RoutedEventArgs e)
         {
             fContainer.Navigate(new System.Uri("Pages/Account.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        private void btnBilling_Click(object sender, RoutedEventArgs e)
+        {
+            fContainer.Navigate(new System.Uri("Pages/Invoice.xaml", UriKind.RelativeOrAbsolute));
         }
     }
 }

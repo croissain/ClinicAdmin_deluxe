@@ -95,6 +95,8 @@
         <!-- Start: Menu Item Style -->
         <Style x:Key="MenuButtonStyle"
                TargetType="{x:Type ToggleButton}">
+            <Setter Property="Cursor"
+                    Value="Hand" />
             <Setter Property="Background"
                     Value="Transparent" />
             <Setter Property="BorderThickness"
