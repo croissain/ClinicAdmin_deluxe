@@ -174,7 +174,7 @@ namespace ClinicAdmin
 
         private void btnBilling_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("Pages/Invoice.xaml", UriKind.RelativeOrAbsolute));
+
         }
     }
 }

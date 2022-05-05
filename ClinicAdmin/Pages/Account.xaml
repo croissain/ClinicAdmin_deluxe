@@ -14,13 +14,28 @@
             <Label DockPanel.Dock="Top"
                    Content="Tài khoản"
                    FontFamily="Segoe UI Semibold"
-                   Margin="0 0 0 20"
                    FontSize="36"
                    VerticalAlignment="Stretch"
                    HorizontalAlignment="Center"
-                   FontWeight="Bold"/>
+                   FontWeight="Bold" />
 
-            <Grid DockPanel.Dock="Top">
+            <Border DockPanel.Dock="Top"
+                    CornerRadius="50"
+                    Width="80"
+                    Height="80"
+                    HorizontalAlignment="Center"
+                    Margin="10">
+                <Border.Background>
+                    <ImageBrush Stretch="Fill"
+                                    ImageSource="/Assets/Images/Tuan.jpeg" />
+                </Border.Background>
+            </Border>
+            <!--<Label Content="Name"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Left"></Label>-->
+
+            <!--<Grid DockPanel.Dock="Top">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
@@ -28,52 +43,17 @@
                 <StackPanel Grid.Column="0"
                             Margin="0 0 15 0"
                             Orientation="Vertical">
-                    <Label Content="Avatar"
-                           FontSize="18"
-                           FontWeight="SemiBold"
-                           HorizontalAlignment="Left"></Label>
-                    <Border CornerRadius="50"
-                            Width="100"
-                            Height="100"
-                            HorizontalAlignment="Left"
-                            Margin="10">
-                        <Border.Background>
-                            <ImageBrush Stretch="Fill"
-                                        ImageSource="/Assets/Images/Tuan.jpeg" />
-                        </Border.Background>
-                    </Border>
+                    
                 </StackPanel>
 
                 <StackPanel Grid.Column="1"
                             Margin="15 0 0 0"
                             Orientation="Vertical">
-                    <Label Content="User name"
-                           FontSize="18"
-                           FontWeight="SemiBold"
-                           HorizontalAlignment="Left"></Label>
-                    <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                             FontSize="20"
-                             Padding="15 10"
-                             Margin="0 0 0 10"
-                             BorderBrush="#68b2a0"></TextBox>
+                   
 
-                    <Label Content="Vai trò"
-                           FontSize="18"
-                           FontWeight="SemiBold"
-                           HorizontalAlignment="Left"></Label>
-                    <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                             FontSize="20"
-                             Padding="15 10"
-                             Margin="0 0 0 10"
-                             IsEnabled="False"
-                             BorderBrush="#68b2a0"></TextBox>
+                   
                 </StackPanel>
-            </Grid>
-
-            <Separator DockPanel.Dock="Top"
-                       Height="1"
-                       Margin="0 20"
-                       Background="#cde0c9" />
+            </Grid>-->
 
             <Grid DockPanel.Dock="Top">
                 <Grid.ColumnDefinitions>
@@ -83,7 +63,17 @@
                 <StackPanel Grid.Column="0"
                             Margin="0 0 15 0"
                             Orientation="Vertical">
-                    <Label Content="Họ và tên"
+                    <Label Content="Tên đăng nhập"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Left"></Label>
+                    <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                             FontSize="20"
+                             Padding="15 10"
+                             Margin="0 0 0 10"
+                             BorderBrush="#68b2a0"></TextBox>
+                    
+                    <Label Content="Họ tên"
                            FontSize="18"
                            FontWeight="SemiBold"
                            HorizontalAlignment="Left"></Label>
@@ -105,6 +95,17 @@
                 <StackPanel Grid.Column="1"
                             Margin="15 0 0 0"
                             Orientation="Vertical">
+                    <Label Content="Vai trò"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Left"></Label>
+                    <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                             FontSize="20"
+                             Padding="15 10"
+                             Margin="0 0 0 10"
+                             IsEnabled="False"
+                             BorderBrush="#68b2a0"></TextBox>
+                    
                     <Label Content="Địa chỉ"
                            FontSize="18"
                            FontWeight="SemiBold"
@@ -130,14 +131,17 @@
                         Margin="0 15"
                         HorizontalAlignment="Right">
                 <Button Content="Đổi mật khẩu"
-                        Style="{StaticResource MaterialDesignOutlinedButton}"
+                        x:Name="BtnChangePassword"
+                        Click="BtnChangePassword_Click"
+                        Style="{StaticResource MaterialDesignPaperDarkButton}"
                         Width="150"
                         Height="45"
                         Margin="0 0 15 0"></Button>
-                <Button Content="Luu thay đổi"
-                        Style="{StaticResource MaterialDesignRaisedButton}"
+                <Button Content="Cập nhật"
+                        Style="{StaticResource MaterialDesignPaperDarkButton}"
                         Width="150"
                         Height="45"
+                        Background="#68b2a0"
                         Foreground="White"></Button>
             </StackPanel>
         </DockPanel>

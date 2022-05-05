@@ -5,78 +5,52 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClinicAdmin"
         mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
-        Height="608.195">
+        Height ="650"
+        Title="Thêm mới người dùng">
     <Border Background="White"
             CornerRadius="5">
         <DockPanel Margin="25 15"
                    LastChildFill="False">
+            <StackPanel Orientation="Horizontal"
+                        DockPanel.Dock="Top"               
+                        Margin="5">
+                <Button Foreground="#f0723e"
+                                        Style="{StaticResource windowButton}"
+                                        Click="WindowButton_Close_Click">
+                </Button>
+                <Button Foreground="#f2eb80"
+                                        Style="{StaticResource windowButton}"
+                                        Click="WindowButton_Minimize_Click">
+                </Button>
+                <Button Foreground="#88f280"
+                                        Style="{StaticResource windowButton}"
+                                        Click="WindowButton_FullScreen_Click">
+                </Button>
+            </StackPanel>
             <Label DockPanel.Dock="Top"
-                   Content="Account"
+                   Content="Thêm người dùng"
                    FontFamily="Segoe UI Semibold"
-                   Margin="0 0 0 20"
                    FontSize="36"
                    VerticalAlignment="Stretch"
                    HorizontalAlignment="Center"
                    FontWeight="Bold" />
 
-            <Grid DockPanel.Dock="Top">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0"
-                            Margin="0 0 15 0"
-                            Orientation="Vertical">
-                    <Label Content="Avatar"
-                           FontSize="18"
-                           FontWeight="SemiBold"
-                           HorizontalAlignment="Left"></Label>
-                    <Border CornerRadius="50"
-                            Width="100"
-                            Height="100"
-                            HorizontalAlignment="Left"
-                            Margin="10">
-                        <Border.Background>
-                            <ImageBrush Stretch="Fill"
-                                        ImageSource="/Assets/Images/Tuan.jpeg" />
-                        </Border.Background>
-                    </Border>
-                </StackPanel>
-
-                <StackPanel Grid.Column="1"
-                            Margin="15 0 0 0"
-                            Orientation="Vertical">
-                    <Label Content="User name"
-                           FontSize="18"
-                           FontWeight="SemiBold"
-                           HorizontalAlignment="Left"></Label>
-                    <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                             FontSize="20"
-                             Padding="15 10"
-                             Margin="0 0 0 10"
-                             BorderBrush="#68b2a0"></TextBox>
-
-                    <Label Content="Role"
-                           FontSize="18"
-                           FontWeight="SemiBold"
-                           HorizontalAlignment="Left"></Label>
-                    <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                             FontSize="20"
-                             Padding="15 10"
-                             Margin="0 0 0 10"
-                             IsEnabled="False"
-                             BorderBrush="#68b2a0"></TextBox>
-                </StackPanel>
-            </Grid>
-
-            <Separator DockPanel.Dock="Top"
-                       Height="1"
-                       Margin="0 20"
-                       Background="#cde0c9" />
+            <Border DockPanel.Dock="Top"
+                    CornerRadius="50"
+                    Width="80"
+                    Height="80"
+                    HorizontalAlignment="Center"
+                    Margin="10">
+                <Border.Background>
+                    <ImageBrush Stretch="Fill"
+                                    ImageSource="/Assets/Images/Tuan.jpeg" />
+                </Border.Background>
+            </Border>
 
             <Grid DockPanel.Dock="Top">
                 <Grid.ColumnDefinitions>
@@ -86,7 +60,8 @@
                 <StackPanel Grid.Column="0"
                             Margin="0 0 15 0"
                             Orientation="Vertical">
-                    <Label Content="Full Name"
+
+                    <Label Content="Họ tên"
                            FontSize="18"
                            FontWeight="SemiBold"
                            HorizontalAlignment="Left"></Label>
@@ -98,17 +73,15 @@
 
                     <Label Content="Email"
                            FontSize="18"
+                           Margin="0 0 0 10"
                            FontWeight="SemiBold"
                            HorizontalAlignment="Left"></Label>
                     <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
                              FontSize="20"
                              Padding="15 10"
                              BorderBrush="#68b2a0"></TextBox>
-                </StackPanel>
-                <StackPanel Grid.Column="1"
-                            Margin="15 0 0 0"
-                            Orientation="Vertical">
-                    <Label Content="Address"
+
+                    <Label Content="Tên đăng nhập"
                            FontSize="18"
                            FontWeight="SemiBold"
                            HorizontalAlignment="Left"></Label>
@@ -118,29 +91,80 @@
                              Margin="0 0 0 10"
                              BorderBrush="#68b2a0"></TextBox>
 
-                    <Label Content="Phone"
+                    <Label Content="Mật khẩu"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Left"></Label>
+
+                    <PasswordBox Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
+                                     FontSize="20"
+                                     Padding="15 10"
+                                     Margin="0 0 0 10"
+                                     SelectionBrush="#FF68B2A0"
+                                     BorderBrush="#FF68B2A0" />
+                </StackPanel>
+                <StackPanel Grid.Column="1"
+                            Margin="15 0 0 0"
+                            Orientation="Vertical">
+
+                    <Label Content="Địa chỉ"
                            FontSize="18"
                            FontWeight="SemiBold"
                            HorizontalAlignment="Left"></Label>
                     <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
                              FontSize="20"
                              Padding="15 10"
+                             Margin="0 0 0 10"
                              BorderBrush="#68b2a0"></TextBox>
+
+                    <Label Content="Số điện thoại"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Left"></Label>
+                    
+                    <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                             FontSize="20"
+                             Padding="15 10"
+                             Margin="0 0 0 10"
+                             BorderBrush="#68b2a0"></TextBox>
+
+                    <Label Content="Vai trò"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Left"></Label>
+                    <ComboBox x:Name="RoleCbb" Style="{StaticResource MaterialDesignOutlinedComboBox}"   
+                              Margin="0 0 0 10"
+                              BorderBrush="#68b2a0">
+                    </ComboBox>
+
+
+                    <Label Content="Nhập lại mật khẩu"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Left"></Label>
+                    
+                    <PasswordBox Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
+                                     FontSize="20"
+                                     Padding="15 10"
+                                     Margin="0 0 0 10"
+                                     SelectionBrush="#FF68B2A0"
+                                     BorderBrush="#FF68B2A0" />
                 </StackPanel>
             </Grid>
             <StackPanel DockPanel.Dock="Bottom"
                         Orientation="Horizontal"
                         Margin="0 15"
                         HorizontalAlignment="Right">
-                <Button Content="Change Password"
-                        Style="{StaticResource MaterialDesignOutlinedButton}"
+                <Button Content="Hủy"
+                        Style="{StaticResource MaterialDesignPaperDarkButton}"
                         Width="150"
                         Height="45"
                         Margin="0 0 15 0"></Button>
-                <Button Content="Save Changes"
-                        Style="{StaticResource MaterialDesignRaisedButton}"
+                <Button Content="Thêm"
+                        Style="{StaticResource MaterialDesignPaperDarkButton}"
                         Width="150"
                         Height="45"
+                        Background="#68b2a0"
                         Foreground="White"></Button>
             </StackPanel>
         </DockPanel>

@@ -28,5 +28,25 @@ namespace ClinicAdmin
         {
 
         }
+
+        // MacOS UI cheap moment
+        // Button Close | Minimize | Restore
+        private void WindowButton_Close_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void WindowButton_Minimize_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+        private void WindowButton_FullScreen_Click(object sender, RoutedEventArgs e)
+        {
+            if (WindowState == WindowState.Normal)
+                WindowState = WindowState.Maximized;
+            else
+                WindowState = WindowState.Normal;
+        }
     }
 }
