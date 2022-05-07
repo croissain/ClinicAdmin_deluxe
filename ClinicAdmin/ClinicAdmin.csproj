@@ -138,6 +138,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Prescription.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\StaffsList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -167,6 +171,9 @@
     </Compile>
     <Compile Include="Pages\MedicinesList.xaml.cs">
       <DependentUpon>MedicinesList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Prescription.xaml.cs">
+      <DependentUpon>Prescription.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\StaffsList.xaml.cs">
       <DependentUpon>StaffsList.xaml</DependentUpon>
@@ -205,6 +212,12 @@
     <Resource Include="Assets\Images\Tuan.jpeg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\QRCode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Images\BarCode.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.4.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.4.0\build\MaterialDesignThemes.targets')" />

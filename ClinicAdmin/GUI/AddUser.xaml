@@ -16,22 +16,7 @@
             CornerRadius="5">
         <DockPanel Margin="25 15"
                    LastChildFill="False">
-            <StackPanel Orientation="Horizontal"
-                        DockPanel.Dock="Top"               
-                        Margin="5">
-                <Button Foreground="#f0723e"
-                                        Style="{StaticResource windowButton}"
-                                        Click="WindowButton_Close_Click">
-                </Button>
-                <Button Foreground="#f2eb80"
-                                        Style="{StaticResource windowButton}"
-                                        Click="WindowButton_Minimize_Click">
-                </Button>
-                <Button Foreground="#88f280"
-                                        Style="{StaticResource windowButton}"
-                                        Click="WindowButton_FullScreen_Click">
-                </Button>
-            </StackPanel>
+            
             <Label DockPanel.Dock="Top"
                    Content="Thêm người dùng"
                    FontFamily="Segoe UI Semibold"
