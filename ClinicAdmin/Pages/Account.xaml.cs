@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ClinicAdmin.BUS;
+using ClinicAdmin.DAO;
 
 namespace ClinicAdmin.Pages
 {
@@ -21,9 +23,24 @@ namespace ClinicAdmin.Pages
     /// </summary>
     public partial class Account : Page
     {
-        public Account()
+        private UserAccountDAO _userAccount;
+        public Account(UserAccountDAO userAccountDAO)
         {
             InitializeComponent();
+            _userAccount = userAccountDAO;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            if(_userAccount != null)
+            {
+                txbUsername.Text = _userAccount.Username;
+                txbFullname.Text = _userAccount.FullName;
+                txbEmail.Text = _userAccount.Email;
+                txbAddress.Text = _userAccount.Address;
+                txbPhone.Text = _userAccount.Phone;
+                txbRole.Text = _userAccount.Role;
+            }
         }
 
         private void BtnChangePassword_Click(object sender, RoutedEventArgs e)

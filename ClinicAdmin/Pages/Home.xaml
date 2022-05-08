@@ -7,7 +7,8 @@
       mc:Ignorable="d"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       Width="1320" Height="750"
-      Title="Home">
+      Title="Home"
+      Loaded="Page_Loaded">
 
     <Border CornerRadius="5" Background="White">
         <Grid>
@@ -292,7 +293,7 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                 <Label Content="Nhân viên lập hóa đơn: " Foreground="White" FontSize="14" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                <TextBlock Text="Lê Nguyễn Nhất Thọ" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Foreground="White"/>
+                                <TextBlock x:Name="txblStaffName" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Foreground="White"/>
                             </StackPanel>
                         </StackPanel>
                         <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
