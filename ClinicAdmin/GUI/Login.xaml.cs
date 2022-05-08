@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ClinicAdmin.BUS;
 
 namespace ClinicAdmin
 {
@@ -26,7 +27,32 @@ namespace ClinicAdmin
 
         private void ButtonSignIn_Click(object sender, RoutedEventArgs e)
         {
+            LoginBUS loginBUS = new LoginBUS();
+            string userName = txbUsername.Text;
+            string passWord = txbPassword.Password;
+            var user = loginBUS.GetUserLogin(userName, passWord);
+            
+            if (user != null)
+            {
+                string roleName = loginBUS.GetRoleUser(user.id);
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.userAccount = new DAO.UserAccountDAO(user.id, user.Username, user.Password, user.FullName, user.Address, user.Email, user.Phone, roleName);
+                this.Hide();
+                mainWindow.ShowDialog();
+                this.Show();
+            }
+            else
+            {
+                MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu!");
+            }
+        }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (MessageBox.Show("Bạn có thật sự muốn thoát!", "Thông báo", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
+            {
+                e.Cancel = true;
+            }
         }
 
         // MacOS UI cheap moment
@@ -47,6 +73,11 @@ namespace ClinicAdmin
                 WindowState = WindowState.Maximized;
             else
                 WindowState = WindowState.Normal;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            txbUsername.Focus();
         }
     }
 }

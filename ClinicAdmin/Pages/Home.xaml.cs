@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClinicAdmin.DAO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,19 @@ namespace ClinicAdmin.Pages
     /// </summary>
     public partial class Home : Page
     {
-        public Home()
+        private UserAccountDAO _userAccount;
+        public Home(UserAccountDAO userAccountDAO)
         {
             InitializeComponent();
+            _userAccount = userAccountDAO;
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (_userAccount != null)
+            {
+                txblStaffName.Text = _userAccount.FullName;
+            }
         }
     }
 }
