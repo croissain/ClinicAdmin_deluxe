@@ -13,7 +13,8 @@
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         AllowsTransparency="True"
-        WindowStyle="None">
+        WindowStyle="None"
+        Loaded="Window_Loaded">
     <Window.Resources>
         <Style x:Key="RoundCorner"
                TargetType="{x:Type Button}">
@@ -82,9 +83,10 @@
     <Grid>
         <StackPanel Orientation="Horizontal"             
                         Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top">
-            <Button Foreground="#f0723e"
-                                        Style="{StaticResource windowButton}"
-                                        Click="WindowButton_Close_Click">
+            <Button Foreground="#f0723e" 
+                    IsCancel="True"
+                    Style="{StaticResource windowButton}"
+                    Click="WindowButton_Close_Click">
             </Button>
             <Button Foreground="#f2eb80"
                                         Style="{StaticResource windowButton}"
@@ -113,27 +115,31 @@
                         <materialDesign:PackIcon Kind="Account"
                                                  VerticalAlignment="Center"
                                                  Foreground="#68b2a0" />
-                        <TextBox Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                        <TextBox x:Name="txbUsername"
+                                 Text="admin1"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                  materialDesign:HintAssist.Hint="Tên đăng nhập"
                                  Margin="5"
                                  Width="210"
                                  SelectionBrush="#FF68B2A0"
                                  BorderBrush="#FF68B2A0"
                                  FontFamily="Champagne &amp; Limousines"
-                                 FontSize="16" />
+                                 FontSize="16" TabIndex="1" IsInactiveSelectionHighlightEnabled="True" />
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Key"
                                                  VerticalAlignment="Center"
                                                  Foreground="#68b2a0" />
-                        <PasswordBox Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
+                        <PasswordBox x:Name="txbPassword"
+                                     Password="1234"
+                                     Style="{StaticResource MaterialDesignFloatingHintPasswordBox}"
                                      materialDesign:HintAssist.Hint="Mật khẩu"
                                      Width="210"
                                      Margin="5"
                                      SelectionBrush="#FF68B2A0"
                                      BorderBrush="#FF68B2A0"
                                      FontFamily="Champagne &amp; Limousines"
-                                     FontSize="16" />
+                                     FontSize="16" TabIndex="2" />
                     </StackPanel>
                    
                     <CheckBox Content="Ghi nhớ tài khoản."
@@ -152,7 +158,8 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Style="{DynamicResource RoundCorner}"
-                            Opacity="0.9">
+                            Opacity="0.9" TabIndex="3"
+                            IsDefault="True">
                         <Button.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.2,0" Opacity="1">
                                 <GradientStop Color="#FF68B2A0"/>
