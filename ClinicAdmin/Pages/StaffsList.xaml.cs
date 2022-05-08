@@ -27,7 +27,7 @@ namespace ClinicAdmin.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var screen = new ClinicAdmin.Addnew();
+            var screen = new ClinicAdmin.GUI.Addnew();
             screen.ShowDialog();
         }
     }
