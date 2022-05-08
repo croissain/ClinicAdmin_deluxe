@@ -9,6 +9,7 @@ namespace ClinicAdmin.DAO
 {
     public class UserAccountDAO: User
     {
+        private static UserAccountDAO instance;
         private string role;
 
         public string Role { get => role; set => role = value; }
@@ -25,6 +26,24 @@ namespace ClinicAdmin.DAO
             this.Email = email;
             this.Phone = phone;
             this.Role = role;
+        }
+
+        public static UserAccountDAO getInstance()
+        {
+            if (instance == null)
+            {
+                instance = new UserAccountDAO();
+            }
+            return instance;
+        }
+
+        public static UserAccountDAO getInstance(int id, string userName, string password, string fullname, string address, string email, string phone, string role)
+        {
+            if (instance == null)
+            {
+                instance = new UserAccountDAO(id, userName, password, fullname, address, email, phone, role);
+            }
+            return instance;
         }
     }
 }
