@@ -32,14 +32,11 @@ namespace ClinicAdmin
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             fContainer.Navigate(new System.Uri("Pages/Welcome.xaml", UriKind.RelativeOrAbsolute));
+        }
 
         //Global Variable
         public UserAccountDAO userAccount;
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            btnHome_Click(sender, e);
-        }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -49,16 +46,6 @@ namespace ClinicAdmin
             }
 
         }
-
-        //Global Variable
-        public UserAccountDAO userAccount;
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (MessageBox.Show("Bạn có thật sự muốn thoát!", "Thông báo", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
-            {
-                e.Cancel = true;
-            }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
