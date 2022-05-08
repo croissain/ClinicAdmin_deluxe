@@ -207,6 +207,7 @@
   <ItemGroup>
     <Folder Include="BUS\" />
     <Folder Include="DAO\" />
+    <Folder Include="DTO\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Images\Tuan.jpeg">
