@@ -17,7 +17,7 @@ namespace ClinicAdmin.DTO
         public int id { get; set; }
         public Nullable<System.DateTime> DayExam { get; set; }
         public int PatientId { get; set; }
-        public byte[] Status { get; set; }
+        public Nullable<int> Status { get; set; }
     
         public virtual Patient Patient { get; set; }
     }

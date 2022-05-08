@@ -39,7 +39,7 @@ namespace ClinicAdmin.Pages
                 txbEmail.Text = _userAccount.Email;
                 txbAddress.Text = _userAccount.Address;
                 txbPhone.Text = _userAccount.Phone;
-                txbRole.Text = _userAccount.Role;
+                txbRole.Text = _userAccount.RoleName;
             }
         }
 

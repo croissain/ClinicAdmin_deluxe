@@ -18,6 +18,6 @@ namespace ClinicAdmin.DTO
         public string Name { get; set; }
         public string Datatypes { get; set; }
         public string Value { get; set; }
-        public byte[] Status { get; set; }
+        public Nullable<int> Status { get; set; }
     }
 }

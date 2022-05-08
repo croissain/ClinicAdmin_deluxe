@@ -85,7 +85,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="255" />
           <Property Name="Datatypes" Type="nvarchar" MaxLength="255" />
           <Property Name="Value" Type="nvarchar" MaxLength="255" />
-          <Property Name="Status" Type="binary" MaxLength="1" />
+          <Property Name="Status" Type="int" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -101,7 +101,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DayExam" Type="datetime" />
           <Property Name="PatientId" Type="int" Nullable="false" />
-          <Property Name="Status" Type="binary" MaxLength="1" />
+          <Property Name="Status" Type="int" />
         </EntityType>
         <EntityType Name="UnitMedicine">
           <Key>
@@ -390,7 +390,7 @@
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Datatypes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Value" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Status" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="Status" Type="Int32" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -407,7 +407,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DayExam" Type="DateTime" Precision="3" />
           <Property Name="PatientId" Type="Int32" Nullable="false" />
-          <Property Name="Status" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="Status" Type="Int32" />
           <NavigationProperty Name="Patient" Relationship="Self.Schedule_fk0" FromRole="Schedule" ToRole="Patient" />
         </EntityType>
         <EntityType Name="UnitMedicine">
@@ -610,6 +610,8 @@
           <Property Type="String" Name="Address" Nullable="true" MaxLength="255" />
           <Property Type="String" Name="Email" Nullable="true" MaxLength="255" />
           <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="id1" Nullable="false" />
+          <Property Type="String" Name="RoleName" Nullable="false" MaxLength="255" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -764,6 +766,8 @@
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="id1" ColumnName="id1" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
