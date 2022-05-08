@@ -30,28 +30,19 @@ namespace ClinicAdmin
             LoginBUS loginBUS = new LoginBUS();
             string userName = txbUsername.Text;
             string passWord = txbPassword.Password;
-            var user = loginBUS.GetUserLogin(userName, passWord);
+            var user = loginBUS.UserLogin(userName, passWord);
             
             if (user != null)
             {
-                string roleName = loginBUS.GetRoleUser(user.id);
                 MainWindow mainWindow = new MainWindow();
-                mainWindow.userAccount = DAO.UserAccountDAO.getInstance(user.id, user.Username, user.Password, user.FullName, user.Address, user.Email, user.Phone, roleName);
+                mainWindow.userAccount = user;
                 this.Hide();
                 mainWindow.ShowDialog();
-                this.Show();
+                this.Close();
             }
             else
             {
                 MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu!");
-            }
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            if (MessageBox.Show("Bạn có thật sự muốn thoát!", "Thông báo", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
-            {
-                e.Cancel = true;
             }
         }
 

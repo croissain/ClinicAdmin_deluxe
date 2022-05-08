@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ClinicAdmin.BUS;
 
 namespace ClinicAdmin.Pages
 {
@@ -34,6 +35,9 @@ namespace ClinicAdmin.Pages
             {
                 txblStaffName.Text = _userAccount.FullName;
             }
+
+            var listPatients = PatientDAO.getInstance().GetListPatient();
+            lsvPatient.ItemsSource = listPatients;
         }
     }
 }

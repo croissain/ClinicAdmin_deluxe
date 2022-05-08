@@ -244,7 +244,7 @@
             </Grid>
 
             <!--List patients-->
-            <ListView Grid.Row="2" Grid.Column="0" Margin="5">
+            <ListView x:Name="lsvPatient" Grid.Row="2" Grid.Column="0" Margin="5">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
@@ -255,19 +255,13 @@
                                     <MenuItem Header="Xoá" />
                                 </ContextMenu>
                             </StackPanel.ContextMenu>
-                            <!--Giao diện method được chọn-->
-                            <Button Content="{Binding MagicWord}"
-                                    Width="280"
-                                    BorderThickness="2"
-                                    Foreground="White"
-                                    FontWeight="Bold" />
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding id}" Header="STT" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Họ tên" />
+                        <GridViewColumn Width="20" DisplayMemberBinding="{Binding id}" Header="#" />
+                        <GridViewColumn DisplayMemberBinding="{Binding FullName}" Header="Họ tên" />
                         <GridViewColumn DisplayMemberBinding="{Binding Status}" Header="Tình trạng" />
                     </GridView>
                 </ListView.View>
