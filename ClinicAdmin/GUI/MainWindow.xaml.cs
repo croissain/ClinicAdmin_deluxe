@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
+using ClinicAdmin.BUS;
+using ClinicAdmin.DAO;
 
 namespace ClinicAdmin
 {
@@ -26,9 +28,26 @@ namespace ClinicAdmin
             InitializeComponent();
         }
 
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             fContainer.Navigate(new System.Uri("Pages/Welcome.xaml", UriKind.RelativeOrAbsolute));
+
+        //Global Variable
+        public UserAccountDAO userAccount;
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            btnHome_Click(sender, e);
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (MessageBox.Show("Bạn có thật sự muốn thoát!", "Thông báo", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
+            {
+                e.Cancel = true;
+            }
+
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -38,12 +57,6 @@ namespace ClinicAdmin
                 this.DragMove();
             }
         }
-
-        //private void ButtonNav_Click(object sender, RoutedEventArgs e)
-        //{
-        //    int index = int.Parse(((Button)e.Source).Uid);
-        //    MainSectionControl.SelectedIndex = index;
-        //}
 
         // MacOS UI cheap moment
         // Button Close | Minimize | Restore
@@ -159,7 +172,9 @@ namespace ClinicAdmin
 
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("Pages/Home.xaml", UriKind.RelativeOrAbsolute));
+            //fContainer.Navigate(new System.Uri("Pages/Home.xaml", UriKind.RelativeOrAbsolute));
+            ClinicAdmin.Pages.Home p = new ClinicAdmin.Pages.Home(userAccount);
+            fContainer.Navigate(p);
         }
 
         private void btnStaffList_Click(object sender, RoutedEventArgs e)
@@ -174,7 +189,9 @@ namespace ClinicAdmin
 
         private void btnAccount_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("Pages/Account.xaml", UriKind.RelativeOrAbsolute));
+            //fContainer.Navigate(new System.Uri("Pages/Account.xaml", UriKind.RelativeOrAbsolute));
+            ClinicAdmin.Pages.Account p = new ClinicAdmin.Pages.Account(userAccount);
+            fContainer.Navigate(p);
         }
 
         private void btnBilling_Click(object sender, RoutedEventArgs e)
