@@ -36,7 +36,7 @@ namespace ClinicAdmin
             {
                 string roleName = loginBUS.GetRoleUser(user.id);
                 MainWindow mainWindow = new MainWindow();
-                mainWindow.userAccount = new DAO.UserAccountDAO(user.id, user.Username, user.Password, user.FullName, user.Address, user.Email, user.Phone, roleName);
+                mainWindow.userAccount = DAO.UserAccountDAO.getInstance(user.id, user.Username, user.Password, user.FullName, user.Address, user.Email, user.Phone, roleName);
                 this.Hide();
                 mainWindow.ShowDialog();
                 this.Show();
