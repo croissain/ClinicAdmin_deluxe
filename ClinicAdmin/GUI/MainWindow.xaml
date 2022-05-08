@@ -8,7 +8,7 @@
         xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Height="910"
+        Height="820"
         Width="1440"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
@@ -190,7 +190,7 @@
 
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="60" />
+                        <RowDefinition Height="50" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
 
@@ -236,7 +236,7 @@
 
                     <Frame Grid.Row="1"
                            Name="fContainer"
-                           Margin="20"
+                           Margin="10"
                            NavigationUIVisibility="Hidden">
 
                     </Frame>
