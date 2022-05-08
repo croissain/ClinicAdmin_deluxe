@@ -66,48 +66,48 @@
                         <!-- Username-->
                         <Grid Grid.Row="1">
                             <StackPanel Orientation="Vertical">
-                                
-                            <StackPanel Orientation="Horizontal"
-                                        HorizontalAlignment="Left"
-                                        Margin="17 0 0 0">
 
-                                <Border CornerRadius="10"
-                                        Width="40"
-                                        Height="40">
-                                    <Border.Background>
-                                        <LinearGradientBrush StartPoint="0,0"
-                                                             EndPoint="1,2">
-                                            <GradientStop Color="#138086"
-                                                          Offset="0" />
-                                            <GradientStop Color="#534666"
-                                                          Offset="1" />
-                                        </LinearGradientBrush>
-                                    </Border.Background>
-                                    <TextBlock Text="OS"
-                                               Foreground="White"
-                                               FontSize="22"
-                                               FontWeight="SemiBold"
-                                               TextAlignment="Center"
-                                               VerticalAlignment="Center"
-                                               Margin="0 0 0 3" />
-                                </Border>
+                                <StackPanel Orientation="Horizontal"
+                                            HorizontalAlignment="Left"
+                                            Margin="17 0 0 0">
 
-                                <StackPanel Margin="20 0 0 0"
-                                            VerticalAlignment="Center">
-                                    <TextBlock Text="Oh Sehun"
-                                               FontSize="15"
-                                               Margin="0 0 0 5"
-                                               Foreground="White" />
-                                    <TextBlock Text="Administrator"
-                                               FontSize="11"
-                                               Margin="0 0 0 5"
-                                               Foreground="#e0ecde" />
+                                    <Border CornerRadius="10"
+                                            Width="40"
+                                            Height="40">
+                                        <Border.Background>
+                                            <LinearGradientBrush StartPoint="0,0"
+                                                                 EndPoint="1,2">
+                                                <GradientStop Color="#138086"
+                                                              Offset="0" />
+                                                <GradientStop Color="#534666"
+                                                              Offset="1" />
+                                            </LinearGradientBrush>
+                                        </Border.Background>
+                                        <TextBlock Text="OS"
+                                                   Foreground="White"
+                                                   FontSize="22"
+                                                   FontWeight="SemiBold"
+                                                   TextAlignment="Center"
+                                                   VerticalAlignment="Center"
+                                                   Margin="0 0 0 3" />
+                                    </Border>
+
+                                    <StackPanel Margin="20 0 0 0"
+                                                VerticalAlignment="Center">
+                                        <TextBlock Text="Oh Sehun"
+                                                   FontSize="15"
+                                                   Margin="0 0 0 5"
+                                                   Foreground="White" />
+                                        <TextBlock Text="Administrator"
+                                                   FontSize="11"
+                                                   Margin="0 0 0 5"
+                                                   Foreground="#e0ecde" />
+                                    </StackPanel>
                                 </StackPanel>
-                            </StackPanel>
-                            <Separator DockPanel.Dock="Top"
-                                       Height="1"
-                                       Margin="20 20"
-                                       Background="#cde0c9" />
+                                <Separator DockPanel.Dock="Top"
+                                           Height="1"
+                                           Margin="20 20"
+                                           Background="#cde0c9" />
                             </StackPanel>
                         </Grid>
 
@@ -236,11 +236,60 @@
                         </ToggleButton.Triggers>
                     </ToggleButton>
 
+                    <!--<Grid Grid.Row="1"
+                          Margin="30">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="5*" />
+                        </Grid.ColumnDefinitions>
+                        <DockPanel>
+                            <StackPanel DockPanel.Dock="Top"
+                                        Height="Auto">
+
+                                <TextBlock Text="XIN CHÀO"
+                                           FontSize="44"
+                                           FontWeight="Black"
+                                           Margin="0 0 0 20"
+                                           Foreground="{StaticResource TertiaryIconColor}" />
+
+                                <Border Background="{DynamicResource TertiaryIconColor}"
+                                        CornerRadius="5"
+                                        Height="10"
+                                        Width="150"
+                                        HorizontalAlignment="Left"
+                                        Margin="0 0 0 20" />
+
+                                <TextBlock Text="Clinic&#x0a;   Admin"
+                                           FontSize="90"
+                                           FontFamily="Montserrat"
+                                           FontWeight="Bold"
+                                           Foreground="{StaticResource QuaternaryIconColor}" />
+                                <TextBlock Text="Giải pháp quản lý phòng mạch hàng đầu Việt Nam"
+                                           FontSize="16"
+                                           Foreground="{StaticResource QuaternaryIconColor}" />
+
+                            </StackPanel>
+                            <StackPanel DockPanel.Dock="Bottom">
+                                <TextBlock DockPanel.Dock="Bottom"
+                                           Text="Nhóm tác giả:" />
+                                <TextBlock DockPanel.Dock="Bottom"
+                                           Text="19120457 - Trần Minh Bảo" />
+                                <TextBlock DockPanel.Dock="Bottom"
+                                           Text="19120575 - Nguyễn Đức Mạnh" />
+                                <TextBlock DockPanel.Dock="Bottom"
+                                           Text="19120671 - Lê Nguyễn Nhất Thọ" />
+                            </StackPanel>
+                            <TextBlock DockPanel.Dock="Bottom"
+                                       Text="&#x0a;" />
+                        </DockPanel>
+                        <Image Grid.Column="1"
+                               Source="/Assets/Images/Welcome.png"
+                               Opacity="0.8" />
+                    </Grid>-->
                     <Frame Grid.Row="1"
                            Name="fContainer"
                            Margin="10"
                            NavigationUIVisibility="Hidden">
-
                     </Frame>
 
                 </Grid>

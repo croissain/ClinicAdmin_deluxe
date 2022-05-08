@@ -39,5 +39,11 @@ namespace ClinicAdmin.Pages
             var listPatients = PatientDAO.getInstance().GetListPatient();
             lsvPatient.ItemsSource = listPatients;
         }
+
+        private void ExportInvoice_Click(object sender, RoutedEventArgs e)
+        {
+            var screen = new ClinicAdmin.GUI.Prescription();
+            screen.ShowDialog();
+        }
     }
 }

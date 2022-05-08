@@ -28,6 +28,11 @@ namespace ClinicAdmin
             InitializeComponent();
         }
 
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            fContainer.Navigate(new System.Uri("Pages/Welcome.xaml", UriKind.RelativeOrAbsolute));
+
         //Global Variable
         public UserAccountDAO userAccount;
 
@@ -42,6 +47,7 @@ namespace ClinicAdmin
             {
                 e.Cancel = true;
             }
+
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)

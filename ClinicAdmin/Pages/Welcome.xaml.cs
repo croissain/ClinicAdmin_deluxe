@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace ClinicAdmin.Pages
 {
     /// <summary>
-    /// Interaction logic for Prescription.xaml
+    /// Interaction logic for Welcome.xaml
     /// </summary>
-    public partial class Prescription : Page
+    public partial class Welcome : Page
     {
-        public Prescription()
+        public Welcome()
         {
             InitializeComponent();
         }

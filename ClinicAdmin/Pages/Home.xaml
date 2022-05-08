@@ -296,7 +296,8 @@
                             Width="140"
                             Background="White"
                             BorderBrush="#68b2a0"
-                            Foreground="#68b2a0" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                            Foreground="#68b2a0" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                    Click="ExportInvoice_Click">
                                 <TextBlock Text="Xuất hóa đơn" TextWrapping="Wrap" TextAlignment="Center"/>
                             </Button>
                             <Button DockPanel.Dock="Right" Style="{StaticResource MaterialDesignOutlinedButton}"
