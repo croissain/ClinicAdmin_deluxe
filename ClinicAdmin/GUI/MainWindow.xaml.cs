@@ -37,7 +37,6 @@ namespace ClinicAdmin
         //Global Variable
         public UserAccountDAO userAccount;
 
-
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (MessageBox.Show("Bạn có thật sự muốn thoát!", "Thông báo", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
