@@ -276,7 +276,7 @@
                     <Border CornerRadius="5"
                             Background="White"
                             Padding="8 0"
-                            Height="35"
+                            Height="Auto"
                             BorderThickness="1"
                             BorderBrush="{DynamicResource TertiaryIconColor}">
                         <Grid>
