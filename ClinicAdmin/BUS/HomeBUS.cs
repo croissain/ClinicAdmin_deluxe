@@ -1,0 +1,42 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using ClinicAdmin.DAO;
+
+namespace ClinicAdmin.BUS
+{
+    public class HomeBUS
+    {
+        private static HomeBUS _instance;
+        public UserAccountDAO userAccount;
+        public List<PatientDAO> listPatients;
+
+        public static HomeBUS getInstance()
+        {
+            if (_instance == null)
+            {
+                _instance = new HomeBUS();
+            }
+            return _instance;
+        }
+
+        public bool CheckIn(PatientDAO patient)
+        {
+            if(patient.Status == 1)
+            {
+                MessageBox.Show("Bệnh nhân này đã khám!", "Vào khám thất bại", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            else
+            {
+                ScheduleDAO.getInstance().CheckIn(patient.id, patient.ScheduleId);
+                listPatients.Remove(patient);
+                return true;
+            }
+        }
+
+    }
+}

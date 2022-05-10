@@ -131,11 +131,11 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0" Orientation="Horizontal">
                                 <Label Content="Họ tên:" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF639F8D" FontWeight="Bold" Margin="5,0,0,0"/>
-                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Margin="5,0,0,0"/>
+                                <TextBlock x:Name="txblFullname" Width="150" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Margin="5,0,0,0"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1" Orientation="Horizontal">
                                 <Label Content="Tuổi:" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF639F8D" FontWeight="Bold" Margin="5,0,0,0"/>
-                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Margin="5,0,0,0"/>
+                                <TextBlock x:Name="txblAge" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Margin="5,0,0,0"/>
                             </StackPanel>
                         </Grid>
 
@@ -146,11 +146,11 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Column="0" Orientation="Horizontal">
                                 <Label Content="Địa chỉ:" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF639F8D" FontWeight="Bold" Margin="5,0,0,0"/>
-                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Margin="5,0,0,0"/>
+                                <TextBlock x:Name="txblAddress" Width="150" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Margin="5,0,0,0"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1" Orientation="Horizontal">
                                 <Label Content="Cân nặng:" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF639F8D" FontWeight="Bold" Margin="5,0,0,0"/>
-                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Margin="5,0,0,0"/>
+                                <TextBlock x:Name="txblWeight" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Margin="5,0,0,0"/>
                             </StackPanel>
                         </Grid>
                         <Grid Grid.Row="3">
@@ -160,11 +160,11 @@
                             </Grid.ColumnDefinitions>
                             <StackPanel Grid.Row="3" Orientation="Horizontal">
                                 <Label Content="Số điện thoại:" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF639F8D" FontWeight="Bold" Margin="5,0,0,0"/>
-                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Margin="5,0,0,0"/>
+                                <TextBlock x:Name="txblPhone" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Margin="5,0,0,0"/>
                             </StackPanel>
                             <StackPanel Grid.Column="1" Orientation="Horizontal">
                                 <Label Content="Giới tính:" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF639F8D" FontWeight="Bold" Margin="5,0,0,0"/>
-                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Margin="5,0,0,0"/>
+                                <TextBlock x:Name="txblGender" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Margin="5,0,0,0"/>
                             </StackPanel>
                         </Grid>
 
@@ -245,19 +245,14 @@
 
             <!--List patients-->
             <ListView x:Name="lsvPatient" Grid.Row="2" Grid.Column="0" Margin="5">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <StackPanel.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="Vào khám" />
-                                    <Separator/>
-                                    <MenuItem Header="Xoá" />
-                                </ContextMenu>
-                            </StackPanel.ContextMenu>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
+                <ListView.ContextMenu>
+                    <ContextMenu Background="Black" Foreground="White">
+                        <MenuItem Header="Vào khám" Click="Checkin_MenuItem_Click">
+                        </MenuItem>
+                        <MenuItem Header="Xoá" Click="Remove_MenuItem_Click">
+                        </MenuItem>
+                    </ContextMenu>
+                </ListView.ContextMenu>
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Width="20" DisplayMemberBinding="{Binding id}" Header="#" />

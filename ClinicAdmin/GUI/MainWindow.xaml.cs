@@ -14,7 +14,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
 using ClinicAdmin.BUS;
-using ClinicAdmin.DAO;
 
 namespace ClinicAdmin
 {
@@ -23,20 +22,18 @@ namespace ClinicAdmin
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MainWindowBUS _mainWindowBUS;
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            _mainWindowBUS = MainWindowBUS.getInstance();
             fContainer.Navigate(new System.Uri("Pages/Welcome.xaml", UriKind.RelativeOrAbsolute));
         }
-
-        //Global Variable
-        public UserAccountDAO userAccount;
-
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -169,9 +166,7 @@ namespace ClinicAdmin
 
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
-            //fContainer.Navigate(new System.Uri("Pages/Home.xaml", UriKind.RelativeOrAbsolute));
-            ClinicAdmin.Pages.Home p = new ClinicAdmin.Pages.Home(userAccount);
-            fContainer.Navigate(p);
+            fContainer.Navigate(new System.Uri("Pages/Home.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void btnStaffList_Click(object sender, RoutedEventArgs e)
@@ -186,9 +181,7 @@ namespace ClinicAdmin
 
         private void btnAccount_Click(object sender, RoutedEventArgs e)
         {
-            //fContainer.Navigate(new System.Uri("Pages/Account.xaml", UriKind.RelativeOrAbsolute));
-            ClinicAdmin.Pages.Account p = new ClinicAdmin.Pages.Account(userAccount);
-            fContainer.Navigate(p);
+            fContainer.Navigate(new System.Uri("Pages/Account.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void btnBilling_Click(object sender, RoutedEventArgs e)

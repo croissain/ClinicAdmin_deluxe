@@ -20,30 +20,23 @@ namespace ClinicAdmin
     /// </summary>
     public partial class Login : Window
     {
+        private LoginBUS _loginBUS;
         public Login()
         {
             InitializeComponent();
         }
 
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            _loginBUS = LoginBUS.getInstance();
+            txbUsername.Focus();
+        }
+
         private void ButtonSignIn_Click(object sender, RoutedEventArgs e)
         {
-            LoginBUS loginBUS = new LoginBUS();
             string userName = txbUsername.Text;
             string passWord = txbPassword.Password;
-            var user = loginBUS.UserLogin(userName, passWord);
-            
-            if (user != null)
-            {
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.userAccount = user;
-                this.Hide();
-                mainWindow.ShowDialog();
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu!");
-            }
+            _loginBUS.UserLogin(userName, passWord, this);
         }
 
         // MacOS UI cheap moment
@@ -64,11 +57,6 @@ namespace ClinicAdmin
                 WindowState = WindowState.Maximized;
             else
                 WindowState = WindowState.Normal;
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            txbUsername.Focus();
         }
     }
 }

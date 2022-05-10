@@ -8,14 +8,16 @@ namespace ClinicAdmin.DAO
 {
     public class PatientDAO : Patient
     {
-        private static PatientDAO instance;
-        private string status;
+        private static PatientDAO _instance;
+        private int status;
+        private int scheduleId;
 
-        public string Status { get => status; set => status = value; }
+        public int Status { get => status; set => status = value; }
+        public int ScheduleId { get => scheduleId; set => scheduleId = value; }
 
         public PatientDAO() { }
 
-        public PatientDAO(int id, string fullname, string address, string phone, int? weight, int? age, string gender, int? status)
+        public PatientDAO(int id, string fullname, string address, string phone, int? weight, int? age, string gender, int? status, int scheduleId)
         {
             this.id = id;
             this.FullName = fullname;
@@ -24,16 +26,17 @@ namespace ClinicAdmin.DAO
             this.Weight = weight;
             this.Age = age;
             this.Gender = gender;
-            this.Status = status == 0 ? "Chưa khám" : "Đã khám";
+            this.Status = (int)status;
+            this.ScheduleId = scheduleId;
         }
 
         public static PatientDAO getInstance()
         {
-            if (instance == null)
+            if (_instance == null)
             {
-                instance = new PatientDAO();
+                _instance = new PatientDAO();
             }
-            return instance;
+            return _instance;
         }
 
         public List<PatientDAO> GetListPatient()
@@ -52,11 +55,12 @@ namespace ClinicAdmin.DAO
                                       Weight = pt.Weight,
                                       Age = pt.Age,
                                       Gender = pt.Gender,
+                                      ScheduleId = sc.id,
                                       Status = sc.Status
                                   }).ToList();
                 foreach(var item in entryPoint)
                 {
-                    PatientDAO patient = new PatientDAO(item.id, item.FullName, item.Address, item.Phone, item.Weight, item.Age, item.Gender, item.Status);
+                    PatientDAO patient = new PatientDAO(item.id, item.FullName, item.Address, item.Phone, item.Weight, item.Age, item.Gender, item.Status, item.ScheduleId);
                     result.Add(patient);
                 }
             }
