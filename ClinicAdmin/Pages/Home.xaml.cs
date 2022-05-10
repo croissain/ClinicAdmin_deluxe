@@ -67,7 +67,11 @@ namespace ClinicAdmin.Pages
 
         private void Remove_MenuItem_Click(object sender, RoutedEventArgs e)
         {
-
+            var patient = lsvPatient.SelectedItem as PatientDAO;
+            _homeBUS.listPatients.Remove(patient);
+            lsvPatient.ItemsSource = null;
+            lsvPatient.Items.Clear();
+            lsvPatient.ItemsSource = _homeBUS.listPatients;
         }
     }
 }
