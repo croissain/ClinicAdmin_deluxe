@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClinicAdmin.DAO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ClinicAdmin.BUS;
 
 namespace ClinicAdmin.Pages
 {
@@ -20,9 +22,22 @@ namespace ClinicAdmin.Pages
     /// </summary>
     public partial class MedicinesList : Page
     {
+        private UserAccountDAO _userAccount;
         public MedicinesList()
         {
             InitializeComponent();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            var listMedicines = MedicineDAO.getInstance().GetListMedicine();
+            lsvMedicine.ItemsSource = listMedicines;
+        }
+
+        private void ExportInvoice_Click(object sender, RoutedEventArgs e)
+        {
+            var screen = new ClinicAdmin.GUI.Prescription();
+            screen.ShowDialog();
         }
     }
 }

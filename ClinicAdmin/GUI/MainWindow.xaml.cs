@@ -85,7 +85,7 @@ namespace ClinicAdmin
                 Popup.PlacementTarget = btnHome;
                 Popup.Placement = PlacementMode.Right;
                 Popup.IsOpen = true;
-                Header.PopupText.Text = "Home";
+                Header.PopupText.Text = "Trang chủ";
             }
         }
 
