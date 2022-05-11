@@ -7,15 +7,18 @@ using ClinicAdmin.DTO;
 
 namespace ClinicAdmin.DAO
 {
-    class MedicineDAO : Medicine
+    public class MedicineDAO : Medicine
     {
-        private static MedicineDAO instance;
-        private string status;
+        private static MedicineDAO _instance;
+        private string usage;
+        private string unit;
+        private int amount;
+        private double price;
 
-        public string Status
-        {
-            get => status; set => status = value;
-        }
+        public string Usage { get => usage; set => usage = value; }
+        public string Unit { get => unit; set => unit = value; }
+        public int Amount { get => amount; set => amount = value; }
+        public double Price { get => price; set => price = value; }
 
         public MedicineDAO()
         {
@@ -29,13 +32,25 @@ namespace ClinicAdmin.DAO
             this.Cost = cost;
         }
 
+        public MedicineDAO(MedicineDAO medicineDAO, string usage, string unit, int amount)
+        {
+            this.id = medicineDAO.id;
+            this.DrugName = medicineDAO.DrugName;
+            this.Storage = medicineDAO.Storage;
+            this.Cost = medicineDAO.Cost;
+            this.Usage = usage;
+            this.Unit = unit;
+            this.Amount = amount;
+            this.Price = (double)medicineDAO.Cost * amount;
+        }
+
         public static MedicineDAO getInstance()
         {
-            if (instance == null)
+            if (_instance == null)
             {
-                instance = new MedicineDAO();
+                _instance = new MedicineDAO();
             }
-            return instance;
+            return _instance;
         }
 
         public List<MedicineDAO> GetListMedicine()
