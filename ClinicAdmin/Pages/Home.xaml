@@ -6,11 +6,11 @@
       xmlns:local="clr-namespace:ClinicAdmin.Pages"
       mc:Ignorable="d"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      Width="1320" Height="750"
       Title="Home"
       Loaded="Page_Loaded">
 
-    <Border CornerRadius="5" Background="White">
+    <Border CornerRadius="5"
+            Background="White">
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />
@@ -20,122 +20,171 @@
                 <RowDefinition Height="1*" />
                 <RowDefinition Height="3*" />
             </Grid.RowDefinitions>
-            <!--Search-->
-            <DockPanel LastChildFill="True" Margin="5">
-                <Grid DockPanel.Dock="Top"
-                    VerticalAlignment="Center"
-                           Margin="0 0 0 10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
+            <DockPanel Margin="5">
+                <StackPanel Orientation="Vertical"
+                            DockPanel.Dock="Top">
+                    <DockPanel VerticalAlignment="Center"
+                               Margin="0 0 0 8">
+                        <Label Content="Từ ngày:"
+                               FontSize="13"
+                               Margin="0 0 4 0"
+                               VerticalAlignment="Center" />
+                        <DatePicker x:Name="dpkFrom"
+                                    Width="95"
+                                    Height="35"
+                                    Padding="4"
+                                    FontSize="13"
+                                    BorderBrush="#68b2a0"
+                                    Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
 
-                    <StackPanel Grid.Column="0" Orientation="Horizontal">
-                        <Label 
-                        Content="Từ ngày:"
-                        VerticalAlignment="Center" />
-                        <DatePicker
-                            Width="99"
-                            Padding="3"
-                            FontSize="13"
-                            BorderBrush="#68b2a0"
-                            Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
-                    </StackPanel>
-                    <StackPanel Grid.Column="1" Orientation="Horizontal">
-                        <Label 
-                        Content="Đến ngày:"
-                        VerticalAlignment="Center" />
-                        <DatePicker Grid.Column="3"
-                            Width="99"
-                            Padding="3"
-                            FontSize="13"
-                            BorderBrush="#68b2a0"
-                            Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
-                    </StackPanel>
-                </Grid>
-                <DockPanel DockPanel.Dock="Top"
-                           LastChildFill="True"
-                           Margin="0 0 0 10">
-                    <Label Content="Tìm BN:"
-                           VerticalAlignment="Center"
-                           DockPanel.Dock="Left" />
-                    <TextBox Width="Auto"
-                             Height="35"
-                             Margin="5 0 0 0"
-                             VerticalAlignment="Center"
-                             DockPanel.Dock="Right"
-                             Style="{StaticResource modernTextBox}" />
-                </DockPanel>
-                <DockPanel DockPanel.Dock="Top" Margin="5 0 0 0">
-                    <Button DockPanel.Dock="Left"
-                            Foreground="#f0723e"
-                            BorderBrush="#f0723e"
-                            Width="140"
-                            Margin="0 0 15 0"
-                            Style="{StaticResource MaterialDesignOutlinedButton}">
-                        Xóa tìm
-                    </Button>
-                    <Button DockPanel.Dock="Right"
-                            Style="{StaticResource MaterialDesignFlatButton}"
-                            Width="140"
-                            Background="#68b2a0"
-                            Foreground="White" HorizontalAlignment="Right" >
-                        <TextBlock Text="Tìm kiếm" />
-                    </Button>
-                </DockPanel>
-                <Separator DockPanel.Dock="Top" Height="3" Background="#ccc" VerticalAlignment="Bottom" Margin="0 10 0 0" />
-                <DockPanel DockPanel.Dock="Bottom"  Margin="5 0 0 0">
-                    <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" >
-                        <Label HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Padding="5" >
-                            <TextBlock>Ngày <LineBreak/>khám:</TextBlock>
+                        <Label Content="Đến ngày:"
+                               FontSize="13"
+                               Margin="8 0 5 0"
+                               VerticalAlignment="Center" />
+                        <DatePicker x:Name="dpkTo"
+                                    Width="Auto"
+                                    Height="35"
+                                    Padding="4"
+                                    FontSize="13"
+                                    BorderBrush="#68b2a0"
+                                    Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
+                    </DockPanel>
+                    <DockPanel LastChildFill="True"
+                               Margin="0 0 0 8">
+                        <Label Content="Tìm BN:"
+                               VerticalAlignment="Center"
+                               FontSize="13"
+                               DockPanel.Dock="Left" />
+                        <TextBox x:Name="txbPatientName"
+                                Width="Auto"
+                                 Margin="8 0 0 0"
+                                 Padding="5"
+                                 FontSize="14"
+                                 VerticalAlignment="Center"
+                                 DockPanel.Dock="Right"
+                                 BorderBrush="#68b2a0"
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
+                    </DockPanel>
+                    <DockPanel LastChildFill="True"
+                               HorizontalAlignment="Right">
+                        <Button x:Name="btnClearSearch"
+                                Click="btnClearSearch_Click"
+                                Foreground="#f0723e"
+                                BorderBrush="#f0723e"
+                                Margin="0 0 8 0"
+                                Style="{StaticResource MaterialDesignOutlinedButton}"
+                                ToolTip="MaterialDesignOutlinedButton">
+                            Xóa tìm
+                        </Button>
+                        <Button x:Name="btnSearch"
+                                Click="btnSearch_Click"
+                                Style="{StaticResource MaterialDesignRaisedButton }"
+                                Width="140"
+                                Background="#68b2a0"
+                                Foreground="White">
+                            <TextBlock Text="Tìm kiếm" />
+                        </Button>
+                    </DockPanel>
+                    <Separator Height="1"
+                               Margin="0 8"
+                               Background="#68b2a0" />
+                </StackPanel>
+                <DockPanel DockPanel.Dock="Bottom"
+                           VerticalAlignment="Center">
+                    <StackPanel DockPanel.Dock="Left"
+                                Orientation="Horizontal"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Bottom">
+                        <Label HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               VerticalContentAlignment="Center"
+                               HorizontalContentAlignment="Center"
+                               Padding="5">
+                            <TextBlock>Ngày khám:</TextBlock>
                         </Label>
-                        <DatePicker Width="100"
-                                    Height="32"
-                                Padding="3"
-                                FontSize="13"
-                                BorderBrush="#68b2a0"
-                                Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
+                        <TextBlock Text="" />
                     </StackPanel>
-                    <Button DockPanel.Dock="Right" Style="{StaticResource MaterialDesignOutlinedButton}"
-                            Margin="15 10 0 0"
+                    <Button DockPanel.Dock="Right"
+                            Style="{StaticResource MaterialDesignOutlinedButton}"
+                            Margin="0 0 0 0"
+                            Height="35"
                             Width="140"
                             Background="White"
                             BorderBrush="#68b2a0"
-                            Foreground="#68b2a0" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-                        <TextBlock Text="Thêm bệnh nhân" TextWrapping="Wrap" TextAlignment="Center"/>
+                            Foreground="#68b2a0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Click="AddPatient_Click">
+                        <TextBlock Text="Thêm bệnh nhân"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center" />
                     </Button>
                 </DockPanel>
             </DockPanel>
-
             <!--Info-->
-            <Grid Grid.Row="0" Grid.Column="1">
+            <Grid Grid.Row="0"
+                  Grid.Column="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="1.5*" />
+                    <ColumnDefinition Width="1.5*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Border Grid.Column="0" Margin="5" CornerRadius="25 3 3 3" BorderThickness="1" BorderBrush="#72C5AC">
-                    <Grid>
+                <Border Grid.Column="0"
+                        Margin="5"
+                        CornerRadius="25 3 3 3"
+                        BorderThickness="1"
+                        BorderBrush="#72C5AC">
+                    <Grid Margin="12">
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="0" Text="THÔNG TIN BỆNH NHÂN" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF639F8D" FontSize="16" FontWeight="SemiBold"/>
+                        <TextBlock Grid.Row="0"
+                                   Text="THÔNG TIN BỆNH NHÂN"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="#FF639F8D"
+                                   FontSize="14"
+                                   FontWeight="SemiBold" />
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="2*"></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0" Orientation="Horizontal">
-                                <Label Content="Họ tên:" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF639F8D" FontWeight="Bold" Margin="5,0,0,0"/>
-                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Margin="5,0,0,0"/>
+                            <StackPanel Grid.Column="0"
+                                        Orientation="Horizontal">
+                                <Label Content="Họ tên:"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Foreground="#FF639F8D"
+                                       FontWeight="Bold"
+                                       Margin="5,0,0,0" />
+                                <TextBlock x:Name="txblFullname" 
+                                        Width="150" 
+                                        TextWrapping="Wrap"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        FontWeight="Bold"
+                                        FontSize="14"
+                                        Margin="5,0,0,0" />
                             </StackPanel>
-                            <StackPanel Grid.Column="1" Orientation="Horizontal">
-                                <Label Content="Tuổi:" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF639F8D" FontWeight="Bold" Margin="5,0,0,0"/>
-                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Margin="5,0,0,0"/>
+                            <StackPanel Grid.Column="1"
+                                        Orientation="Horizontal">
+                                <Label Content="Tuổi:"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Foreground="#FF639F8D"
+                                       FontWeight="Bold"
+                                       Margin="5,0,0,0" />
+                                <TextBlock x:Name="txblAge"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        FontWeight="Bold"
+                                        FontSize="14"
+                                        Margin="5,0,0,0" />
                             </StackPanel>
                         </Grid>
 
@@ -144,13 +193,37 @@
                                 <ColumnDefinition Width="2*"></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Column="0" Orientation="Horizontal">
-                                <Label Content="Địa chỉ:" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF639F8D" FontWeight="Bold" Margin="5,0,0,0"/>
-                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Margin="5,0,0,0"/>
+                            <StackPanel Grid.Column="0"
+                                        Orientation="Horizontal">
+                                <Label Content="Địa chỉ:"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Foreground="#FF639F8D"
+                                       FontWeight="Bold"
+                                       Margin="5,0,0,0" />
+                                <TextBlock x:Name="txblAddress" 
+                                            Width="150" 
+                                            TextWrapping="Wrap"
+                                            HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           FontWeight="Bold"
+                                           FontSize="14"
+                                           Margin="5,0,0,0" />
                             </StackPanel>
-                            <StackPanel Grid.Column="1" Orientation="Horizontal">
-                                <Label Content="Cân nặng:" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF639F8D" FontWeight="Bold" Margin="5,0,0,0"/>
-                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Margin="5,0,0,0"/>
+                            <StackPanel Grid.Column="1"
+                                        Orientation="Horizontal">
+                                <Label Content="Cân nặng:"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Foreground="#FF639F8D"
+                                       FontWeight="Bold"
+                                       Margin="5,0,0,0" />
+                                <TextBlock x:Name="txblWeight"
+                                            HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           FontWeight="Bold"
+                                           FontSize="14"
+                                           Margin="5,0,0,0" />
                             </StackPanel>
                         </Grid>
                         <Grid Grid.Row="3">
@@ -158,13 +231,35 @@
                                 <ColumnDefinition Width="2*"></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <StackPanel Grid.Row="3" Orientation="Horizontal">
-                                <Label Content="Số điện thoại:" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF639F8D" FontWeight="Bold" Margin="5,0,0,0"/>
-                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Margin="5,0,0,0"/>
+                            <StackPanel Grid.Row="3"
+                                        Orientation="Horizontal">
+                                <Label Content="Số điện thoại:"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Foreground="#FF639F8D"
+                                       FontWeight="Bold"
+                                       Margin="5,0,0,0" />
+                                <TextBlock x:Name="txblPhone"
+                                            HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           FontWeight="Bold"
+                                           FontSize="14"
+                                           Margin="5,0,0,0" />
                             </StackPanel>
-                            <StackPanel Grid.Column="1" Orientation="Horizontal">
-                                <Label Content="Giới tính:" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF639F8D" FontWeight="Bold" Margin="5,0,0,0"/>
-                                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="Bold" FontSize="14" Margin="5,0,0,0"/>
+                            <StackPanel Grid.Column="1"
+                                        Orientation="Horizontal">
+                                <Label Content="Giới tính:"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Foreground="#FF639F8D"
+                                       FontWeight="Bold"
+                                       Margin="5,0,0,0" />
+                                <TextBlock x:Name="txblGender"
+                                            HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           FontWeight="Bold"
+                                           FontSize="14"
+                                           Margin="5,0,0,0" />
                             </StackPanel>
                         </Grid>
 
@@ -172,201 +267,389 @@
                 </Border>
 
                 <!--Medical Condition-->
-                <Border Grid.Column="1" Margin="5" CornerRadius="3 3 25 3" BorderThickness="1" BorderBrush="#72C5AC">
-                    <Grid Margin="5">
+                <Border Grid.Column="1"
+                        Margin="5"
+                        CornerRadius="3 3 25 3"
+                        BorderThickness="1"
+                        BorderBrush="#72C5AC">
+                    <Grid Margin="12">
                         <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition ></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition Width="3*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
 
-                        <Label Grid.Row="0" Grid.Column="0" Content="Triệu chứng: " FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF639F8D"></Label>
-                        <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource MaterialDesignTextBoxBase}" BorderBrush="#FF639F8D" VerticalAlignment="Center"  FontSize="14"/>
+                        <TextBlock Grid.Row="0"
+                                   Grid.ColumnSpan="2"
+                                   Text="TÌNH TRẠNG Y TẾ BỆNH NHÂN"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Foreground="#FF639F8D"
+                                   FontSize="14"
+                                   FontWeight="SemiBold" />
+                        <Label Grid.Row="1"
+                               Grid.Column="0"
+                               Content="Triệu chứng: "
+                               FontWeight="Bold"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Foreground="#FF639F8D"></Label>
+                        <TextBox Grid.Row="1"
+                                 Grid.Column="1"
+                                 Style="{StaticResource MaterialDesignTextBoxBase}"
+                                 BorderBrush="#FF639F8D"
+                                 VerticalAlignment="Center"
+                                 FontSize="14" />
 
-                        <Label Grid.Row="1" Grid.Column="0" Content="Tiền sử: " FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF639F8D"></Label>
-                        <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource MaterialDesignTextBoxBase}" BorderBrush="#FF639F8D" VerticalAlignment="Center"  FontSize="14"/>
+                        <Label Grid.Row="2"
+                               Grid.Column="0"
+                               Content="Tiền sử: "
+                               FontWeight="Bold"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Foreground="#FF639F8D"></Label>
+                        <TextBox Grid.Row="2"
+                                 Grid.Column="1"
+                                 Style="{StaticResource MaterialDesignTextBoxBase}"
+                                 BorderBrush="#FF639F8D"
+                                 VerticalAlignment="Center"
+                                 FontSize="14" />
 
-                        <Label Grid.Row="2" Grid.Column="0" Content="Chuẩn đoán: " FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="#FF639F8D"></Label>
-                        <TextBox Grid.Row="2" Grid.Column="1" Style="{StaticResource MaterialDesignTextBoxBase}" BorderBrush="#FF639F8D" VerticalAlignment="Center" FontSize="14"/>
+                        <Label Grid.Row="3"
+                               Grid.Column="0"
+                               Content="Chuẩn đoán: "
+                               FontWeight="Bold"
+                               HorizontalAlignment="Left"
+                               VerticalAlignment="Center"
+                               Foreground="#FF639F8D"></Label>
+                        <TextBox Grid.Row="3"
+                                 Grid.Column="1"
+                                 Style="{StaticResource MaterialDesignTextBoxBase}"
+                                 BorderBrush="#FF639F8D"
+                                 VerticalAlignment="Center"
+                                 FontSize="14" />
                     </Grid>
                 </Border>
 
-                <Border Grid.Column="2" Margin="5" CornerRadius="3 5 5 25">
-                    <Border.Background>
-                        <LinearGradientBrush EndPoint="1.5,1" StartPoint="0,0.5">
-                            <GradientStop Color="#72C5AC"/>
-                            <GradientStop Color="#CBE398" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Border.Background>
-                    <DockPanel LastChildFill="True">
-                        <Border CornerRadius="3 3 10 10" Height="30" DockPanel.Dock="Top">
+                <Border Grid.Column="2"
+                        Margin="0"
+                        CornerRadius="3 5 5 25">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0"
+                                Margin="5"
+                                CornerRadius="2 25 2 2">
                             <Border.Background>
-                                <LinearGradientBrush EndPoint="1.5,1" StartPoint="0,0.5">
-                                    <GradientStop Color="#639F8D" Offset="0"/>
-                                    <GradientStop Color="#595959" Offset="1"/>
+                                <LinearGradientBrush EndPoint="1.5,1"
+                                                     StartPoint="0,0.5">
+                                    <GradientStop Color="#72C5AC" />
+                                    <GradientStop Color="#CBE398"
+                                                  Offset="1" />
                                 </LinearGradientBrush>
                             </Border.Background>
-                            <StackPanel Orientation="Horizontal">
-                                <Label Content="Dịch vụ y tế/ Thuốc tồn: " HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontWeight="SemiBold" FontSize="14" Margin="5 0 0 0"/>
-                                <TextBlock Text="1023" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="16"/>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <StackPanel Grid.Row="0"
+                                            Orientation="Horizontal">
+                                    <Label Content="Huyết áp:"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Foreground="White"
+                                           Margin="25,0,0,0" />
+                                    <TextBlock Text="120/80 mmHg"
+                                               HorizontalAlignment="Left"
+                                               VerticalAlignment="Center"
+                                               Foreground="White"
+                                               Margin="5,0,0,0" />
+                                </StackPanel>
+                                <StackPanel Grid.Row="1"
+                                            Orientation="Horizontal">
+                                    <Label Content="Nhiệt độ:"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Foreground="White"
+                                           Margin="25,0,0,0" />
+                                    <TextBlock Text="37 *C"
+                                               HorizontalAlignment="Left"
+                                               VerticalAlignment="Center"
+                                               Foreground="White"
+                                               Margin="5,0,0,0" />
+                                </StackPanel>
+                                <StackPanel Grid.Row="2"
+                                            Orientation="Horizontal">
+                                    <Label Content="Mạch:"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Foreground="White"
+                                           Margin="25,0,0,0" />
+                                    <TextBlock Text="200 lần/phút"
+                                               HorizontalAlignment="Left"
+                                               VerticalAlignment="Center"
+                                               Foreground="White"
+                                               Margin="5,0,0,0" />
+                                </StackPanel>
+                                <StackPanel Grid.Row="3"
+                                            Orientation="Horizontal">
+                                    <Label Content="Nhịp thở:"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Foreground="White"
+                                           Margin="25,0,0,0" />
+                                    <TextBlock Text="100 lần/phút"
+                                               HorizontalAlignment="Left"
+                                               VerticalAlignment="Center"
+                                               Foreground="White"
+                                               Margin="5,0,0,0" />
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                        <Border Grid.Row="1"
+                                Margin="5"
+                                CornerRadius="2 2 2 25">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="1.0,1"
+                                                     StartPoint="0,0.5">
+                                    <GradientStop Color="#72C5AC" />
+                                    <GradientStop Color="#595959"
+                                                  Offset="1" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <StackPanel Orientation="Horizontal"
+                                        Margin="25 0 0 0">
+                                <Label Content="Vật tư y tế/ Thuốc tồn: "
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"
+                                       Foreground="White"
+                                       FontWeight="SemiBold"
+                                       FontSize="12" />
+                                <TextBlock Text="1023"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Foreground="White"
+                                           FontWeight="Bold"
+                                           FontSize="20" />
                             </StackPanel>
                         </Border>
-                        <Grid DockPanel.Dock="Bottom" >
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <StackPanel Grid.Row="0" Orientation="Horizontal">
-                                <Label Content="Huyết áp:" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="25,0,0,0"/>
-                                <TextBlock Text="120/80 mmHg" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="5,0,0,0"/>
-                            </StackPanel>
-                            <StackPanel Grid.Row="1" Orientation="Horizontal">
-                                <Label Content="Nhiệt độ:" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="25,0,0,0"/>
-                                <TextBlock Text="37 *C" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="5,0,0,0"/>
-                            </StackPanel>
-                            <StackPanel Grid.Row="2" Orientation="Horizontal">
-                                <Label Content="Mạch:" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="25,0,0,0"/>
-                                <TextBlock Text="200 lần/phút" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="5,0,0,0"/>
-                            </StackPanel>
-                            <StackPanel Grid.Row="3" Orientation="Horizontal">
-                                <Label Content="Nhịp thở:" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="25,0,0,0"/>
-                                <TextBlock Text="100 lần/phút" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="5,0,0,0"/>
-                            </StackPanel>
-                        </Grid>
-                    </DockPanel>
+                    </Grid>
                 </Border>
             </Grid>
 
             <!--List patients-->
-            <ListView x:Name="lsvPatient" Grid.Row="2" Grid.Column="0" Margin="5">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <StackPanel.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="Vào khám" />
-                                    <Separator/>
-                                    <MenuItem Header="Xoá" />
-                                </ContextMenu>
-                            </StackPanel.ContextMenu>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
+            <ListView x:Name="lsvPatient"
+                      Grid.Row="2"
+                      Grid.Column="0"
+                      Margin="5">
+                <ListView.ContextMenu>
+                    <ContextMenu Background="Black" Foreground="White">
+                        <MenuItem Header="Vào khám" Click="Checkin_MenuItem_Click">
+                        </MenuItem>
+                        <MenuItem Header="Xoá" Click="Remove_MenuItem_Click">
+                        </MenuItem>
+                    </ContextMenu>
+                </ListView.ContextMenu>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Width="20" DisplayMemberBinding="{Binding id}" Header="#" />
-                        <GridViewColumn DisplayMemberBinding="{Binding FullName}" Header="Họ tên" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Status}" Header="Tình trạng" />
+                        <GridViewColumn Width="20"
+                                        DisplayMemberBinding="{Binding id}"
+                                        Header="#" />
+                        <GridViewColumn DisplayMemberBinding="{Binding FullName}"
+                                        Header="Họ tên" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Status}"
+                                        Header="Tình trạng" />
                     </GridView>
                 </ListView.View>
             </ListView>
 
-            <DockPanel Grid.Row="1" Grid.Column="1" LastChildFill="True">
-                <Border DockPanel.Dock="Bottom" CornerRadius="3 3 35 3" Height="70" Margin="10 5 10 0">
-                    <Border.Background>
-                        <LinearGradientBrush EndPoint="1.5,1" StartPoint="0,1.5">
-                            <GradientStop Color="#FF72C5AC" Offset="0"/>
-                            <GradientStop Color="#FF595959" Offset="1"/>
-                        </LinearGradientBrush>
-                    </Border.Background>
-                    <Grid Margin="15 5 15 5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center">
-                            <StackPanel  Orientation="Horizontal" VerticalAlignment="Center">
-                                <Label Content="Y, BS: " Foreground="White" FontSize="14" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                <TextBlock Text="Oh Se Hun" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Foreground="White"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <Label Content="Nhân viên lập hóa đơn: " Foreground="White" FontSize="14" FontWeight="SemiBold" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                <TextBlock x:Name="txblStaffName" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" Foreground="White"/>
-                            </StackPanel>
-                        </StackPanel>
-                        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
-                            <Button DockPanel.Dock="Right" Style="{StaticResource MaterialDesignOutlinedButton}"
-                            Margin="15 0 0 0"
-                            Width="140"
-                            Background="White"
-                            BorderBrush="#68b2a0"
-                            Foreground="#68b2a0" HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                                    Click="ExportInvoice_Click">
-                                <TextBlock Text="Xuất hóa đơn" TextWrapping="Wrap" TextAlignment="Center"/>
-                            </Button>
-                            <Button DockPanel.Dock="Right" Style="{StaticResource MaterialDesignOutlinedButton}"
-                            Margin="15 0 0 0"
-                            Width="140"
-                            Background="White"
-                            BorderBrush="#CE3333"
-                            Foreground="#CE3333" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-                                <TextBlock Text="Xóa tất cả" TextWrapping="Wrap" TextAlignment="Center"/>
-                            </Button>
-                        </StackPanel>
-                    </Grid>
-                </Border>
+            <DockPanel Grid.Row="1"
+                       Grid.Column="1"
+                       LastChildFill="True">
+                <Grid DockPanel.Dock="Bottom"
+                      Margin="0 0 0 5"
+                      MinHeight="130">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Border Grid.Column="0"
+                            CornerRadius="3 3 25 3"
+                            BorderThickness="1"
+                            BorderBrush="#72C5AC"
+                            Padding="12"
+                            Margin="5">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <TextBox Grid.Row="0"
+                                     Grid.ColumnSpan="2"
+                                     materialDesign:HintAssist.Hint="Lời dặn:"
+                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                     VerticalAlignment="Center" />
 
-                <Grid Margin="10" DockPanel.Dock="Bottom">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <TextBox Grid.Column="0"
-                             Margin="0 0 20 0"
-                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                        VerticalAlignment="Center" 
-                        BorderBrush="#FF72C5AC"
-                        Foreground="Black"
-                        FontSize="14"
-                        Padding="7">
-                        <materialDesign:HintAssist.Hint>
-                            <TextBlock FontSize="14" FontWeight="SemiBold" Margin="5 0 5 0">Lời dặn</TextBlock>
-                      </materialDesign:HintAssist.Hint>
-                    </TextBox>
-                    <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="15 0 0 0">
-                        <Label Content="THÀNH TIỀN: " VerticalAlignment="Bottom" HorizontalAlignment="Center" Foreground="#FF72C5AC" FontWeight="SemiBold" FontSize="14"/>
-                        <TextBlock Text="58,000 VND" VerticalAlignment="Bottom" HorizontalAlignment="Center"  Foreground="#FF72C5AC" FontWeight="Bold" FontSize="24"/>
-                    </StackPanel>
-                    
+                            <StackPanel Grid.Row="1"
+                                        Grid.Column="0"
+                                        Orientation="Vertical"
+                                        VerticalAlignment="Center">
+                                <Label Content="Y, BS: "
+                                       Foreground="{DynamicResource TertiaryIconColor}"
+                                       FontSize="14"
+                                       FontWeight="SemiBold"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center" />
+                                <TextBlock Text="Oh Se Hun"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           FontSize="14"
+                                           Foreground="{DynamicResource TertiaryIconColor}" />
+                            </StackPanel>
+                            <StackPanel Grid.Row="1"
+                                        Grid.Column="1"
+                                        Orientation="Vertical"
+                                        VerticalAlignment="Center">
+                                <Label Content="Nhân viên lập hóa đơn: "
+                                       Foreground="{DynamicResource TertiaryIconColor}"
+                                       FontSize="14"
+                                       FontWeight="SemiBold"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center" />
+                                <TextBlock x:Name="txblStaffName"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           FontSize="14"
+                                           Foreground="{DynamicResource TertiaryIconColor}" />
+
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                    <Grid Grid.Column="1"
+                          Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0"
+                                Grid.ColumnSpan="2"
+                                CornerRadius="2 2 25 2"
+                                Margin="0 0 0 8"
+                                Padding="12">
+                            <Border.Background>
+                                <LinearGradientBrush EndPoint="1.5,1"
+                                                     StartPoint="0,0.5">
+                                    <GradientStop Color="#72C5AC" />
+                                    <GradientStop Color="#CBE398"
+                                                  Offset="1" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                            <StackPanel Orientation="Vertical">
+
+                                <Label Content="THÀNH TIỀN:"
+                                       FontWeight="SemiBold"
+                                       Foreground="{DynamicResource QuaternaryTextColor}" />
+                                <TextBlock Text="58,000 vnđ"
+                                           FontSize="32"
+                                           FontWeight="Bold"
+                                           Foreground="{DynamicResource QuaternaryTextColor}" />
+                            </StackPanel>
+                        </Border>
+                        <Button Grid.Column="0"
+                                Grid.Row="1"
+                                HorizontalAlignment="Left"
+                                    Foreground="#f0723e"
+                                    BorderBrush="#f0723e"
+                                    Margin="0 0 8 0"
+                                    Width="140"
+                                    Style="{StaticResource MaterialDesignOutlinedButton}"
+                                    ToolTip="MaterialDesignOutlinedButton"
+                                    Content="Xóa tất cả" />
+                        <Button Grid.Column="1"
+                                Grid.Row="1"
+                                HorizontalAlignment="Right"
+                                Style="{StaticResource MaterialDesignRaisedButton}"
+                                Width="140"
+                                Background="#68b2a0"
+                                Foreground="White"
+                                Click="ExportInvoice_Click">
+                            <TextBlock Text="Xuất hóa đơn" />
+                        </Button>
+                    </Grid>
                 </Grid>
-                <Separator Height="1" Margin="0 10 0 10" DockPanel.Dock="Bottom" Background="#ccc"/>
-                
-                <Grid DockPanel.Dock="Bottom" Margin="10 5 10 5">
+
+
+                <Separator Height="1"
+                           Margin="5"
+                           DockPanel.Dock="Bottom"
+                           Background="#68b2a0" />
+
+                <Grid DockPanel.Dock="Bottom"
+                      Margin="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0" Orientation="Horizontal">
-                        <Label Content="Tổng loại thuốc: " VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        <TextBlock Text="3" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    <StackPanel Grid.Column="0"
+                                Orientation="Horizontal">
+                        <Label Content="Tổng loại thuốc: "
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Center" />
+                        <TextBlock Text="3"
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center" />
                     </StackPanel>
-                    <Button Grid.Column="1" Style="{StaticResource MaterialDesignFlatButton}"
-                            Width="110"
+                    <Button Grid.Column="1"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            Width="140"
                             Background="#68b2a0"
-                            Foreground="White" HorizontalAlignment="Right">
+                            Foreground="White"
+                            HorizontalAlignment="Right"
+                            Click="AddMedicine_Click">
                         <TextBlock Text="Thêm thuốc" />
                     </Button>
                 </Grid>
                 <!--List medicines-->
-                <ListView Margin="10 5 10 5">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn DisplayMemberBinding="{Binding id}" Header="Tên thuốc" />
-                            <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Đơn vị" />
-                            <GridViewColumn DisplayMemberBinding="{Binding Status}" Header="Số lượng" />
-                            <GridViewColumn DisplayMemberBinding="{Binding Status}" Header="Giá bán" />
-                            <GridViewColumn DisplayMemberBinding="{Binding Status}" Header="Cách dùng" />
-                            <GridViewColumn DisplayMemberBinding="{Binding Status}" Header="Thành tiền" />
-                            <GridViewColumn DisplayMemberBinding="{Binding Status}" Header="#" />
-                        </GridView>
-                    </ListView.View>
-                </ListView>
+                <ScrollViewer Margin="5">
+                    <ListView>
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn DisplayMemberBinding="{Binding id}"
+                                                Header="Tên thuốc"/>
+                                <GridViewColumn DisplayMemberBinding="{Binding Name}"
+                                                Header="Đơn vị" />
+                                <GridViewColumn DisplayMemberBinding ="{Binding Status}"
+                                                Header="Số lượng" />
+                                <GridViewColumn DisplayMemberBinding="{Binding Status}"
+                                                Header="Giá bán" />
+                                <GridViewColumn DisplayMemberBinding="{Binding Status}"
+                                                Header="Cách dùng" />
+                                <GridViewColumn DisplayMemberBinding="{Binding Status}"
+                                                Header="Thành tiền" />
+                                <GridViewColumn DisplayMemberBinding="{Binding Status}"
+                                                Header="#" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </ScrollViewer>
 
             </DockPanel>
         </Grid>

@@ -9,34 +9,38 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
-        Background="Transparent"
         Height ="650"
         Title="Thêm mới người dùng">
-    <Border Background="White"
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0.5,0"
+                             EndPoint="0.5,1">
+            <GradientStop Color="#68b2a0"
+                          Offset="0" />
+            <GradientStop Color="#2C6975"
+                          Offset="1" />
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+        <StackPanel Margin="50">
+            <Border Background="White"
             CornerRadius="5">
         <DockPanel Margin="25 15"
                    LastChildFill="False">
-            
+
             <Label DockPanel.Dock="Top"
                    Content="Thêm người dùng"
-                   FontFamily="Segoe UI Semibold"
                    FontSize="36"
                    VerticalAlignment="Stretch"
-                   HorizontalAlignment="Center"
+                   HorizontalAlignment="Left"
                    FontWeight="Bold" />
 
             <Border DockPanel.Dock="Top"
-                    CornerRadius="50"
-                    Width="80"
-                    Height="80"
-                    HorizontalAlignment="Center"
-                    Margin="10">
-                <Border.Background>
-                    <ImageBrush Stretch="Fill"
-                                    ImageSource="/Assets/Images/Tuan.jpeg" />
-                </Border.Background>
-            </Border>
-
+                    Background="{DynamicResource TertiaryIconColor}"
+                    CornerRadius="5"
+                    Height="10"
+                    Width="150"
+                    HorizontalAlignment="Left"
+                    Margin="0 0 0 20" />
             <Grid DockPanel.Dock="Top">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
@@ -140,13 +144,20 @@
                         Orientation="Horizontal"
                         Margin="0 15"
                         HorizontalAlignment="Right">
-                <Button Content="Hủy"
-                        Style="{StaticResource MaterialDesignPaperDarkButton}"
-                        Width="150"
+                <Button Grid.Column="0"
+                        Grid.Row="1"
+                        HorizontalAlignment="Left"
+                        Foreground="#f0723e"
+                        BorderBrush="#f0723e"
+                        Margin="0 0 8 0"
+                        Width="140"
                         Height="45"
-                        Margin="0 0 15 0"></Button>
+                        Style="{StaticResource MaterialDesignOutlinedButton}"
+                        ToolTip="MaterialDesignOutlinedButton"
+                        Content="Hủy"
+                        Click="Cancel_Click" />
                 <Button Content="Thêm"
-                        Style="{StaticResource MaterialDesignPaperDarkButton}"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
                         Width="150"
                         Height="45"
                         Background="#68b2a0"
@@ -154,4 +165,7 @@
             </StackPanel>
         </DockPanel>
     </Border>
+        </StackPanel>
+    </Grid>
+    
 </Window>

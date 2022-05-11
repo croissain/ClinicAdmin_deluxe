@@ -53,8 +53,8 @@ namespace ClinicAdmin.DAO
                                   {
                                       id = us.id,
                                       FullName = us.FullName,
-                                      Username = Username,
-                                      Password = Password,
+                                      Username = us.Username,
+                                      Password = us.Password,
                                       Address = us.Address,
                                       Email = us.Email,
                                       Phone = us.Phone,

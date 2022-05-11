@@ -14,7 +14,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ClinicAdmin.BUS;
-using ClinicAdmin.DAO;
 
 namespace ClinicAdmin.Pages
 {
@@ -23,23 +22,23 @@ namespace ClinicAdmin.Pages
     /// </summary>
     public partial class Account : Page
     {
-        private UserAccountDAO _userAccount;
-        public Account(UserAccountDAO userAccountDAO)
+        private AccountBUS _accountBUS;
+        public Account()
         {
             InitializeComponent();
-            _userAccount = userAccountDAO;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            if(_userAccount != null)
+            _accountBUS = AccountBUS.getInstance();
+            if (_accountBUS.userAccount != null)
             {
-                txbUsername.Text = _userAccount.Username;
-                txbFullname.Text = _userAccount.FullName;
-                txbEmail.Text = _userAccount.Email;
-                txbAddress.Text = _userAccount.Address;
-                txbPhone.Text = _userAccount.Phone;
-                txbRole.Text = _userAccount.RoleName;
+                txbUsername.Text = _accountBUS.userAccount.Username;
+                txbFullname.Text = _accountBUS.userAccount.FullName;
+                txbEmail.Text = _accountBUS.userAccount.Email;
+                txbAddress.Text = _accountBUS.userAccount.Address;
+                txbPhone.Text = _accountBUS.userAccount.Phone;
+                txbRole.Text = _accountBUS.userAccount.RoleName;
             }
         }
 
