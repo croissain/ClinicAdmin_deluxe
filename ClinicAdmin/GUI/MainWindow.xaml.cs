@@ -187,7 +187,14 @@ namespace ClinicAdmin
 
         private void btnBilling_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
+
+        private void btnChart_Click(object sender, RoutedEventArgs e)
+        {
+            fContainer.Navigate(new System.Uri("Pages/Chart.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+
     }
 }
