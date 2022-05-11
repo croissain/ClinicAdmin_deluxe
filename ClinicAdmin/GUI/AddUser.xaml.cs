@@ -43,5 +43,10 @@ namespace ClinicAdmin.GUI
             else
                 WindowState = WindowState.Normal;
         }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
