@@ -38,5 +38,16 @@ namespace ClinicAdmin.BUS
             }
         }
 
+        public void PatientSearch(string patientName, DateTime? dateFrom, DateTime? dateTo)
+        {
+            if(dateFrom > dateTo)
+            {
+                MessageBox.Show("Ngày đến phải lớn hơn ngày từ!", "Lỗi ngày", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            dateFrom = dateFrom != null ? dateFrom : DateTime.MinValue;
+            dateTo = dateTo != null ? dateTo : DateTime.MaxValue;
+            listPatients = PatientDAO.getInstance().PatientSearch(patientName, dateFrom, dateTo);
+        }
     }
 }

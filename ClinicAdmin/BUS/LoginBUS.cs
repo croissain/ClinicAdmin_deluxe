@@ -31,8 +31,8 @@ namespace ClinicAdmin.BUS
                 MainWindow mainWindow = new MainWindow();
                 HomeBUS.getInstance().userAccount = user;
                 AccountBUS.getInstance().userAccount = user;
-                mainWindow.ShowDialog();
                 window.Close();
+                mainWindow.ShowDialog();
             }
             else
             {
