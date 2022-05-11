@@ -66,5 +66,35 @@ namespace ClinicAdmin.DAO
             }
             return result;
         }
+
+        public List<PatientDAO> PatientSearch(string patientName, DateTime? dateFrom, DateTime? dateTo)
+        {
+            List<PatientDAO> result = new List<PatientDAO>();
+            using (ClinicAdminEntities context = new ClinicAdminEntities())
+            {
+                var entryPoint = (from pt in context.Patients
+                                  join sc in context.Schedules on pt.id equals sc.PatientId
+                                  where pt.FullName.Contains(patientName) && sc.DayExam >= dateFrom && sc.DayExam <= dateTo
+                                  select new
+                                  {
+                                      id = pt.id,
+                                      FullName = pt.FullName,
+                                      Address = pt.Address,
+                                      Phone = pt.Phone,
+                                      Weight = pt.Weight,
+                                      Age = pt.Age,
+                                      Gender = pt.Gender,
+                                      ScheduleId = sc.id,
+                                      Status = sc.Status
+                                  }).ToList();
+                foreach (var item in entryPoint)
+                {
+                    PatientDAO patient = new PatientDAO(item.id, item.FullName, item.Address, item.Phone, item.Weight, item.Age, item.Gender, item.Status, item.ScheduleId);
+                    result.Add(patient);
+                }
+            }
+
+            return result;
+        }
     }
 }

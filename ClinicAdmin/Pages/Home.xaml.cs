@@ -73,5 +73,22 @@ namespace ClinicAdmin.Pages
             lsvPatient.Items.Clear();
             lsvPatient.ItemsSource = _homeBUS.listPatients;
         }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            string patientName = txbPatientName.Text;
+            DateTime? dateFrom = dpkFrom.SelectedDate;
+            DateTime? dateTo = dpkTo.SelectedDate;
+
+            _homeBUS.PatientSearch(patientName, dateFrom, dateTo);
+            lsvPatient.ItemsSource = null;
+            lsvPatient.Items.Clear();
+            lsvPatient.ItemsSource = _homeBUS.listPatients;
+        }
+
+        private void btnClearSearch_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
