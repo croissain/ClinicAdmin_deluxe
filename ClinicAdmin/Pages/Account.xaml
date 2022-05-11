@@ -69,6 +69,7 @@
                            FontWeight="SemiBold"
                            HorizontalAlignment="Left"></Label>
                     <TextBox x:Name="txbUsername"
+                             IsEnabled="False"
                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
                              FontSize="20"
                              Padding="15 10"

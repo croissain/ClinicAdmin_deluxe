@@ -23,22 +23,23 @@ namespace ClinicAdmin.Pages
     /// </summary>
     public partial class Home : Page
     {
-        private UserAccountDAO _userAccount;
-        public Home(UserAccountDAO userAccountDAO)
+        private HomeBUS _homeBUS;
+
+        public Home()
         {
             InitializeComponent();
-            _userAccount = userAccountDAO;
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            if (_userAccount != null)
+            _homeBUS = HomeBUS.getInstance();
+            if (_homeBUS.userAccount != null)
             {
-                txblStaffName.Text = _userAccount.FullName;
+                txblStaffName.Text = _homeBUS.userAccount.FullName;
             }
 
-            var listPatients = PatientDAO.getInstance().GetListPatient();
-            lsvPatient.ItemsSource = listPatients;
+            _homeBUS.listPatients = PatientDAO.getInstance().GetListPatient();
+            lsvPatient.ItemsSource = _homeBUS.listPatients;
         }
 
         private void AddMedicine_Click(object sender, RoutedEventArgs e)
@@ -57,6 +58,50 @@ namespace ClinicAdmin.Pages
         {
             var screen = new ClinicAdmin.GUI.Prescription();
             screen.ShowDialog();
+        }
+
+        private void Checkin_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var patient = lsvPatient.SelectedItem as PatientDAO;
+
+            if(_homeBUS.CheckIn(patient))
+            {
+                txblFullname.Text = patient.FullName;
+                txblAge.Text = patient.Age.ToString();
+                txblAddress.Text = patient.Address;
+                txblWeight.Text = patient.Weight.ToString();
+                txblGender.Text = patient.Gender;
+                txblPhone.Text = patient.Phone;
+                lsvPatient.ItemsSource = null;
+                lsvPatient.Items.Clear();
+                lsvPatient.ItemsSource = _homeBUS.listPatients;
+            }
+        }
+
+        private void Remove_MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var patient = lsvPatient.SelectedItem as PatientDAO;
+            _homeBUS.listPatients.Remove(patient);
+            lsvPatient.ItemsSource = null;
+            lsvPatient.Items.Clear();
+            lsvPatient.ItemsSource = _homeBUS.listPatients;
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            string patientName = txbPatientName.Text;
+            DateTime? dateFrom = dpkFrom.SelectedDate;
+            DateTime? dateTo = dpkTo.SelectedDate;
+
+            _homeBUS.PatientSearch(patientName, dateFrom, dateTo);
+            lsvPatient.ItemsSource = null;
+            lsvPatient.Items.Clear();
+            lsvPatient.ItemsSource = _homeBUS.listPatients;
+        }
+
+        private void btnClearSearch_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -29,7 +29,8 @@
                                FontSize="13"
                                Margin="0 0 4 0"
                                VerticalAlignment="Center" />
-                        <DatePicker Width="95"
+                        <DatePicker x:Name="dpkFrom"
+                                    Width="95"
                                     Height="35"
                                     Padding="4"
                                     FontSize="13"
@@ -40,7 +41,8 @@
                                FontSize="13"
                                Margin="8 0 5 0"
                                VerticalAlignment="Center" />
-                        <DatePicker Width="Auto"
+                        <DatePicker x:Name="dpkTo"
+                                    Width="Auto"
                                     Height="35"
                                     Padding="4"
                                     FontSize="13"
@@ -53,23 +55,30 @@
                                VerticalAlignment="Center"
                                FontSize="13"
                                DockPanel.Dock="Left" />
-                        <TextBox Width="Auto"
-                                 Height="35"
+                        <TextBox x:Name="txbPatientName"
+                                Width="Auto"
                                  Margin="8 0 0 0"
+                                 Padding="5"
+                                 FontSize="14"
                                  VerticalAlignment="Center"
                                  DockPanel.Dock="Right"
-                                 Style="{StaticResource modernTextBox}" />
+                                 BorderBrush="#68b2a0"
+                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"/>
                     </DockPanel>
                     <DockPanel LastChildFill="True"
                                HorizontalAlignment="Right">
-                        <Button Foreground="#f0723e"
+                        <Button x:Name="btnClearSearch"
+                                Click="btnClearSearch_Click"
+                                Foreground="#f0723e"
                                 BorderBrush="#f0723e"
                                 Margin="0 0 8 0"
                                 Style="{StaticResource MaterialDesignOutlinedButton}"
                                 ToolTip="MaterialDesignOutlinedButton">
                             Xóa tìm
                         </Button>
-                        <Button Style="{StaticResource MaterialDesignRaisedButton }"
+                        <Button x:Name="btnSearch"
+                                Click="btnSearch_Click"
+                                Style="{StaticResource MaterialDesignRaisedButton }"
                                 Width="140"
                                 Background="#68b2a0"
                                 Foreground="White">
@@ -153,11 +162,14 @@
                                        Foreground="#FF639F8D"
                                        FontWeight="Bold"
                                        Margin="5,0,0,0" />
-                                <TextBlock HorizontalAlignment="Left"
-                                           VerticalAlignment="Center"
-                                           FontWeight="Bold"
-                                           FontSize="14"
-                                           Margin="5,0,0,0" />
+                                <TextBlock x:Name="txblFullname" 
+                                        Width="150" 
+                                        TextWrapping="Wrap"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        FontWeight="Bold"
+                                        FontSize="14"
+                                        Margin="5,0,0,0" />
                             </StackPanel>
                             <StackPanel Grid.Column="1"
                                         Orientation="Horizontal">
@@ -167,11 +179,12 @@
                                        Foreground="#FF639F8D"
                                        FontWeight="Bold"
                                        Margin="5,0,0,0" />
-                                <TextBlock HorizontalAlignment="Left"
-                                           VerticalAlignment="Center"
-                                           FontWeight="Bold"
-                                           FontSize="14"
-                                           Margin="5,0,0,0" />
+                                <TextBlock x:Name="txblAge"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        FontWeight="Bold"
+                                        FontSize="14"
+                                        Margin="5,0,0,0" />
                             </StackPanel>
                         </Grid>
 
@@ -188,7 +201,10 @@
                                        Foreground="#FF639F8D"
                                        FontWeight="Bold"
                                        Margin="5,0,0,0" />
-                                <TextBlock HorizontalAlignment="Left"
+                                <TextBlock x:Name="txblAddress" 
+                                            Width="150" 
+                                            TextWrapping="Wrap"
+                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"
                                            FontWeight="Bold"
                                            FontSize="14"
@@ -202,7 +218,8 @@
                                        Foreground="#FF639F8D"
                                        FontWeight="Bold"
                                        Margin="5,0,0,0" />
-                                <TextBlock HorizontalAlignment="Left"
+                                <TextBlock x:Name="txblWeight"
+                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"
                                            FontWeight="Bold"
                                            FontSize="14"
@@ -222,7 +239,8 @@
                                        Foreground="#FF639F8D"
                                        FontWeight="Bold"
                                        Margin="5,0,0,0" />
-                                <TextBlock HorizontalAlignment="Left"
+                                <TextBlock x:Name="txblPhone"
+                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"
                                            FontWeight="Bold"
                                            FontSize="14"
@@ -236,7 +254,8 @@
                                        Foreground="#FF639F8D"
                                        FontWeight="Bold"
                                        Margin="5,0,0,0" />
-                                <TextBlock HorizontalAlignment="Left"
+                                <TextBlock x:Name="txblGender"
+                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"
                                            FontWeight="Bold"
                                            FontSize="14"
@@ -433,19 +452,14 @@
                       Grid.Row="2"
                       Grid.Column="0"
                       Margin="5">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel>
-                            <StackPanel.ContextMenu>
-                                <ContextMenu>
-                                    <MenuItem Header="Vào khám" />
-                                    <Separator />
-                                    <MenuItem Header="Xoá" />
-                                </ContextMenu>
-                            </StackPanel.ContextMenu>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
+                <ListView.ContextMenu>
+                    <ContextMenu Background="Black" Foreground="White">
+                        <MenuItem Header="Vào khám" Click="Checkin_MenuItem_Click">
+                        </MenuItem>
+                        <MenuItem Header="Xoá" Click="Remove_MenuItem_Click">
+                        </MenuItem>
+                    </ContextMenu>
+                </ListView.ContextMenu>
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Width="20"
