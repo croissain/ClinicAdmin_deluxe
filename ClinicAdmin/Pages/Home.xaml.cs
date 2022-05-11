@@ -38,7 +38,7 @@ namespace ClinicAdmin.Pages
                 txblStaffName.Text = _homeBUS.userAccount.FullName;
             }
 
-            _homeBUS.listPatients = PatientDAO.getInstance().GetListPatient();
+            _homeBUS.BUSLayer_Loaded();
             lsvPatient.ItemsSource = _homeBUS.listPatients;
         }
 
@@ -46,6 +46,9 @@ namespace ClinicAdmin.Pages
         {
             AddMedicine dialog = new AddMedicine();
             dialog.ShowDialog();
+            lstvMedicines.ItemsSource = null;
+            lstvMedicines.Items.Clear();
+            lstvMedicines.ItemsSource = _homeBUS.listMedicines;
         }
 
         private void AddPatient_Click(object sender, RoutedEventArgs e)
@@ -102,6 +105,16 @@ namespace ClinicAdmin.Pages
         private void btnClearSearch_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btnRemoveMedicine_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            MedicineDAO medicine = button.DataContext as MedicineDAO;
+            _homeBUS.listMedicines.Remove(medicine);
+            lstvMedicines.ItemsSource = null;
+            lstvMedicines.Items.Clear();
+            lstvMedicines.ItemsSource = _homeBUS.listMedicines;
         }
     }
 }

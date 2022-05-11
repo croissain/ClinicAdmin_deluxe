@@ -22,7 +22,6 @@ namespace ClinicAdmin.Pages
     /// </summary>
     public partial class MedicinesList : Page
     {
-        private UserAccountDAO _userAccount;
         public MedicinesList()
         {
             InitializeComponent();

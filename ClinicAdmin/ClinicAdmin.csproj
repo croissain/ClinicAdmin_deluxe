@@ -79,12 +79,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BUS\AccountBUS.cs" />
+    <Compile Include="BUS\AddMedicineBUS.cs" />
     <Compile Include="BUS\LoginBUS.cs" />
     <Compile Include="BUS\HomeBUS.cs" />
     <Compile Include="BUS\MainWindowBUS.cs" />
     <Compile Include="DAO\MedicineDAO.cs" />
     <Compile Include="DAO\PatientDAO.cs" />
     <Compile Include="DAO\ScheduleDAO.cs" />
+    <Compile Include="DAO\UnitMedicineDAO.cs" />
+    <Compile Include="DAO\UsageMedicineDAO.cs" />
     <Compile Include="DAO\UserAccountDAO.cs" />
     <Compile Include="DTO\DayReport.cs">
       <DependentUpon>DbModel.tt</DependentUpon>

@@ -629,23 +629,34 @@
                 </Grid>
                 <!--List medicines-->
                 <ScrollViewer Margin="5">
-                    <ListView>
+                    <ListView x:Name="lstvMedicines">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn DisplayMemberBinding="{Binding id}"
+                                <GridViewColumn DisplayMemberBinding="{Binding DrugName}"
                                                 Header="Tên thuốc"/>
-                                <GridViewColumn DisplayMemberBinding="{Binding Name}"
+                                <GridViewColumn DisplayMemberBinding="{Binding Unit}"
                                                 Header="Đơn vị" />
-                                <GridViewColumn DisplayMemberBinding ="{Binding Status}"
+                                <GridViewColumn DisplayMemberBinding ="{Binding Amount}"
                                                 Header="Số lượng" />
-                                <GridViewColumn DisplayMemberBinding="{Binding Status}"
+                                <GridViewColumn DisplayMemberBinding="{Binding Cost}"
                                                 Header="Giá bán" />
-                                <GridViewColumn DisplayMemberBinding="{Binding Status}"
+                                <GridViewColumn DisplayMemberBinding="{Binding Usage}"
                                                 Header="Cách dùng" />
-                                <GridViewColumn DisplayMemberBinding="{Binding Status}"
+                                <GridViewColumn DisplayMemberBinding="{Binding Price}"
                                                 Header="Thành tiền" />
-                                <GridViewColumn DisplayMemberBinding="{Binding Status}"
-                                                Header="#" />
+                                <GridViewColumn Header="#">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button x:Name="btnRemoveMedicine"
+                                            Click="btnRemoveMedicine_Click"
+                                            Foreground="#f0723e"
+                                            BorderBrush="#f0723e"
+                                            Width="100"
+                                            Style="{StaticResource MaterialDesignOutlinedButton}"
+                                            Content="Xóa" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>

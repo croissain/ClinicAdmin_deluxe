@@ -13,6 +13,7 @@ namespace ClinicAdmin.BUS
         private static HomeBUS _instance;
         public UserAccountDAO userAccount;
         public List<PatientDAO> listPatients;
+        public List<MedicineDAO> listMedicines;
 
         public static HomeBUS getInstance()
         {
@@ -21,6 +22,12 @@ namespace ClinicAdmin.BUS
                 _instance = new HomeBUS();
             }
             return _instance;
+        }
+
+        public void BUSLayer_Loaded()
+        {
+            listPatients = PatientDAO.getInstance().GetListPatient();
+            listMedicines = new List<MedicineDAO>();
         }
 
         public bool CheckIn(PatientDAO patient)
