@@ -104,7 +104,8 @@
                             BorderBrush="#68b2a0"
                             Foreground="#68b2a0"
                             HorizontalAlignment="Right"
-                            VerticalAlignment="Bottom">
+                            VerticalAlignment="Bottom"
+                            Click="AddPatient_Click">
                         <TextBlock Text="Thêm bệnh nhân"
                                    TextWrapping="Wrap"
                                    TextAlignment="Center" />
@@ -574,7 +575,8 @@
                                 Style="{StaticResource MaterialDesignRaisedButton}"
                                 Width="140"
                                 Background="#68b2a0"
-                                Foreground="White">
+                                Foreground="White"
+                                Click="ExportInvoice_Click">
                             <TextBlock Text="Xuất hóa đơn" />
                         </Button>
                     </Grid>
@@ -606,7 +608,8 @@
                             Width="140"
                             Background="#68b2a0"
                             Foreground="White"
-                            HorizontalAlignment="Right">
+                            HorizontalAlignment="Right"
+                            Click="AddMedicine_Click">
                         <TextBlock Text="Thêm thuốc" />
                     </Button>
                 </Grid>

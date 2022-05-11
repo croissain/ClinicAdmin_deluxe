@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ClinicAdmin.BUS;
+using ClinicAdmin.GUI;
 
 namespace ClinicAdmin.Pages
 {
@@ -38,6 +39,18 @@ namespace ClinicAdmin.Pages
 
             var listPatients = PatientDAO.getInstance().GetListPatient();
             lsvPatient.ItemsSource = listPatients;
+        }
+
+        private void AddMedicine_Click(object sender, RoutedEventArgs e)
+        {
+            AddMedicine dialog = new AddMedicine();
+            dialog.ShowDialog();
+        }
+
+        private void AddPatient_Click(object sender, RoutedEventArgs e)
+        {
+            AddPatient dialog = new AddPatient();
+            dialog.ShowDialog();
         }
 
         private void ExportInvoice_Click(object sender, RoutedEventArgs e)
