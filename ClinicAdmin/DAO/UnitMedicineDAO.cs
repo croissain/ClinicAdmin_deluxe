@@ -7,9 +7,14 @@ using System.Threading.Tasks;
 
 namespace ClinicAdmin.DAO
 {
-    public class UnitMedicineDAO : UnitMedicine
+    public class UnitMedicineDAO
     {
         private static UnitMedicineDAO _instance;
+        private int id;
+        private string name;
+
+        public int Id { get => id; set => id = value; }
+        public string Name { get => name; set => name = value; }
 
         public static UnitMedicineDAO getInstance()
         {
@@ -20,16 +25,6 @@ namespace ClinicAdmin.DAO
             return _instance;
         }
 
-        public UnitMedicineDAO()
-        {
-        }
-
-        public UnitMedicineDAO(int id, string name)
-        {
-            this.id = id;
-            this.name = name;
-        }
-
         public List<UnitMedicineDAO> GetListUnitMedicine()
         {
             List<UnitMedicineDAO> result = new List<UnitMedicineDAO>();
@@ -38,12 +33,16 @@ namespace ClinicAdmin.DAO
                 var entryPoint = (from um in context.UnitMedicines
                                   select new
                                   {
-                                      id = um.id,
-                                      name = um.name
+                                      id = um.Id,
+                                      name = um.Name
                                   }).ToList();
                 foreach (var item in entryPoint)
                 {
-                    UnitMedicineDAO medicine = new UnitMedicineDAO(item.id, item.name);
+                    UnitMedicineDAO medicine = new UnitMedicineDAO()
+                    {
+                        Id = item.id,
+                        Name = item.name
+                    };
                     result.Add(medicine);
                 }
             }

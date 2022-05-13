@@ -56,7 +56,14 @@ namespace ClinicAdmin.BUS
             }
             else
             {
-                MedicineDAO medicine = new MedicineDAO(medicineDAO, usageDAO.name, unitDAO.name, Int32.Parse(amount));
+                Prescription_MedicineDAO medicine = new Prescription_MedicineDAO()
+                {
+                    AmountDrug = Int32.Parse(amount),
+                    Unit = unitDAO.Name,
+                    Usage = usageDAO.Name,
+                    Medicine = medicineDAO,
+                    Cost = (double)(medicineDAO.Price * Int32.Parse(amount))
+                };
                 HomeBUS.getInstance().listMedicines.Add(medicine);
                 window.Close();
             }

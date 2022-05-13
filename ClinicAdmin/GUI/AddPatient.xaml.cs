@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ClinicAdmin.BUS;
 
 namespace ClinicAdmin.GUI
 {
@@ -28,5 +29,17 @@ namespace ClinicAdmin.GUI
         {
             this.Close();
         }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            string fullname = txbFullname.Text;
+            string gender = rdbtnMale.IsChecked == true ? rdbtnMale.Content.ToString() : rdbtnFemale.Content.ToString();
+            string age = txbAge.Text;
+            string weight = txbWeight.Text;
+            string address = txbAddress.Text;
+            string phone = txbPhone.Text;
+            DateTime? dayExam = dpkDayExam.SelectedDate;
+        }
+
     }
 }

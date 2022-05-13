@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="ClinicAdminModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AppointmentDay" Type="date" Nullable="false" />
+          <Property Name="PatientId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="DayReport">
           <Key>
             <PropertyRef Name="id" />
@@ -15,67 +24,62 @@
           <Property Name="TotalPatients" Type="int" />
           <Property Name="TotalInvoice" Type="int" />
         </EntityType>
-        <EntityType Name="Has_role">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="userId" Type="int" Nullable="false" />
-          <Property Name="roleId" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="Invoice">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PatientId" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TotalCost" Type="float" />
-          <Property Name="Doctor" Type="nvarchar" MaxLength="255" />
-          <Property Name="Staff" Type="nvarchar" MaxLength="255" />
-          <Property Name="Note" Type="nvarchar" MaxLength="255" />
-        </EntityType>
-        <EntityType Name="Invoice_Medicine">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="MedicineId" Type="int" Nullable="false" />
-          <Property Name="InvoiceId" Type="int" Nullable="false" />
-          <Property Name="Amount" Type="int" />
-          <Property Name="Cost" Type="float" />
-          <Property Name="Unit" Type="int" />
-          <Property Name="Usage" Type="int" />
-          <Property Name="NumOfUse" Type="int" />
-        </EntityType>
-        <EntityType Name="MedicalCondition">
-          <Key>
-            <PropertyRef Name="PatientId" />
-          </Key>
-          <Property Name="PatientId" Type="int" Nullable="false" />
-          <Property Name="Diagnose" Type="nvarchar" MaxLength="255" />
-          <Property Name="MedicalHistory" Type="nvarchar" MaxLength="255" />
-          <Property Name="Symptom" Type="nvarchar" MaxLength="255" />
+          <Property Name="ExaminationFee" Type="float" />
+          <Property Name="DrugFee" Type="float" />
+          <Property Name="Created_at" Type="datetime" />
+          <Property Name="PrescriptionId" Type="int" />
         </EntityType>
         <EntityType Name="Medicine">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DrugName" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="Storage" Type="int" />
-          <Property Name="Cost" Type="float" />
+          <Property Name="Storage" Type="int" Nullable="false" />
+          <Property Name="Price" Type="float" Nullable="false" />
         </EntityType>
         <EntityType Name="Patient">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FullName" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="Address" Type="nvarchar" MaxLength="255" />
-          <Property Name="Phone" Type="varchar" MaxLength="50" />
-          <Property Name="Weight" Type="int" />
-          <Property Name="Age" Type="int" />
-          <Property Name="Gender" Type="nvarchar" MaxLength="10" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Weight" Type="int" Nullable="false" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prescription">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Doctor" Type="nvarchar" MaxLength="255" />
+          <Property Name="Staff" Type="nvarchar" MaxLength="255" />
+          <Property Name="PatientId" Type="int" />
+          <Property Name="MedicalExamDay" Type="datetime" />
+          <Property Name="Diagnose" Type="nvarchar" MaxLength="255" />
+          <Property Name="MedicalHistory" Type="nvarchar" MaxLength="255" />
+          <Property Name="Symptom" Type="nvarchar" MaxLength="255" />
+          <Property Name="Note" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Prescription_Medicine">
+          <Key>
+            <PropertyRef Name="PrescriptionId" />
+          </Key>
+          <Property Name="PrescriptionId" Type="int" Nullable="false" />
+          <Property Name="MedicineId" Type="int" Nullable="false" />
+          <Property Name="AmountDrug" Type="int" />
+          <Property Name="Cost" Type="float" />
+          <Property Name="Unit" Type="int" />
+          <Property Name="Usage" Type="int" />
         </EntityType>
         <EntityType Name="Regulation">
           <Key>
@@ -89,151 +93,131 @@
         </EntityType>
         <EntityType Name="Role">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RoleName" Type="nvarchar" MaxLength="255" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Schedule">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="DayExam" Type="datetime" />
-          <Property Name="PatientId" Type="int" Nullable="false" />
-          <Property Name="Status" Type="int" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="UnitMedicine">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="UsageMedicine">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Username" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="255" Nullable="false" />
-          <Property Name="FullName" Type="nvarchar" MaxLength="255" />
-          <Property Name="Address" Type="nvarchar" MaxLength="255" />
-          <Property Name="Email" Type="nvarchar" MaxLength="255" />
-          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleId" Type="int" />
         </EntityType>
-        <Association Name="Has_role_fk0">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Has_role" Type="Self.Has_role" Multiplicity="*" />
+        <Association Name="Appointment_fk0">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="id" />
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Has_role">
-              <PropertyRef Name="userId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Has_role_fk1">
-          <End Role="Role" Type="Self.Role" Multiplicity="1" />
-          <End Role="Has_role" Type="Self.Has_role" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Has_role">
-              <PropertyRef Name="roleId" />
+            <Dependent Role="Appointment">
+              <PropertyRef Name="PatientId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="Invoice_fk0">
-          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Prescription" Type="Self.Prescription" Multiplicity="0..1" />
           <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Patient">
-              <PropertyRef Name="id" />
+            <Principal Role="Prescription">
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Invoice">
+              <PropertyRef Name="PrescriptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Prescription_fk2">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="Prescription" Type="Self.Prescription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prescription">
               <PropertyRef Name="PatientId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Invoice_Medicine_fk0">
+        <Association Name="Prescription_Medicine_fk0">
+          <End Role="Prescription" Type="Self.Prescription" Multiplicity="1" />
+          <End Role="Prescription_Medicine" Type="Self.Prescription_Medicine" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Prescription">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prescription_Medicine">
+              <PropertyRef Name="PrescriptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Prescription_Medicine_fk1">
           <End Role="Medicine" Type="Self.Medicine" Multiplicity="1" />
-          <End Role="Invoice_Medicine" Type="Self.Invoice_Medicine" Multiplicity="*" />
+          <End Role="Prescription_Medicine" Type="Self.Prescription_Medicine" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Medicine">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Invoice_Medicine">
+            <Dependent Role="Prescription_Medicine">
               <PropertyRef Name="MedicineId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Invoice_Medicine_fk1">
-          <End Role="Invoice" Type="Self.Invoice" Multiplicity="1" />
-          <End Role="Invoice_Medicine" Type="Self.Invoice_Medicine" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Invoice">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Invoice_Medicine">
-              <PropertyRef Name="InvoiceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Invoice_Medicine_fk2">
+        <Association Name="Prescription_Medicine_fk2">
           <End Role="UnitMedicine" Type="Self.UnitMedicine" Multiplicity="0..1" />
-          <End Role="Invoice_Medicine" Type="Self.Invoice_Medicine" Multiplicity="*" />
+          <End Role="Prescription_Medicine" Type="Self.Prescription_Medicine" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UnitMedicine">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Invoice_Medicine">
+            <Dependent Role="Prescription_Medicine">
               <PropertyRef Name="Unit" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Invoice_Medicine_fk3">
+        <Association Name="Prescription_Medicine_fk3">
           <End Role="UsageMedicine" Type="Self.UsageMedicine" Multiplicity="0..1" />
-          <End Role="Invoice_Medicine" Type="Self.Invoice_Medicine" Multiplicity="*" />
+          <End Role="Prescription_Medicine" Type="Self.Prescription_Medicine" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UsageMedicine">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Invoice_Medicine">
+            <Dependent Role="Prescription_Medicine">
               <PropertyRef Name="Usage" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="MedicalCondition_fk0">
-          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
-          <End Role="MedicalCondition" Type="Self.MedicalCondition" Multiplicity="0..1" />
+        <Association Name="User_fk0">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Patient">
-              <PropertyRef Name="id" />
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="MedicalCondition">
-              <PropertyRef Name="PatientId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Schedule_fk0">
-          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
-          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Patient">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Schedule">
-              <PropertyRef Name="PatientId" />
+            <Dependent Role="User">
+              <PropertyRef Name="RoleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -242,54 +226,49 @@
           <Parameter Name="pass" Type="nvarchar" Mode="In" />
         </Function>
         <EntityContainer Name="ClinicAdminModelStoreContainer">
+          <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DayReport" EntityType="Self.DayReport" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Has_role" EntityType="Self.Has_role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Invoice_Medicine" EntityType="Self.Invoice_Medicine" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MedicalCondition" EntityType="Self.MedicalCondition" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Medicine" EntityType="Self.Medicine" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prescription" EntityType="Self.Prescription" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prescription_Medicine" EntityType="Self.Prescription_Medicine" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Regulation" EntityType="Self.Regulation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UnitMedicine" EntityType="Self.UnitMedicine" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsageMedicine" EntityType="Self.UsageMedicine" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="Has_role_fk0" Association="Self.Has_role_fk0">
-            <End Role="User" EntitySet="User" />
-            <End Role="Has_role" EntitySet="Has_role" />
-          </AssociationSet>
-          <AssociationSet Name="Has_role_fk1" Association="Self.Has_role_fk1">
-            <End Role="Role" EntitySet="Role" />
-            <End Role="Has_role" EntitySet="Has_role" />
+          <AssociationSet Name="Appointment_fk0" Association="Self.Appointment_fk0">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Appointment" EntitySet="Appointment" />
           </AssociationSet>
           <AssociationSet Name="Invoice_fk0" Association="Self.Invoice_fk0">
-            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Prescription" EntitySet="Prescription" />
             <End Role="Invoice" EntitySet="Invoice" />
           </AssociationSet>
-          <AssociationSet Name="Invoice_Medicine_fk0" Association="Self.Invoice_Medicine_fk0">
+          <AssociationSet Name="Prescription_fk2" Association="Self.Prescription_fk2">
+            <End Role="Patient" EntitySet="Patient" />
+            <End Role="Prescription" EntitySet="Prescription" />
+          </AssociationSet>
+          <AssociationSet Name="Prescription_Medicine_fk0" Association="Self.Prescription_Medicine_fk0">
+            <End Role="Prescription" EntitySet="Prescription" />
+            <End Role="Prescription_Medicine" EntitySet="Prescription_Medicine" />
+          </AssociationSet>
+          <AssociationSet Name="Prescription_Medicine_fk1" Association="Self.Prescription_Medicine_fk1">
             <End Role="Medicine" EntitySet="Medicine" />
-            <End Role="Invoice_Medicine" EntitySet="Invoice_Medicine" />
+            <End Role="Prescription_Medicine" EntitySet="Prescription_Medicine" />
           </AssociationSet>
-          <AssociationSet Name="Invoice_Medicine_fk1" Association="Self.Invoice_Medicine_fk1">
-            <End Role="Invoice" EntitySet="Invoice" />
-            <End Role="Invoice_Medicine" EntitySet="Invoice_Medicine" />
-          </AssociationSet>
-          <AssociationSet Name="Invoice_Medicine_fk2" Association="Self.Invoice_Medicine_fk2">
+          <AssociationSet Name="Prescription_Medicine_fk2" Association="Self.Prescription_Medicine_fk2">
             <End Role="UnitMedicine" EntitySet="UnitMedicine" />
-            <End Role="Invoice_Medicine" EntitySet="Invoice_Medicine" />
+            <End Role="Prescription_Medicine" EntitySet="Prescription_Medicine" />
           </AssociationSet>
-          <AssociationSet Name="Invoice_Medicine_fk3" Association="Self.Invoice_Medicine_fk3">
+          <AssociationSet Name="Prescription_Medicine_fk3" Association="Self.Prescription_Medicine_fk3">
             <End Role="UsageMedicine" EntitySet="UsageMedicine" />
-            <End Role="Invoice_Medicine" EntitySet="Invoice_Medicine" />
+            <End Role="Prescription_Medicine" EntitySet="Prescription_Medicine" />
           </AssociationSet>
-          <AssociationSet Name="MedicalCondition_fk0" Association="Self.MedicalCondition_fk0">
-            <End Role="Patient" EntitySet="Patient" />
-            <End Role="MedicalCondition" EntitySet="MedicalCondition" />
-          </AssociationSet>
-          <AssociationSet Name="Schedule_fk0" Association="Self.Schedule_fk0">
-            <End Role="Patient" EntitySet="Patient" />
-            <End Role="Schedule" EntitySet="Schedule" />
+          <AssociationSet Name="User_fk0" Association="Self.User_fk0">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -297,6 +276,16 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ClinicAdminModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AppointmentDay" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PatientId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Patient" Relationship="Self.Appointment_fk0" FromRole="Appointment" ToRole="Patient" />
+        </EntityType>
         <EntityType Name="DayReport">
           <Key>
             <PropertyRef Name="id" />
@@ -307,80 +296,73 @@
           <Property Name="TotalPatients" Type="Int32" />
           <Property Name="TotalInvoice" Type="Int32" />
         </EntityType>
-        <EntityType Name="Has_role">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="userId" Type="Int32" Nullable="false" />
-          <Property Name="roleId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.Has_role_fk0" FromRole="Has_role" ToRole="User" />
-          <NavigationProperty Name="Role" Relationship="Self.Has_role_fk1" FromRole="Has_role" ToRole="Role" />
-        </EntityType>
         <EntityType Name="Invoice">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PatientId" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TotalCost" Type="Double" />
-          <Property Name="Doctor" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Staff" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Patient" Relationship="Self.Invoice_fk0" FromRole="Invoice" ToRole="Patient" />
-          <NavigationProperty Name="Invoice_Medicine" Relationship="Self.Invoice_Medicine_fk1" FromRole="Invoice" ToRole="Invoice_Medicine" />
-        </EntityType>
-        <EntityType Name="Invoice_Medicine">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MedicineId" Type="Int32" Nullable="false" />
-          <Property Name="InvoiceId" Type="Int32" Nullable="false" />
-          <Property Name="Amount" Type="Int32" />
-          <Property Name="Cost" Type="Double" />
-          <Property Name="Unit" Type="Int32" />
-          <Property Name="Usage" Type="Int32" />
-          <Property Name="NumOfUse" Type="Int32" />
-          <NavigationProperty Name="Invoice" Relationship="Self.Invoice_Medicine_fk1" FromRole="Invoice_Medicine" ToRole="Invoice" />
-          <NavigationProperty Name="Medicine" Relationship="Self.Invoice_Medicine_fk0" FromRole="Invoice_Medicine" ToRole="Medicine" />
-          <NavigationProperty Name="UnitMedicine" Relationship="Self.Invoice_Medicine_fk2" FromRole="Invoice_Medicine" ToRole="UnitMedicine" />
-          <NavigationProperty Name="UsageMedicine" Relationship="Self.Invoice_Medicine_fk3" FromRole="Invoice_Medicine" ToRole="UsageMedicine" />
-        </EntityType>
-        <EntityType Name="MedicalCondition">
-          <Key>
-            <PropertyRef Name="PatientId" />
-          </Key>
-          <Property Name="PatientId" Type="Int32" Nullable="false" />
-          <Property Name="Diagnose" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="MedicalHistory" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Symptom" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Patient" Relationship="Self.MedicalCondition_fk0" FromRole="MedicalCondition" ToRole="Patient" />
+          <Property Name="ExaminationFee" Type="Double" />
+          <Property Name="DrugFee" Type="Double" />
+          <Property Name="Created_at" Type="DateTime" Precision="3" />
+          <Property Name="PrescriptionId" Type="Int32" />
+          <NavigationProperty Name="Prescription" Relationship="Self.Invoice_fk0" FromRole="Invoice" ToRole="Prescription" />
         </EntityType>
         <EntityType Name="Medicine">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DrugName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Storage" Type="Int32" />
-          <Property Name="Cost" Type="Double" />
-          <NavigationProperty Name="Invoice_Medicine" Relationship="Self.Invoice_Medicine_fk0" FromRole="Medicine" ToRole="Invoice_Medicine" />
+          <Property Name="Storage" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Prescription_Medicine" Relationship="Self.Prescription_Medicine_fk1" FromRole="Medicine" ToRole="Prescription_Medicine" />
         </EntityType>
         <EntityType Name="Patient">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Weight" Type="Int32" />
-          <Property Name="Age" Type="Int32" />
-          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Invoices" Relationship="Self.Invoice_fk0" FromRole="Patient" ToRole="Invoice" />
-          <NavigationProperty Name="MedicalCondition" Relationship="Self.MedicalCondition_fk0" FromRole="Patient" ToRole="MedicalCondition" />
-          <NavigationProperty Name="Schedules" Relationship="Self.Schedule_fk0" FromRole="Patient" ToRole="Schedule" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Weight" Type="Int32" Nullable="false" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Appointments" Relationship="Self.Appointment_fk0" FromRole="Patient" ToRole="Appointment" />
+          <NavigationProperty Name="Prescriptions" Relationship="Self.Prescription_fk2" FromRole="Patient" ToRole="Prescription" />
+        </EntityType>
+        <EntityType Name="Prescription">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Doctor" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Staff" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PatientId" Type="Int32" />
+          <Property Name="MedicalExamDay" Type="DateTime" Precision="3" />
+          <Property Name="Diagnose" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MedicalHistory" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Symptom" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Invoices" Relationship="Self.Invoice_fk0" FromRole="Prescription" ToRole="Invoice" />
+          <NavigationProperty Name="Patient" Relationship="Self.Prescription_fk2" FromRole="Prescription" ToRole="Patient" />
+          <NavigationProperty Name="Prescription_Medicine" Relationship="Self.Prescription_Medicine_fk0" FromRole="Prescription" ToRole="Prescription_Medicine" />
+        </EntityType>
+        <EntityType Name="Prescription_Medicine">
+          <Key>
+            <PropertyRef Name="PrescriptionId" />
+          </Key>
+          <Property Name="PrescriptionId" Type="Int32" Nullable="false" />
+          <Property Name="MedicineId" Type="Int32" Nullable="false" />
+          <Property Name="AmountDrug" Type="Int32" />
+          <Property Name="Cost" Type="Double" />
+          <Property Name="Unit" Type="Int32" />
+          <Property Name="Usage" Type="Int32" />
+          <NavigationProperty Name="Medicine" Relationship="Self.Prescription_Medicine_fk1" FromRole="Prescription_Medicine" ToRole="Medicine" />
+          <NavigationProperty Name="Prescription" Relationship="Self.Prescription_Medicine_fk0" FromRole="Prescription_Medicine" ToRole="Prescription" />
+          <NavigationProperty Name="UnitMedicine" Relationship="Self.Prescription_Medicine_fk2" FromRole="Prescription_Medicine" ToRole="UnitMedicine" />
+          <NavigationProperty Name="UsageMedicine" Relationship="Self.Prescription_Medicine_fk3" FromRole="Prescription_Medicine" ToRole="UsageMedicine" />
         </EntityType>
         <EntityType Name="Regulation">
           <Key>
@@ -394,231 +376,204 @@
         </EntityType>
         <EntityType Name="Role">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RoleName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Has_role" Relationship="Self.Has_role_fk1" FromRole="Role" ToRole="Has_role" />
-        </EntityType>
-        <EntityType Name="Schedule">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DayExam" Type="DateTime" Precision="3" />
-          <Property Name="PatientId" Type="Int32" Nullable="false" />
-          <Property Name="Status" Type="Int32" />
-          <NavigationProperty Name="Patient" Relationship="Self.Schedule_fk0" FromRole="Schedule" ToRole="Patient" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.User_fk0" FromRole="Role" ToRole="User" />
         </EntityType>
         <EntityType Name="UnitMedicine">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Invoice_Medicine" Relationship="Self.Invoice_Medicine_fk2" FromRole="UnitMedicine" ToRole="Invoice_Medicine" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Prescription_Medicine" Relationship="Self.Prescription_Medicine_fk2" FromRole="UnitMedicine" ToRole="Prescription_Medicine" />
         </EntityType>
         <EntityType Name="UsageMedicine">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Invoice_Medicine" Relationship="Self.Invoice_Medicine_fk3" FromRole="UsageMedicine" ToRole="Invoice_Medicine" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Prescription_Medicine" Relationship="Self.Prescription_Medicine_fk3" FromRole="UsageMedicine" ToRole="Prescription_Medicine" />
         </EntityType>
         <EntityType Name="User">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Username" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Has_role" Relationship="Self.Has_role_fk0" FromRole="User" ToRole="Has_role" />
+          <Property Name="FullName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" />
+          <NavigationProperty Name="Role" Relationship="Self.User_fk0" FromRole="User" ToRole="Role" />
         </EntityType>
-        <Association Name="Has_role_fk0">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Has_role" Type="Self.Has_role" Multiplicity="*" />
+        <Association Name="Appointment_fk0">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Appointment" Type="Self.Appointment" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="id" />
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Has_role">
-              <PropertyRef Name="userId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Has_role_fk1">
-          <End Role="Role" Type="Self.Role" Multiplicity="1" />
-          <End Role="Has_role" Type="Self.Has_role" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Role">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Has_role">
-              <PropertyRef Name="roleId" />
+            <Dependent Role="Appointment">
+              <PropertyRef Name="PatientId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="Invoice_fk0">
-          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
+          <End Role="Prescription" Type="Self.Prescription" Multiplicity="0..1" />
           <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Patient">
-              <PropertyRef Name="id" />
+            <Principal Role="Prescription">
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Invoice">
-              <PropertyRef Name="PatientId" />
+              <PropertyRef Name="PrescriptionId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Invoice_Medicine_fk1">
-          <End Role="Invoice" Type="Self.Invoice" Multiplicity="1" />
-          <End Role="Invoice_Medicine" Type="Self.Invoice_Medicine" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Invoice">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Invoice_Medicine">
-              <PropertyRef Name="InvoiceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Invoice_Medicine_fk0">
+        <Association Name="Prescription_Medicine_fk1">
           <End Role="Medicine" Type="Self.Medicine" Multiplicity="1" />
-          <End Role="Invoice_Medicine" Type="Self.Invoice_Medicine" Multiplicity="*" />
+          <End Role="Prescription_Medicine" Type="Self.Prescription_Medicine" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Medicine">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Invoice_Medicine">
+            <Dependent Role="Prescription_Medicine">
               <PropertyRef Name="MedicineId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Invoice_Medicine_fk2">
+        <Association Name="Prescription_fk2">
+          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="Prescription" Type="Self.Prescription" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prescription">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Prescription_Medicine_fk0">
+          <End Role="Prescription" Type="Self.Prescription" Multiplicity="1" />
+          <End Role="Prescription_Medicine" Type="Self.Prescription_Medicine" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Prescription">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Prescription_Medicine">
+              <PropertyRef Name="PrescriptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Prescription_Medicine_fk2">
           <End Role="UnitMedicine" Type="Self.UnitMedicine" Multiplicity="0..1" />
-          <End Role="Invoice_Medicine" Type="Self.Invoice_Medicine" Multiplicity="*" />
+          <End Role="Prescription_Medicine" Type="Self.Prescription_Medicine" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UnitMedicine">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Invoice_Medicine">
+            <Dependent Role="Prescription_Medicine">
               <PropertyRef Name="Unit" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Invoice_Medicine_fk3">
+        <Association Name="Prescription_Medicine_fk3">
           <End Role="UsageMedicine" Type="Self.UsageMedicine" Multiplicity="0..1" />
-          <End Role="Invoice_Medicine" Type="Self.Invoice_Medicine" Multiplicity="*" />
+          <End Role="Prescription_Medicine" Type="Self.Prescription_Medicine" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UsageMedicine">
-              <PropertyRef Name="id" />
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Invoice_Medicine">
+            <Dependent Role="Prescription_Medicine">
               <PropertyRef Name="Usage" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="MedicalCondition_fk0">
-          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
-          <End Role="MedicalCondition" Type="Self.MedicalCondition" Multiplicity="0..1" />
+        <Association Name="User_fk0">
+          <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Patient">
-              <PropertyRef Name="id" />
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="MedicalCondition">
-              <PropertyRef Name="PatientId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Schedule_fk0">
-          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
-          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Patient">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Schedule">
-              <PropertyRef Name="PatientId" />
+            <Dependent Role="User">
+              <PropertyRef Name="RoleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ClinicAdminEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Appointments" EntityType="Self.Appointment" />
           <EntitySet Name="DayReports" EntityType="Self.DayReport" />
-          <EntitySet Name="Has_role" EntityType="Self.Has_role" />
           <EntitySet Name="Invoices" EntityType="Self.Invoice" />
-          <EntitySet Name="Invoice_Medicine" EntityType="Self.Invoice_Medicine" />
-          <EntitySet Name="MedicalConditions" EntityType="Self.MedicalCondition" />
           <EntitySet Name="Medicines" EntityType="Self.Medicine" />
           <EntitySet Name="Patients" EntityType="Self.Patient" />
+          <EntitySet Name="Prescriptions" EntityType="Self.Prescription" />
+          <EntitySet Name="Prescription_Medicine" EntityType="Self.Prescription_Medicine" />
           <EntitySet Name="Regulations" EntityType="Self.Regulation" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
-          <EntitySet Name="Schedules" EntityType="Self.Schedule" />
           <EntitySet Name="UnitMedicines" EntityType="Self.UnitMedicine" />
           <EntitySet Name="UsageMedicines" EntityType="Self.UsageMedicine" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <AssociationSet Name="Has_role_fk0" Association="Self.Has_role_fk0">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Has_role" EntitySet="Has_role" />
-          </AssociationSet>
-          <AssociationSet Name="Has_role_fk1" Association="Self.Has_role_fk1">
-            <End Role="Role" EntitySet="Roles" />
-            <End Role="Has_role" EntitySet="Has_role" />
+          <AssociationSet Name="Appointment_fk0" Association="Self.Appointment_fk0">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Appointment" EntitySet="Appointments" />
           </AssociationSet>
           <AssociationSet Name="Invoice_fk0" Association="Self.Invoice_fk0">
-            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Prescription" EntitySet="Prescriptions" />
             <End Role="Invoice" EntitySet="Invoices" />
           </AssociationSet>
-          <AssociationSet Name="Invoice_Medicine_fk1" Association="Self.Invoice_Medicine_fk1">
-            <End Role="Invoice" EntitySet="Invoices" />
-            <End Role="Invoice_Medicine" EntitySet="Invoice_Medicine" />
-          </AssociationSet>
-          <AssociationSet Name="Invoice_Medicine_fk0" Association="Self.Invoice_Medicine_fk0">
+          <AssociationSet Name="Prescription_Medicine_fk1" Association="Self.Prescription_Medicine_fk1">
             <End Role="Medicine" EntitySet="Medicines" />
-            <End Role="Invoice_Medicine" EntitySet="Invoice_Medicine" />
+            <End Role="Prescription_Medicine" EntitySet="Prescription_Medicine" />
           </AssociationSet>
-          <AssociationSet Name="Invoice_Medicine_fk2" Association="Self.Invoice_Medicine_fk2">
+          <AssociationSet Name="Prescription_fk2" Association="Self.Prescription_fk2">
+            <End Role="Patient" EntitySet="Patients" />
+            <End Role="Prescription" EntitySet="Prescriptions" />
+          </AssociationSet>
+          <AssociationSet Name="Prescription_Medicine_fk0" Association="Self.Prescription_Medicine_fk0">
+            <End Role="Prescription" EntitySet="Prescriptions" />
+            <End Role="Prescription_Medicine" EntitySet="Prescription_Medicine" />
+          </AssociationSet>
+          <AssociationSet Name="Prescription_Medicine_fk2" Association="Self.Prescription_Medicine_fk2">
             <End Role="UnitMedicine" EntitySet="UnitMedicines" />
-            <End Role="Invoice_Medicine" EntitySet="Invoice_Medicine" />
+            <End Role="Prescription_Medicine" EntitySet="Prescription_Medicine" />
           </AssociationSet>
-          <AssociationSet Name="Invoice_Medicine_fk3" Association="Self.Invoice_Medicine_fk3">
+          <AssociationSet Name="Prescription_Medicine_fk3" Association="Self.Prescription_Medicine_fk3">
             <End Role="UsageMedicine" EntitySet="UsageMedicines" />
-            <End Role="Invoice_Medicine" EntitySet="Invoice_Medicine" />
+            <End Role="Prescription_Medicine" EntitySet="Prescription_Medicine" />
           </AssociationSet>
-          <AssociationSet Name="MedicalCondition_fk0" Association="Self.MedicalCondition_fk0">
-            <End Role="Patient" EntitySet="Patients" />
-            <End Role="MedicalCondition" EntitySet="MedicalConditions" />
+          <AssociationSet Name="User_fk0" Association="Self.User_fk0">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="Schedule_fk0" Association="Self.Schedule_fk0">
-            <End Role="Patient" EntitySet="Patients" />
-            <End Role="Schedule" EntitySet="Schedules" />
-          </AssociationSet>
-          <FunctionImport Name="usp_Login" ReturnType="Collection(ClinicAdminModel.usp_Login_Result)">
+          <FunctionImport Name="usp_Login">
             <Parameter Name="uname" Mode="In" Type="String" />
             <Parameter Name="pass" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="usp_Login_Result">
-          <Property Type="Int32" Name="id" Nullable="false" />
-          <Property Type="String" Name="Username" Nullable="false" MaxLength="255" />
-          <Property Type="String" Name="Password" Nullable="false" MaxLength="255" />
-          <Property Type="String" Name="FullName" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="Address" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="Email" Nullable="true" MaxLength="255" />
-          <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
-          <Property Type="Int32" Name="id1" Nullable="false" />
-          <Property Type="String" Name="RoleName" Nullable="false" MaxLength="255" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ClinicAdminModelStoreContainer" CdmEntityContainer="ClinicAdminEntities">
+          <EntitySetMapping Name="Appointments">
+            <EntityTypeMapping TypeName="ClinicAdminModel.Appointment">
+              <MappingFragment StoreEntitySet="Appointment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AppointmentDay" ColumnName="AppointmentDay" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="DayReports">
             <EntityTypeMapping TypeName="ClinicAdminModel.DayReport">
               <MappingFragment StoreEntitySet="DayReport">
@@ -630,71 +585,65 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Has_role">
-            <EntityTypeMapping TypeName="ClinicAdminModel.Has_role">
-              <MappingFragment StoreEntitySet="Has_role">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="userId" ColumnName="userId" />
-                <ScalarProperty Name="roleId" ColumnName="roleId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Invoices">
             <EntityTypeMapping TypeName="ClinicAdminModel.Invoice">
               <MappingFragment StoreEntitySet="Invoice">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
-                <ScalarProperty Name="Doctor" ColumnName="Doctor" />
-                <ScalarProperty Name="Staff" ColumnName="Staff" />
-                <ScalarProperty Name="Note" ColumnName="Note" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Invoice_Medicine">
-            <EntityTypeMapping TypeName="ClinicAdminModel.Invoice_Medicine">
-              <MappingFragment StoreEntitySet="Invoice_Medicine">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="MedicineId" ColumnName="MedicineId" />
-                <ScalarProperty Name="InvoiceId" ColumnName="InvoiceId" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Cost" ColumnName="Cost" />
-                <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="Usage" ColumnName="Usage" />
-                <ScalarProperty Name="NumOfUse" ColumnName="NumOfUse" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MedicalConditions">
-            <EntityTypeMapping TypeName="ClinicAdminModel.MedicalCondition">
-              <MappingFragment StoreEntitySet="MedicalCondition">
-                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
-                <ScalarProperty Name="Diagnose" ColumnName="Diagnose" />
-                <ScalarProperty Name="MedicalHistory" ColumnName="MedicalHistory" />
-                <ScalarProperty Name="Symptom" ColumnName="Symptom" />
+                <ScalarProperty Name="ExaminationFee" ColumnName="ExaminationFee" />
+                <ScalarProperty Name="DrugFee" ColumnName="DrugFee" />
+                <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+                <ScalarProperty Name="PrescriptionId" ColumnName="PrescriptionId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Medicines">
             <EntityTypeMapping TypeName="ClinicAdminModel.Medicine">
               <MappingFragment StoreEntitySet="Medicine">
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="DrugName" ColumnName="DrugName" />
                 <ScalarProperty Name="Storage" ColumnName="Storage" />
-                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Patients">
             <EntityTypeMapping TypeName="ClinicAdminModel.Patient">
               <MappingFragment StoreEntitySet="Patient">
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Weight" ColumnName="Weight" />
                 <ScalarProperty Name="Age" ColumnName="Age" />
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prescriptions">
+            <EntityTypeMapping TypeName="ClinicAdminModel.Prescription">
+              <MappingFragment StoreEntitySet="Prescription">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Doctor" ColumnName="Doctor" />
+                <ScalarProperty Name="Staff" ColumnName="Staff" />
+                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+                <ScalarProperty Name="MedicalExamDay" ColumnName="MedicalExamDay" />
+                <ScalarProperty Name="Diagnose" ColumnName="Diagnose" />
+                <ScalarProperty Name="MedicalHistory" ColumnName="MedicalHistory" />
+                <ScalarProperty Name="Symptom" ColumnName="Symptom" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prescription_Medicine">
+            <EntityTypeMapping TypeName="ClinicAdminModel.Prescription_Medicine">
+              <MappingFragment StoreEntitySet="Prescription_Medicine">
+                <ScalarProperty Name="PrescriptionId" ColumnName="PrescriptionId" />
+                <ScalarProperty Name="MedicineId" ColumnName="MedicineId" />
+                <ScalarProperty Name="AmountDrug" ColumnName="AmountDrug" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Unit" ColumnName="Unit" />
+                <ScalarProperty Name="Usage" ColumnName="Usage" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -712,65 +661,42 @@
           <EntitySetMapping Name="Roles">
             <EntityTypeMapping TypeName="ClinicAdminModel.Role">
               <MappingFragment StoreEntitySet="Role">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Schedules">
-            <EntityTypeMapping TypeName="ClinicAdminModel.Schedule">
-              <MappingFragment StoreEntitySet="Schedule">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="DayExam" ColumnName="DayExam" />
-                <ScalarProperty Name="PatientId" ColumnName="PatientId" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UnitMedicines">
             <EntityTypeMapping TypeName="ClinicAdminModel.UnitMedicine">
               <MappingFragment StoreEntitySet="UnitMedicine">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UsageMedicines">
             <EntityTypeMapping TypeName="ClinicAdminModel.UsageMedicine">
               <MappingFragment StoreEntitySet="UsageMedicine">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="ClinicAdminModel.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="usp_Login" FunctionName="ClinicAdminModel.Store.usp_Login">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ClinicAdminModel.usp_Login_Result">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="id1" ColumnName="id1" />
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_Login" FunctionName="ClinicAdminModel.Store.usp_Login" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

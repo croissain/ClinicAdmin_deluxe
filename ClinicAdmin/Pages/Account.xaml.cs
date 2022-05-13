@@ -31,14 +31,14 @@ namespace ClinicAdmin.Pages
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             _accountBUS = AccountBUS.getInstance();
-            if (_accountBUS.userAccount != null)
+            if (_accountBUS.user != null)
             {
-                txbUsername.Text = _accountBUS.userAccount.Username;
-                txbFullname.Text = _accountBUS.userAccount.FullName;
-                txbEmail.Text = _accountBUS.userAccount.Email;
-                txbAddress.Text = _accountBUS.userAccount.Address;
-                txbPhone.Text = _accountBUS.userAccount.Phone;
-                txbRole.Text = _accountBUS.userAccount.RoleName;
+                txbUsername.Text = _accountBUS.user.Username;
+                txbFullname.Text = _accountBUS.user.Fullname;
+                txbEmail.Text = _accountBUS.user.Email;
+                txbAddress.Text = _accountBUS.user.Address;
+                txbPhone.Text = _accountBUS.user.Phone;
+                txbRole.Text = _accountBUS.user.GetRole();
             }
         }
 

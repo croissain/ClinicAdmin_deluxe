@@ -24,13 +24,12 @@ namespace ClinicAdmin.BUS
 
         public void UserLogin(string username, string password, Window window)
         {
-            UserAccountDAO userAccount = UserAccountDAO.getInstance();
-            var user = userAccount.GetUserLogin(username, password);
+            var user = UserFactory.GetUserLogin(username, password);
             if (user != null)
             {
                 MainWindow mainWindow = new MainWindow();
                 HomeBUS.getInstance().userAccount = user;
-                AccountBUS.getInstance().userAccount = user;
+                AccountBUS.getInstance().user = user;
                 window.Close();
                 mainWindow.ShowDialog();
             }

@@ -35,11 +35,12 @@ namespace ClinicAdmin.Pages
             _homeBUS = HomeBUS.getInstance();
             if (_homeBUS.userAccount != null)
             {
-                txblStaffName.Text = _homeBUS.userAccount.FullName;
+                txblStaffName.Text = _homeBUS.userAccount.Fullname;
             }
 
             _homeBUS.BUSLayer_Loaded();
             lsvPatient.ItemsSource = _homeBUS.listPatients;
+            txblDayExam.Text = DateTime.Today.ToShortDateString();
         }
 
         private void AddMedicine_Click(object sender, RoutedEventArgs e)
@@ -49,6 +50,7 @@ namespace ClinicAdmin.Pages
             lstvMedicines.ItemsSource = null;
             lstvMedicines.Items.Clear();
             lstvMedicines.ItemsSource = _homeBUS.listMedicines;
+            txblTotalMedicine.Text = _homeBUS.listMedicines.Count().ToString();
         }
 
         private void AddPatient_Click(object sender, RoutedEventArgs e)
@@ -65,16 +67,16 @@ namespace ClinicAdmin.Pages
 
         private void Checkin_MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            var patient = lsvPatient.SelectedItem as PatientDAO;
+            var appointment = lsvPatient.SelectedItem as AppointmentDAO;
 
-            if(_homeBUS.CheckIn(patient))
+            if (_homeBUS.CheckIn(appointment))
             {
-                txblFullname.Text = patient.FullName;
-                txblAge.Text = patient.Age.ToString();
-                txblAddress.Text = patient.Address;
-                txblWeight.Text = patient.Weight.ToString();
-                txblGender.Text = patient.Gender;
-                txblPhone.Text = patient.Phone;
+                txblFullname.Text = appointment.Patient.Fullname;
+                txblAge.Text = appointment.Patient.Age.ToString();
+                txblAddress.Text = appointment.Patient.Address;
+                txblWeight.Text = appointment.Patient.Weight.ToString();
+                txblGender.Text = appointment.Patient.Gender;
+                txblPhone.Text = appointment.Patient.Phone;
                 lsvPatient.ItemsSource = null;
                 lsvPatient.Items.Clear();
                 lsvPatient.ItemsSource = _homeBUS.listPatients;
@@ -83,8 +85,8 @@ namespace ClinicAdmin.Pages
 
         private void Remove_MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            var patient = lsvPatient.SelectedItem as PatientDAO;
-            _homeBUS.listPatients.Remove(patient);
+            var appointment = lsvPatient.SelectedItem as AppointmentDAO;
+            _homeBUS.listPatients.Remove(appointment);
             lsvPatient.ItemsSource = null;
             lsvPatient.Items.Clear();
             lsvPatient.ItemsSource = _homeBUS.listPatients;
@@ -110,7 +112,7 @@ namespace ClinicAdmin.Pages
         private void btnRemoveMedicine_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            MedicineDAO medicine = button.DataContext as MedicineDAO;
+            Prescription_MedicineDAO medicine = button.DataContext as Prescription_MedicineDAO;
             _homeBUS.listMedicines.Remove(medicine);
             lstvMedicines.ItemsSource = null;
             lstvMedicines.Items.Clear();
