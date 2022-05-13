@@ -58,7 +58,7 @@
                                         DisplayMemberBinding="{Binding Storage}"
                                         Header="Tồn kho" />
                         <GridViewColumn Width="Auto"
-                                        DisplayMemberBinding="{Binding Cost}"
+                                        DisplayMemberBinding="{Binding Price}"
                                         Header="Giá thành/1 đơn vị" />
                     </GridView>
                 </ListView.View>

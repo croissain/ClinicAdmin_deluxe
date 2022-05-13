@@ -7,42 +7,18 @@ using ClinicAdmin.DTO;
 
 namespace ClinicAdmin.DAO
 {
-    public class MedicineDAO : Medicine
+    public class MedicineDAO
     {
         private static MedicineDAO _instance;
-        private string usage;
-        private string unit;
-        private int amount;
+        private int id;
+        private string drugName;
+        private int storage;
         private double price;
 
-        public string Usage { get => usage; set => usage = value; }
-        public string Unit { get => unit; set => unit = value; }
-        public int Amount { get => amount; set => amount = value; }
+        public string DrugName { get => drugName; set => drugName = value; }
+        public int Storage { get => storage; set => storage = value; }
         public double Price { get => price; set => price = value; }
-
-        public MedicineDAO()
-        {
-        }
-
-        public MedicineDAO(int id, string drugname, int? storage, double? cost)
-        {
-            this.id = id;
-            this.DrugName = drugname;
-            this.Storage = storage;
-            this.Cost = cost;
-        }
-
-        public MedicineDAO(MedicineDAO medicineDAO, string usage, string unit, int amount)
-        {
-            this.id = medicineDAO.id;
-            this.DrugName = medicineDAO.DrugName;
-            this.Storage = medicineDAO.Storage;
-            this.Cost = medicineDAO.Cost;
-            this.Usage = usage;
-            this.Unit = unit;
-            this.Amount = amount;
-            this.Price = (double)medicineDAO.Cost * amount;
-        }
+        public int Id { get => id; set => id = value; }
 
         public static MedicineDAO getInstance()
         {
@@ -61,14 +37,20 @@ namespace ClinicAdmin.DAO
                 var entryPoint = (from m in context.Medicines
                                   select new
                                   {
-                                      id = m.id,
+                                      id = m.Id,
                                       drugname = m.DrugName,
                                       storage = m.Storage,
-                                      cost = m.Cost
+                                      cost = m.Price
                                   }).ToList();
                 foreach (var item in entryPoint)
                 {
-                    MedicineDAO medicine = new MedicineDAO(item.id, item.drugname, item.storage, item.cost);
+                    MedicineDAO medicine = new MedicineDAO()
+                    {
+                        Id = item.id, 
+                        DrugName = item.drugname, 
+                        Storage = item.storage, 
+                        Price = item.cost
+                    };
                     result.Add(medicine);
                 }
             }

@@ -6,29 +6,24 @@ using System.Threading.Tasks;
 using ClinicAdmin.DTO;
 namespace ClinicAdmin.DAO
 {
-    public class PatientDAO : Patient
+    public class PatientDAO
     {
         private static PatientDAO _instance;
-        private int status;
-        private int scheduleId;
+        private int id;
+        private string fullname;
+        private string address;
+        private string phone;
+        private string gender;
+        private int age;
+        private int weight;
 
-        public int Status { get => status; set => status = value; }
-        public int ScheduleId { get => scheduleId; set => scheduleId = value; }
-
-        public PatientDAO() { }
-
-        public PatientDAO(int id, string fullname, string address, string phone, int? weight, int? age, string gender, int? status, int scheduleId)
-        {
-            this.id = id;
-            this.FullName = fullname;
-            this.Address = address;
-            this.Phone = phone;
-            this.Weight = weight;
-            this.Age = age;
-            this.Gender = gender;
-            this.Status = (int)status;
-            this.ScheduleId = scheduleId;
-        }
+        public int Id { get => id; set => id = value; }
+        public string Fullname { get => fullname; set => fullname = value; }
+        public string Address { get => address; set => address = value; }
+        public string Phone { get => phone; set => phone = value; }
+        public string Gender { get => gender; set => gender = value; }
+        public int Age { get => age; set => age = value; }
+        public int Weight { get => weight; set => weight = value; }
 
         public static PatientDAO getInstance()
         {
@@ -37,64 +32,6 @@ namespace ClinicAdmin.DAO
                 _instance = new PatientDAO();
             }
             return _instance;
-        }
-
-        public List<PatientDAO> GetListPatient()
-        {
-            List<PatientDAO> result = new List<PatientDAO>();
-            using (ClinicAdminEntities context = new ClinicAdminEntities())
-            {
-                var entryPoint = (from pt in context.Patients
-                                  join sc in context.Schedules on pt.id equals sc.PatientId
-                                  select new
-                                  {
-                                      id = pt.id,
-                                      FullName = pt.FullName,
-                                      Address = pt.Address,
-                                      Phone = pt.Phone,
-                                      Weight = pt.Weight,
-                                      Age = pt.Age,
-                                      Gender = pt.Gender,
-                                      ScheduleId = sc.id,
-                                      Status = sc.Status
-                                  }).ToList();
-                foreach(var item in entryPoint)
-                {
-                    PatientDAO patient = new PatientDAO(item.id, item.FullName, item.Address, item.Phone, item.Weight, item.Age, item.Gender, item.Status, item.ScheduleId);
-                    result.Add(patient);
-                }
-            }
-            return result;
-        }
-
-        public List<PatientDAO> PatientSearch(string patientName, DateTime? dateFrom, DateTime? dateTo)
-        {
-            List<PatientDAO> result = new List<PatientDAO>();
-            using (ClinicAdminEntities context = new ClinicAdminEntities())
-            {
-                var entryPoint = (from pt in context.Patients
-                                  join sc in context.Schedules on pt.id equals sc.PatientId
-                                  where pt.FullName.Contains(patientName) && sc.DayExam >= dateFrom && sc.DayExam <= dateTo
-                                  select new
-                                  {
-                                      id = pt.id,
-                                      FullName = pt.FullName,
-                                      Address = pt.Address,
-                                      Phone = pt.Phone,
-                                      Weight = pt.Weight,
-                                      Age = pt.Age,
-                                      Gender = pt.Gender,
-                                      ScheduleId = sc.id,
-                                      Status = sc.Status
-                                  }).ToList();
-                foreach (var item in entryPoint)
-                {
-                    PatientDAO patient = new PatientDAO(item.id, item.FullName, item.Address, item.Phone, item.Weight, item.Age, item.Gender, item.Status, item.ScheduleId);
-                    result.Add(patient);
-                }
-            }
-
-            return result;
         }
     }
 }

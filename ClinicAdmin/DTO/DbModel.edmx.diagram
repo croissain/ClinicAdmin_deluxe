@@ -4,29 +4,27 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bf66a2df1c9343fd94c23ba87769aff2" Name="Diagram1">
-        <EntityTypeShape EntityType="ClinicAdminModel.DayReport" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicAdminModel.Has_role" Width="1.5" PointX="8" PointY="5.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicAdminModel.Invoice" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicAdminModel.Invoice_Medicine" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicAdminModel.MedicalCondition" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicAdminModel.Medicine" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicAdminModel.Patient" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicAdminModel.Regulation" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicAdminModel.Role" Width="1.5" PointX="5.75" PointY="6.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicAdminModel.Schedule" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicAdminModel.UnitMedicine" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicAdminModel.UsageMedicine" Width="1.5" PointX="3" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ClinicAdminModel.User" Width="1.5" PointX="5.75" PointY="8.625" IsExpanded="true" />
-        <AssociationConnector Association="ClinicAdminModel.Has_role_fk0" ManuallyRouted="false" />
-        <AssociationConnector Association="ClinicAdminModel.Has_role_fk1" ManuallyRouted="false" />
+      <Diagram DiagramId="12680126d4d54dd2bb96b7cfbeb87917" Name="Diagram1">
+        <EntityTypeShape EntityType="ClinicAdminModel.Appointment" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicAdminModel.DayReport" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicAdminModel.Invoice" Width="1.5" PointX="5.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicAdminModel.Medicine" Width="1.5" PointX="6" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicAdminModel.Patient" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicAdminModel.Prescription" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicAdminModel.Prescription_Medicine" Width="1.5" PointX="8.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicAdminModel.Regulation" Width="1.5" PointX="2.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicAdminModel.Role" Width="1.5" PointX="8.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicAdminModel.UnitMedicine" Width="1.5" PointX="6" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicAdminModel.UsageMedicine" Width="1.5" PointX="6" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ClinicAdminModel.User" Width="1.5" PointX="11" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="ClinicAdminModel.Appointment_fk0" ManuallyRouted="false" />
         <AssociationConnector Association="ClinicAdminModel.Invoice_fk0" ManuallyRouted="false" />
-        <AssociationConnector Association="ClinicAdminModel.Invoice_Medicine_fk1" ManuallyRouted="false" />
-        <AssociationConnector Association="ClinicAdminModel.Invoice_Medicine_fk0" ManuallyRouted="false" />
-        <AssociationConnector Association="ClinicAdminModel.Invoice_Medicine_fk2" ManuallyRouted="false" />
-        <AssociationConnector Association="ClinicAdminModel.Invoice_Medicine_fk3" ManuallyRouted="false" />
-        <AssociationConnector Association="ClinicAdminModel.MedicalCondition_fk0" ManuallyRouted="false" />
-        <AssociationConnector Association="ClinicAdminModel.Schedule_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicAdminModel.Prescription_Medicine_fk1" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicAdminModel.Prescription_fk2" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicAdminModel.Prescription_Medicine_fk0" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicAdminModel.Prescription_Medicine_fk2" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicAdminModel.Prescription_Medicine_fk3" ManuallyRouted="false" />
+        <AssociationConnector Association="ClinicAdminModel.User_fk0" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

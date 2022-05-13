@@ -17,22 +17,21 @@ namespace ClinicAdmin.DTO
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Patient()
         {
-            this.Invoices = new HashSet<Invoice>();
-            this.Schedules = new HashSet<Schedule>();
+            this.Appointments = new HashSet<Appointment>();
+            this.Prescriptions = new HashSet<Prescription>();
         }
     
-        public int id { get; set; }
+        public int Id { get; set; }
         public string FullName { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
-        public Nullable<int> Weight { get; set; }
-        public Nullable<int> Age { get; set; }
+        public int Weight { get; set; }
+        public int Age { get; set; }
         public string Gender { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Invoice> Invoices { get; set; }
-        public virtual MedicalCondition MedicalCondition { get; set; }
+        public virtual ICollection<Appointment> Appointments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Schedule> Schedules { get; set; }
+        public virtual ICollection<Prescription> Prescriptions { get; set; }
     }
 }

@@ -11,9 +11,9 @@ namespace ClinicAdmin.BUS
     public class HomeBUS
     {
         private static HomeBUS _instance;
-        public UserAccountDAO userAccount;
-        public List<PatientDAO> listPatients;
-        public List<MedicineDAO> listMedicines;
+        public UserDAO userAccount;
+        public List<AppointmentDAO> listPatients;
+        public List<Prescription_MedicineDAO> listMedicines;
 
         public static HomeBUS getInstance()
         {
@@ -26,23 +26,24 @@ namespace ClinicAdmin.BUS
 
         public void BUSLayer_Loaded()
         {
-            listPatients = PatientDAO.getInstance().GetListPatient();
-            listMedicines = new List<MedicineDAO>();
+            listPatients = AppointmentDAO.getInstance().GetListPatient();
+            listMedicines = new List<Prescription_MedicineDAO>();
         }
 
-        public bool CheckIn(PatientDAO patient)
+        public bool CheckIn(AppointmentDAO appointmentDAO)
         {
-            if(patient.Status == 1)
+            if (appointmentDAO.Status == 1)
             {
                 MessageBox.Show("Bệnh nhân này đã khám!", "Vào khám thất bại", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             else
             {
-                ScheduleDAO.getInstance().CheckIn(patient.id, patient.ScheduleId);
-                listPatients.Remove(patient);
+                AppointmentDAO.getInstance().CheckIn(appointmentDAO);
+                listPatients.Remove(appointmentDAO);
                 return true;
             }
+
         }
 
         public void PatientSearch(string patientName, DateTime? dateFrom, DateTime? dateTo)
@@ -54,7 +55,7 @@ namespace ClinicAdmin.BUS
             }
             dateFrom = dateFrom != null ? dateFrom : DateTime.MinValue;
             dateTo = dateTo != null ? dateTo : DateTime.MaxValue;
-            listPatients = PatientDAO.getInstance().PatientSearch(patientName, dateFrom, dateTo);
+            listPatients = AppointmentDAO.getInstance().PatientSearch(patientName, dateFrom, dateTo);
         }
     }
 }

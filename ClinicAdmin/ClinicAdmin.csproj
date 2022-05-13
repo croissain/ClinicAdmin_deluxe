@@ -80,15 +80,25 @@
     </ApplicationDefinition>
     <Compile Include="BUS\AccountBUS.cs" />
     <Compile Include="BUS\AddMedicineBUS.cs" />
+    <Compile Include="BUS\AddPatientBUS.cs" />
     <Compile Include="BUS\LoginBUS.cs" />
     <Compile Include="BUS\HomeBUS.cs" />
     <Compile Include="BUS\MainWindowBUS.cs" />
+    <Compile Include="DAO\AdminDAO.cs" />
+    <Compile Include="DAO\DoctorDAO.cs" />
+    <Compile Include="DAO\PrescriptionDAO.cs" />
+    <Compile Include="DAO\Prescription_MedicineDAO.cs" />
+    <Compile Include="DAO\StaffDAO.cs" />
+    <Compile Include="DAO\UserFactory.cs" />
     <Compile Include="DAO\MedicineDAO.cs" />
     <Compile Include="DAO\PatientDAO.cs" />
-    <Compile Include="DAO\ScheduleDAO.cs" />
+    <Compile Include="DAO\AppointmentDAO.cs" />
     <Compile Include="DAO\UnitMedicineDAO.cs" />
     <Compile Include="DAO\UsageMedicineDAO.cs" />
-    <Compile Include="DAO\UserAccountDAO.cs" />
+    <Compile Include="DAO\UserDAO.cs" />
+    <Compile Include="DTO\Appointment.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DTO\DayReport.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
@@ -107,16 +117,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DbModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DTO\Has_role.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DTO\Invoice.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DTO\Invoice_Medicine.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DTO\MedicalCondition.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\Medicine.cs">
@@ -125,13 +126,16 @@
     <Compile Include="DTO\Patient.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DTO\Prescription.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\Prescription_Medicine.cs">
+      <DependentUpon>DbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DTO\Regulation.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\Role.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DTO\Schedule.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DTO\UnitMedicine.cs">
@@ -143,9 +147,6 @@
     <Compile Include="DTO\User.cs">
       <DependentUpon>DbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DTO\usp_Login_Result.cs">
-      <DependentUpon>DbModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="GUI\AddMedicine.xaml.cs">
       <DependentUpon>AddMedicine.xaml</DependentUpon>
     </Compile>
@@ -155,6 +156,7 @@
     <Compile Include="GUI\AddUser.xaml.cs">
       <DependentUpon>AddUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RoleEnum.cs" />
     <Page Include="Assets\Icons.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -320,6 +322,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="DTO\DbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
