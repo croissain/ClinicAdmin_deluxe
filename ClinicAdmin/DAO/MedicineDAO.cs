@@ -14,7 +14,7 @@ namespace ClinicAdmin.DAO
         private string drugName;
         private int storage;
         private double price;
-        public double totalStorage = 0;
+        //public double totalStorage = 0;
 
         public string DrugName
         {
@@ -72,6 +72,7 @@ namespace ClinicAdmin.DAO
 
         public double GetTotalStorage()
         {
+            double totalStorage = 0;
             using (ClinicAdminEntities context = new ClinicAdminEntities())
             {
                 var entryPoint = (from m in context.Medicines
