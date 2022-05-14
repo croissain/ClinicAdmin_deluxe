@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -20,9 +21,15 @@ namespace ClinicAdmin.GUI
     /// </summary>
     public partial class AddPatient : Window
     {
+        private AddPatientBUS _addPatientBUS;
         public AddPatient()
         {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            _addPatientBUS = AddPatientBUS.getInstance();
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -39,7 +46,14 @@ namespace ClinicAdmin.GUI
             string address = txbAddress.Text;
             string phone = txbPhone.Text;
             DateTime? dayExam = dpkDayExam.SelectedDate;
+
+            _addPatientBUS.AddPatient(fullname, gender, age, weight, address, phone, dayExam, this);
         }
 
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
     }
 }

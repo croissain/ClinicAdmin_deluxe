@@ -25,7 +25,7 @@ namespace ClinicAdmin.DAO
                                       Email = us.Email,
                                       Phone = us.Phone,
                                       RoleId = us.RoleId
-                                  }).Take(1).FirstOrDefault();
+                                  }).FirstOrDefault();
                 switch(entryPoint.RoleId)
                 {
                     case (int)RoleEnum.ADMIN:

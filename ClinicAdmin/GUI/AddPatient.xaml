@@ -11,7 +11,8 @@
         AllowsTransparency="True"
         Height="700"
         Width="470"
-        Title="Thêm bệnh nhân mới">
+        Title="Thêm bệnh nhân mới"
+        Loaded="Window_Loaded">
     <Window.Background>
         <LinearGradientBrush StartPoint="0.5,0"
                              EndPoint="0.5,1">
@@ -108,7 +109,8 @@
                                    FontWeight="SemiBold"
                                    HorizontalAlignment="Left"></Label>
                             <TextBox x:Name="txbAge"
-                                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                     PreviewTextInput="NumberValidationTextBox"
+                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                      FontSize="20"
                                      Padding="15 10"
                                      Margin="0 0 0 10"
@@ -125,7 +127,8 @@
                                    FontWeight="SemiBold"
                                    HorizontalAlignment="Left"></Label>
                             <TextBox x:Name="txbWeight"
-                                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                     PreviewTextInput="NumberValidationTextBox"
+                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                      FontSize="20"
                                      Padding="15 10"
                                      Margin="0 0 0 10"

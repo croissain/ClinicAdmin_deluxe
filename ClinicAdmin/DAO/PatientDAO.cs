@@ -33,5 +33,26 @@ namespace ClinicAdmin.DAO
             }
             return _instance;
         }
+
+        public Patient AddPatient(PatientDAO patientDAO)
+        {
+            Patient result = null;
+            using (ClinicAdminEntities context = new ClinicAdminEntities())
+            {
+                var patient = new Patient() 
+                { 
+                    Id = patientDAO.Id, 
+                    FullName = patientDAO.Fullname,
+                    Address = patientDAO.Address,
+                    Age = patientDAO.Age,
+                    Phone = patientDAO.Phone,
+                    Weight = patientDAO.Weight,
+                    Gender = patientDAO.Gender
+                };
+                result = context.Patients.Add(patient);
+                context.SaveChanges();
+            }
+            return result;
+        }
     }
 }
