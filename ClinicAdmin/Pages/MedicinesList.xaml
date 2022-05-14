@@ -9,7 +9,8 @@
       Loaded="Page_Loaded">
 
     <Border Background="White"
-            CornerRadius="5">
+            CornerRadius="5"
+            Padding="20">
         <StackPanel Orientation="Vertical">
             <TextBlock Text="Danh sách thuốc/vật tư y tế"
                        FontSize="30"
@@ -49,7 +50,7 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Width="Auto"
-                                        DisplayMemberBinding="{Binding id}"
+                                        DisplayMemberBinding="{Binding Id}"
                                         Header="#" />
                         <GridViewColumn Width="400"
                                         DisplayMemberBinding="{Binding DrugName}"
@@ -59,7 +60,7 @@
                                         Header="Tồn kho" />
                         <GridViewColumn Width="Auto"
                                         DisplayMemberBinding="{Binding Price}"
-                                        Header="Giá thành/1 đơn vị" />
+                                        Header="Giá thành/đv" />
                     </GridView>
                 </ListView.View>
             </ListView>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ClinicAdmin.DTO;
 
 namespace ClinicAdmin.DAO
 {
@@ -17,6 +18,41 @@ namespace ClinicAdmin.DAO
                 _instance = new DoctorDAO();
             }
             return _instance;
+        }
+
+        public List<DoctorDAO> GetListDoctor()
+        {
+            List<DoctorDAO> result = new List<DoctorDAO>();
+            using (ClinicAdminEntities context = new ClinicAdminEntities())
+            {
+                var entryPoint = (from m in context.Users
+                                  where m.RoleId == 2
+                                  select new
+                                  {
+                                      id = m.Id,
+                                      Username = m.Username,
+                                      Password = m.Password,
+                                      Fullname = m.FullName,
+                                      Address = m.Address,
+                                      Email = m.Email,
+                                      Phone = m.Phone
+                                  }).ToList();
+                foreach (var item in entryPoint)
+                {
+                    DoctorDAO doctor = new DoctorDAO()
+                    {
+                        Id = item.id,
+                        Username = item.Username,
+                        Password = item.Password,
+                        Fullname = item.Fullname,
+                        Address = item.Address,
+                        Email = item.Email,
+                        Phone = item.Phone
+                    };
+                    result.Add(doctor);
+                }
+            }
+            return result;
         }
 
         public DoctorDAO() { }

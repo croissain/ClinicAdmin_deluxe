@@ -20,6 +20,41 @@ namespace ClinicAdmin.DAO
             return _instance;
         }
 
+        public List<AdminDAO> GetListAdmin()
+        {
+            List<AdminDAO> result = new List<AdminDAO>();
+            using (ClinicAdminEntities context = new ClinicAdminEntities())
+            {
+                var entryPoint = (from m in context.Users
+                                  where m.RoleId == 1
+                                  select new
+                                  {
+                                      id = m.Id,
+                                      Username = m.Username,
+                                      Password = m.Password,
+                                      Fullname = m.FullName,
+                                      Address = m.Address,
+                                      Email = m.Email,
+                                      Phone = m.Phone
+                                  }).ToList();
+                foreach (var item in entryPoint)
+                {
+                    AdminDAO admin = new AdminDAO()
+                    {
+                        Id = item.id,
+                        Username = item.Username,
+                        Password = item.Password,
+                        Fullname = item.Fullname,
+                        Address = item.Address,
+                        Email = item.Email,
+                        Phone = item.Phone
+                    };
+                    result.Add(admin);
+                }
+            }
+            return result;
+        }
+
         public AdminDAO() { }
 
         public AdminDAO(int id, string userName, string password, string fullname, string address, string email, string phone)

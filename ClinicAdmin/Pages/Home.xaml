@@ -483,8 +483,8 @@
                                         Header="#" />
                         <GridViewColumn DisplayMemberBinding="{Binding Patient.Fullname}"
                                         Header="Họ tên" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Patient.Age}"
-                                        Header="Tuổi" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Patient.Phone}"
+                                        Header="Số điện thoại" />
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -666,6 +666,7 @@
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                                                    BorderThickness="0"
                                                     Padding="12"
                                                     Width="35"
                                                     Height="35"

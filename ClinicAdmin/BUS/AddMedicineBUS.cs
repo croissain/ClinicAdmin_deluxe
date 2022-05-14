@@ -65,7 +65,6 @@ namespace ClinicAdmin.BUS
                     Cost = (double)(medicineDAO.Price * Int32.Parse(amount))
                 };
                 HomeBUS.getInstance().listMedicines.Add(medicine);
-                HomeBUS.getInstance().medicineStorage = medicine.Storage.ToString();
                 window.Close();
             }
         }
