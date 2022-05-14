@@ -10,7 +10,7 @@ namespace ClinicAdmin.BUS
     public class AccountBUS
     {
         private static AccountBUS instance;
-        public UserAccountDAO userAccount;
+        public UserDAO user;
 
         public static AccountBUS getInstance()
         {

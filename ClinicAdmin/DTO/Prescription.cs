@@ -12,20 +12,27 @@ namespace ClinicAdmin.DTO
     using System;
     using System.Collections.Generic;
     
-    public partial class Medicine
+    public partial class Prescription
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Medicine()
+        public Prescription()
         {
-            this.Prescription_Medicine = new HashSet<Prescription_Medicine>();
+            this.Invoices = new HashSet<Invoice>();
         }
     
         public int Id { get; set; }
-        public string DrugName { get; set; }
-        public int Storage { get; set; }
-        public double Price { get; set; }
+        public string Doctor { get; set; }
+        public string Staff { get; set; }
+        public Nullable<int> PatientId { get; set; }
+        public Nullable<System.DateTime> MedicalExamDay { get; set; }
+        public string Diagnose { get; set; }
+        public string MedicalHistory { get; set; }
+        public string Symptom { get; set; }
+        public string Note { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Prescription_Medicine> Prescription_Medicine { get; set; }
+        public virtual ICollection<Invoice> Invoices { get; set; }
+        public virtual Patient Patient { get; set; }
+        public virtual Prescription_Medicine Prescription_Medicine { get; set; }
     }
 }

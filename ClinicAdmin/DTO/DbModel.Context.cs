@@ -27,21 +27,20 @@ namespace ClinicAdmin.DTO
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Appointment> Appointments { get; set; }
         public virtual DbSet<DayReport> DayReports { get; set; }
-        public virtual DbSet<Has_role> Has_role { get; set; }
         public virtual DbSet<Invoice> Invoices { get; set; }
-        public virtual DbSet<Invoice_Medicine> Invoice_Medicine { get; set; }
-        public virtual DbSet<MedicalCondition> MedicalConditions { get; set; }
         public virtual DbSet<Medicine> Medicines { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }
+        public virtual DbSet<Prescription> Prescriptions { get; set; }
+        public virtual DbSet<Prescription_Medicine> Prescription_Medicine { get; set; }
         public virtual DbSet<Regulation> Regulations { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
-        public virtual DbSet<Schedule> Schedules { get; set; }
         public virtual DbSet<UnitMedicine> UnitMedicines { get; set; }
         public virtual DbSet<UsageMedicine> UsageMedicines { get; set; }
         public virtual DbSet<User> Users { get; set; }
     
-        public virtual ObjectResult<usp_Login_Result> usp_Login(string uname, string pass)
+        public virtual int usp_Login(string uname, string pass)
         {
             var unameParameter = uname != null ?
                 new ObjectParameter("uname", uname) :
@@ -51,7 +50,7 @@ namespace ClinicAdmin.DTO
                 new ObjectParameter("pass", pass) :
                 new ObjectParameter("pass", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_Login_Result>("usp_Login", unameParameter, passParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_Login", unameParameter, passParameter);
         }
     }
 }

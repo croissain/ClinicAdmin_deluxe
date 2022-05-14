@@ -12,19 +12,17 @@ namespace ClinicAdmin.DTO
     using System;
     using System.Collections.Generic;
     
-    public partial class Invoice_Medicine
+    public partial class Prescription_Medicine
     {
-        public int id { get; set; }
+        public int PrescriptionId { get; set; }
         public int MedicineId { get; set; }
-        public int InvoiceId { get; set; }
-        public Nullable<int> Amount { get; set; }
+        public Nullable<int> AmountDrug { get; set; }
         public Nullable<double> Cost { get; set; }
         public Nullable<int> Unit { get; set; }
         public Nullable<int> Usage { get; set; }
-        public Nullable<int> NumOfUse { get; set; }
     
-        public virtual Invoice Invoice { get; set; }
         public virtual Medicine Medicine { get; set; }
+        public virtual Prescription Prescription { get; set; }
         public virtual UnitMedicine UnitMedicine { get; set; }
         public virtual UsageMedicine UsageMedicine { get; set; }
     }

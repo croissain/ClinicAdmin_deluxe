@@ -17,13 +17,13 @@ namespace ClinicAdmin.DTO
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UnitMedicine()
         {
-            this.Invoice_Medicine = new HashSet<Invoice_Medicine>();
+            this.Prescription_Medicine = new HashSet<Prescription_Medicine>();
         }
     
-        public int id { get; set; }
-        public string name { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Invoice_Medicine> Invoice_Medicine { get; set; }
+        public virtual ICollection<Prescription_Medicine> Prescription_Medicine { get; set; }
     }
 }

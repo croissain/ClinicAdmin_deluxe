@@ -14,21 +14,13 @@ namespace ClinicAdmin.DTO
     
     public partial class Invoice
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Invoice()
-        {
-            this.Invoice_Medicine = new HashSet<Invoice_Medicine>();
-        }
-    
-        public int id { get; set; }
-        public int PatientId { get; set; }
+        public int Id { get; set; }
         public Nullable<double> TotalCost { get; set; }
-        public string Doctor { get; set; }
-        public string Staff { get; set; }
-        public string Note { get; set; }
+        public Nullable<double> ExaminationFee { get; set; }
+        public Nullable<double> DrugFee { get; set; }
+        public Nullable<System.DateTime> Created_at { get; set; }
+        public Nullable<int> PrescriptionId { get; set; }
     
-        public virtual Patient Patient { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Invoice_Medicine> Invoice_Medicine { get; set; }
+        public virtual Prescription Prescription { get; set; }
     }
 }

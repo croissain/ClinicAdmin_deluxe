@@ -103,7 +103,9 @@
                                Padding="5">
                             <TextBlock>Ngày khám:</TextBlock>
                         </Label>
-                        <TextBlock Text="" />
+                        <TextBlock x:Name="txblDayExam"
+                                   HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
                     </StackPanel>
                     <Button DockPanel.Dock="Right"
                             Style="{StaticResource MaterialDesignOutlinedButton}"
@@ -476,13 +478,13 @@
                 </ListView.ContextMenu>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Width="30"
-                                        DisplayMemberBinding="{Binding id}"
+                        <GridViewColumn Width="20"
+                                        DisplayMemberBinding="{Binding Id}"
                                         Header="#" />
-                        <GridViewColumn DisplayMemberBinding="{Binding FullName}"
+                        <GridViewColumn DisplayMemberBinding="{Binding Patient.Fullname}"
                                         Header="Họ tên" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Status}"
-                                        Header="Tình trạng" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Patient.Age}"
+                                        Header="Tuổi" />
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -627,7 +629,7 @@
                         <Label Content="Tổng loại thuốc: "
                                VerticalAlignment="Center"
                                HorizontalAlignment="Center" />
-                        <TextBlock Text="3"
+                        <TextBlock x:Name="txblTotalMedicine"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center" />
                     </StackPanel>
@@ -646,9 +648,8 @@
                     <ListView x:Name="lstvMedicines">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Width="200"
-                                                DisplayMemberBinding="{Binding DrugName}"
-                                                Header="Tên thuốc" />
+                                <GridViewColumn DisplayMemberBinding="{Binding DrugName}"
+                                                Header="Tên thuốc"/>
                                 <GridViewColumn DisplayMemberBinding="{Binding Unit}"
                                                 Header="Đơn vị" />
                                 <GridViewColumn DisplayMemberBinding="{Binding Amount}"

@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
-        Height="630"
+        Height="700"
         Width="470"
         Title="Thêm bệnh nhân mới">
     <Window.Background>
@@ -24,9 +24,7 @@
     <Grid>
         <StackPanel Margin="50">
             <Border Background="White"
-                    CornerRadius="5"
-                    Height="530">
-
+                    CornerRadius="5">
                 <DockPanel Margin="25 15"
                            LastChildFill="True">
 
@@ -56,6 +54,7 @@
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
                             <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
                         <StackPanel Grid.ColumnSpan="3"
@@ -66,7 +65,8 @@
                                    FontSize="13"
                                    FontWeight="SemiBold"
                                    HorizontalAlignment="Left"></Label>
-                            <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                            <TextBox x:Name="txbFullname"
+                                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                      FontSize="20"
                                      Padding="15 10"
                                      Margin="0 0 0 10"
@@ -83,13 +83,18 @@
                                    FontSize="13"
                                    FontWeight="SemiBold"
                                    HorizontalAlignment="Left"></Label>
-                            <RadioButton Margin="16 4 16 0"
+                            <RadioButton GroupName="rdbtnGender"
+                                         Name="rdbtnMale"
+                                         Content="Nam"
+                                         IsChecked="True"
+                                        Margin="16 4 16 0"
                                          Style="{DynamicResource MaterialDesignUserForegroundRadioButton}">
-                                Nam
                             </RadioButton>
-                            <RadioButton Margin="16 4 16 0"
+                            <RadioButton GroupName="rdbtnGender"
+                                         Name="rdbtnFemale"
+                                         Content="Nữ"
+                                        Margin="16 4 16 0"
                                          Style="{DynamicResource MaterialDesignUserForegroundRadioButton}">
-                                Nữ
                             </RadioButton>
                         </StackPanel>
 
@@ -102,7 +107,8 @@
                                    FontSize="13"
                                    FontWeight="SemiBold"
                                    HorizontalAlignment="Left"></Label>
-                            <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                            <TextBox x:Name="txbAge"
+                                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                      FontSize="20"
                                      Padding="15 10"
                                      Margin="0 0 0 10"
@@ -118,7 +124,8 @@
                                    FontSize="13"
                                    FontWeight="SemiBold"
                                    HorizontalAlignment="Left"></Label>
-                            <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                            <TextBox x:Name="txbWeight"
+                                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                      FontSize="20"
                                      Padding="15 10"
                                      Margin="0 0 0 10"
@@ -133,7 +140,8 @@
                                    FontSize="13"
                                    FontWeight="SemiBold"
                                    HorizontalAlignment="Left"></Label>
-                            <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                            <TextBox x:Name="txbAddress"
+                                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                      FontSize="20"
                                      Padding="15 10"
                                      Margin="0 0 0 10"
@@ -147,11 +155,28 @@
                                    FontSize="13"
                                    FontWeight="SemiBold"
                                    HorizontalAlignment="Left"></Label>
-                            <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                            <TextBox x:Name="txbPhone"
+                                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                      FontSize="20"
                                      Padding="15 10"
                                      Margin="0 0 0 10"
                                      BorderBrush="#68b2a0"></TextBox>
+                        </StackPanel>
+                        <StackPanel Grid.ColumnSpan="3"
+                                    Grid.Row="4"
+                                    Orientation="Vertical">
+
+                            <Label Content="Ngày khám"
+                                   FontSize="13"
+                                   FontWeight="SemiBold"
+                                   HorizontalAlignment="Left"></Label>
+                            
+                            <DatePicker x:Name="dpkDayExam"
+                                    FontSize="20"
+                                    Padding="15 10"
+                                    Margin="0 0 0 10"
+                                    BorderBrush="#68b2a0"
+                                    Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
                         </StackPanel>
                     </Grid>
                     <StackPanel DockPanel.Dock="Bottom"
@@ -176,7 +201,7 @@
                                 Width="150"
                                 Height="45"
                                 Background="#68b2a0"
-                                Foreground="White"></Button>
+                                Foreground="White" Click="AddButton_Click"></Button>
                     </StackPanel>
                 </DockPanel>
             </Border>
