@@ -43,7 +43,6 @@ namespace ClinicAdmin.BUS
                 listPatients.Remove(appointmentDAO);
                 return true;
             }
-
         }
 
         //public bool CheckOut(PatientDAO patient)
@@ -62,6 +61,22 @@ namespace ClinicAdmin.BUS
             dateFrom = dateFrom != null ? dateFrom : DateTime.MinValue;
             dateTo = dateTo != null ? dateTo : DateTime.MaxValue;
             listPatients = AppointmentDAO.getInstance().PatientSearch(patientName, dateFrom, dateTo);
+        }
+
+        public string GetTotalStorage()
+        {
+            string result = "";
+            double totalStorage = MedicineDAO.getInstance().GetTotalStorage();
+            if (totalStorage >= 100000)
+            {
+                totalStorage /= 1000;
+                result = totalStorage.ToString() + 'k';
+            }
+            else
+            {
+                result = totalStorage.ToString();
+            }
+            return result;
         }
     }
 }

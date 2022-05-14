@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ClinicAdmin.DAO
 {
@@ -26,7 +27,7 @@ namespace ClinicAdmin.DAO
             using (ClinicAdminEntities context = new ClinicAdminEntities())
             {
                 var entryPoint = (from m in context.Users
-                                  where m.RoleId == 1
+                                  where m.RoleId == (int)RoleEnum.ADMIN
                                   select new
                                   {
                                       id = m.Id,
@@ -80,12 +81,14 @@ namespace ClinicAdmin.DAO
 
         public override bool AddPatient(PatientDAO patientDAO)
         {
-            throw new NotImplementedException();
+            MessageBox.Show("Vai trò của bạn không thể thực hiện chức năng này!", "Quyền không khả dụng", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return false;
         }
 
         public override bool AddPrescription()
         {
-            throw new NotImplementedException();
+            MessageBox.Show("Vai trò của bạn không thể thực hiện chức năng này!", "Quyền không khả dụng", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return false;
         }
 
         public override string GetRole()

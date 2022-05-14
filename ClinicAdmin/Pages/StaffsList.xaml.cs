@@ -1,4 +1,4 @@
-﻿using ClinicAdmin.DAO;
+﻿using ClinicAdmin.BUS;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -22,6 +22,7 @@ namespace ClinicAdmin.Pages
     /// </summary>
     public partial class StaffsList : Page
     {
+        private StaffListBUS _staffListBUS;
         public StaffsList()
         {
             InitializeComponent();
@@ -29,14 +30,11 @@ namespace ClinicAdmin.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            var listDoctor = DoctorDAO.getInstance().GetListDoctor();
-            lsvDoctor.ItemsSource = listDoctor;
-
-            var listStaff = StaffDAO.getInstance().GetListStaff();
-            lsvStaff.ItemsSource = listStaff;
-
-            var listAdmin = AdminDAO.getInstance().GetListAdmin();
-            lsvAdmin.ItemsSource = listAdmin;
+            _staffListBUS = StaffListBUS.getInstance();
+            _staffListBUS.BUSLayer_Loaded();
+            lsvDoctor.ItemsSource = _staffListBUS.listDoctors;
+            lsvAdmin.ItemsSource = _staffListBUS.listAdmins;
+            lsvStaff.ItemsSource = _staffListBUS.listStaffs;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
