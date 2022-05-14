@@ -58,6 +58,7 @@ namespace ClinicAdmin.BUS
             {
                 MedicineDAO medicine = new MedicineDAO(medicineDAO, usageDAO.name, unitDAO.name, Int32.Parse(amount));
                 HomeBUS.getInstance().listMedicines.Add(medicine);
+                HomeBUS.getInstance().medicineStorage = medicine.Storage.ToString();
                 window.Close();
             }
         }

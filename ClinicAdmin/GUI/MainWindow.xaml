@@ -9,7 +9,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Height="820"
-        Width="1440"
+        Width="1460"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -301,7 +301,7 @@
                     </Grid>-->
                     <Frame Grid.Row="1"
                            Name="fContainer"
-                           Margin="10"
+                           Margin="20"
                            NavigationUIVisibility="Hidden">
                     </Frame>
 

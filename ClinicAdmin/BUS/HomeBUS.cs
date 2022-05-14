@@ -14,6 +14,7 @@ namespace ClinicAdmin.BUS
         public UserAccountDAO userAccount;
         public List<PatientDAO> listPatients;
         public List<MedicineDAO> listMedicines;
+        public string medicineStorage;
 
         public static HomeBUS getInstance()
         {
@@ -44,6 +45,12 @@ namespace ClinicAdmin.BUS
                 return true;
             }
         }
+
+        //public bool CheckOut(PatientDAO patient)
+        //{
+        //        ScheduleDAO.getInstance().CheckOut(patient.id, patient.ScheduleId);
+        //        return true;
+        //}
 
         public void PatientSearch(string patientName, DateTime? dateFrom, DateTime? dateTo)
         {

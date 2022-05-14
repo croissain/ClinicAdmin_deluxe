@@ -44,11 +44,18 @@ namespace ClinicAdmin.Pages
 
         private void AddMedicine_Click(object sender, RoutedEventArgs e)
         {
-            AddMedicine dialog = new AddMedicine();
-            dialog.ShowDialog();
-            lstvMedicines.ItemsSource = null;
-            lstvMedicines.Items.Clear();
-            lstvMedicines.ItemsSource = _homeBUS.listMedicines;
+            if (txblFullname.Text != "")
+            {
+                AddMedicine dialog = new AddMedicine();
+                dialog.ShowDialog();
+                lstvMedicines.ItemsSource = null;
+                lstvMedicines.Items.Clear();
+                lstvMedicines.ItemsSource = _homeBUS.listMedicines;
+            }
+            else
+            {
+                MessageBox.Show("Hãy chọn bệnh nhân trước", "Thêm thuốc không thành công", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void AddPatient_Click(object sender, RoutedEventArgs e)
@@ -67,7 +74,7 @@ namespace ClinicAdmin.Pages
         {
             var patient = lsvPatient.SelectedItem as PatientDAO;
 
-            if(_homeBUS.CheckIn(patient))
+            if (_homeBUS.CheckIn(patient))
             {
                 txblFullname.Text = patient.FullName;
                 txblAge.Text = patient.Age.ToString();
@@ -84,6 +91,8 @@ namespace ClinicAdmin.Pages
         private void Remove_MenuItem_Click(object sender, RoutedEventArgs e)
         {
             var patient = lsvPatient.SelectedItem as PatientDAO;
+            //_homeBUS.CheckOut(patient);
+
             _homeBUS.listPatients.Remove(patient);
             lsvPatient.ItemsSource = null;
             lsvPatient.Items.Clear();
@@ -104,7 +113,11 @@ namespace ClinicAdmin.Pages
 
         private void btnClearSearch_Click(object sender, RoutedEventArgs e)
         {
+            txbPatientName.Text = "";
+            dpkFrom.SelectedDate = null;
+            dpkTo.SelectedDate = null;
 
+            btnSearch_Click(sender, e);
         }
 
         private void btnRemoveMedicine_Click(object sender, RoutedEventArgs e)

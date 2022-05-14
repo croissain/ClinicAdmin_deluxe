@@ -229,10 +229,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Invoice.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\MedicinesList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -270,9 +266,6 @@
     </Compile>
     <Compile Include="Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Invoice.xaml.cs">
-      <DependentUpon>Invoice.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MedicinesList.xaml.cs">
       <DependentUpon>MedicinesList.xaml</DependentUpon>

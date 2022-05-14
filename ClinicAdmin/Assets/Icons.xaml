@@ -60,9 +60,14 @@
     <!-- Icon Button -->
     <PathGeometry x:Key="plus"
                   Figures="M11,3L11,11 3,11 3,13 11,13 11,21 13,21 13,13 21,13 21,11 13,11 13,3 11,3z" />
+    <PathGeometry x:Key="account-minus"
+                  Figures="M15,14C12.33,14 7,15.33 7,18V20H23V18C23,15.33 17.67,14 15,14M1,10V12H9V10M15,12A4,4 0 0,0 19,8A4,4 0 0,0 15,4A4,4 0 0,0 11,8A4,4 0 0,0 15,12Z" />
+    <PathGeometry x:Key="briefcase-plus"
+                  Figures="M10,2H14A2,2 0 0,1 16,4V6H20A2,2 0 0,1 22,8V13.53C21.42,13 20.75,12.6 20,12.34V8H4V19H12.08C12.2,19.72 12.45,20.39 12.8,21H4A2,2 0 0,1 2,19V8A2,2 0 0,1 4,6H8V4A2,2 0 0,1 10,2M14,6V4H10V6H14M14,17H17V14H19V17H22V19H19V22H17V19H14V17Z" />
     <PathGeometry x:Key="more"
                   Figures="M6,10A2,2,0,0,0,4,12A2,2,0,0,0,6,14A2,2,0,0,0,8,12A2,2,0,0,0,6,10z M12,10A2,2,0,0,0,10,12A2,2,0,0,0,12,14A2,2,0,0,0,14,12A2,2,0,0,0,12,10z M18,10A2,2,0,0,0,16,12A2,2,0,0,0,18,14A2,2,0,0,0,20,12A2,2,0,0,0,18,10z" />
 
+    
     <!-- Icons | Minimize | Maximize | Restore | Close -->
     <PathGeometry x:Key="minimize"
                   Figures="M19 13H5a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2z" />
