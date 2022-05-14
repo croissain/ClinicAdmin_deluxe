@@ -24,6 +24,7 @@ namespace ClinicAdmin.Pages
     public partial class Home : Page
     {
         private HomeBUS _homeBUS;
+        private MedicineBUS _medicineBUS;
 
         public Home()
         {
@@ -41,6 +42,17 @@ namespace ClinicAdmin.Pages
             _homeBUS.BUSLayer_Loaded();
             lsvPatient.ItemsSource = _homeBUS.listPatients;
             txblDayExam.Text = DateTime.Today.ToShortDateString();
+
+            _medicineBUS = MedicineBUS.getInstance();
+            double totalStorage = MedicineDAO.getInstance().GetTotalStorage();
+            if (totalStorage >= 100000)
+            {
+                totalStorage /= 1000;
+                txblMedicineStorage.Text = totalStorage.ToString() + 'k';
+            }else
+            {
+                txblMedicineStorage.Text = totalStorage.ToString();
+            }
         }
 
         private void AddMedicine_Click(object sender, RoutedEventArgs e)

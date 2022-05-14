@@ -84,6 +84,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BUS\MedicineBUS.cs" />
     <Compile Include="BUS\AccountBUS.cs" />
     <Compile Include="BUS\AddMedicineBUS.cs" />
     <Compile Include="BUS\AddPatientBUS.cs" />

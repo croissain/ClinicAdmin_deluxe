@@ -14,11 +14,24 @@ namespace ClinicAdmin.DAO
         private string drugName;
         private int storage;
         private double price;
+        public double totalStorage = 0;
 
-        public string DrugName { get => drugName; set => drugName = value; }
-        public int Storage { get => storage; set => storage = value; }
-        public double Price { get => price; set => price = value; }
-        public int Id { get => id; set => id = value; }
+        public string DrugName
+        {
+            get => drugName; set => drugName = value;
+        }
+        public int Storage
+        {
+            get => storage; set => storage = value;
+        }
+        public double Price
+        {
+            get => price; set => price = value;
+        }
+        public int Id
+        {
+            get => id; set => id = value;
+        }
 
         public static MedicineDAO getInstance()
         {
@@ -46,15 +59,35 @@ namespace ClinicAdmin.DAO
                 {
                     MedicineDAO medicine = new MedicineDAO()
                     {
-                        Id = item.id, 
-                        DrugName = item.drugname, 
-                        Storage = item.storage, 
+                        Id = item.id,
+                        DrugName = item.drugname,
+                        Storage = item.storage,
                         Price = item.cost
                     };
                     result.Add(medicine);
                 }
             }
             return result;
+        }
+
+        public double GetTotalStorage()
+        {
+            using (ClinicAdminEntities context = new ClinicAdminEntities())
+            {
+                var entryPoint = (from m in context.Medicines
+                                  select new
+                                  {
+                                      id = m.Id,
+                                      drugname = m.DrugName,
+                                      storage = m.Storage,
+                                      cost = m.Price
+                                  }).ToList();
+                foreach (var item in entryPoint)
+                {
+                    totalStorage += item.storage;
+                }
+            }
+            return totalStorage;
         }
     }
 }
