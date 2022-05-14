@@ -478,7 +478,7 @@
                 </ListView.ContextMenu>
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Width="20"
+                        <GridViewColumn Width="30"
                                         DisplayMemberBinding="{Binding Id}"
                                         Header="#" />
                         <GridViewColumn DisplayMemberBinding="{Binding Patient.Fullname}"

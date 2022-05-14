@@ -135,5 +135,22 @@ namespace ClinicAdmin.DAO
             }
             return result;
         }
+
+        public Appointment AddApointment(DateTime dayExam, int patientId)
+        {
+            Appointment result = null;
+            using (ClinicAdminEntities context = new ClinicAdminEntities())
+            {
+                var appointment = new Appointment() 
+                { 
+                    PatientId = patientId, 
+                    Status = 0,
+                    AppointmentDay = dayExam
+                };
+                result = context.Appointments.Add(appointment);
+                context.SaveChanges();
+            }
+            return result;
+        }
     }
 }
