@@ -105,7 +105,7 @@
                         </Label>
                         <TextBlock x:Name="txblDayExam"
                                    HorizontalAlignment="Center"
-                               VerticalAlignment="Center"/>
+                                   VerticalAlignment="Center" />
                     </StackPanel>
                     <Button DockPanel.Dock="Right"
                             Style="{StaticResource MaterialDesignOutlinedButton}"
@@ -341,6 +341,7 @@
                         </Grid.RowDefinitions>
                         <Border Grid.Row="0"
                                 Margin="5"
+                                Padding="5"
                                 CornerRadius="2 25 2 2">
                             <Border.Background>
                                 <LinearGradientBrush EndPoint="1.5,1"
@@ -363,7 +364,7 @@
                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"
                                            Foreground="White"
-                                           Margin="25,0,0,0" />
+                                           Margin="10,0,0,0" />
                                     <TextBlock Text="120/80 mmHg"
                                                HorizontalAlignment="Left"
                                                VerticalAlignment="Center"
@@ -376,7 +377,7 @@
                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"
                                            Foreground="White"
-                                           Margin="25,0,0,0" />
+                                           Margin="10,0,0,0" />
                                     <TextBlock Text="37 *C"
                                                HorizontalAlignment="Left"
                                                VerticalAlignment="Center"
@@ -389,7 +390,7 @@
                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"
                                            Foreground="White"
-                                           Margin="25,0,0,0" />
+                                           Margin="10,0,0,0" />
                                     <TextBlock Text="200 lần/phút"
                                                HorizontalAlignment="Left"
                                                VerticalAlignment="Center"
@@ -402,7 +403,7 @@
                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"
                                            Foreground="White"
-                                           Margin="25,0,0,0" />
+                                           Margin="10,0,0,0" />
                                     <TextBlock Text="100 lần/phút"
                                                HorizontalAlignment="Left"
                                                VerticalAlignment="Center"
@@ -423,7 +424,7 @@
                                 </LinearGradientBrush>
                             </Border.Background>
                             <StackPanel Orientation="Horizontal"
-                                        Margin="25 0 0 0">
+                                        Margin="10 0 0 0">
                                 <Label Content="Vật tư y tế/ Thuốc tồn: "
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center"
@@ -523,14 +524,14 @@
                             <StackPanel Grid.Row="1"
                                         Grid.Column="0"
                                         Orientation="Vertical"
-                                        VerticalAlignment="Center">
-                                <Label Content="Y, BS: "
+                                        VerticalAlignment="Top">
+                                <Label Content="Y, Bác sĩ: "
                                        Foreground="{DynamicResource TertiaryIconColor}"
                                        FontSize="14"
                                        FontWeight="SemiBold"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center" />
-                                <TextBlock Text="Oh Se Hun"
+                                <TextBox Text=""
                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"
                                            FontSize="14"
@@ -539,7 +540,7 @@
                             <StackPanel Grid.Row="1"
                                         Grid.Column="1"
                                         Orientation="Vertical"
-                                        VerticalAlignment="Center">
+                                        VerticalAlignment="Top">
                                 <Label Content="Nhân viên lập hóa đơn: "
                                        Foreground="{DynamicResource TertiaryIconColor}"
                                        FontSize="14"
@@ -648,19 +649,20 @@
                     <ListView x:Name="lstvMedicines">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn DisplayMemberBinding="{Binding DrugName}"
-                                                Header="Tên thuốc"/>
+                                <GridViewColumn Width="200"
+                                                DisplayMemberBinding="{Binding Medicine.DrugName}"
+                                                Header="Tên thuốc" />
                                 <GridViewColumn DisplayMemberBinding="{Binding Unit}"
                                                 Header="Đơn vị" />
-                                <GridViewColumn DisplayMemberBinding="{Binding Amount}"
+                                <GridViewColumn DisplayMemberBinding="{Binding AmountDrug}"
                                                 Header="Số lượng" />
-                                <GridViewColumn DisplayMemberBinding="{Binding Cost}"
+                                <GridViewColumn DisplayMemberBinding="{Binding Medicine.Price}"
                                                 Header="Giá bán" />
                                 <GridViewColumn Width="150"
                                                 DisplayMemberBinding="{Binding Usage}"
                                                 Header="Cách dùng" />
                                 <GridViewColumn Width="150"
-                                                DisplayMemberBinding="{Binding Price}"
+                                                DisplayMemberBinding="{Binding Cost}"
                                                 Header="Thành tiền" />
                                 <GridViewColumn Header="Xóa">
                                     <GridViewColumn.CellTemplate>
