@@ -43,6 +43,7 @@
                             <RowDefinition Height="60" />
                             <RowDefinition Height="70" />
                             <RowDefinition Height="*" />
+                            <RowDefinition Height="60" />
                         </Grid.RowDefinitions>
 
                         <Grid Grid.Row="0">
@@ -83,7 +84,8 @@
                                                               Offset="1" />
                                             </LinearGradientBrush>
                                         </Border.Background>
-                                        <TextBlock Text="OS"
+                                        <TextBlock x:Name="txblUserInitial" 
+                                                   Text=""
                                                    Foreground="White"
                                                    FontSize="22"
                                                    FontWeight="SemiBold"
@@ -94,11 +96,14 @@
 
                                     <StackPanel Margin="20 0 0 0"
                                                 VerticalAlignment="Center">
-                                        <TextBlock Text="Oh Sehun"
+                                        <TextBlock x:Name="txblUserName"
+                                                   Text=""
                                                    FontSize="15"
                                                    Margin="0 0 0 5"
-                                                   Foreground="White" />
-                                        <TextBlock Text="Administrator"
+                                                   Foreground="White"
+                                                   TextWrapping="WrapWithOverflow"/>
+                                        <TextBlock x:Name="txblUserRole"
+                                                   Text=""
                                                    FontSize="11"
                                                    Margin="0 0 0 5"
                                                    Foreground="#e0ecde" />
@@ -164,29 +169,17 @@
                                                Text="Tài Khoản"
                                                VerticalAlignment="Center" />
                             </Button>
-                            <Button x:Name="btnBilling"
+    
+                            <Button x:Name="btnReport"
                                     Style="{DynamicResource PopupButtonStyle}"
-                                    MouseEnter="btnBilling_MouseEnter"
-                                    MouseLeave="btnBilling_MouseLeave"
-                                    Click="btnBilling_Click">
-                                <ctls:MenuItem GroupName="MenuItem"
-                                               IndicatorBrush="{DynamicResource PrimaryGreenColor}"
-                                               Icon="{DynamicResource billing}"
-                                               IconWidth="16"
-                                               Text="Hóa Đơn"
-                                               VerticalAlignment="Center" />
-                            </Button>
-
-                            <Button x:Name="btnChart"
-                                    Style="{DynamicResource PopupButtonStyle}"
-                                    MouseEnter="btnBilling_MouseEnter"
-                                    MouseLeave="btnBilling_MouseLeave"
-                                    Click="btnChart_Click">
+                                    MouseEnter="btnReport_MouseEnter"
+                                    MouseLeave="btnReport_MouseLeave"
+                                    Click="btnReport_Click">
                                 <ctls:MenuItem GroupName="MenuItem"
                                                IndicatorBrush="{DynamicResource PrimaryGreenColor}"
                                                Icon="{DynamicResource chart}"
                                                IconWidth="16"
-                                               Text="Hóa Đơn"
+                                               Text="Thống kê"
                                                VerticalAlignment="Center" />
                             </Button>
                         </StackPanel>
@@ -200,6 +193,17 @@
                                             Foreground="{DynamicResource PrimaryTextColor}" />
                         </Popup>
 
+                        <Button Grid.Row="3"
+                                x:Name="btnLogout"
+                                Style="{DynamicResource PopupButtonStyle}"
+                                Click="btnLogout_Click">
+                            <ctls:MenuItem GroupName="MenuItem"
+                                           IndicatorBrush="{DynamicResource PrimaryGreenColor}"
+                                           Icon="{DynamicResource log-out}"
+                                           IconWidth="16"
+                                           Text="Đăng xuất"
+                                           VerticalAlignment="Center" />
+                        </Button>
                     </Grid>
                 </Border>
 
@@ -249,56 +253,6 @@
                         </ToggleButton.Triggers>
                     </ToggleButton>
 
-                    <!--<Grid Grid.Row="1"
-                          Margin="30">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*" />
-                            <ColumnDefinition Width="5*" />
-                        </Grid.ColumnDefinitions>
-                        <DockPanel>
-                            <StackPanel DockPanel.Dock="Top"
-                                        Height="Auto">
-
-                                <TextBlock Text="XIN CHÀO"
-                                           FontSize="44"
-                                           FontWeight="Black"
-                                           Margin="0 0 0 20"
-                                           Foreground="{StaticResource TertiaryIconColor}" />
-
-                                <Border Background="{DynamicResource TertiaryIconColor}"
-                                        CornerRadius="5"
-                                        Height="10"
-                                        Width="150"
-                                        HorizontalAlignment="Left"
-                                        Margin="0 0 0 20" />
-
-                                <TextBlock Text="Clinic&#x0a;   Admin"
-                                           FontSize="90"
-                                           FontFamily="Montserrat"
-                                           FontWeight="Bold"
-                                           Foreground="{StaticResource QuaternaryIconColor}" />
-                                <TextBlock Text="Giải pháp quản lý phòng mạch hàng đầu Việt Nam"
-                                           FontSize="16"
-                                           Foreground="{StaticResource QuaternaryIconColor}" />
-
-                            </StackPanel>
-                            <StackPanel DockPanel.Dock="Bottom">
-                                <TextBlock DockPanel.Dock="Bottom"
-                                           Text="Nhóm tác giả:" />
-                                <TextBlock DockPanel.Dock="Bottom"
-                                           Text="19120457 - Trần Minh Bảo" />
-                                <TextBlock DockPanel.Dock="Bottom"
-                                           Text="19120575 - Nguyễn Đức Mạnh" />
-                                <TextBlock DockPanel.Dock="Bottom"
-                                           Text="19120671 - Lê Nguyễn Nhất Thọ" />
-                            </StackPanel>
-                            <TextBlock DockPanel.Dock="Bottom"
-                                       Text="&#x0a;" />
-                        </DockPanel>
-                        <Image Grid.Column="1"
-                               Source="/Assets/Images/Welcome.png"
-                               Opacity="0.8" />
-                    </Grid>-->
                     <Frame Grid.Row="1"
                            Name="fContainer"
                            Margin="20"

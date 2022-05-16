@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
+using ClinicAdmin.GUI;
 using ClinicAdmin.BUS;
 
 namespace ClinicAdmin
@@ -23,15 +24,55 @@ namespace ClinicAdmin
     public partial class MainWindow : Window
     {
         private MainWindowBUS _mainWindowBUS;
+        private AccountBUS _accountBUS;
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        public string IntialName(string name)
+        {
+            string FirstIntial = name.Substring(0, 1);
+            string LastIntial = "";
+            for (int i = name.Length - 1; i > 0; i--)
+            {
+                if (name[i] == ' ')
+                {
+                    LastIntial = name[i+1].ToString();
+                    break;
+                }
+            }
+            return FirstIntial + LastIntial;
+        }
+
+        public string LongNameBeautify(string name)
+        {
+            string result = name;
+            if (result.Length > 15)
+            {
+                for (int i = result.Length / 2 - 1; i < result.Length - 1; i++)
+                {
+                    if (result[i] == ' ')
+                    {
+                        result = result.Remove(i,1).Insert(i, "\n");
+                        break;
+                    }
+                }
+            }
+            return result;
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             _mainWindowBUS = MainWindowBUS.getInstance();
+            _accountBUS = AccountBUS.getInstance();
+            if (_accountBUS.user != null)
+            {
+                txblUserInitial.Text = IntialName(_accountBUS.user.Fullname);
+                txblUserName.Text = LongNameBeautify(_accountBUS.user.Fullname);
+                txblUserRole.Text = _accountBUS.user.GetRole();
+            }
             fContainer.Navigate(new System.Uri("Pages/Welcome.xaml", UriKind.RelativeOrAbsolute));
         }
 
@@ -53,7 +94,7 @@ namespace ClinicAdmin
             }
         }
 
-        // MacOS UI cheap moment
+        #region MacOS UI cheap moment
         // Button Close | Minimize | Restore
         private void WindowButton_Close_Click(object sender, RoutedEventArgs e)
         {
@@ -72,13 +113,14 @@ namespace ClinicAdmin
             else
                 WindowState = WindowState.Normal;
         }
+        #endregion
 
         private void BG_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Tg_Btn.IsChecked = false;
         }
 
-        // Start: MenuLeft PopupButton //
+        #region MenuLeft PopupButton
         private void btnHome_MouseEnter(object sender, MouseEventArgs e)
         {
             if (Tg_Btn.IsChecked == false)
@@ -147,24 +189,25 @@ namespace ClinicAdmin
             Popup.IsOpen = false;
         }
 
-        private void btnBilling_MouseEnter(object sender, MouseEventArgs e)
+        private void btnReport_MouseEnter(object sender, MouseEventArgs e)
         {
             if (Tg_Btn.IsChecked == false)
             {
-                Popup.PlacementTarget = btnBilling;
+                Popup.PlacementTarget = btnReport;
                 Popup.Placement = PlacementMode.Right;
                 Popup.IsOpen = true;
-                Header.PopupText.Text = "Hóa Đơn";
+                Header.PopupText.Text = "Thống Kê";
             }
         }
 
-        private void btnBilling_MouseLeave(object sender, MouseEventArgs e)
+        private void btnReport_MouseLeave(object sender, MouseEventArgs e)
         {
             Popup.Visibility = Visibility.Collapsed;
             Popup.IsOpen = false;
         }
-        // End: MenuLeft PopupButton //
+        #endregion
 
+        #region Sidebar Tabs Click
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
             fContainer.Navigate(new System.Uri("Pages/Home.xaml", UriKind.RelativeOrAbsolute));
@@ -185,16 +228,17 @@ namespace ClinicAdmin
             fContainer.Navigate(new System.Uri("Pages/Account.xaml", UriKind.RelativeOrAbsolute));
         }
 
-        private void btnBilling_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void btnChart_Click(object sender, RoutedEventArgs e)
+        private void btnReport_Click(object sender, RoutedEventArgs e)
         {
             fContainer.Navigate(new System.Uri("Pages/Chart.xaml", UriKind.RelativeOrAbsolute));
         }
+        #endregion
 
-
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+            Login dialog = new Login();
+            this.Close();
+            dialog.ShowDialog();
+        }
     }
 }
