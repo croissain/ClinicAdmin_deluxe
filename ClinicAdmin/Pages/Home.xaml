@@ -297,7 +297,8 @@
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center"
                                Foreground="#FF639F8D"></Label>
-                        <TextBox Grid.Row="1"
+                        <TextBox x:Name="txblSymptom"
+                                Grid.Row="1"
                                  Grid.Column="1"
                                  Style="{StaticResource MaterialDesignTextBoxBase}"
                                  BorderBrush="#FF639F8D"
@@ -310,7 +311,8 @@
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center"
                                Foreground="#FF639F8D"></Label>
-                        <TextBox Grid.Row="2"
+                        <TextBox x:Name="txblMedicalHistory"
+                                Grid.Row="2"
                                  Grid.Column="1"
                                  Style="{StaticResource MaterialDesignTextBoxBase}"
                                  BorderBrush="#FF639F8D"
@@ -323,7 +325,8 @@
                                HorizontalAlignment="Left"
                                VerticalAlignment="Center"
                                Foreground="#FF639F8D"></Label>
-                        <TextBox Grid.Row="3"
+                        <TextBox x:Name="txblDiagnose"
+                                Grid.Row="3"
                                  Grid.Column="1"
                                  Style="{StaticResource MaterialDesignTextBoxBase}"
                                  BorderBrush="#FF639F8D"
@@ -515,7 +518,8 @@
                                 <RowDefinition Height="1*" />
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
-                            <TextBox Grid.Row="0"
+                            <TextBox x:Name="txbNote"
+                                    Grid.Row="0"
                                      Grid.ColumnSpan="2"
                                      materialDesign:HintAssist.Hint="Lời dặn:"
                                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -531,7 +535,7 @@
                                        FontWeight="SemiBold"
                                        HorizontalAlignment="Left"
                                        VerticalAlignment="Center" />
-                                <TextBox Text=""
+                                <TextBox x:Name="txbDoctorName"
                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"
                                            FontSize="14"
@@ -584,7 +588,7 @@
                                 <Label Content="THÀNH TIỀN:"
                                        FontWeight="SemiBold"
                                        Foreground="{DynamicResource QuaternaryTextColor}" />
-                                <TextBlock Text="58,000 vnđ"
+                                <TextBlock x:Name="txblTotalCost"
                                            FontSize="32"
                                            FontWeight="Bold"
                                            Foreground="{DynamicResource QuaternaryTextColor}" />
@@ -673,7 +677,8 @@
                                                     Width="35"
                                                     Height="35"
                                                     Background="#f0723e"
-                                                    Foreground="White">
+                                                    Foreground="White"
+                                                    Click="btnRemoveMedicine_Click">
                                                 <StackPanel Orientation="Horizontal">
 
                                                     <Path Data="{Binding Icon, ElementName=this, FallbackValue={StaticResource trash}, TargetNullValue={StaticResource DefaultIcon}}"

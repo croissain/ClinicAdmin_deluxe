@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClinicAdmin.BUS;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,7 @@ namespace ClinicAdmin.GUI
     /// </summary>
     public partial class Prescription : Window
     {
+        private PrescriptionBUS _prescriptionBUS;
         public Prescription()
         {
             InitializeComponent();
@@ -38,6 +40,23 @@ namespace ClinicAdmin.GUI
             {
                 this.IsEnabled = true;
             }
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            _prescriptionBUS = PrescriptionBUS.getInstance();
+            txblFullname.Text = _prescriptionBUS.PatientName;
+            txblGender.Text = _prescriptionBUS.PatientGender;
+            txblAge.Text = _prescriptionBUS.PatientAge;
+            txblAddress.Text = _prescriptionBUS.PatientAddress;
+            txblDiagnose.Text = _prescriptionBUS.Diagnose;
+            lsvMedicines.ItemsSource = HomeBUS.getInstance().listMedicines;
+            txblTotalCost.Text = _prescriptionBUS.TotalCost;
+            txblNote.Text = _prescriptionBUS.Note;
+            txblStaffName.Text = _prescriptionBUS.StaffName;
+            txblDoctorName.Text = _prescriptionBUS.DoctorName;
+            txblDayExam.Text = DateTime.Today.ToShortDateString();
+            txblHourExam.Text = DateTime.Now.ToShortTimeString();
         }
     }
 }
