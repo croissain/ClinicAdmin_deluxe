@@ -78,5 +78,36 @@ namespace ClinicAdmin.BUS
             }
             return result;
         }
+
+        public string TotalCost(List<Prescription_MedicineDAO> medicines)
+        {
+            double total = 0;
+            foreach(var medicine in medicines)
+            {
+                total += medicine.Cost;
+            }
+
+            string result = total.ToString();
+            result += " VND";
+            return result;
+        }
+
+        public void ExportInvoice(string patientName, string patientGender, string patientAge, string patientAddress, 
+            string symptom, string diagnose, string medicalHistory, string note, string doctorName, string staffName, string totalCost)
+        {
+            PrescriptionBUS.getInstance().PatientName = patientName;
+            PrescriptionBUS.getInstance().PatientGender = patientGender;
+            PrescriptionBUS.getInstance().PatientAddress = patientAddress;
+            PrescriptionBUS.getInstance().PatientAge = patientAge;
+            PrescriptionBUS.getInstance().Symptom = symptom;
+            PrescriptionBUS.getInstance().Diagnose = diagnose;
+            PrescriptionBUS.getInstance().MedicalHistory = medicalHistory;
+            PrescriptionBUS.getInstance().Note = note;
+            PrescriptionBUS.getInstance().DoctorName = doctorName;
+            PrescriptionBUS.getInstance().StaffName = staffName;
+            PrescriptionBUS.getInstance().TotalCost = totalCost;
+            var screen = new ClinicAdmin.GUI.Prescription();
+            screen.ShowDialog();
+        }
     }
 }

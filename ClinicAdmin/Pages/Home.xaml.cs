@@ -54,6 +54,7 @@ namespace ClinicAdmin.Pages
                 lstvMedicines.ItemsSource = null;
                 lstvMedicines.Items.Clear();
                 lstvMedicines.ItemsSource = _homeBUS.listMedicines;
+                txblTotalCost.Text = _homeBUS.TotalCost(_homeBUS.listMedicines);
             }
             else
             {
@@ -72,8 +73,30 @@ namespace ClinicAdmin.Pages
 
         private void ExportInvoice_Click(object sender, RoutedEventArgs e)
         {
-            var screen = new ClinicAdmin.GUI.Prescription();
-            screen.ShowDialog();
+            string patientName = txblFullname.Text;
+            string patientGender = txblGender.Text;
+            string patientAge = txblAge.Text;
+            string patientAddress = txblAddress.Text;
+            string symptom = txblSymptom.Text;
+            string diagnose = txblDiagnose.Text;
+            string medicalHistory = txblMedicalHistory.Text;
+            string note = txbNote.Text;
+            string doctorName = txbDoctorName.Text;
+            string staffName = txblStaffName.Text;
+            string totalCost = txblTotalCost.Text;
+            _homeBUS.ExportInvoice(
+                patientName, 
+                patientGender, 
+                patientAge, 
+                patientAddress, 
+                symptom, 
+                diagnose, 
+                medicalHistory, 
+                note, 
+                doctorName, 
+                staffName, 
+                totalCost
+            );
         }
 
         private void Checkin_MenuItem_Click(object sender, RoutedEventArgs e)
@@ -132,6 +155,7 @@ namespace ClinicAdmin.Pages
             lstvMedicines.ItemsSource = null;
             lstvMedicines.Items.Clear();
             lstvMedicines.ItemsSource = _homeBUS.listMedicines;
+            txblTotalCost.Text = _homeBUS.TotalCost(_homeBUS.listMedicines);
         }
     }
 }

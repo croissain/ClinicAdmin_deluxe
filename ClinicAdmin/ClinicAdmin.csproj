@@ -90,6 +90,7 @@
     <Compile Include="BUS\LoginBUS.cs" />
     <Compile Include="BUS\HomeBUS.cs" />
     <Compile Include="BUS\MainWindowBUS.cs" />
+    <Compile Include="BUS\PrescriptionBUS.cs" />
     <Compile Include="BUS\StaffListBUS.cs" />
     <Compile Include="DAO\AdminDAO.cs" />
     <Compile Include="DAO\DoctorDAO.cs" />
