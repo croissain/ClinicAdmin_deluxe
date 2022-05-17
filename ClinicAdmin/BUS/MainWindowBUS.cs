@@ -18,6 +18,12 @@ namespace ClinicAdmin.BUS
                 instance = new MainWindowBUS();
             }
             return instance;
+            
+        }
+
+        public void BUSLayer_Loaded()
+        {
+            
         }
     }
 }

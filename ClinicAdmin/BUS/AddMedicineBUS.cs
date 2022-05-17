@@ -59,8 +59,8 @@ namespace ClinicAdmin.BUS
                 Prescription_MedicineDAO medicine = new Prescription_MedicineDAO()
                 {
                     AmountDrug = Int32.Parse(amount),
-                    Unit = unitDAO.Name,
-                    Usage = usageDAO.Name,
+                    Unit = unitDAO,
+                    Usage = usageDAO,
                     Medicine = medicineDAO,
                     Cost = (double)(medicineDAO.Price * Int32.Parse(amount))
                 };

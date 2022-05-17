@@ -14,6 +14,7 @@ namespace ClinicAdmin.BUS
         public UserDAO userAccount;
         public List<AppointmentDAO> listPatients;
         public List<Prescription_MedicineDAO> listMedicines;
+        public PatientDAO patient;
 
         public static HomeBUS getInstance()
         {
@@ -41,6 +42,7 @@ namespace ClinicAdmin.BUS
             {
                 AppointmentDAO.getInstance().CheckIn(appointmentDAO);
                 listPatients.Remove(appointmentDAO);
+                patient = appointmentDAO.Patient;
                 return true;
             }
         }
@@ -95,10 +97,8 @@ namespace ClinicAdmin.BUS
         public void ExportInvoice(string patientName, string patientGender, string patientAge, string patientAddress, 
             string symptom, string diagnose, string medicalHistory, string note, string doctorName, string staffName, string totalCost)
         {
-            PrescriptionBUS.getInstance().PatientName = patientName;
-            PrescriptionBUS.getInstance().PatientGender = patientGender;
-            PrescriptionBUS.getInstance().PatientAddress = patientAddress;
-            PrescriptionBUS.getInstance().PatientAge = patientAge;
+            PrescriptionBUS.getInstance().Patient = patient;
+            PrescriptionBUS.getInstance().ListMedicines = listMedicines;
             PrescriptionBUS.getInstance().Symptom = symptom;
             PrescriptionBUS.getInstance().Diagnose = diagnose;
             PrescriptionBUS.getInstance().MedicalHistory = medicalHistory;
@@ -106,6 +106,7 @@ namespace ClinicAdmin.BUS
             PrescriptionBUS.getInstance().DoctorName = doctorName;
             PrescriptionBUS.getInstance().StaffName = staffName;
             PrescriptionBUS.getInstance().TotalCost = totalCost;
+            PrescriptionBUS.getInstance().AddPrescription();
             var screen = new ClinicAdmin.GUI.Prescription();
             screen.ShowDialog();
         }

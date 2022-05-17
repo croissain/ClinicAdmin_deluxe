@@ -14,7 +14,7 @@ namespace ClinicAdmin.DTO
     
     public partial class DayReport
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public Nullable<System.DateTime> DayReport1 { get; set; }
         public Nullable<int> TotalMedicines { get; set; }
         public Nullable<int> TotalPatients { get; set; }

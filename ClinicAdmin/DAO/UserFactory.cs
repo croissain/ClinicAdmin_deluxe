@@ -13,7 +13,7 @@ namespace ClinicAdmin.DAO
         {
             using (ClinicAdminEntities context = new ClinicAdminEntities())
             {
-                var entryPoint = ( from us in context.Users
+                var entryPoint = (from us in context.Users
                                   where us.Username == username && us.Password == password
                                   select new
                                   {
@@ -26,7 +26,7 @@ namespace ClinicAdmin.DAO
                                       Phone = us.Phone,
                                       RoleId = us.RoleId
                                   }).FirstOrDefault();
-                switch(entryPoint.RoleId)
+                switch (entryPoint.RoleId)
                 {
                     case (int)RoleEnum.ADMIN:
                         return new AdminDAO(entryPoint.id, entryPoint.Username, entryPoint.Password, entryPoint.FullName,
