@@ -656,14 +656,14 @@
                                 <GridViewColumn Width="200"
                                                 DisplayMemberBinding="{Binding Medicine.DrugName}"
                                                 Header="Tên thuốc" />
-                                <GridViewColumn DisplayMemberBinding="{Binding Unit}"
+                                <GridViewColumn DisplayMemberBinding="{Binding Unit.Name}"
                                                 Header="Đơn vị" />
                                 <GridViewColumn DisplayMemberBinding="{Binding AmountDrug}"
                                                 Header="Số lượng" />
                                 <GridViewColumn DisplayMemberBinding="{Binding Medicine.Price}"
                                                 Header="Giá bán" />
                                 <GridViewColumn Width="150"
-                                                DisplayMemberBinding="{Binding Usage}"
+                                                DisplayMemberBinding="{Binding Usage.Name}"
                                                 Header="Cách dùng" />
                                 <GridViewColumn Width="150"
                                                 DisplayMemberBinding="{Binding Cost}"

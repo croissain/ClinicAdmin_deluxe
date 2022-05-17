@@ -73,7 +73,7 @@ namespace ClinicAdmin
                 txblUserName.Text = LongNameBeautify(_accountBUS.user.Fullname);
                 txblUserRole.Text = _accountBUS.user.GetRole();
             }
-            fContainer.Navigate(new System.Uri("Pages/Welcome.xaml", UriKind.RelativeOrAbsolute));
+            fContainer.Navigate(new System.Uri("GUI/Pages/Welcome.xaml", UriKind.RelativeOrAbsolute));
         }
 
 
@@ -210,27 +210,27 @@ namespace ClinicAdmin
         #region Sidebar Tabs Click
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("Pages/Home.xaml", UriKind.RelativeOrAbsolute));
+            fContainer.Navigate(new System.Uri("GUI/Pages/Home.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void btnStaffList_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("Pages/StaffsList.xaml", UriKind.RelativeOrAbsolute));
+            fContainer.Navigate(new System.Uri("GUI/Pages/StaffsList.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void btnMedicalList_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("Pages/MedicinesList.xaml", UriKind.RelativeOrAbsolute));
+            fContainer.Navigate(new System.Uri("GUI/Pages/MedicinesList.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void btnAccount_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("Pages/Account.xaml", UriKind.RelativeOrAbsolute));
+            fContainer.Navigate(new System.Uri("GUI/Pages/Account.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void btnReport_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("Pages/Chart.xaml", UriKind.RelativeOrAbsolute));
+            fContainer.Navigate(new System.Uri("GUI/Pages/Chart.xaml", UriKind.RelativeOrAbsolute));
         }
         #endregion
 

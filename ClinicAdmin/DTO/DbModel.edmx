@@ -16,9 +16,9 @@
         </EntityType>
         <EntityType Name="DayReport">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DayReport" Type="date" />
           <Property Name="TotalMedicines" Type="int" />
           <Property Name="TotalPatients" Type="int" />
@@ -72,10 +72,11 @@
         </EntityType>
         <EntityType Name="Prescription_Medicine">
           <Key>
-            <PropertyRef Name="PrescriptionId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="PrescriptionId" Type="int" Nullable="false" />
-          <Property Name="MedicineId" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PrescriptionId" Type="int" />
+          <Property Name="MedicineId" Type="int" />
           <Property Name="AmountDrug" Type="int" />
           <Property Name="Cost" Type="float" />
           <Property Name="Unit" Type="int" />
@@ -83,9 +84,9 @@
         </EntityType>
         <EntityType Name="Regulation">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="255" />
           <Property Name="Datatypes" Type="nvarchar" MaxLength="255" />
           <Property Name="Value" Type="nvarchar" MaxLength="255" />
@@ -162,8 +163,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Prescription_Medicine_fk0">
-          <End Role="Prescription" Type="Self.Prescription" Multiplicity="1" />
-          <End Role="Prescription_Medicine" Type="Self.Prescription_Medicine" Multiplicity="0..1" />
+          <End Role="Prescription" Type="Self.Prescription" Multiplicity="0..1" />
+          <End Role="Prescription_Medicine" Type="Self.Prescription_Medicine" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Prescription">
               <PropertyRef Name="Id" />
@@ -174,7 +175,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Prescription_Medicine_fk1">
-          <End Role="Medicine" Type="Self.Medicine" Multiplicity="1" />
+          <End Role="Medicine" Type="Self.Medicine" Multiplicity="0..1" />
           <End Role="Prescription_Medicine" Type="Self.Prescription_Medicine" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Medicine">
@@ -221,6 +222,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="usp_GetUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="uname" Type="nvarchar" Mode="In" />
+        </Function>
         <Function Name="usp_Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="uname" Type="nvarchar" Mode="In" />
           <Parameter Name="pass" Type="nvarchar" Mode="In" />
@@ -288,9 +292,9 @@
         </EntityType>
         <EntityType Name="DayReport">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DayReport1" Type="DateTime" Precision="0" />
           <Property Name="TotalMedicines" Type="Int32" />
           <Property Name="TotalPatients" Type="Int32" />
@@ -351,10 +355,11 @@
         </EntityType>
         <EntityType Name="Prescription_Medicine">
           <Key>
-            <PropertyRef Name="PrescriptionId" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="PrescriptionId" Type="Int32" Nullable="false" />
-          <Property Name="MedicineId" Type="Int32" Nullable="false" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PrescriptionId" Type="Int32" />
+          <Property Name="MedicineId" Type="Int32" />
           <Property Name="AmountDrug" Type="Int32" />
           <Property Name="Cost" Type="Double" />
           <Property Name="Unit" Type="Int32" />
@@ -366,9 +371,9 @@
         </EntityType>
         <EntityType Name="Regulation">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Datatypes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Value" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -437,7 +442,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Prescription_Medicine_fk1">
-          <End Role="Medicine" Type="Self.Medicine" Multiplicity="1" />
+          <End Role="Medicine" Type="Self.Medicine" Multiplicity="0..1" />
           <End Role="Prescription_Medicine" Type="Self.Prescription_Medicine" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Medicine">
@@ -461,8 +466,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="Prescription_Medicine_fk0">
-          <End Role="Prescription" Type="Self.Prescription" Multiplicity="1" />
-          <End Role="Prescription_Medicine" Type="Self.Prescription_Medicine" Multiplicity="0..1" />
+          <End Role="Prescription" Type="Self.Prescription" Multiplicity="0..1" />
+          <End Role="Prescription_Medicine" Type="Self.Prescription_Medicine" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Prescription">
               <PropertyRef Name="Id" />
@@ -553,7 +558,10 @@
             <End Role="Role" EntitySet="Roles" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
-          <FunctionImport Name="usp_Login">
+          <FunctionImport Name="usp_GetUser">
+            <Parameter Name="uname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="usp_Login" ReturnType="Collection(Int32)">
             <Parameter Name="uname" Mode="In" Type="String" />
             <Parameter Name="pass" Mode="In" Type="String" />
           </FunctionImport>
@@ -577,7 +585,7 @@
           <EntitySetMapping Name="DayReports">
             <EntityTypeMapping TypeName="ClinicAdminModel.DayReport">
               <MappingFragment StoreEntitySet="DayReport">
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="DayReport1" ColumnName="DayReport" />
                 <ScalarProperty Name="TotalMedicines" ColumnName="TotalMedicines" />
                 <ScalarProperty Name="TotalPatients" ColumnName="TotalPatients" />
@@ -638,6 +646,7 @@
           <EntitySetMapping Name="Prescription_Medicine">
             <EntityTypeMapping TypeName="ClinicAdminModel.Prescription_Medicine">
               <MappingFragment StoreEntitySet="Prescription_Medicine">
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="PrescriptionId" ColumnName="PrescriptionId" />
                 <ScalarProperty Name="MedicineId" ColumnName="MedicineId" />
                 <ScalarProperty Name="AmountDrug" ColumnName="AmountDrug" />
@@ -650,7 +659,7 @@
           <EntitySetMapping Name="Regulations">
             <EntityTypeMapping TypeName="ClinicAdminModel.Regulation">
               <MappingFragment StoreEntitySet="Regulation">
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Datatypes" ColumnName="Datatypes" />
                 <ScalarProperty Name="Value" ColumnName="Value" />
@@ -696,6 +705,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_GetUser" FunctionName="ClinicAdminModel.Store.usp_GetUser" />
           <FunctionImportMapping FunctionImportName="usp_Login" FunctionName="ClinicAdminModel.Store.usp_Login" />
         </EntityContainerMapping>
       </Mapping>

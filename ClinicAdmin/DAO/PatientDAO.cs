@@ -39,9 +39,8 @@ namespace ClinicAdmin.DAO
             Patient result = null;
             using (ClinicAdminEntities context = new ClinicAdminEntities())
             {
-                var patient = new Patient() 
-                { 
-                    Id = patientDAO.Id, 
+                var patient = new Patient()
+                {
                     FullName = patientDAO.Fullname,
                     Address = patientDAO.Address,
                     Age = patientDAO.Age,

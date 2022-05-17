@@ -64,11 +64,12 @@ namespace ClinicAdmin.Pages
 
         private void AddPatient_Click(object sender, RoutedEventArgs e)
         {
-            AddPatient dialog = new AddPatient();
-            dialog.ShowDialog();
-            lsvPatient.ItemsSource = null;
-            lsvPatient.Items.Clear();
-            lsvPatient.ItemsSource = _homeBUS.listPatients;
+            if(_homeBUS.userAccount.AddPatient())
+            {
+                lsvPatient.ItemsSource = null;
+                lsvPatient.Items.Clear();
+                lsvPatient.ItemsSource = _homeBUS.listPatients;
+            }
         }
 
         private void ExportInvoice_Click(object sender, RoutedEventArgs e)

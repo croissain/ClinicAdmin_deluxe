@@ -1,4 +1,5 @@
 ﻿using ClinicAdmin.DTO;
+using ClinicAdmin.GUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -83,25 +84,11 @@ namespace ClinicAdmin.DAO
             return false;
         }
 
-        public override bool AddPatient(PatientDAO patientDAO)
+        public override bool AddPatient()
         {
-            using (ClinicAdminEntities context = new ClinicAdminEntities())
-            {
-                Patient patient = new Patient()
-                {
-                    Id = patientDAO.Id,
-                    FullName = patientDAO.Fullname,
-                    Address = patientDAO.Address,
-                    Phone = patientDAO.Phone,
-                    Weight = patientDAO.Weight,
-                    Age = patientDAO.Age,
-                    Gender = patientDAO.Gender
-                };
-                if (context.Patients.Add(patient) != null)
-                    return true;
-                else
-                    return false;
-            }
+            AddPatient dialog = new AddPatient();
+            dialog.ShowDialog();
+            return true;
         }
 
         public override bool AddPrescription()
