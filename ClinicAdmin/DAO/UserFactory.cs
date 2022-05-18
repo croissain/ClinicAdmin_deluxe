@@ -42,22 +42,5 @@ namespace ClinicAdmin.DAO
 
             return null;
         }
-
-        //public string GetRoleUser(int id)
-        //{
-        //    string result = null;
-        //    using (ClinicAdminEntities context = new ClinicAdminEntities())
-        //    {
-        //        var entryPoint = (from role in context.Roles
-        //                          join user in context.Users on role.Id equals user.RoleId
-        //                          where user.Id == id
-        //                          select new
-        //                          {
-        //                              RoleName = role.Name
-        //                          }).Take(1).FirstOrDefault();
-        //        result = entryPoint.RoleName;
-        //    }
-        //    return result;
-        //}
     }
 }

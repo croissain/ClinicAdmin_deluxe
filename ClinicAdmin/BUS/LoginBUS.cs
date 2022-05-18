@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -26,8 +27,18 @@ namespace ClinicAdmin.BUS
         public void UserLogin(string username, string password, Window window)
         {
             using(ClinicAdminEntities context = new ClinicAdminEntities())
+            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
             {
-                int count = (int)context.usp_Login(username, password).FirstOrDefault();
+                string hasPass = "";
+                byte[] buffer = ASCIIEncoding.ASCII.GetBytes(password);
+                byte[] hasData = md5.ComputeHash(buffer);
+
+                foreach(var item in hasData)
+                {
+                    hasPass += item;
+                }
+                
+                int count = (int)context.usp_Login(username, hasPass).FirstOrDefault();
                 if (count == 1)
                 {
                     MainWindow mainWindow = new MainWindow();
