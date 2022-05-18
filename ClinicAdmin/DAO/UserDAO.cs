@@ -29,6 +29,7 @@ namespace ClinicAdmin.DAO
         public abstract bool ChangeRegulation();
         public abstract bool AddPatient();
         public abstract bool AddPrescription();
+        public abstract bool CheckIn();
         public abstract string GetRole();
 
     }

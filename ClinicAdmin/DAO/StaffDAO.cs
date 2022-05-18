@@ -86,8 +86,6 @@ namespace ClinicAdmin.DAO
 
         public override bool AddPatient()
         {
-            AddPatient dialog = new AddPatient();
-            dialog.ShowDialog();
             return true;
         }
 
@@ -100,6 +98,11 @@ namespace ClinicAdmin.DAO
         public override string GetRole()
         {
             return "Nhân viên";
+        }
+
+        public override bool CheckIn()
+        {
+            return true;
         }
     }
 }

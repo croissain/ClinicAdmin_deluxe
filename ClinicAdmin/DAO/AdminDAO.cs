@@ -95,5 +95,11 @@ namespace ClinicAdmin.DAO
         {
             return "Quản trị";
         }
+
+        public override bool CheckIn()
+        {
+            MessageBox.Show("Vai trò của bạn không thể thực hiện chức năng này!", "Quyền không khả dụng", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return false;
+        }
     }
 }

@@ -9,12 +9,12 @@ namespace ClinicAdmin.DAO
 {
     public class UserFactory
     {
-        public static UserDAO GetUserLogin(string username, string password)
+        public static UserDAO GetUserLogin(string username)
         {
             using (ClinicAdminEntities context = new ClinicAdminEntities())
             {
                 var entryPoint = (from us in context.Users
-                                  where us.Username == username && us.Password == password
+                                  where us.Username == username
                                   select new
                                   {
                                       id = us.Id,

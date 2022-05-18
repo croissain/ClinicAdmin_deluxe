@@ -17,7 +17,7 @@ namespace ClinicAdmin.BUS
         private string note;
         private string doctorName;
         private string staffName;
-        private string totalCost;
+        private double totalCost;
         private List<Prescription_MedicineDAO> listMedicines;
 
         public string Symptom { get => symptom; set => symptom = value; }
@@ -26,7 +26,7 @@ namespace ClinicAdmin.BUS
         public string Note { get => note; set => note = value; }
         public string DoctorName { get => doctorName; set => doctorName = value; }
         public string StaffName { get => staffName; set => staffName = value; }
-        public string TotalCost { get => totalCost; set => totalCost = value; }
+        public double TotalCost { get => totalCost; set => totalCost = value; }
         public PatientDAO Patient { get => patient; set => patient = value; }
         public List<Prescription_MedicineDAO> ListMedicines { get => listMedicines; set => listMedicines = value; }
 
@@ -56,8 +56,11 @@ namespace ClinicAdmin.BUS
                 Doctor = DoctorName,
                 Staff = StaffName,
             };
+            //Them du lieu vao bang Prescription
             var prescriptMedicine =  PrescriptionDAO.getInstance().AddPrescription(prescriptionDAO);
             prescriptionDAO.Id = prescriptMedicine.Id;
+
+            //Them du lieu vao bang Prescription_MedicineDAO
             foreach (var medicine in ListMedicines)
             {
                 Prescription_MedicineDAO prescription_MedicineDAO = new Prescription_MedicineDAO()
@@ -71,6 +74,16 @@ namespace ClinicAdmin.BUS
                 };
                 Prescription_MedicineDAO.getInstance().AddPrescription(prescription_MedicineDAO);
             }
+
+            //Them du lieu vao bang Invoice
+            InvoiceDAO invoiceDAO = new InvoiceDAO()
+            {
+                TotalCost = TotalCost,
+                Prescription = prescriptionDAO,
+                Created_at = DateTime.Now,
+                ExamCost = 30000
+            };
+            InvoiceDAO.getInstance().AddInvoice(invoiceDAO);
         }
     }
 }

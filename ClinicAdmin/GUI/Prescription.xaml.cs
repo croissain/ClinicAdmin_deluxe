@@ -51,7 +51,7 @@ namespace ClinicAdmin.GUI
             txblAddress.Text = _prescriptionBUS.Patient.Address;
             txblDiagnose.Text = _prescriptionBUS.Diagnose;
             lsvMedicines.ItemsSource = HomeBUS.getInstance().listMedicines;
-            txblTotalCost.Text = _prescriptionBUS.TotalCost;
+            txblTotalCost.Text = _prescriptionBUS.TotalCost.ToString() + " VND";
             txblNote.Text = _prescriptionBUS.Note;
             txblStaffName.Text = _prescriptionBUS.StaffName;
             txblDoctorName.Text = _prescriptionBUS.DoctorName;
