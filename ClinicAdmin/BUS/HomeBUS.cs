@@ -11,7 +11,6 @@ namespace ClinicAdmin.BUS
     public class HomeBUS
     {
         private static HomeBUS _instance;
-        public UserDAO userAccount;
         public List<AppointmentDAO> listPatients;
         public List<Prescription_MedicineDAO> listMedicines;
         public PatientDAO patient;
@@ -81,7 +80,7 @@ namespace ClinicAdmin.BUS
             return result;
         }
 
-        public string TotalCost(List<Prescription_MedicineDAO> medicines)
+        public string TotalCost_ToString(List<Prescription_MedicineDAO> medicines)
         {
             double total = 0;
             foreach(var medicine in medicines)
@@ -94,8 +93,19 @@ namespace ClinicAdmin.BUS
             return result;
         }
 
+        public double TotalCost(List<Prescription_MedicineDAO> medicines)
+        {
+            double total = 0;
+            foreach (var medicine in medicines)
+            {
+                total += medicine.Cost;
+            }
+
+            return total;
+        }
+
         public void ExportInvoice(string patientName, string patientGender, string patientAge, string patientAddress, 
-            string symptom, string diagnose, string medicalHistory, string note, string doctorName, string staffName, string totalCost)
+            string symptom, string diagnose, string medicalHistory, string note, string doctorName, string staffName)
         {
             PrescriptionBUS.getInstance().Patient = patient;
             PrescriptionBUS.getInstance().ListMedicines = listMedicines;
@@ -105,7 +115,7 @@ namespace ClinicAdmin.BUS
             PrescriptionBUS.getInstance().Note = note;
             PrescriptionBUS.getInstance().DoctorName = doctorName;
             PrescriptionBUS.getInstance().StaffName = staffName;
-            PrescriptionBUS.getInstance().TotalCost = totalCost;
+            PrescriptionBUS.getInstance().TotalCost = TotalCost(listMedicines);
             PrescriptionBUS.getInstance().AddPrescription();
             var screen = new ClinicAdmin.GUI.Prescription();
             screen.ShowDialog();

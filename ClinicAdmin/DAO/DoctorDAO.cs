@@ -84,19 +84,22 @@ namespace ClinicAdmin.DAO
 
         public override bool AddPatient()
         {
-            AddPatient dialog = new AddPatient();
-            dialog.ShowDialog();
             return true;
         }
 
         public override bool AddPrescription()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public override string GetRole()
         {
             return "Bác sĩ";
+        }
+
+        public override bool CheckIn()
+        {
+            return true;
         }
     }
 }

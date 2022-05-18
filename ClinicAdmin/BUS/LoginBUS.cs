@@ -25,30 +25,15 @@ namespace ClinicAdmin.BUS
 
         public void UserLogin(string username, string password, Window window)
         {
-            //var user = UserFactory.GetUserLogin(username, password);
-            //if (user != null)
-            //{
-            //    MainWindow mainWindow = new MainWindow();
-            //    HomeBUS.getInstance().userAccount = user;
-            //    AccountBUS.getInstance().user = user;
-            //    window.Close();
-            //    mainWindow.ShowDialog();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu!");
-            //}
             using(ClinicAdminEntities context = new ClinicAdminEntities())
             {
                 int count = (int)context.usp_Login(username, password).FirstOrDefault();
                 if (count == 1)
                 {
                     MainWindow mainWindow = new MainWindow();
-                    var user = UserFactory.GetUserLogin(username, password);
-                    HomeBUS.getInstance().userAccount = user;
-                    AccountBUS.getInstance().user = user;
-                    mainWindow.ShowDialog();
+                    MainWindowBUS.getInstance().username = username;
                     window.Close();
+                    mainWindow.ShowDialog();
                 }
                 else
                 {
