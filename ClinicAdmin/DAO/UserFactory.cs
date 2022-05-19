@@ -2,8 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ClinicAdmin.DAO
 {
@@ -41,6 +43,83 @@ namespace ClinicAdmin.DAO
             }
 
             return null;
+        }
+
+        public static UserDAO GetUser(string fullname, string address, string email, string phone, string username, string pass, int role)
+        {
+            switch (role)
+            {
+                case (int)RoleEnum.ADMIN:
+                    return new AdminDAO() 
+                    { 
+                        Fullname = fullname,
+                        Address = address,
+                        Email = email,
+                        Phone = phone,
+                        Password = pass,
+                        Username = username
+                    };
+                case (int)RoleEnum.DOCTOR:
+                    return new DoctorDAO()
+                    {
+                        Fullname = fullname,
+                        Address = address,
+                        Email = email,
+                        Phone = phone,
+                        Password = pass,
+                        Username = username
+                    };
+                case (int)RoleEnum.STAFF:
+                    return new StaffDAO()
+                    {
+                        Fullname = fullname,
+                        Address = address,
+                        Email = email,
+                        Phone = phone,
+                        Password = pass,
+                        Username = username
+                    };
+                default:
+                    return null;
+            }
+        }
+
+        public static bool AddUser(UserDAO userDAO, int role)
+        {
+            using (ClinicAdminEntities context = new ClinicAdminEntities())
+            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
+            {
+                string hasPass = "";
+                byte[] buffer = ASCIIEncoding.ASCII.GetBytes(userDAO.Password);
+                byte[] hasData = md5.ComputeHash(buffer);
+
+                foreach (var item in hasData)
+                {
+                    hasPass += item;
+                }
+
+                var user = new User()
+                {
+                    FullName = userDAO.Fullname,
+                    Address = userDAO.Address,
+                    Username = userDAO.Username,
+                    Email = userDAO.Email,
+                    Phone = userDAO.Phone,
+                    RoleId = role,
+                    Password = hasPass
+                };
+                try
+                {
+                    context.Users.Add(user);
+                    context.SaveChanges();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                return true;
+            }
+            return false;
         }
     }
 }

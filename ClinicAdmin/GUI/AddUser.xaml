@@ -10,7 +10,8 @@
         WindowStyle="None"
         AllowsTransparency="True"
         Height ="650"
-        Title="Thêm mới người dùng">
+        Title="Thêm mới người dùng"
+        Loaded="Window_Loaded">
     <Window.Background>
         <LinearGradientBrush StartPoint="0.5,0"
                              EndPoint="0.5,1">
@@ -54,7 +55,8 @@
                            FontSize="18"
                            FontWeight="SemiBold"
                            HorizontalAlignment="Left"></Label>
-                    <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    <TextBox x:Name="txbFullname"
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
                              FontSize="20"
                              Padding="15 10"
                              Margin="0 0 0 10"
@@ -65,7 +67,8 @@
                            Margin="0 0 0 10"
                            FontWeight="SemiBold"
                            HorizontalAlignment="Left"></Label>
-                    <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    <TextBox x:Name="txbEmail"
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
                              FontSize="20"
                              Padding="15 10"
                              BorderBrush="#68b2a0"></TextBox>
@@ -74,7 +77,8 @@
                            FontSize="18"
                            FontWeight="SemiBold"
                            HorizontalAlignment="Left"></Label>
-                    <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    <TextBox x:Name="txbUsername"
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
                              FontSize="20"
                              Padding="15 10"
                              Margin="0 0 0 10"
@@ -85,7 +89,8 @@
                            FontWeight="SemiBold"
                            HorizontalAlignment="Left"></Label>
 
-                    <PasswordBox Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
+                    <PasswordBox x:Name="txbPassword"
+                            Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
                                      FontSize="20"
                                      Padding="15 10"
                                      Margin="0 0 0 10"
@@ -100,7 +105,8 @@
                            FontSize="18"
                            FontWeight="SemiBold"
                            HorizontalAlignment="Left"></Label>
-                    <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    <TextBox x:Name="txbAddress"
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
                              FontSize="20"
                              Padding="15 10"
                              Margin="0 0 0 10"
@@ -111,7 +117,8 @@
                            FontWeight="SemiBold"
                            HorizontalAlignment="Left"></Label>
                     
-                    <TextBox Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    <TextBox x:Name="txbPhone"
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
                              FontSize="20"
                              Padding="15 10"
                              Margin="0 0 0 10"
@@ -121,10 +128,17 @@
                            FontSize="18"
                            FontWeight="SemiBold"
                            HorizontalAlignment="Left"></Label>
-                    <ComboBox x:Name="RoleCbb" Style="{StaticResource MaterialDesignOutlinedComboBox}"   
+                    <ComboBox x:Name="cbbRole" Style="{StaticResource MaterialDesignOutlinedComboBox}"   
                               Margin="0 0 0 10"
                               BorderBrush="#68b2a0">
-                    </ComboBox>
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="{Binding Name}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
 
 
                     <Label Content="Nhập lại mật khẩu"
@@ -132,7 +146,8 @@
                            FontWeight="SemiBold"
                            HorizontalAlignment="Left"></Label>
                     
-                    <PasswordBox Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
+                    <PasswordBox x:Name="txbConfirmPass"
+                            Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
                                      FontSize="20"
                                      Padding="15 10"
                                      Margin="0 0 0 10"
@@ -156,7 +171,8 @@
                         ToolTip="MaterialDesignOutlinedButton"
                         Content="Hủy"
                         Click="Cancel_Click" />
-                <Button Content="Thêm"
+                <Button Click="AddButton_Click"
+                        Content="Thêm"
                         Style="{StaticResource MaterialDesignRaisedButton}"
                         Width="150"
                         Height="45"

@@ -71,12 +71,12 @@ namespace ClinicAdmin.DAO
 
         public override bool AddAccountUser()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public override bool ChangeRegulation()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public override bool AddPatient()
