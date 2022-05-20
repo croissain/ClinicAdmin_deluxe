@@ -70,7 +70,7 @@ namespace ClinicAdmin
             {
                 txblUserInitial.Text = IntialName(_mainWindowBUS.userAccount.Fullname);
                 txblUserName.Text = LongNameBeautify(_mainWindowBUS.userAccount.Fullname);
-                txblUserRole.Text = _mainWindowBUS.userAccount.GetRole();
+                txblUserRole.Text = _mainWindowBUS.userAccount.Role.Name;
             }
             fContainer.Navigate(new System.Uri("GUI/Pages/Welcome.xaml", UriKind.RelativeOrAbsolute));
         }
@@ -235,8 +235,8 @@ namespace ClinicAdmin
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
             Login dialog = new Login();
+            this.Close();
             dialog.ShowDialog();
         }
     }

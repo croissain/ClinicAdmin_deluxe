@@ -37,10 +37,13 @@ namespace ClinicAdmin.Pages
             lsvStaff.ItemsSource = _staffListBUS.listStaffs;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            var screen = new ClinicAdmin.GUI.Addnew();
-            screen.ShowDialog();
+            if (MainWindowBUS.getInstance().userAccount.AddAccountUser())
+            {
+                var screen = new ClinicAdmin.GUI.Addnew();
+                screen.ShowDialog();
+            }
         }
     }
 }

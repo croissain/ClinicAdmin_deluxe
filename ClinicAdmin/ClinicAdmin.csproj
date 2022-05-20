@@ -87,6 +87,7 @@
     <Compile Include="BUS\AccountBUS.cs" />
     <Compile Include="BUS\AddMedicineBUS.cs" />
     <Compile Include="BUS\AddPatientBUS.cs" />
+    <Compile Include="BUS\AddUserBUS.cs" />
     <Compile Include="BUS\LoginBUS.cs" />
     <Compile Include="BUS\HomeBUS.cs" />
     <Compile Include="BUS\MainWindowBUS.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="DAO\InvoiceDAO.cs" />
     <Compile Include="DAO\PrescriptionDAO.cs" />
     <Compile Include="DAO\Prescription_MedicineDAO.cs" />
+    <Compile Include="DAO\RoleDAO.cs" />
     <Compile Include="DAO\StaffDAO.cs" />
     <Compile Include="DAO\UserFactory.cs" />
     <Compile Include="DAO\MedicineDAO.cs" />
@@ -302,6 +304,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DbModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include=".env" />
     <None Include="DTO\DbModel.edmx.diagram">
       <DependentUpon>DbModel.edmx</DependentUpon>
     </None>

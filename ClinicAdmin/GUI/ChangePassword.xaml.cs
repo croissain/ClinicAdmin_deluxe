@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClinicAdmin.BUS;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,29 +25,22 @@ namespace ClinicAdmin.GUI
             InitializeComponent();
         }
 
-        // MacOS UI cheap moment
-        // Button Close | Minimize | Restore
-        private void WindowButton_Close_Click(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.Close();
-        }
-
-        private void WindowButton_Minimize_Click(object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Minimized;
-        }
-
-        private void WindowButton_FullScreen_Click(object sender, RoutedEventArgs e)
-        {
-            if (WindowState == WindowState.Normal)
-                WindowState = WindowState.Maximized;
-            else
-                WindowState = WindowState.Normal;
+            txbUsername.Text = MainWindowBUS.getInstance().userAccount.Username;
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
+        }
 
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            string pass = txbPassword.Password;
+            string confirmPass = txbConfirmPass.Password;
+            AccountBUS.getInstance().ChangePassword(pass, confirmPass);
+            this.Close();
         }
     }
 }
