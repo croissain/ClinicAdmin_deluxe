@@ -31,14 +31,41 @@ namespace ClinicAdmin.DAO
                 switch (entryPoint.RoleId)
                 {
                     case (int)RoleEnum.ADMIN:
-                        return new AdminDAO(entryPoint.id, entryPoint.Username, entryPoint.Password, entryPoint.FullName,
-                                            entryPoint.Address, entryPoint.Email, entryPoint.Phone);
+                        return new AdminDAO()
+                        {
+                            Id = entryPoint.id,
+                            Fullname = entryPoint.FullName,
+                            Address = entryPoint.Address,
+                            Email = entryPoint.Email,
+                            Phone = entryPoint.Phone,
+                            Password = entryPoint.Password,
+                            Username = username,
+                            Role = new RoleDAO() { Id = (int)entryPoint.RoleId, Name= "Quản trị viên"}
+                        };
                     case (int)RoleEnum.DOCTOR:
-                        return new DoctorDAO(entryPoint.id, entryPoint.Username, entryPoint.Password, entryPoint.FullName,
-                                            entryPoint.Address, entryPoint.Email, entryPoint.Phone);
+                        return new DoctorDAO()
+                        {
+                            Id = entryPoint.id,
+                            Fullname = entryPoint.FullName,
+                            Address = entryPoint.Address,
+                            Email = entryPoint.Email,
+                            Phone = entryPoint.Phone,
+                            Password = entryPoint.Password,
+                            Username = username,
+                            Role = new RoleDAO() { Id = (int)entryPoint.RoleId, Name = "Quản trị viên" }
+                        };
                     case (int)RoleEnum.STAFF:
-                        return new StaffDAO(entryPoint.id, entryPoint.Username, entryPoint.Password, entryPoint.FullName,
-                                            entryPoint.Address, entryPoint.Email, entryPoint.Phone);
+                        return new StaffDAO()
+                        {
+                            Id = entryPoint.id,
+                            Fullname = entryPoint.FullName,
+                            Address = entryPoint.Address,
+                            Email = entryPoint.Email,
+                            Phone = entryPoint.Phone,
+                            Password = entryPoint.Password,
+                            Username = username,
+                            Role = new RoleDAO() { Id = (int)entryPoint.RoleId, Name = "Quản trị viên" }
+                        };
                 }
             }
 
@@ -115,11 +142,68 @@ namespace ClinicAdmin.DAO
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message );
+                    return false;
                 }
                 return true;
             }
-            return false;
+        }
+
+        public static bool UpdateAccount(UserDAO userDAO)
+        {
+            using (ClinicAdminEntities context = new ClinicAdminEntities())
+            {
+                try
+                {
+                    var dbSet = context.Users.SingleOrDefault(x => x.Id == userDAO.Id || x.Username == userDAO.Username);
+                    if (dbSet != null)
+                    {
+                        dbSet.Address = userDAO.Address;
+                        dbSet.Email = userDAO.Email;
+                        dbSet.FullName = userDAO.Fullname;
+                        dbSet.Phone = userDAO.Phone;
+                        context.SaveChanges();
+                    }
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static bool ChangePassword(string password, int id)
+        {
+            using (ClinicAdminEntities context = new ClinicAdminEntities())
+            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
+            {
+                try
+                {
+                    var dbSet = context.Users.SingleOrDefault(x => x.Id == id);
+                    string hasPass = "";
+                    byte[] buffer = ASCIIEncoding.ASCII.GetBytes(password);
+                    byte[] hasData = md5.ComputeHash(buffer);
+
+                    foreach (var item in hasData)
+                    {
+                        hasPass += item;
+                    }
+
+                    if (dbSet != null)
+                    {
+                        dbSet.Password = hasPass;
+                        context.SaveChanges();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

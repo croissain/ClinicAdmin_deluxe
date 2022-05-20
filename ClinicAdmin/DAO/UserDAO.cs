@@ -16,6 +16,7 @@ namespace ClinicAdmin.DAO
         private string address;
         private string phone;
         private string email;
+        private RoleDAO role;
 
         public int Id { get => id; set => id = value; }
         public string Username { get => username; set => username = value; }
@@ -24,13 +25,13 @@ namespace ClinicAdmin.DAO
         public string Address { get => address; set => address = value; }
         public string Phone { get => phone; set => phone = value; }
         public string Email { get => email; set => email = value; }
+        public RoleDAO Role { get => role; set => role = value; }
 
         public abstract bool AddAccountUser();
         public abstract bool ChangeRegulation();
         public abstract bool AddPatient();
         public abstract bool AddPrescription();
         public abstract bool CheckIn();
-        public abstract string GetRole();
 
     }
 }
