@@ -38,7 +38,7 @@ namespace ClinicAdmin.Pages
                 txbEmail.Text = MainWindowBUS.getInstance().userAccount.Email;
                 txbAddress.Text = MainWindowBUS.getInstance().userAccount.Address;
                 txbPhone.Text = MainWindowBUS.getInstance().userAccount.Phone;
-                txbRole.Text = MainWindowBUS.getInstance().userAccount.GetRole();
+                txbRole.Text = MainWindowBUS.getInstance().userAccount.Role.Name;
             }
         }
 
@@ -46,6 +46,17 @@ namespace ClinicAdmin.Pages
         {
             ChangePassword dialog = new ChangePassword();
             dialog.ShowDialog();
+        }
+
+        private void BtnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            string username = txbUsername.Text;
+            string fulname = txbFullname.Text;
+            string address = txbAddress.Text;
+            string email = txbEmail.Text;
+            string phone = txbPhone.Text;
+
+            _accountBUS.UpdateAccount(username, fulname, address, email, phone);
         }
     }
 }

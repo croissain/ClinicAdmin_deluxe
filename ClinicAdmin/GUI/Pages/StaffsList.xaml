@@ -71,7 +71,7 @@
                                 Height="35"
                                 Background="#68b2a0"
                                 Foreground="White"
-                                Click="Button_Click">
+                                Click="AddButton_Click">
                             <StackPanel Orientation="Horizontal">
 
                                 <Path Data="{Binding Icon, ElementName=this, FallbackValue={StaticResource account-plus}, TargetNullValue={StaticResource DefaultIcon}}"

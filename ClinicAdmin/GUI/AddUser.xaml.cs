@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClinicAdmin.BUS;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,34 +20,34 @@ namespace ClinicAdmin.GUI
     /// </summary>
     public partial class Addnew : Window
     {
+        private AddUserBUS _addUserBUS;
         public Addnew()
         {
             InitializeComponent();
         }
 
-        // MacOS UI cheap moment
-        // Button Close | Minimize | Restore
-        private void WindowButton_Close_Click(object sender, RoutedEventArgs e)
+        private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
-        private void WindowButton_Minimize_Click(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            WindowState = WindowState.Minimized;
+            _addUserBUS = AddUserBUS.getInstance();
+            cbbRole.ItemsSource = _addUserBUS.listRoles;
+        }
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            string fullname = txbFullname.Text;
+            string address = txbAddress.Text;
+            string email = txbEmail.Text;
+            string phone = txbPhone.Text;
+            string username = txbUsername.Text;
+            string pass = txbPassword.Password;
+            string confirmPass = txbConfirmPass.Password;
+            var role = cbbRole.SelectedItem;
+            _addUserBUS.AddUser(fullname, address, email, phone, username, role, pass, confirmPass, this);
         }
 
-        private void WindowButton_FullScreen_Click(object sender, RoutedEventArgs e)
-        {
-            if (WindowState == WindowState.Normal)
-                WindowState = WindowState.Maximized;
-            else
-                WindowState = WindowState.Normal;
-        }
-
-        private void Cancel_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

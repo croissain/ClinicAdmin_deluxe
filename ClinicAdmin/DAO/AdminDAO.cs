@@ -71,12 +71,12 @@ namespace ClinicAdmin.DAO
 
         public override bool AddAccountUser()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public override bool ChangeRegulation()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public override bool AddPatient()
@@ -91,10 +91,10 @@ namespace ClinicAdmin.DAO
             return false;
         }
 
-        public override string GetRole()
-        {
-            return "Quản trị";
-        }
+        //public override string GetRole()
+        //{
+        //    return "Quản trị";
+        //}
 
         public override bool CheckIn()
         {

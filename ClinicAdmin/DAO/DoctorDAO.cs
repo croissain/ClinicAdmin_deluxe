@@ -92,10 +92,10 @@ namespace ClinicAdmin.DAO
             return true;
         }
 
-        public override string GetRole()
-        {
-            return "Bác sĩ";
-        }
+        //public override string GetRole()
+        //{
+        //    return "Bác sĩ";
+        //}
 
         public override bool CheckIn()
         {
