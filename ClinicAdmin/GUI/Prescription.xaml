@@ -116,7 +116,7 @@
                                    Height="1" />
                         <ListView x:Name="lsvMedicines"
                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                            <ListView.View>
+                            <!--<ListView.View>
                                 <GridView>
                                     <GridViewColumn DisplayMemberBinding="{Binding Medicine.DrugName}"
                                                     Header="Tên thuốc" />
@@ -129,148 +129,36 @@
                                     <GridViewColumn DisplayMemberBinding="{Binding Usage.Name}"
                                                     Header="Cách dùng" />
                                 </GridView>
-                            </ListView.View>
+                            </ListView.View>-->
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid HorizontalAlignment="Stretch"
+                                          Width="470">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="5*" />
+                                            <ColumnDefinition Width="1*" />
+                                            <ColumnDefinition Width="1*" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Orientation="Vertical"
+                                                    Grid.Column="0"
+                                                    Grid.Row="0">
+                                            <TextBlock Text="{Binding Medicine.DrugName}" />
+                                            <TextBlock Text="{Binding Usage.Name}" />
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal"
+                                                    Grid.Column="1"
+                                                    Grid.Row="0">
+                                            <TextBlock Text="{Binding AmountDrug}" />
+                                            <TextBlock Text="{Binding Unit.Name}" />
+                                        </StackPanel>
+                                        <TextBlock Grid.Column="2"
+                                                   Grid.Row="0"
+                                                   HorizontalAlignment="Right"
+                                                   Text="{Binding Medicine.Price}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
                             <!--<ListViewItem Width="Auto">
-                            <Grid HorizontalAlignment="Stretch"
-                                  Width="470">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="5*" />
-                                    <ColumnDefinition Width="1*" />
-                                    <ColumnDefinition Width="1*" />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0"
-                                           Grid.Row="0"
-                                           Text="OMEPRAZOL 20MG TV&#xA;Cach dung: 12 gio uong 1 lan, moi lan uong 1 vien" />
-                                <TextBlock Grid.Column="1"
-                                           Grid.Row="0"
-                                           Text="10 viên" />
-                                <TextBlock Grid.Column="2"
-                                           Grid.Row="0"
-                                           HorizontalAlignment="Right"
-                                           Text="600" />
-                            </Grid>
-                        </ListViewItem>
-                        <ListViewItem Width="Auto">
-                            <Grid HorizontalAlignment="Stretch"
-                                  Width="470">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="5*" />
-                                    <ColumnDefinition Width="1*" />
-                                    <ColumnDefinition Width="1*" />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0"
-                                           Grid.Row="0"
-                                           Text="OMEPRAZOL 20MG TV&#xA;Cach dung: 12 gio uong 1 lan, moi lan uong 1 vien" />
-                                <TextBlock Grid.Column="1"
-                                           Grid.Row="0"
-                                           Text="10 viên" />
-                                <TextBlock Grid.Column="2"
-                                           Grid.Row="0"
-                                           HorizontalAlignment="Right"
-                                           Text="600" />
-                            </Grid>
-                        </ListViewItem>
-                        <ListViewItem Width="Auto">
-                            <Grid HorizontalAlignment="Stretch"
-                                  Width="470">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="5*" />
-                                    <ColumnDefinition Width="1*" />
-                                    <ColumnDefinition Width="1*" />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0"
-                                           Grid.Row="0"
-                                           Text="OMEPRAZOL 20MG TV&#xA;Cach dung: 12 gio uong 1 lan, moi lan uong 1 vien" />
-                                <TextBlock Grid.Column="1"
-                                           Grid.Row="0"
-                                           Text="10 viên" />
-                                <TextBlock Grid.Column="2"
-                                           Grid.Row="0"
-                                           HorizontalAlignment="Right"
-                                           Text="600" />
-                            </Grid>
-                        </ListViewItem>
-                            <ListViewItem Width="Auto">
-                                <Grid HorizontalAlignment="Stretch"
-                                      Width="470">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="5*" />
-                                        <ColumnDefinition Width="1*" />
-                                        <ColumnDefinition Width="1*" />
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0"
-                                               Grid.Row="0"
-                                               Text="OMEPRAZOL 20MG TV&#xA;Cach dung: 12 gio uong 1 lan, moi lan uong 1 vien" />
-                                    <TextBlock Grid.Column="1"
-                                               Grid.Row="0"
-                                               Text="10 viên" />
-                                    <TextBlock Grid.Column="2"
-                                               Grid.Row="0"
-                                               HorizontalAlignment="Right"
-                                               Text="600" />
-                                </Grid>
-                            </ListViewItem>
-                            <ListViewItem Width="Auto">
-                                <Grid HorizontalAlignment="Stretch"
-                                      Width="470">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="5*" />
-                                        <ColumnDefinition Width="1*" />
-                                        <ColumnDefinition Width="1*" />
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0"
-                                               Grid.Row="0"
-                                               Text="OMEPRAZOL 20MG TV&#xA;Cach dung: 12 gio uong 1 lan, moi lan uong 1 vien" />
-                                    <TextBlock Grid.Column="1"
-                                               Grid.Row="0"
-                                               Text="10 viên" />
-                                    <TextBlock Grid.Column="2"
-                                               Grid.Row="0"
-                                               HorizontalAlignment="Right"
-                                               Text="600" />
-                                </Grid>
-                            </ListViewItem>
-                            <ListViewItem Width="Auto">
-                                <Grid HorizontalAlignment="Stretch"
-                                      Width="470">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="5*" />
-                                        <ColumnDefinition Width="1*" />
-                                        <ColumnDefinition Width="1*" />
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0"
-                                               Grid.Row="0"
-                                               Text="OMEPRAZOL 20MG TV&#xA;Cach dung: 12 gio uong 1 lan, moi lan uong 1 vien" />
-                                    <TextBlock Grid.Column="1"
-                                               Grid.Row="0"
-                                               Text="10 viên" />
-                                    <TextBlock Grid.Column="2"
-                                               Grid.Row="0"
-                                               HorizontalAlignment="Right"
-                                               Text="600" />
-                                </Grid>
-                            </ListViewItem>
-                            <ListViewItem Width="Auto">
-                                <Grid HorizontalAlignment="Stretch"
-                                      Width="470">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="5*" />
-                                        <ColumnDefinition Width="1*" />
-                                        <ColumnDefinition Width="1*" />
-                                    </Grid.ColumnDefinitions>
-                                    <TextBlock Grid.Column="0"
-                                               Grid.Row="0"
-                                               Text="OMEPRAZOL 20MG TV&#xA;Cach dung: 12 gio uong 1 lan, moi lan uong 1 vien" />
-                                    <TextBlock Grid.Column="1"
-                                               Grid.Row="0"
-                                               Text="10 viên" />
-                                    <TextBlock Grid.Column="2"
-                                               Grid.Row="0"
-                                               HorizontalAlignment="Right"
-                                               Text="600" />
-                                </Grid>
-                            </ListViewItem>
-                            <ListViewItem Width="Auto">
                                 <Grid HorizontalAlignment="Stretch"
                                       Width="470">
                                     <Grid.ColumnDefinitions>
