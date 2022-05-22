@@ -45,13 +45,13 @@ namespace ClinicAdmin.GUI
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             _prescriptionBUS = PrescriptionBUS.getInstance();
-            txblFullname.Text = _prescriptionBUS.PatientName;
-            txblGender.Text = _prescriptionBUS.PatientGender;
-            txblAge.Text = _prescriptionBUS.PatientAge;
-            txblAddress.Text = _prescriptionBUS.PatientAddress;
+            txblFullname.Text = _prescriptionBUS.Patient.Fullname;
+            txblGender.Text = _prescriptionBUS.Patient.Gender;
+            txblAge.Text = _prescriptionBUS.Patient.Age.ToString();
+            txblAddress.Text = _prescriptionBUS.Patient.Address;
             txblDiagnose.Text = _prescriptionBUS.Diagnose;
             lsvMedicines.ItemsSource = HomeBUS.getInstance().listMedicines;
-            txblTotalCost.Text = _prescriptionBUS.TotalCost;
+            txblTotalCost.Text = _prescriptionBUS.TotalCost.ToString() + " VND";
             txblNote.Text = _prescriptionBUS.Note;
             txblStaffName.Text = _prescriptionBUS.StaffName;
             txblDoctorName.Text = _prescriptionBUS.DoctorName;

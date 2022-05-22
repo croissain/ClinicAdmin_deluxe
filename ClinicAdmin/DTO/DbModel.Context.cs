@@ -40,7 +40,16 @@ namespace ClinicAdmin.DTO
         public virtual DbSet<UsageMedicine> UsageMedicines { get; set; }
         public virtual DbSet<User> Users { get; set; }
     
-        public virtual int usp_Login(string uname, string pass)
+        public virtual int usp_GetUser(string uname)
+        {
+            var unameParameter = uname != null ?
+                new ObjectParameter("uname", uname) :
+                new ObjectParameter("uname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_GetUser", unameParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<int>> usp_Login(string uname, string pass)
         {
             var unameParameter = uname != null ?
                 new ObjectParameter("uname", uname) :
@@ -50,7 +59,7 @@ namespace ClinicAdmin.DTO
                 new ObjectParameter("pass", pass) :
                 new ObjectParameter("pass", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_Login", unameParameter, passParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("usp_Login", unameParameter, passParameter);
         }
     }
 }

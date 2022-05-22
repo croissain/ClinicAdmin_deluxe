@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClinicAdmin.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,8 +27,9 @@ namespace ClinicAdmin.DAO
 
         public abstract bool AddAccountUser();
         public abstract bool ChangeRegulation();
-        public abstract bool AddPatient(PatientDAO patientDAO);
+        public abstract bool AddPatient();
         public abstract bool AddPrescription();
+        public abstract bool CheckIn();
         public abstract string GetRole();
 
     }

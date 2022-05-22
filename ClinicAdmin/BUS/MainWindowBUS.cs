@@ -10,6 +10,8 @@ namespace ClinicAdmin.BUS
     public class MainWindowBUS
     {
         private static MainWindowBUS instance;
+        public string username;
+        public UserDAO userAccount;
 
         public static MainWindowBUS getInstance()
         {
@@ -18,6 +20,12 @@ namespace ClinicAdmin.BUS
                 instance = new MainWindowBUS();
             }
             return instance;
+            
+        }
+
+        public void BUSLayer_Loaded()
+        {
+            userAccount = UserFactory.GetUserLogin(username);
         }
     }
 }

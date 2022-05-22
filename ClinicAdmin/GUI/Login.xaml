@@ -171,12 +171,12 @@
                     <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center">
-                        <TextBlock Text="Bạn chưa có tài khoản?"
+                        <TextBlock Text="Bạn quên mật khẩu?"
                                    Foreground="#98abda"
                                    Margin="15 15 0 15" />
                         <Label Margin="0 12 15 15"
                                Foreground="#68b2a0">
-                            <Hyperlink>Tạo mới</Hyperlink>
+                            <Hyperlink>Đặt lại mật khẩu</Hyperlink>
                         </Label>
                     </StackPanel>
 

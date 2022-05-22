@@ -90,7 +90,7 @@
                             <TextBlock x:Name="txblAddress" VerticalAlignment="Center"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="Chan doan:" VerticalAlignment="Center" />
+                            <Label Content="Chẩn đoán:" VerticalAlignment="Center" />
                             <TextBlock x:Name="txblDiagnose" VerticalAlignment="Center"/>
                         </StackPanel>
                 </StackPanel>
@@ -108,17 +108,17 @@
                         ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Width="200"
+                                    <GridViewColumn
                                                 DisplayMemberBinding="{Binding Medicine.DrugName}"
                                                 Header="Tên thuốc" />
-                                    <GridViewColumn DisplayMemberBinding="{Binding Unit}"
+                                    <GridViewColumn DisplayMemberBinding="{Binding Unit.Name}"
                                                 Header="Đơn vị" />
                                     <GridViewColumn DisplayMemberBinding="{Binding AmountDrug}"
                                                 Header="Số lượng" />
                                     <GridViewColumn DisplayMemberBinding="{Binding Medicine.Price}"
                                                 Header="Giá bán" />
-                                    <GridViewColumn Width="150"
-                                                DisplayMemberBinding="{Binding Usage}"
+                                    <GridViewColumn
+                                                DisplayMemberBinding="{Binding Usage.Name}"
                                                 Header="Cách dùng" />
                                 </GridView>
                             </ListView.View>

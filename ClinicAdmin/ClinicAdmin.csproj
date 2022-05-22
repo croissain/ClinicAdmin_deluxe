@@ -94,6 +94,7 @@
     <Compile Include="BUS\StaffListBUS.cs" />
     <Compile Include="DAO\AdminDAO.cs" />
     <Compile Include="DAO\DoctorDAO.cs" />
+    <Compile Include="DAO\InvoiceDAO.cs" />
     <Compile Include="DAO\PrescriptionDAO.cs" />
     <Compile Include="DAO\Prescription_MedicineDAO.cs" />
     <Compile Include="DAO\StaffDAO.cs" />
@@ -221,27 +222,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Account.xaml">
+    <Page Include="GUI\Pages\Account.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Chart.xaml">
+    <Page Include="GUI\Pages\Chart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Home.xaml">
+    <Page Include="GUI\Pages\Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\MedicinesList.xaml">
+    <Page Include="GUI\Pages\MedicinesList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\StaffsList.xaml">
+    <Page Include="GUI\Pages\StaffsList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Welcome.xaml">
+    <Page Include="GUI\Pages\Welcome.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -262,22 +263,22 @@
     <Compile Include="GUI\Prescription.xaml.cs">
       <DependentUpon>Prescription.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Account.xaml.cs">
+    <Compile Include="GUI\Pages\Account.xaml.cs">
       <DependentUpon>Account.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Chart.xaml.cs">
+    <Compile Include="GUI\Pages\Chart.xaml.cs">
       <DependentUpon>Chart.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Home.xaml.cs">
+    <Compile Include="GUI\Pages\Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MedicinesList.xaml.cs">
+    <Compile Include="GUI\Pages\MedicinesList.xaml.cs">
       <DependentUpon>MedicinesList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\StaffsList.xaml.cs">
+    <Compile Include="GUI\Pages\StaffsList.xaml.cs">
       <DependentUpon>StaffsList.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Welcome.xaml.cs">
+    <Compile Include="GUI\Pages\Welcome.xaml.cs">
       <DependentUpon>Welcome.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -330,7 +331,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="DTO\DbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

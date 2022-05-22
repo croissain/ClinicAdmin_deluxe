@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using ClinicAdmin.DTO;
+using ClinicAdmin.GUI;
 
 namespace ClinicAdmin.DAO
 {
@@ -81,19 +82,24 @@ namespace ClinicAdmin.DAO
             return false;
         }
 
-        public override bool AddPatient(PatientDAO patientDAO)
+        public override bool AddPatient()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public override bool AddPrescription()
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public override string GetRole()
         {
             return "Bác sĩ";
+        }
+
+        public override bool CheckIn()
+        {
+            return true;
         }
     }
 }

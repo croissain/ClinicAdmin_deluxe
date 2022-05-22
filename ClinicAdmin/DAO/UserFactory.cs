@@ -9,12 +9,12 @@ namespace ClinicAdmin.DAO
 {
     public class UserFactory
     {
-        public static UserDAO GetUserLogin(string username, string password)
+        public static UserDAO GetUserLogin(string username)
         {
             using (ClinicAdminEntities context = new ClinicAdminEntities())
             {
-                var entryPoint = ( from us in context.Users
-                                  where us.Username == username && us.Password == password
+                var entryPoint = (from us in context.Users
+                                  where us.Username == username
                                   select new
                                   {
                                       id = us.Id,
@@ -26,7 +26,7 @@ namespace ClinicAdmin.DAO
                                       Phone = us.Phone,
                                       RoleId = us.RoleId
                                   }).FirstOrDefault();
-                switch(entryPoint.RoleId)
+                switch (entryPoint.RoleId)
                 {
                     case (int)RoleEnum.ADMIN:
                         return new AdminDAO(entryPoint.id, entryPoint.Username, entryPoint.Password, entryPoint.FullName,
@@ -42,22 +42,5 @@ namespace ClinicAdmin.DAO
 
             return null;
         }
-
-        //public string GetRoleUser(int id)
-        //{
-        //    string result = null;
-        //    using (ClinicAdminEntities context = new ClinicAdminEntities())
-        //    {
-        //        var entryPoint = (from role in context.Roles
-        //                          join user in context.Users on role.Id equals user.RoleId
-        //                          where user.Id == id
-        //                          select new
-        //                          {
-        //                              RoleName = role.Name
-        //                          }).Take(1).FirstOrDefault();
-        //        result = entryPoint.RoleName;
-        //    }
-        //    return result;
-        //}
     }
 }

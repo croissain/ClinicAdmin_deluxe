@@ -79,7 +79,7 @@ namespace ClinicAdmin.DAO
             throw new NotImplementedException();
         }
 
-        public override bool AddPatient(PatientDAO patientDAO)
+        public override bool AddPatient()
         {
             MessageBox.Show("Vai trò của bạn không thể thực hiện chức năng này!", "Quyền không khả dụng", MessageBoxButton.OK, MessageBoxImage.Warning);
             return false;
@@ -94,6 +94,12 @@ namespace ClinicAdmin.DAO
         public override string GetRole()
         {
             return "Quản trị";
+        }
+
+        public override bool CheckIn()
+        {
+            MessageBox.Show("Vai trò của bạn không thể thực hiện chức năng này!", "Quyền không khả dụng", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return false;
         }
     }
 }

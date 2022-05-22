@@ -18,6 +18,7 @@ namespace ClinicAdmin.DTO
         public Prescription()
         {
             this.Invoices = new HashSet<Invoice>();
+            this.Prescription_Medicine = new HashSet<Prescription_Medicine>();
         }
     
         public int Id { get; set; }
@@ -33,6 +34,7 @@ namespace ClinicAdmin.DTO
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Invoice> Invoices { get; set; }
         public virtual Patient Patient { get; set; }
-        public virtual Prescription_Medicine Prescription_Medicine { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Prescription_Medicine> Prescription_Medicine { get; set; }
     }
 }

@@ -14,8 +14,9 @@ namespace ClinicAdmin.DTO
     
     public partial class Prescription_Medicine
     {
-        public int PrescriptionId { get; set; }
-        public int MedicineId { get; set; }
+        public int Id { get; set; }
+        public Nullable<int> PrescriptionId { get; set; }
+        public Nullable<int> MedicineId { get; set; }
         public Nullable<int> AmountDrug { get; set; }
         public Nullable<double> Cost { get; set; }
         public Nullable<int> Unit { get; set; }
