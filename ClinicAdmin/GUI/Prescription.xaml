@@ -14,58 +14,58 @@
     <ScrollViewer>
 
         <Grid>
-            
-        <Border Background="White"
-                Padding="20"
-                x:Name="print">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="130" />
-                    <RowDefinition Height="180" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
 
-                <StackPanel Orientation="Vertical">
-                    <StackPanel Orientation="Horizontal"
-                                VerticalAlignment="Center"
-                                Margin="0 0 0 4">
-                        <Path Data="{Binding Icon, ElementName=this, FallbackValue={StaticResource medical-bag}, TargetNullValue={StaticResource DefaultIcon}}"
-                              Margin="{Binding IconMargin, FallbackValue='0,0,20,0', TargetNullValue='20,0,0,0'}"
-                              Stretch="Uniform"
-                              Width="90"
-                              Height="90"
-                              VerticalAlignment="Center"
-                              Fill="{DynamicResource TertiaryIconColor}" />
-                        <StackPanel Orientation="Vertical"
-                                    VerticalAlignment="Center">
-                            <TextBlock Text="phòng mạch&#xA;tự nhiên"
-                                       FontWeight="Bold"
-                                       FontSize="20">
-                            </TextBlock>
-                            <TextBlock Text="Phường Linh Trung, Thành Phố Thủ Đức, Thành phố Hồ Chí Minh"
-                                       FontSize="9"></TextBlock>
-                            <TextBlock Text="SĐT: 028.38354394"
-                                       FontSize="9"></TextBlock>
+            <Border Background="White"
+                    Padding="20"
+                    x:Name="print">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="130" />
+                        <RowDefinition Height="180" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    Margin="0 0 0 4">
+                            <Path Data="{Binding Icon, ElementName=this, FallbackValue={StaticResource medical-bag}, TargetNullValue={StaticResource DefaultIcon}}"
+                                  Margin="{Binding IconMargin, FallbackValue='0,0,20,0', TargetNullValue='20,0,0,0'}"
+                                  Stretch="Uniform"
+                                  Width="90"
+                                  Height="90"
+                                  VerticalAlignment="Center"
+                                  Fill="{DynamicResource TertiaryIconColor}" />
+                            <StackPanel Orientation="Vertical"
+                                        VerticalAlignment="Center">
+                                <TextBlock Text="phòng mạch&#xA;tự nhiên"
+                                           FontWeight="Bold"
+                                           FontSize="20">
+                                </TextBlock>
+                                <TextBlock Text="Phường Linh Trung, Thành Phố Thủ Đức, Thành phố Hồ Chí Minh"
+                                           FontSize="9"></TextBlock>
+                                <TextBlock Text="SĐT: 028.38354394"
+                                           FontSize="9"></TextBlock>
+                            </StackPanel>
+                            <Image Source="/Assets/Images/QRCode.png"
+                                   Width="90"
+                                   HorizontalAlignment="Right"
+                                   Margin="24 0 0 0" />
                         </StackPanel>
-                        <Image Source="/Assets/Images/QRCode.png"
-                               Width="90"
-                               HorizontalAlignment="Right"
-                               Margin="24 0 0 0" />
+                        <Line X1="0"
+                              X2="480"
+                              Stroke="black"
+                              StrokeDashArray="8 2"
+                              Margin="0 12" />
                     </StackPanel>
-                    <Line X1="0"
-                          X2="480"
-                          Stroke="black"
-                          StrokeDashArray="8 2"
-                          Margin="0 12" />
-                </StackPanel>
 
-                <!--Main content-->
-                <StackPanel Orientation="Vertical"
-                            Grid.Row="1">
+                    <!--Main content-->
+                    <StackPanel Orientation="Vertical"
+                                Grid.Row="1">
                         <TextBlock Text="Đơn thuốc"
                                    HorizontalAlignment="Center"
                                    FontSize="32"
@@ -73,53 +73,61 @@
                                    Margin="0 0 0 20" />
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Họ và tên bệnh nhân:" />
-                            <TextBlock x:Name="txblFullname" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="txblFullname"
+                                       VerticalAlignment="Center" />
                         </StackPanel>
                         <DockPanel>
-                            <StackPanel Orientation="Horizontal"  Margin="0 0 50 0" >
-                                <Label Content="Giới tính:" VerticalAlignment="Center"/>
-                                <TextBlock x:Name="txblGender" VerticalAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal"
+                                        Margin="0 0 50 0">
+                                <Label Content="Giới tính:"
+                                       VerticalAlignment="Center" />
+                                <TextBlock x:Name="txblGender"
+                                           VerticalAlignment="Center" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <Label Content="Tuổi:" VerticalAlignment="Center" />
-                                <TextBlock x:Name="txblAge" VerticalAlignment="Center"/>
+                                <Label Content="Tuổi:"
+                                       VerticalAlignment="Center" />
+                                <TextBlock x:Name="txblAge"
+                                           VerticalAlignment="Center" />
                             </StackPanel>
                         </DockPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="Địa chỉ:" VerticalAlignment="Center" />
-                            <TextBlock x:Name="txblAddress" VerticalAlignment="Center"/>
+                            <Label Content="Địa chỉ:"
+                                   VerticalAlignment="Center" />
+                            <TextBlock x:Name="txblAddress"
+                                       VerticalAlignment="Center" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="Chẩn đoán:" VerticalAlignment="Center" />
-                            <TextBlock x:Name="txblDiagnose" VerticalAlignment="Center"/>
+                            <Label Content="Chẩn đoán:"
+                                   VerticalAlignment="Center" />
+                            <TextBlock x:Name="txblDiagnose"
+                                       VerticalAlignment="Center" />
                         </StackPanel>
-                </StackPanel>
+                    </StackPanel>
 
-                <StackPanel Orientation="Vertical"
-                            Grid.Row="2"
-                            Margin="0 40 0 0">
-                    <TextBlock Text="Chỉ định dùng thuốc"
-                               HorizontalAlignment="Center" 
-                               FontSize="16"
-                               FontWeight="SemiBold"/>
-                    <Rectangle Fill="Black"
-                               Height="1" />
-                    <ListView x:Name="lsvMedicines"
-                        ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <StackPanel Orientation="Vertical"
+                                Grid.Row="2"
+                                Margin="0 40 0 0">
+                        <TextBlock Text="Chỉ định dùng thuốc"
+                                   HorizontalAlignment="Center"
+                                   FontSize="16"
+                                   FontWeight="SemiBold" />
+                        <Rectangle Fill="Black"
+                                   Height="1" />
+                        <ListView x:Name="lsvMedicines"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn
-                                                DisplayMemberBinding="{Binding Medicine.DrugName}"
-                                                Header="Tên thuốc" />
+                                    <GridViewColumn DisplayMemberBinding="{Binding Medicine.DrugName}"
+                                                    Header="Tên thuốc" />
                                     <GridViewColumn DisplayMemberBinding="{Binding Unit.Name}"
-                                                Header="Đơn vị" />
+                                                    Header="Đơn vị" />
                                     <GridViewColumn DisplayMemberBinding="{Binding AmountDrug}"
-                                                Header="Số lượng" />
+                                                    Header="Số lượng" />
                                     <GridViewColumn DisplayMemberBinding="{Binding Medicine.Price}"
-                                                Header="Giá bán" />
-                                    <GridViewColumn
-                                                DisplayMemberBinding="{Binding Usage.Name}"
-                                                Header="Cách dùng" />
+                                                    Header="Giá bán" />
+                                    <GridViewColumn DisplayMemberBinding="{Binding Usage.Name}"
+                                                    Header="Cách dùng" />
                                 </GridView>
                             </ListView.View>
                             <!--<ListViewItem Width="Auto">
@@ -303,102 +311,106 @@
                                 </Grid>
                             </ListViewItem>-->
                         </ListView>
-                    <Rectangle Fill="Black"
-                               Height="1" />
+                        <Rectangle Fill="Black"
+                                   Height="1" />
 
-                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Right">
                             <Label Content="Tổng tiền:"
-                               FontSize="24"
-                               FontWeight="Bold" />
-                            <TextBlock x:Name="txblTotalCost" 
-                               FontSize="24"
-                               FontWeight="Bold" VerticalAlignment="Center"/>
+                                   FontSize="24"
+                                   FontWeight="Bold" />
+                            <TextBlock x:Name="txblTotalCost"
+                                       FontSize="24"
+                                       FontWeight="Bold"
+                                       VerticalAlignment="Center" />
                         </StackPanel>
                     </StackPanel>
 
-                <StackPanel Grid.Row="3"
-                            Margin="0 80 0 0">
-                    <Grid HorizontalAlignment="Stretch">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="3*" />
-                            <ColumnDefinition Width="3*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-                        <Image Grid.Column="0"
-                               Grid.Row="0"
-                               Grid.RowSpan="2"
-                               Source="/Assets/Images/BarCode.jpg"
-                               Height="100" />
-                        <StackPanel Orientation="Vertical"
-                                    Grid.Column="1"
-                                    Grid.Row="0"
-                                    Margin="8">
+                    <StackPanel Grid.Row="3"
+                                Margin="0 80 0 0">
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="3*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Image Grid.Column="0"
+                                   Grid.Row="0"
+                                   Grid.RowSpan="2"
+                                   Source="/Assets/Images/BarCode.jpg"
+                                   Height="100" />
+                            <StackPanel Orientation="Vertical"
+                                        Grid.Column="1"
+                                        Grid.Row="0"
+                                        Margin="8">
 
-                                
-                            <TextBlock Text="Lời dặn" />
-                            <TextBlock x:Name="txblNote" />
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical"
-                                    Grid.Column="2"
-                                    Grid.Row="0"
-                                    Margin="8">
-                            <TextBlock x:Name="txblHourExam" />
+
+                                <TextBlock Text="Lời dặn" />
+                                <TextBlock x:Name="txblNote" />
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical"
+                                        Grid.Column="2"
+                                        Grid.Row="0"
+                                        Margin="8">
+                                <TextBlock x:Name="txblHourExam" />
                                 <TextBlock x:Name="txblDayExam" />
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical"
-                                    Grid.Column="1"
-                                    Grid.Row="1"
-                                    Margin="8">
-                            <TextBlock Text="Y, BÁC SĨ:" />
-                            <TextBlock x:Name="txblDoctorName" VerticalAlignment="Center" />
-                        </StackPanel>
-                        <StackPanel Orientation="Vertical"
-                                    Grid.Column="2"
-                                    Grid.Row="1"
-                                    Margin="8">
-                            <TextBlock Text="NHÂN VIÊN:" />
-                            <TextBlock x:Name="txblStaffName" VerticalAlignment="Center" />
-                        </StackPanel>
-                    </Grid>
-                </StackPanel>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical"
+                                        Grid.Column="1"
+                                        Grid.Row="1"
+                                        Margin="8">
+                                <TextBlock Text="Y, BÁC SĨ:" />
+                                <TextBlock x:Name="txblDoctorName"
+                                           VerticalAlignment="Center" />
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical"
+                                        Grid.Column="2"
+                                        Grid.Row="1"
+                                        Margin="8">
+                                <TextBlock Text="NHÂN VIÊN:" />
+                                <TextBlock x:Name="txblStaffName"
+                                           VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
 
-                <StackPanel Grid.Row="4"
-                            Margin="0 40 0 0">
-                    <TextBlock Text="Khi đi tái khám nhớ mang theo đơn thuốc này!"
-                               HorizontalAlignment="Center" />
-                    <TextBlock Text="***********"
-                               HorizontalAlignment="Center"
-                               FontSize="24"
-                               FontWeight="Bold"
-                               Height="22" />
-                    <TextBlock Text="c ả m ơ n !"
-                               HorizontalAlignment="Center"
-                               FontSize="24"
-                               FontWeight="Bold"
-                               Height="28" />
-                    <TextBlock Text="***********"
-                               HorizontalAlignment="Center"
-                               FontSize="24"
-                               FontWeight="Bold" />
-                </StackPanel>
-            </Grid>
-        </Border>
-                <Button VerticalAlignment="Bottom"
-                        HorizontalAlignment="Right"
-                        Click="ExportPrescription_Click"
-                        Width="40"
-                        Height="40"
-                        Padding="0">
-                    <Path Data="{Binding Icon, ElementName=this, FallbackValue={StaticResource products}, TargetNullValue={StaticResource DefaultIcon}}"
-                          Width="24"
-                          Stretch="Uniform"
-                          VerticalAlignment="Center"
-                          Fill="{DynamicResource PrimaryIconColor}" />
-                </Button>
+                    <StackPanel Grid.Row="4"
+                                Margin="0 40 0 0">
+                        <TextBlock Text="Khi đi tái khám nhớ mang theo đơn thuốc này!"
+                                   HorizontalAlignment="Center" />
+                        <TextBlock Text="***********"
+                                   HorizontalAlignment="Center"
+                                   FontSize="24"
+                                   FontWeight="Bold"
+                                   Height="22" />
+                        <TextBlock Text="c ả m ơ n !"
+                                   HorizontalAlignment="Center"
+                                   FontSize="24"
+                                   FontWeight="Bold"
+                                   Height="28" />
+                        <TextBlock Text="***********"
+                                   HorizontalAlignment="Center"
+                                   FontSize="24"
+                                   FontWeight="Bold" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <Button VerticalAlignment="Bottom"
+                    HorizontalAlignment="Right"
+                    Click="ExportPrescription_Click"
+                    Width="40"
+                    Height="40"
+                    Padding="0">
+                <Path Data="{Binding Icon, ElementName=this, FallbackValue={StaticResource products}, TargetNullValue={StaticResource DefaultIcon}}"
+                      Width="24"
+                      Stretch="Uniform"
+                      VerticalAlignment="Center"
+                      Fill="{DynamicResource PrimaryIconColor}" />
+            </Button>
         </Grid>
 
     </ScrollViewer>

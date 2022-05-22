@@ -89,16 +89,11 @@
                     Click="WindowButton_Close_Click">
             </Button>
             <Button Foreground="#f2eb80"
-                                        Style="{StaticResource windowButton}"
-                                        Click="WindowButton_Minimize_Click">
-            </Button>
-            <Button Foreground="#88f280"
-                                        Style="{StaticResource windowButton}"
-                                        Click="WindowButton_FullScreen_Click">
+                    Style="{StaticResource windowButton}"
+                    Click="WindowButton_Minimize_Click">
             </Button>
         </StackPanel>
         <StackPanel Margin="50">
-            <!--<Image Source="/Assets/logo2.png" Width="96" Height="96"/>-->
             <Border Background="White"
                     Margin="10 20"
                     CornerRadius="5">

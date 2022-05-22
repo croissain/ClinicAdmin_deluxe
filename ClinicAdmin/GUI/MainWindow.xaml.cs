@@ -235,8 +235,8 @@ namespace ClinicAdmin
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
             Login dialog = new Login();
+            this.Close();
             dialog.ShowDialog();
         }
     }
