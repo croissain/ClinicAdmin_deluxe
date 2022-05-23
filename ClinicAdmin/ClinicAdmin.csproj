@@ -161,11 +161,17 @@
     <Compile Include="GUI\AddMedicine.xaml.cs">
       <DependentUpon>AddMedicine.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Regulation.xaml.cs">
+      <DependentUpon>Regulation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\AddPatient.xaml.cs">
       <DependentUpon>AddPatient.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\AddUser.xaml.cs">
       <DependentUpon>AddUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Pages\Report.xaml.cs">
+      <DependentUpon>Report.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\RoleEnum.cs" />
     <Page Include="Assets\Icons.xaml">
@@ -183,6 +189,10 @@
     <Page Include="GUI\AddMedicine.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\Regulation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="GUI\AddPatient.xaml">
       <SubType>Designer</SubType>
@@ -220,6 +230,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="GUI\Pages\Report.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\Prescription.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

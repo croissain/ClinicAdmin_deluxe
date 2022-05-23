@@ -229,7 +229,7 @@ namespace ClinicAdmin
 
         private void btnReport_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("GUI/Pages/Chart.xaml", UriKind.RelativeOrAbsolute));
+            fContainer.Navigate(new System.Uri("GUI/Pages/Report.xaml", UriKind.RelativeOrAbsolute));
         }
         #endregion
 
