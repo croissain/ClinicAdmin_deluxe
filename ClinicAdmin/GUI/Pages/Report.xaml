@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:ClinicAdmin.GUI.Pages"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
       mc:Ignorable="d"
       Title="Report"
       Loaded="Page_Loaded">
@@ -19,6 +20,7 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
+                    <RowDefinition />
                     <RowDefinition />
                     <RowDefinition />
                     <RowDefinition />
@@ -97,23 +99,76 @@
                     </StackPanel>
                 </materialDesign:Card>
 
-                <Grid Grid.Row="2"
+                <Border Grid.Row="2"
+                        Grid.Column="0">
+                    <Grid Height="300">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="0.2*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <lvc:Gauge Grid.Row="0"
+                                   Grid.Column="0"
+                                   Value=".20"
+                                   Uses360Mode="True"
+                                   Margin="5"
+                                   LabelFormatter="{Binding Formatter}" />
+                        <lvc:Gauge Grid.Row="0"
+                                   Grid.Column="1"
+                                   Value=".80"
+                                   Uses360Mode="True"
+                                   Margin="5"
+                                   LabelFormatter="{Binding Formatter}"
+                                   FromColor="IndianRed"
+                                   ToColor="IndianRed" />
+                        <lvc:Gauge Grid.Row="1"
+                                   Grid.Column="0"
+                                   Value=".70"
+                                   Uses360Mode="True"
+                                   Margin="5"
+                                   LabelFormatter="{Binding Formatter}"
+                                   FromColor="LightSeaGreen"
+                                   ToColor="LightSeaGreen" />
+                        <lvc:Gauge Grid.Row="1"
+                                   Grid.Column="1"
+                                   Value=".36"
+                                   Uses360Mode="True"
+                                   Margin="5"
+                                   LabelFormatter="{Binding Formatter}"
+                                   FromColor="White"
+                                   ToColor="White" />
+                    </Grid>
+                </Border>
+                    <Border Grid.Row="2"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="0.1*" />
+                        </Grid.RowDefinitions>
+                        <lvc:CartesianChart Grid.Row="0"
+                                            Grid.Column="0"
+                                            Grid.ColumnSpan="2"
+                                            Margin="10">
+                            <lvc:CartesianChart.Series>
+                                <lvc:LineSeries Fill="#30ffffff"
+                                                Values="{Binding DynamicValues}"></lvc:LineSeries>
+                            </lvc:CartesianChart.Series>
+                            <lvc:CartesianChart.AxisY>
+                                <lvc:Axis ShowLabels="True"></lvc:Axis>
+                            </lvc:CartesianChart.AxisY>
+                        </lvc:CartesianChart>
+                    </Grid>
+                    </Border>
+                <Grid Grid.Row="3"
                       Grid.Column="0"
                       Grid.RowSpan="2"
                       Grid.ColumnSpan="3">
-                    <!--<Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="4*"/>
-                    <ColumnDefinition Width="4*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>-->
                     <StackPanel Orientation="Vertical">
                         <Label  Content="DANH SÁCH KHÁM BỆNH"
                                 Foreground="#68b2a0"
