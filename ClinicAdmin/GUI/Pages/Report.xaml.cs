@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ClinicAdmin.BUS;
+using ClinicAdmin.GUI;
 
 namespace ClinicAdmin.GUI.Pages
 {
@@ -34,6 +35,37 @@ namespace ClinicAdmin.GUI.Pages
             _homeBUS = HomeBUS.getInstance();
             _homeBUS.BUSLayer_Loaded();
             lsvPatient.ItemsSource = _homeBUS.listPatients;
+        }
+
+        private void btnRegulation_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            string patientName = txbPatientName.Text;
+            DateTime? dateFrom = dpkFrom.SelectedDate;
+            DateTime? dateTo = dpkTo.SelectedDate;
+
+            _homeBUS.PatientSearch(patientName, dateFrom, dateTo);
+            lsvPatient.ItemsSource = null;
+            lsvPatient.Items.Clear();
+            lsvPatient.ItemsSource = _homeBUS.listPatients;
+        }
+
+        private void btnClearSearch_Click(object sender, RoutedEventArgs e)
+        {
+            txbPatientName.Text = "";
+            dpkFrom.SelectedDate = null;
+            dpkTo.SelectedDate = null;
+
+            btnSearch_Click(sender, e);
+        }
+
+        private void ExportReport_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
