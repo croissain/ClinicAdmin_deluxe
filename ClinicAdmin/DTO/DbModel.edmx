@@ -14,16 +14,6 @@
           <Property Name="PatientId" Type="int" Nullable="false" />
           <Property Name="Status" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="DayReport">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="DayReport" Type="date" />
-          <Property Name="TotalMedicines" Type="int" />
-          <Property Name="TotalPatients" Type="int" />
-          <Property Name="TotalInvoice" Type="int" />
-        </EntityType>
         <EntityType Name="Invoice">
           <Key>
             <PropertyRef Name="Id" />
@@ -91,6 +81,22 @@
           <Property Name="Datatypes" Type="nvarchar" MaxLength="255" />
           <Property Name="Value" Type="nvarchar" MaxLength="255" />
           <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Created_at" Type="date" />
+          <Property Name="TotalMedicines" Type="int" />
+          <Property Name="TotalPatients" Type="int" />
+          <Property Name="TotalInvoice" Type="int" />
+          <Property Name="SumProfit" Type="float" />
+          <Property Name="ProfitInDay" Type="float" />
+          <Property Name="PatientInDay" Type="int" />
+          <Property Name="ReportPerson" Type="nvarchar" MaxLength="255" />
+          <Property Name="Descript" Type="text" />
+          <Property Name="Purpose" Type="text" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -229,15 +235,23 @@
           <Parameter Name="uname" Type="nvarchar" Mode="In" />
           <Parameter Name="pass" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="usp_PatientInDay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="day" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="usp_ProfitInDay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="day" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="usp_SumPatient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="usp_SumProfit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="ClinicAdminModelStoreContainer">
           <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DayReport" EntityType="Self.DayReport" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Medicine" EntityType="Self.Medicine" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Prescription" EntityType="Self.Prescription" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Prescription_Medicine" EntityType="Self.Prescription_Medicine" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Regulation" EntityType="Self.Regulation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Report" EntityType="Self.Report" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UnitMedicine" EntityType="Self.UnitMedicine" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsageMedicine" EntityType="Self.UsageMedicine" Schema="dbo" store:Type="Tables" />
@@ -289,16 +303,6 @@
           <Property Name="PatientId" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Patient" Relationship="Self.Appointment_fk0" FromRole="Appointment" ToRole="Patient" />
-        </EntityType>
-        <EntityType Name="DayReport">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DayReport1" Type="DateTime" Precision="0" />
-          <Property Name="TotalMedicines" Type="Int32" />
-          <Property Name="TotalPatients" Type="Int32" />
-          <Property Name="TotalInvoice" Type="Int32" />
         </EntityType>
         <EntityType Name="Invoice">
           <Key>
@@ -378,6 +382,22 @@
           <Property Name="Datatypes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Value" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Created_at" Type="DateTime" Precision="0" />
+          <Property Name="TotalMedicines" Type="Int32" />
+          <Property Name="TotalPatients" Type="Int32" />
+          <Property Name="TotalInvoice" Type="Int32" />
+          <Property Name="SumProfit" Type="Double" />
+          <Property Name="ProfitInDay" Type="Double" />
+          <Property Name="PatientInDay" Type="Int32" />
+          <Property Name="ReportPerson" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Descript" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Purpose" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -515,13 +535,13 @@
         </Association>
         <EntityContainer Name="ClinicAdminEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Appointments" EntityType="Self.Appointment" />
-          <EntitySet Name="DayReports" EntityType="Self.DayReport" />
           <EntitySet Name="Invoices" EntityType="Self.Invoice" />
           <EntitySet Name="Medicines" EntityType="Self.Medicine" />
           <EntitySet Name="Patients" EntityType="Self.Patient" />
           <EntitySet Name="Prescriptions" EntityType="Self.Prescription" />
           <EntitySet Name="Prescription_Medicine" EntityType="Self.Prescription_Medicine" />
           <EntitySet Name="Regulations" EntityType="Self.Regulation" />
+          <EntitySet Name="Reports" EntityType="Self.Report" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="UnitMedicines" EntityType="Self.UnitMedicine" />
           <EntitySet Name="UsageMedicines" EntityType="Self.UsageMedicine" />
@@ -558,14 +578,32 @@
             <End Role="Role" EntitySet="Roles" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
-          <FunctionImport Name="usp_GetUser">
+          <FunctionImport Name="usp_GetUser" ReturnType="Collection(ClinicAdminModel.usp_GetUser_Result)">
             <Parameter Name="uname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="usp_Login" ReturnType="Collection(Int32)">
             <Parameter Name="uname" Mode="In" Type="String" />
             <Parameter Name="pass" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="usp_PatientInDay" ReturnType="Collection(Int32)">
+            <Parameter Name="day" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="usp_ProfitInDay" ReturnType="Collection(Double)">
+            <Parameter Name="day" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="usp_SumPatient" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="usp_SumProfit" ReturnType="Collection(Double)" />
         </EntityContainer>
+        <ComplexType Name="usp_GetUser_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="FullName" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="255" />
+          <Property Type="String" Name="Phone" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="RoleId" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -579,17 +617,6 @@
                 <ScalarProperty Name="AppointmentDay" ColumnName="AppointmentDay" />
                 <ScalarProperty Name="PatientId" ColumnName="PatientId" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DayReports">
-            <EntityTypeMapping TypeName="ClinicAdminModel.DayReport">
-              <MappingFragment StoreEntitySet="DayReport">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="DayReport1" ColumnName="DayReport" />
-                <ScalarProperty Name="TotalMedicines" ColumnName="TotalMedicines" />
-                <ScalarProperty Name="TotalPatients" ColumnName="TotalPatients" />
-                <ScalarProperty Name="TotalInvoice" ColumnName="TotalInvoice" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -667,6 +694,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Reports">
+            <EntityTypeMapping TypeName="ClinicAdminModel.Report">
+              <MappingFragment StoreEntitySet="Report">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Created_at" ColumnName="Created_at" />
+                <ScalarProperty Name="TotalMedicines" ColumnName="TotalMedicines" />
+                <ScalarProperty Name="TotalPatients" ColumnName="TotalPatients" />
+                <ScalarProperty Name="TotalInvoice" ColumnName="TotalInvoice" />
+                <ScalarProperty Name="SumProfit" ColumnName="SumProfit" />
+                <ScalarProperty Name="ProfitInDay" ColumnName="ProfitInDay" />
+                <ScalarProperty Name="PatientInDay" ColumnName="PatientInDay" />
+                <ScalarProperty Name="ReportPerson" ColumnName="ReportPerson" />
+                <ScalarProperty Name="Descript" ColumnName="Descript" />
+                <ScalarProperty Name="Purpose" ColumnName="Purpose" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Roles">
             <EntityTypeMapping TypeName="ClinicAdminModel.Role">
               <MappingFragment StoreEntitySet="Role">
@@ -705,8 +749,25 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="usp_GetUser" FunctionName="ClinicAdminModel.Store.usp_GetUser" />
+          <FunctionImportMapping FunctionImportName="usp_GetUser" FunctionName="ClinicAdminModel.Store.usp_GetUser">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ClinicAdminModel.usp_GetUser_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="usp_Login" FunctionName="ClinicAdminModel.Store.usp_Login" />
+          <FunctionImportMapping FunctionImportName="usp_PatientInDay" FunctionName="ClinicAdminModel.Store.usp_PatientInDay" />
+          <FunctionImportMapping FunctionImportName="usp_ProfitInDay" FunctionName="ClinicAdminModel.Store.usp_ProfitInDay" />
+          <FunctionImportMapping FunctionImportName="usp_SumPatient" FunctionName="ClinicAdminModel.Store.usp_SumPatient" />
+          <FunctionImportMapping FunctionImportName="usp_SumProfit" FunctionName="ClinicAdminModel.Store.usp_SumProfit" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

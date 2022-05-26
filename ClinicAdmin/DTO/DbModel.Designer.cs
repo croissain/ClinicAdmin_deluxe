@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\School\CSC13010-SoftwareDesign\project\main\newClinicAdmin\ClinicAdmin\ClinicAdmin\DTO\DbModel.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\HOC_KI_6\Thiet_ke_PM\ClinicAdmin_deluxe\ClinicAdmin\DTO\DbModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
