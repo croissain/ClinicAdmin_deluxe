@@ -23,7 +23,8 @@ namespace ClinicAdmin.GUI.Pages
     /// </summary>
     public partial class Report : Page
     {
-        private HomeBUS _homeBUS;
+        private PatientDAO _patientDAO;
+        private StatisticBUS _statisticBUS;
 
         public Report()
         {
@@ -32,9 +33,8 @@ namespace ClinicAdmin.GUI.Pages
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            _homeBUS = HomeBUS.getInstance();
-            _homeBUS.BUSLayer_Loaded();
-            lsvPatient.ItemsSource = _homeBUS.listPatients;
+            _patientDAO = PatientDAO.getInstance();
+            lsvPatient.ItemsSource = _patientDAO.GetListPatient();
         }
 
         private void btnRegulation_Click(object sender, RoutedEventArgs e)
@@ -65,7 +65,7 @@ namespace ClinicAdmin.GUI.Pages
 
         private void ExportReport_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
     }
 }
