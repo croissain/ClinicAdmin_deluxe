@@ -46,7 +46,8 @@
                                    Foreground="White"
                                    FontSize="26"
                                    FontWeight="Bold"></Label>
-                            <Label Content="2"
+                            <Label x:Name="lbSumProfit"
+                                    Content="2"
                                    Foreground="White"
                                    FontSize="60"
                                    FontWeight="Bold"></Label>
@@ -74,7 +75,8 @@
                                        Foreground="White"
                                        FontSize="26"
                                        FontWeight="Bold"></Label>
-                                <Label Content="2"
+                                <Label x:Name="lbPatientInDay"
+                                        Content="2"
                                        Foreground="White"
                                        FontSize="60"
                                        FontWeight="Bold"></Label>
@@ -102,7 +104,8 @@
                                        Foreground="White"
                                        FontSize="26"
                                        FontWeight="Bold"></Label>
-                                <Label Content="12M+"
+                                <Label Name="lbProfitInDay"
+                                        Content="12M+"
                                        Foreground="White"
                                        FontSize="60"
                                        FontWeight="Bold"></Label>
