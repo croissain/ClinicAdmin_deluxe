@@ -180,7 +180,8 @@
                         <Label Content="4. Mô tả:"
                                FontSize="13"
                                FontWeight="Bold" />
-                        <TextBlock Text="3 file excel được xuất kèm gồm:"></TextBlock>
+                        <TextBlock Text="3 file excel được xuất kèm gồm:"
+                                   FontSize="13"></TextBlock>
                         <StackPanel Orientation="Vertical">
                             <TextBlock FontSize="13"
                                        TextWrapping="Wrap">
