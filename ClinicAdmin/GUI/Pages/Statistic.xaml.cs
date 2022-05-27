@@ -24,6 +24,7 @@ namespace ClinicAdmin.GUI.Pages
     public partial class Statistic : Page
     {
         private PatientDAO _patientDAO;
+        private StatisticBUS _statisticBUS;
 
         public Statistic()
         {

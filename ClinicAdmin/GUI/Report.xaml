@@ -12,7 +12,7 @@
         WindowStartupLocation="CenterScreen"
         Loaded="Window_Loaded">
     <ScrollViewer>
-        <Grid>
+        <Grid Width="595">
             <Grid.RowDefinitions>
                 <RowDefinition Height="842" />
                 <RowDefinition Height="*" />
@@ -24,7 +24,7 @@
                     <Grid.ColumnDefinitions>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50" />
+                        <RowDefinition Height="60" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="0.2*" />
@@ -67,7 +67,8 @@
                     <Line X1="0"
                           X2="530"
                           Stroke="black"
-                          Margin="0 50" />
+                          StrokeThickness="2"
+                          Margin="0 50 0 0" />
                     <!--Main content-->
                     <StackPanel Orientation="Vertical"
                                 Grid.Row="1">

@@ -10,14 +10,16 @@
 namespace ClinicAdmin.DTO
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class DayReport
+    public partial class usp_GetUser_Result
     {
         public int Id { get; set; }
-        public Nullable<System.DateTime> DayReport1 { get; set; }
-        public Nullable<int> TotalMedicines { get; set; }
-        public Nullable<int> TotalPatients { get; set; }
-        public Nullable<int> TotalInvoice { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string FullName { get; set; }
+        public string Address { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public Nullable<int> RoleId { get; set; }
     }
 }
