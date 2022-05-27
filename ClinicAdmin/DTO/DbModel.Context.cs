@@ -89,5 +89,18 @@ namespace ClinicAdmin.DTO
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<double>>("usp_SumProfit");
         }
+    
+        public virtual ObjectResult<Nullable<double>> usp_SumProfitInMonth(Nullable<int> month, Nullable<int> year)
+        {
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<double>>("usp_SumProfitInMonth", monthParameter, yearParameter);
+        }
     }
 }
