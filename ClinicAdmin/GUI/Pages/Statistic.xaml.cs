@@ -21,20 +21,19 @@ namespace ClinicAdmin.GUI.Pages
     /// <summary>
     /// Interaction logic for Report.xaml
     /// </summary>
-    public partial class Report : Page
+    public partial class Statistic : Page
     {
-        private HomeBUS _homeBUS;
+        private PatientDAO _patientDAO;
 
-        public Report()
+        public Statistic()
         {
             InitializeComponent();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            _homeBUS = HomeBUS.getInstance();
-            _homeBUS.BUSLayer_Loaded();
-            lsvPatient.ItemsSource = _homeBUS.listPatients;
+            _patientDAO = PatientDAO.getInstance();
+            lsvPatient.ItemsSource = _patientDAO.GetListPatient();
         }
 
         private void btnRegulation_Click(object sender, RoutedEventArgs e)
@@ -48,10 +47,10 @@ namespace ClinicAdmin.GUI.Pages
             DateTime? dateFrom = dpkFrom.SelectedDate;
             DateTime? dateTo = dpkTo.SelectedDate;
 
-            _homeBUS.PatientSearch(patientName, dateFrom, dateTo);
+            _patientDAO.PatientSearch(patientName, dateFrom, dateTo);
             lsvPatient.ItemsSource = null;
             lsvPatient.Items.Clear();
-            lsvPatient.ItemsSource = _homeBUS.listPatients;
+            lsvPatient.ItemsSource = _patientDAO.GetListPatient();
         }
 
         private void btnClearSearch_Click(object sender, RoutedEventArgs e)
@@ -65,7 +64,7 @@ namespace ClinicAdmin.GUI.Pages
 
         private void ExportReport_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
     }
 }

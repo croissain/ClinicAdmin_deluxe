@@ -188,18 +188,18 @@ namespace ClinicAdmin
             Popup.IsOpen = false;
         }
 
-        private void btnReport_MouseEnter(object sender, MouseEventArgs e)
+        private void btnStatistic_MouseEnter(object sender, MouseEventArgs e)
         {
             if (Tg_Btn.IsChecked == false)
             {
-                Popup.PlacementTarget = btnReport;
+                Popup.PlacementTarget = btnStatistic;
                 Popup.Placement = PlacementMode.Right;
                 Popup.IsOpen = true;
                 Header.PopupText.Text = "Thống Kê";
             }
         }
 
-        private void btnReport_MouseLeave(object sender, MouseEventArgs e)
+        private void btnStatistic_MouseLeave(object sender, MouseEventArgs e)
         {
             Popup.Visibility = Visibility.Collapsed;
             Popup.IsOpen = false;
@@ -227,9 +227,9 @@ namespace ClinicAdmin
             fContainer.Navigate(new System.Uri("GUI/Pages/Account.xaml", UriKind.RelativeOrAbsolute));
         }
 
-        private void btnReport_Click(object sender, RoutedEventArgs e)
+        private void btnStatistic_Click(object sender, RoutedEventArgs e)
         {
-            fContainer.Navigate(new System.Uri("GUI/Pages/Report.xaml", UriKind.RelativeOrAbsolute));
+            fContainer.Navigate(new System.Uri("GUI/Pages/Statistic.xaml", UriKind.RelativeOrAbsolute));
         }
         #endregion
 

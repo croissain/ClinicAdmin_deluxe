@@ -14,7 +14,10 @@
     <ScrollViewer>
 
         <Grid>
-
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
             <Border Background="White"
                     Padding="20"
                     x:Name="print">
@@ -287,20 +290,24 @@
                     </StackPanel>
                 </Grid>
             </Border>
-            <Button VerticalAlignment="Bottom"
+            <Button Grid.Row="1"
+                    VerticalAlignment="Bottom"
                     HorizontalAlignment="Right"
                     Click="ExportPrescription_Click"
-                    Width="40"
+                    Width="140"
                     Height="40"
-                    Padding="0">
-                <Path Data="{Binding Icon, ElementName=this, FallbackValue={StaticResource products}, TargetNullValue={StaticResource DefaultIcon}}"
-                      Width="24"
-                      Stretch="Uniform"
-                      VerticalAlignment="Center"
-                      Fill="{DynamicResource PrimaryIconColor}" />
+                    Padding="0"
+                    Margin="20 0 20 20">
+                <StackPanel Orientation="Horizontal">
+                    <Path Data="{Binding Icon, ElementName=this, FallbackValue={StaticResource products}, TargetNullValue={StaticResource DefaultIcon}}"
+                          Width="20"
+                          Margin="8 0"
+                          Stretch="Uniform"
+                          VerticalAlignment="Center"
+                          Fill="{DynamicResource PrimaryIconColor}" />
+                    <TextBlock Text="In hóa đơn"></TextBlock>
+                </StackPanel>
             </Button>
         </Grid>
-
     </ScrollViewer>
-
 </Window>
