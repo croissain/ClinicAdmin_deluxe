@@ -238,6 +238,10 @@
         <Function Name="usp_PatientInDay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="day" Type="datetime" Mode="In" />
         </Function>
+        <Function Name="usp_PatientInMonth" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="month" Type="int" Mode="In" />
+          <Parameter Name="year" Type="int" Mode="In" />
+        </Function>
         <Function Name="usp_ProfitInDay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="day" Type="datetime" Mode="In" />
         </Function>
@@ -592,6 +596,10 @@
           <FunctionImport Name="usp_PatientInDay" ReturnType="Collection(Int32)">
             <Parameter Name="day" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <FunctionImport Name="usp_PatientInMonth" ReturnType="Collection(Int32)">
+            <Parameter Name="month" Mode="In" Type="Int32" />
+            <Parameter Name="year" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="usp_ProfitInDay" ReturnType="Collection(Double)">
             <Parameter Name="day" Mode="In" Type="DateTime" />
           </FunctionImport>
@@ -773,6 +781,7 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="usp_Login" FunctionName="ClinicAdminModel.Store.usp_Login" />
           <FunctionImportMapping FunctionImportName="usp_PatientInDay" FunctionName="ClinicAdminModel.Store.usp_PatientInDay" />
+          <FunctionImportMapping FunctionImportName="usp_PatientInMonth" FunctionName="ClinicAdminModel.Store.usp_PatientInMonth" />
           <FunctionImportMapping FunctionImportName="usp_ProfitInDay" FunctionName="ClinicAdminModel.Store.usp_ProfitInDay" />
           <FunctionImportMapping FunctionImportName="usp_SumPatient" FunctionName="ClinicAdminModel.Store.usp_SumPatient" />
           <FunctionImportMapping FunctionImportName="usp_SumProfit" FunctionName="ClinicAdminModel.Store.usp_SumProfit" />

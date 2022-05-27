@@ -10,9 +10,10 @@
         Title="Report"
         Width="595"
         WindowStartupLocation="CenterScreen"
-        Loaded="Window_Loaded">
+        Loaded="Window_Loaded"
+        Icon="/Assets/Icon/Icon.ico">
     <ScrollViewer>
-        <Grid>
+        <Grid Width="595">
             <Grid.RowDefinitions>
                 <RowDefinition Height="842" />
                 <RowDefinition Height="*" />
@@ -24,7 +25,7 @@
                     <Grid.ColumnDefinitions>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50" />
+                        <RowDefinition Height="60" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="0.2*" />
@@ -67,7 +68,8 @@
                     <Line X1="0"
                           X2="530"
                           Stroke="black"
-                          Margin="0 50" />
+                          StrokeThickness="2"
+                          Margin="0 50 0 0" />
                     <!--Main content-->
                     <StackPanel Orientation="Vertical"
                                 Grid.Row="1">
@@ -177,9 +179,57 @@
                                 </BulletDecorator>
                             </TextBlock>
                         </StackPanel>
-                        <Label Content="4. Mô tả:"
+                        <Label Content="4. Báo cáo dữ liệu bảng:"
                                FontSize="13"
                                FontWeight="Bold" />
+                        <TextBlock FontSize="13"
+                                   TextWrapping="Wrap">
+                                <BulletDecorator Margin="20 0">
+                                    <BulletDecorator.Bullet>
+                                        <Ellipse Height="5"
+                                                 Width="5"
+                                                 Fill="Black" />
+                                </BulletDecorator.Bullet>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Padding="10 0"
+                                                   Text="Tổng số bệnh nhân:" />
+                                        <TextBlock Text="56"
+                                                   x:Name="txblTotalPatients" />
+                                    </StackPanel>
+                                </BulletDecorator>
+                        </TextBlock>
+                        <TextBlock FontSize="13"
+                                   TextWrapping="Wrap">
+                                <BulletDecorator Margin="20 0">
+                                    <BulletDecorator.Bullet>
+                                        <Ellipse Height="5"
+                                                 Width="5"
+                                                 Fill="Black" />
+                                </BulletDecorator.Bullet>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Padding="10 0"
+                                                   Text="Lượng thuốc tồn kho:" />
+                                        <TextBlock Text="56"
+                                                   x:Name="txblTotalMedicines" />
+                                    </StackPanel>
+                                </BulletDecorator>
+                        </TextBlock>
+                        <TextBlock FontSize="13"
+                                   TextWrapping="Wrap">
+                                <BulletDecorator Margin="20 0">
+                                    <BulletDecorator.Bullet>
+                                        <Ellipse Height="5"
+                                                 Width="5"
+                                                 Fill="Black" />
+                                </BulletDecorator.Bullet>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Padding="10 0"
+                                                   Text="Lượng thuốc hóa đơn:" />
+                                        <TextBlock Text="56"
+                                                   x:Name="txblTotalInvoices" />
+                                    </StackPanel>
+                                </BulletDecorator>
+                        </TextBlock>
                         <TextBlock Text="3 file excel được xuất kèm gồm:"
                                    FontSize="13"></TextBlock>
                         <StackPanel Orientation="Vertical">

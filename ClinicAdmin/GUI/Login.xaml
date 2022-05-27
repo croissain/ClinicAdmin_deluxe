@@ -14,7 +14,8 @@
         ResizeMode="NoResize"
         AllowsTransparency="True"
         WindowStyle="None"
-        Loaded="Window_Loaded">
+        Loaded="Window_Loaded"
+        Icon="/Assets/Icon/Icon.ico">
     <Window.Resources>
         <Style x:Key="RoundCorner"
                TargetType="{x:Type Button}">

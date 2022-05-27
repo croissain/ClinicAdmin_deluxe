@@ -22,6 +22,7 @@
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition />
+                    <RowDefinition Height="0" />
                     <RowDefinition />
                     <RowDefinition />
                     <RowDefinition />
@@ -144,7 +145,7 @@
                     </StackPanel>
                 </materialDesign:Card>
 
-                <Border Grid.Row="2"
+                <Border Grid.Row="3"
                         Grid.Column="0">
                     <Grid Height="300">
                         <Grid.RowDefinitions>
@@ -188,7 +189,15 @@
                                    ToColor="White" />
                     </Grid>
                 </Border>
-                <Border Grid.Row="2"
+                <StackPanel Grid.Row="2">
+                    <TextBlock x:Name="txblTotalMedicines"
+                               Text="" />
+                    <TextBlock x:Name="txblTotalPatients"
+                               Text="" />
+                    <TextBlock x:Name="txblTotalInvoices"
+                               Text="" />
+                </StackPanel>
+                <Border Grid.Row="3"
                         Grid.Column="1"
                         Grid.ColumnSpan="2">
                     <Grid>
@@ -210,7 +219,7 @@
                         </lvc:CartesianChart>
                     </Grid>
                 </Border>
-                <Grid Grid.Row="3"
+                <Grid Grid.Row="4"
                       Grid.Column="0"
                       Grid.RowSpan="2"
                       Grid.ColumnSpan="3">
@@ -411,7 +420,7 @@
                                 Foreground="White"
                                 Margin="8 15 15 15"
                                 Click="ExportReport_Click">
-                            <TextBlock Text="Xuất thống kê" />
+                            <TextBlock Text="Xuất báo cáo" />
                         </Button>
                         </StackPanel>
                     </StackPanel>

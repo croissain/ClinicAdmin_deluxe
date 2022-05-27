@@ -11,7 +11,8 @@
         AllowsTransparency="True"
         Height ="650"
         Title="Thêm mới người dùng"
-        Loaded="Window_Loaded">
+        Loaded="Window_Loaded"
+        Icon="/Assets/Icon/Icon.ico">
     <Window.Background>
         <LinearGradientBrush StartPoint="0.5,0"
                              EndPoint="0.5,1">

@@ -71,6 +71,19 @@ namespace ClinicAdmin.DTO
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("usp_PatientInDay", dayParameter);
         }
     
+        public virtual ObjectResult<Nullable<int>> usp_PatientInMonth(Nullable<int> month, Nullable<int> year)
+        {
+            var monthParameter = month.HasValue ?
+                new ObjectParameter("month", month) :
+                new ObjectParameter("month", typeof(int));
+    
+            var yearParameter = year.HasValue ?
+                new ObjectParameter("year", year) :
+                new ObjectParameter("year", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("usp_PatientInMonth", monthParameter, yearParameter);
+        }
+    
         public virtual ObjectResult<Nullable<double>> usp_ProfitInDay(Nullable<System.DateTime> day)
         {
             var dayParameter = day.HasValue ?

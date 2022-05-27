@@ -88,6 +88,7 @@
     <Compile Include="BUS\AddMedicineBUS.cs" />
     <Compile Include="BUS\AddPatientBUS.cs" />
     <Compile Include="BUS\AddUserBUS.cs" />
+    <Compile Include="BUS\ReportBUS.cs" />
     <Compile Include="BUS\StatisticBUS.cs" />
     <Compile Include="BUS\LoginBUS.cs" />
     <Compile Include="BUS\HomeBUS.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="DAO\AdminDAO.cs" />
     <Compile Include="DAO\DoctorDAO.cs" />
     <Compile Include="DAO\InvoiceDAO.cs" />
+    <Compile Include="DAO\ReportDAO.cs" />
     <Compile Include="DAO\PrescriptionDAO.cs" />
     <Compile Include="DAO\Prescription_MedicineDAO.cs" />
     <Compile Include="DAO\RoleDAO.cs" />
@@ -360,6 +362,14 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\Images\Seal.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Assets\Icon\Icon.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Content Include="Assets\Icon\SVG\Icon.svg" />
     <Content Include="DTO\DbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DbModel.edmx</DependentUpon>

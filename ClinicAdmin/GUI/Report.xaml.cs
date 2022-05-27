@@ -20,7 +20,9 @@ namespace ClinicAdmin.GUI
     /// </summary>
     public partial class Report : Window
     {
-        private PrescriptionBUS _prescriptionBUS;
+        private ReportBUS _reportBUS;
+        private StatisticBUS _statisticBUS;
+
         public Report()
         {
             InitializeComponent();
@@ -44,19 +46,16 @@ namespace ClinicAdmin.GUI
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            _prescriptionBUS = PrescriptionBUS.getInstance();
-            //txblFullname.Text = _prescriptionBUS.Patient.Fullname;
-            //txblGender.Text = _prescriptionBUS.Patient.Gender;
-            //txblAge.Text = _prescriptionBUS.Patient.Age.ToString();
-            //txblAddress.Text = _prescriptionBUS.Patient.Address;
-            //txblDiagnose.Text = _prescriptionBUS.Diagnose;
-            //lsvMedicines.ItemsSource = HomeBUS.getInstance().listMedicines;
-            //txblTotalCost.Text = _prescriptionBUS.TotalCost.ToString() + " VND";
-            //txblNote.Text = _prescriptionBUS.Note;
-            //txblStaffName.Text = _prescriptionBUS.StaffName;
-            //txblDoctorName.Text = _prescriptionBUS.DoctorName;
-            //txblDayExam.Text = DateTime.Today.ToShortDateString();
-            //txblHourExam.Text = DateTime.Now.ToShortTimeString();
+            _reportBUS = ReportBUS.getInstance();
+            _statisticBUS = StatisticBUS.getInstance();
+            txblPatientAmount.Text = _statisticBUS.PatientInMonth().ToString();
+            txblDailyProfit.Text = _statisticBUS.ProfitInDay().ToString();
+            txblMonthlyProfit.Text = _statisticBUS.SumProfitInMonth(DateTime.Today.Month, DateTime.Today.Year).ToString();
+            txblPercent.Text = _statisticBUS.MonthlyGrowth(DateTime.Today.Month, DateTime.Today.Year).ToString();
+
+            txblTotalInvoices.Text = _reportBUS.TotalInvoice.ToString();
+            txblTotalPatients.Text = _reportBUS.TotalPatients.ToString();
+            txblTotalMedicines.Text = _reportBUS.TotalMedicines.ToString();
         }
     }
 }
