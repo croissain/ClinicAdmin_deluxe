@@ -10,7 +10,8 @@
         Title="Prescription"
         MaxHeight="1050"
         WindowStartupLocation="CenterScreen"
-        Loaded="Window_Loaded">
+        Loaded="Window_Loaded"
+        Icon="/Assets/Icon/Icon.ico">
     <ScrollViewer>
 
         <Grid>

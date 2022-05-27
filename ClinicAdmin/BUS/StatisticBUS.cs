@@ -14,7 +14,7 @@ namespace ClinicAdmin.BUS
     public class StatisticBUS
     {
         public List<AppointmentDAO> listPatients;
-        private static StatisticBUS _instance;
+          static StatisticBUS _instance;
 
         public static StatisticBUS getInstance()
         {
@@ -40,12 +40,12 @@ namespace ClinicAdmin.BUS
             return result;
         }
 
-        public double SumProfitInMonth()
+        public double SumProfitInMonth(int month, int year)
         {
             double result = 0;
             using (ClinicAdminEntities context = new ClinicAdminEntities())
             {
-                result = (double)context.usp_SumProfitInMonth(DateTime.Today.Month, DateTime.Today.Year).FirstOrDefault().GetValueOrDefault();
+                result = (double)context.usp_SumProfitInMonth(month, year).FirstOrDefault().GetValueOrDefault();
             }
             return result;
         }
@@ -71,6 +71,38 @@ namespace ClinicAdmin.BUS
             return result;
         }
 
+        public int PatientInMonth()
+        {
+            int result = 0;
+            using (ClinicAdminEntities context = new ClinicAdminEntities())
+            {
+                result = (int)context.usp_PatientInMonth(DateTime.Today.Month, DateTime.Today.Year).FirstOrDefault().GetValueOrDefault();
+            }
+            return result;
+        }
+
+        public double MonthlyGrowth(int month, int year)
+        {
+            double result = 0;
+            using (ClinicAdminEntities context = new ClinicAdminEntities())
+            {
+                double thisMonthProfit = 0;
+                double previousMonthProfit = 0;
+                if (month == 1)
+                {
+                    thisMonthProfit = (double)SumProfitInMonth(12, year);
+                    previousMonthProfit = (double)SumProfitInMonth(12, year);
+                } else
+                {
+                    thisMonthProfit = (double)SumProfitInMonth(month, year);
+                    previousMonthProfit = (double)SumProfitInMonth(month-1, year);
+                }
+
+                result = Math.Round(((thisMonthProfit - previousMonthProfit) / previousMonthProfit) * 100, 2);
+            }
+            return result;
+        }
+
         public void PatientSearch(string patientName, DateTime? dateFrom, DateTime? dateTo)
         {
             if (dateFrom > dateTo)
@@ -81,6 +113,30 @@ namespace ClinicAdmin.BUS
             dateFrom = dateFrom != null ? dateFrom : DateTime.MinValue;
             dateTo = dateTo != null ? dateTo : DateTime.MaxValue;
             listPatients = AppointmentDAO.getInstance().PatientSearch(patientName, dateFrom, dateTo);
+        }
+
+        public void ExportReport(int totalMedicines,
+          int totalPatients,
+          int totaInvoice,
+          double sumProfit,
+          double profitInDay,
+          int patientInDay,
+          string reportPerson,
+          string description,
+          string purpose)
+        {
+            ReportBUS.getInstance().TotalMedicines = totalMedicines; 
+            ReportBUS.getInstance().TotalPatients = totalPatients;
+            ReportBUS.getInstance().TotalInvoice = totaInvoice;
+            ReportBUS.getInstance().SumProfit = sumProfit;
+            ReportBUS.getInstance().ProfitInDay = profitInDay;
+            ReportBUS.getInstance().PatientInDay = patientInDay;
+            ReportBUS.getInstance().ReportPerson = reportPerson;
+            ReportBUS.getInstance().Description = description;
+            ReportBUS.getInstance().Purpose = purpose;
+            ReportBUS.getInstance().AddReport();
+            var screen = new ClinicAdmin.GUI.Report();
+            screen.ShowDialog();
         }
     }
 }
