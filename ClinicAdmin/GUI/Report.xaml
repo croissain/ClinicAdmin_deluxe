@@ -1,0 +1,290 @@
+﻿<Window x:Class="ClinicAdmin.GUI.Report"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClinicAdmin.GUI"
+        mc:Ignorable="d"
+        SizeToContent="WidthAndHeight"
+        ResizeMode="NoResize"
+        Title="Report"
+        Width="595"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded">
+    <ScrollViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="842" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Border Background="White"
+                    Padding="20"
+                    x:Name="print">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="0.2*" />
+                    </Grid.RowDefinitions>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0"
+                                    Orientation="Vertical"
+                                    HorizontalAlignment="Left"
+                                    Margin="0 0 0 4">
+                            <TextBlock TextAlignment="Center"
+                                       Text="PHÒNG MẠCH TỰ NHIÊN"
+                                       FontSize="13">
+                            </TextBlock>
+                            <TextBlock Text="PHÒNG QUẢN LÝ CHẤT LƯỢNG"
+                                       FontSize="13"
+                                       FontWeight="Bold" />
+
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1"
+                                    Orientation="Vertical"
+                                    HorizontalAlignment="Right"
+                                    Margin="0 0 0 4">
+                            <TextBlock HorizontalAlignment="Center"
+                                       Text="CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM"
+                                       FontWeight="Bold"
+                                       FontSize="13">
+                            </TextBlock>
+                            <TextBlock TextAlignment="Center"
+                                       Text="Độc lập - Tự do - Hạnh phúc"
+                                       FontSize="13"
+                                       FontWeight="Bold" />
+                        </StackPanel>
+                    </Grid>
+                    <Line X1="0"
+                          X2="530"
+                          Stroke="black"
+                          Margin="0 50" />
+                    <!--Main content-->
+                    <StackPanel Orientation="Vertical"
+                                Grid.Row="1">
+                        <DockPanel HorizontalAlignment="Stretch"
+                                   Margin="0 4">
+                            <TextBlock DockPanel.Dock="Left"
+                                       HorizontalAlignment="Center"
+                                       Text="Số: 163A/BC-P.QLCL"
+                                       FontSize="13">
+                            </TextBlock>
+                            <TextBlock DockPanel.Dock="Right"
+                                       TextAlignment="Right"
+                                       Text="Thành phố Hồ Chí Minh, ngày 20 tháng 04 năm 2022"
+                                       FontSize="13"
+                                       FontStyle="Italic" />
+
+                        </DockPanel>
+                        <TextBlock Text="BÁO CÁO"
+                                   HorizontalAlignment="Center"
+                                   FontSize="32"
+                                   FontWeight="Bold"
+                                   Margin="0 0 0 20" />
+                        <Label Content="1. Mục đích:"
+                               FontSize="13"
+                               FontWeight="Bold" />
+                        <TextBlock FontSize="13"
+                                   LineHeight="20"
+                                   TextWrapping="Wrap">
+                            Đánh giá tình hình hoạt động cung cấp dịch vụ khám chữa bệnh của phòng mạch. Thông tin 
+                            trong biểu mẫu, phục vụ tính toán chỉ tiêu đánh giá tình hình mô hình bệnh tật và chăm
+                            sóc sức khỏe nhân dân như: Số lần khám bệnh trung bình 1 người 1 năm; tình hình bệnh
+                            tật của địa phương.
+                        </TextBlock>
+                        <Label Content="2. Kỳ báo cáo:"
+                               FontSize="13"
+                               FontWeight="Bold" />
+                        <TextBlock FontSize="13"
+                                   TextWrapping="Wrap">
+                            1 tháng
+                        </TextBlock>
+                        <Label Content="3. Thông tin chi tiết:"
+                               FontSize="13"
+                               FontWeight="Bold" />
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="13"
+                                       TextWrapping="Wrap">
+                                <BulletDecorator Margin="20 0">
+                                    <BulletDecorator.Bullet>
+                                        <Ellipse Height="5"
+                                                 Width="5"
+                                                 Fill="Black" />
+                                </BulletDecorator.Bullet>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Padding="10 0"
+                                                   Text="Lượng bệnh nhân trong tháng:" />
+                                        <TextBlock Text="56"
+                                                   x:Name="txblPatientAmount" />
+                                    </StackPanel>
+                                </BulletDecorator>
+                            </TextBlock>
+                            <TextBlock FontSize="13"
+                                       TextWrapping="Wrap">
+                                <BulletDecorator Margin="20 0">
+                                    <BulletDecorator.Bullet>
+                                        <Ellipse Height="5"
+                                                 Width="5"
+                                                 Fill="Black" />
+                                </BulletDecorator.Bullet>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Padding="10 0"
+                                                   Text="Lợi nhuận trong ngày:" />
+                                        <TextBlock Text="56"
+                                                   x:Name="txblDailyProfit" />
+                                    </StackPanel>
+                                </BulletDecorator>
+                            </TextBlock>
+                            <TextBlock FontSize="13"
+                                       TextWrapping="Wrap">
+                                <BulletDecorator Margin="20 0">
+                                    <BulletDecorator.Bullet>
+                                        <Ellipse Height="5"
+                                                 Width="5"
+                                                 Fill="Black" />
+                                </BulletDecorator.Bullet>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Padding="10 0"
+                                                   Text="Lợi nhuận trong tháng:" />
+                                        <TextBlock Text="56"
+                                                   x:Name="txblMonthlyProfit" />
+                                    </StackPanel>
+                                </BulletDecorator>
+                            </TextBlock>
+                            <TextBlock FontSize="13"
+                                       TextWrapping="Wrap">
+                                <BulletDecorator Margin="20 0">
+                                    <BulletDecorator.Bullet>
+                                        <Ellipse Height="5"
+                                                 Width="5"
+                                                 Fill="Black" />
+                                </BulletDecorator.Bullet>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Padding="10 0"
+                                                   Text="Tăng so với tháng trước:" />
+                                        <TextBlock Text="56"
+                                                   x:Name="txblPercent" />
+                                    </StackPanel>
+                                </BulletDecorator>
+                            </TextBlock>
+                        </StackPanel>
+                        <Label Content="4. Mô tả:"
+                               FontSize="13"
+                               FontWeight="Bold" />
+                        <TextBlock Text="3 file excel được xuất kèm gồm:"></TextBlock>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock FontSize="13"
+                                       TextWrapping="Wrap">
+                                <BulletDecorator Margin="20 0">
+                                    <BulletDecorator.Bullet>
+                                        <Ellipse Height="5"
+                                                 Width="5"
+                                                 Fill="Black" />
+                                </BulletDecorator.Bullet>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Padding="10 0"
+                                                   Text="Danh sách bệnh nhân trong ngày" />
+                                    </StackPanel>
+                                </BulletDecorator>
+                            </TextBlock>
+                            <TextBlock FontSize="13"
+                                       TextWrapping="Wrap">
+                                <BulletDecorator Margin="20 0">
+                                    <BulletDecorator.Bullet>
+                                        <Ellipse Height="5"
+                                                 Width="5"
+                                                 Fill="Black" />
+                                </BulletDecorator.Bullet>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Padding="10 0"
+                                                   Text="Danh sách thuốc tồn kho" />
+                                    </StackPanel>
+                                </BulletDecorator>
+                            </TextBlock>
+                            <TextBlock FontSize="13"
+                                       TextWrapping="Wrap">
+                                <BulletDecorator Margin="20 0">
+                                    <BulletDecorator.Bullet>
+                                        <Ellipse Height="5"
+                                                 Width="5"
+                                                 Fill="Black" />
+                                </BulletDecorator.Bullet>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Padding="10 0"
+                                                   Text="Danh sách hóa đơn" />
+                                    </StackPanel>
+                                </BulletDecorator>
+                            </TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <TextBlock TextAlignment="Center"
+                                       Text="Người điền thông tin"
+                                       FontSize="13" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1">
+                            <Canvas>
+                                <Image Source="/Assets/Images/Seal.png"
+                                       Panel.ZIndex="8"
+                                       Height="149"
+                                       RenderTransformOrigin="0.5,0.5"
+                                       Canvas.Left="128"
+                                       Canvas.Top="-24"
+                                       Width="132">
+                                    <Image.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform />
+                                            <SkewTransform />
+                                            <RotateTransform Angle="-17.235" />
+                                            <TranslateTransform />
+                                        </TransformGroup>
+                                    </Image.RenderTransform>
+                                </Image>
+                            </Canvas>
+
+                            <TextBlock TextAlignment="Center"
+                                       Text="Bác sĩ trưởng phòng mạch"
+                                       FontSize="13" />
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Border>
+            <Button Grid.Row="1"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Right"
+                    Click="ExportPrescription_Click"
+                    Width="140"
+                    Height="40"
+                    Padding="0"
+                    Margin="20 0 20 20">
+                <StackPanel Orientation="Horizontal">
+                    <Path Data="{Binding Icon, ElementName=this, FallbackValue={StaticResource products}, TargetNullValue={StaticResource DefaultIcon}}"
+                          Width="20"
+                          Margin="8 0"
+                          Stretch="Uniform"
+                          VerticalAlignment="Center"
+                          Fill="{DynamicResource PrimaryIconColor}" />
+                    <TextBlock Text="In báo cáo"></TextBlock>
+                </StackPanel>
+            </Button>
+        </Grid>
+
+    </ScrollViewer>
+
+</Window>
