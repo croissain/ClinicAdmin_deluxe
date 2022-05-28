@@ -14,7 +14,7 @@ namespace ClinicAdmin.BUS
     public class StatisticBUS
     {
         public List<AppointmentDAO> listPatients;
-          static StatisticBUS _instance;
+        private static StatisticBUS _instance;
 
         public static StatisticBUS getInstance()
         {
@@ -137,6 +137,17 @@ namespace ClinicAdmin.BUS
             ReportBUS.getInstance().AddReport();
             var screen = new ClinicAdmin.GUI.Report();
             screen.ShowDialog();
+        }
+
+        public void CancleAppoint(int id)
+        {
+            if (MessageBox.Show("Bạn chắc chắn muốn huỷ lịch hẹn này?", "Xóa lịch hẹn", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            {
+                if (AppointmentDAO.getInstance().RemoveAppointment(id))
+                {
+                    MessageBox.Show("Hủy thành công!");
+                }
+            }
         }
     }
 }

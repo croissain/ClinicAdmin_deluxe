@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ClinicAdmin.BUS
 {
@@ -28,6 +29,17 @@ namespace ClinicAdmin.BUS
             listDoctors = DoctorDAO.getInstance().GetListDoctor();
             listAdmins = AdminDAO.getInstance().GetListAdmin();
             listStaffs = StaffDAO.getInstance().GetListStaff();
+        }
+
+        public void RemoveUser(int id)
+        {
+            if(MessageBox.Show("Bạn chắc chắn muốn xóa?","Xóa người dùng", MessageBoxButton.YesNo, MessageBoxImage.Warning ) == MessageBoxResult.Yes)
+            {
+                if(UserFactory.RemoveUser(id))
+                {
+                    MessageBox.Show("Xoá thành công!");
+                }
+            }
         }
     }
 }

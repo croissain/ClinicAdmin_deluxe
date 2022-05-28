@@ -104,5 +104,22 @@ namespace ClinicAdmin.DAO
         {
             return true;
         }
+
+        public override bool EditUser()
+        {
+            MessageBox.Show("Vai trò của bạn không thể thực hiện chức năng này!", "Quyền không khả dụng", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return false;
+        }
+
+        public override bool RemoveUser()
+        {
+            MessageBox.Show("Vai trò của bạn không thể thực hiện chức năng này!", "Quyền không khả dụng", MessageBoxButton.OK, MessageBoxImage.Warning);
+            return false;
+        }
+
+        public override bool CancelAppointment()
+        {
+            return true;
+        }
     }
 }

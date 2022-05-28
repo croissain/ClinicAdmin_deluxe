@@ -111,6 +111,52 @@ namespace ClinicAdmin.DAO
             }
         }
 
+        public static UserDAO GetUserById(int id)
+        {
+            using(ClinicAdminEntities context = new ClinicAdminEntities())
+            {
+                var user = context.Users.SingleOrDefault(x => x.Id == id);
+                switch (user.RoleId)
+                {
+                    case (int)RoleEnum.ADMIN:
+                        return new AdminDAO()
+                        {
+                            Fullname = user.FullName,
+                            Address = user.Address,
+                            Email = user.Email,
+                            Phone = user.Phone,
+                            Password = user.Password,
+                            Username = user.Username,
+                            Role = new RoleDAO() { Id = user.Role.Id, Name = user.Role.Name}
+                        };
+                    case (int)RoleEnum.DOCTOR:
+                        return new DoctorDAO()
+                        {
+                            Fullname = user.FullName,
+                            Address = user.Address,
+                            Email = user.Email,
+                            Phone = user.Phone,
+                            Password = user.Password,
+                            Username = user.Username,
+                            Role = new RoleDAO() { Id = user.Role.Id, Name = user.Role.Name }
+                        };
+                    case (int)RoleEnum.STAFF:
+                        return new StaffDAO()
+                        {
+                            Fullname = user.FullName,
+                            Address = user.Address,
+                            Email = user.Email,
+                            Phone = user.Phone,
+                            Password = user.Password,
+                            Username = user.Username,
+                            Role = new RoleDAO() { Id = user.Role.Id, Name = user.Role.Name }
+                        };
+                    default:
+                        return null;
+                }
+            }
+        }
+
         public static bool AddUser(UserDAO userDAO, int role)
         {
             using (ClinicAdminEntities context = new ClinicAdminEntities())
@@ -204,6 +250,31 @@ namespace ClinicAdmin.DAO
                 }
             }
             return true;
+        }
+
+        public static bool EditUser(UserDAO userDAO)
+        {
+            return true;
+        }
+
+        public static bool RemoveUser(int id)
+        {
+            using(ClinicAdminEntities context = new ClinicAdminEntities())
+            {
+                var user = new User { Id = id };
+                try
+                {
+                    context.Users.Attach(user);
+                    context.Users.Remove(user);
+                    context.SaveChanges();
+                    return true;
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Lỗi:" + ex.Message);
+                    return false;
+                }
+            }
         }
     }
 }

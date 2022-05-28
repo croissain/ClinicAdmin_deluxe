@@ -114,7 +114,9 @@
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
-                                                <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                                                <Button Uid="{Binding Id}"
+                                                        Click="btnEdit_Click"
+                                                        Style="{StaticResource MaterialDesignRaisedButton}"
                                                         BorderThickness="0"
                                                         Padding="12"
                                                         Margin="0 0 3 0"
@@ -131,7 +133,9 @@
                                                               Fill="{DynamicResource PrimaryIconColor}" />
                                                     </StackPanel>
                                                 </Button>
-                                                <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                                                <Button Uid="{Binding Id}"
+                                                        Click="btnRemove_Click"
+                                                        Style="{StaticResource MaterialDesignRaisedButton}"
                                                         BorderThickness="0"
                                                         Padding="12"
                                                         Width="35"
@@ -183,7 +187,9 @@
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
-                                                <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                                                <Button Uid="{Binding Id}"
+                                                        Click="btnEdit_Click"
+                                                        Style="{StaticResource MaterialDesignRaisedButton}"
                                                         BorderThickness="0"
                                                         Padding="12"
                                                         Margin="0 0 3 0"
@@ -200,7 +206,9 @@
                                                               Fill="{DynamicResource PrimaryIconColor}" />
                                                     </StackPanel>
                                                 </Button>
-                                                <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                                                <Button Uid="{Binding Id}"
+                                                        Click="btnRemove_Click"
+                                                        Style="{StaticResource MaterialDesignRaisedButton}"
                                                         BorderThickness="0"
                                                         Padding="12"
                                                         Width="35"
@@ -252,7 +260,9 @@
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
-                                                <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                                                <Button Uid="{Binding Id}"
+                                                        Click="btnEdit_Click"
+                                                        Style="{StaticResource MaterialDesignRaisedButton}"
                                                         BorderThickness="0"
                                                         Padding="12"
                                                         Margin="0 0 3 0"
@@ -269,7 +279,9 @@
                                                               Fill="{DynamicResource PrimaryIconColor}" />
                                                     </StackPanel>
                                                 </Button>
-                                                <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                                                <Button Uid="{Binding Id}"
+                                                        Click="btnRemove_Click"
+                                                        Style="{StaticResource MaterialDesignRaisedButton}"
                                                         BorderThickness="0"
                                                         Padding="12"
                                                         Width="35"

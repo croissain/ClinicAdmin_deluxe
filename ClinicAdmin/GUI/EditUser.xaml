@@ -1,0 +1,136 @@
+﻿<Window x:Class="ClinicAdmin.GUI.EditUser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClinicAdmin.GUI"
+        mc:Ignorable="d"
+        Title="Edit User" 
+        Height="650" 
+        Width="800"
+        Loaded="Window_Loaded">
+    <Border Background="White"
+            CornerRadius="5">
+        <DockPanel Margin="25 15"
+                   LastChildFill="False">
+            <Label DockPanel.Dock="Top"
+                   Content="Tài khoản"
+                   FontFamily="Segoe UI Semibold"
+                   FontSize="36"
+                   VerticalAlignment="Stretch"
+                   HorizontalAlignment="Center"
+                   FontWeight="Bold" />
+
+            <Border DockPanel.Dock="Top"
+                    CornerRadius="50"
+                    Width="80"
+                    Height="80"
+                    HorizontalAlignment="Center"
+                    Margin="10">
+                <Border.Background>
+                    <ImageBrush Stretch="Fill"
+                                    ImageSource="/Assets/Images/Tuan.jpeg" />
+                </Border.Background>
+            </Border>
+
+            <Grid DockPanel.Dock="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0"
+                            Margin="0 0 15 0"
+                            Orientation="Vertical">
+                    <Label Content="Tên đăng nhập"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Left"></Label>
+                    <TextBox x:Name="txbUsername"
+                             IsEnabled="False"
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                             FontSize="20"
+                             Padding="15 10"
+                             Margin="0 0 0 10"
+                             BorderBrush="#68b2a0"></TextBox>
+
+                    <Label Content="Họ tên"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Left"></Label>
+                    <TextBox x:Name="txbFullname"
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                             FontSize="20"
+                             Padding="15 10"
+                             Margin="0 0 0 10"
+                             BorderBrush="#68b2a0"></TextBox>
+
+                    <Label Content="Email"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Left"></Label>
+                    <TextBox x:Name="txbEmail"
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                             FontSize="20"
+                             Padding="15 10"
+                             BorderBrush="#68b2a0"></TextBox>
+                </StackPanel>
+                <StackPanel Grid.Column="1"
+                            Margin="15 0 0 0"
+                            Orientation="Vertical">
+                    <Label Content="Vai trò"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Left"></Label>
+                    <TextBox x:Name="txbRole"
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                             FontSize="20"
+                             Padding="15 10"
+                             Margin="0 0 0 10"
+                             IsEnabled="False"
+                             BorderBrush="#68b2a0"></TextBox>
+
+                    <Label Content="Địa chỉ"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Left"></Label>
+                    <TextBox x:Name="txbAddress"
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                             FontSize="20"
+                             Padding="15 10"
+                             Margin="0 0 0 10"
+                             BorderBrush="#68b2a0"></TextBox>
+
+                    <Label Content="Số điện thoại"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Left"></Label>
+                    <TextBox x:Name="txbPhone"
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                             FontSize="20"
+                             Padding="15 10"
+                             BorderBrush="#68b2a0"></TextBox>
+                </StackPanel>
+            </Grid>
+            <StackPanel DockPanel.Dock="Bottom"
+                        Orientation="Horizontal"
+                        Margin="0 15"
+                        HorizontalAlignment="Right">
+                <Button Content="Hủy"
+                        x:Name="BtnCancle"
+                        Click="BtnCancle_Click"
+                        Style="{StaticResource MaterialDesignOutlinedButton}"
+                        Width="130"
+                        Height="45"
+                        Margin="0 0 15 0"></Button>
+                <Button x:Name="BtnUpdate"
+                        Click="BtnUpdate_Click"
+                        Content="Cập nhật"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Width="150"
+                        Height="45"
+                        Background="#68b2a0"
+                        Foreground="White"></Button>
+            </StackPanel>
+        </DockPanel>
+    </Border>
+</Window>
