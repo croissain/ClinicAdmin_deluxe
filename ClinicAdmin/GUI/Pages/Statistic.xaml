@@ -358,7 +358,9 @@
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                                                    <Button Uid="{Binding Patient.Id}"
+                                                            Click="BtnEdit_Click"
+                                                            Style="{StaticResource MaterialDesignRaisedButton}"
                                                             BorderThickness="0"
                                                             Padding="12"
                                                             Margin="0 0 3 0"
@@ -375,7 +377,9 @@
                                                                   Fill="{DynamicResource PrimaryIconColor}" />
                                                         </StackPanel>
                                                     </Button>
-                                                    <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                                                    <Button Uid="{Binding Id}"
+                                                            Click="BtnRemove_Click"
+                                                            Style="{StaticResource MaterialDesignRaisedButton}"
                                                             BorderThickness="0"
                                                             Padding="12"
                                                             Width="35"

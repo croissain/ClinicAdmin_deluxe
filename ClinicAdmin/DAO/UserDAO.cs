@@ -32,6 +32,9 @@ namespace ClinicAdmin.DAO
         public abstract bool AddPatient();
         public abstract bool AddPrescription();
         public abstract bool CheckIn();
+        public abstract bool EditUser();
+        public abstract bool RemoveUser();
 
+        public abstract bool CancelAppointment();
     }
 }

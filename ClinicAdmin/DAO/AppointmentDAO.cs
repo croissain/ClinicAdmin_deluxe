@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ClinicAdmin.DAO
 {
@@ -151,6 +152,26 @@ namespace ClinicAdmin.DAO
                 context.SaveChanges();
             }
             return result;
+        }
+
+        public bool RemoveAppointment(int id)
+        {
+            using (ClinicAdminEntities context = new ClinicAdminEntities())
+            {
+                var appointment = new Appointment { Id = id };
+                try
+                {
+                    context.Appointments.Attach(appointment);
+                    context.Appointments.Remove(appointment);
+                    context.SaveChanges();
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi:" + ex.Message);
+                    return false;
+                }
+            }
         }
     }
 }

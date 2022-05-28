@@ -47,6 +47,14 @@ namespace ClinicAdmin.GUI.Pages
             lbProfitInDay.Content = _statisticBUS.ProfitInDay().ToString();
         }
 
+        private void Refresh()
+        {
+            _statisticBUS.BUSLayer_Loaded();
+            lsvPatient.ItemsSource = null;
+            lsvPatient.Items.Clear();
+            lsvPatient.ItemsSource = _statisticBUS.listPatients;
+        }
+
         private void btnRegulation_Click(object sender, RoutedEventArgs e)
         {
 
@@ -95,6 +103,21 @@ namespace ClinicAdmin.GUI.Pages
                 description,
                 purpose
             );
+        }
+
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnRemove_Click(object sender, RoutedEventArgs e)
+        {
+            if (MainWindowBUS.getInstance().userAccount.CancelAppointment())
+            {
+                var id = Int32.Parse((sender as Button).Uid);
+                _statisticBUS.CancleAppoint(id);
+                Refresh();
+            }
         }
     }
 }
