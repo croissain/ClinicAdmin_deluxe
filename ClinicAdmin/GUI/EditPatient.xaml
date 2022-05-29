@@ -87,7 +87,6 @@
                             <RadioButton GroupName="rdbtnGender"
                                          Name="rdbtnMale"
                                          Content="Nam"
-                                         IsChecked="True"
                                         Margin="16 4 16 0"
                                          Style="{DynamicResource MaterialDesignUserForegroundRadioButton}">
                             </RadioButton>
@@ -199,7 +198,7 @@
                                 ToolTip="MaterialDesignOutlinedButton"
                                 Content="Hủy" 
                                 Click="Cancel_Click"/>
-                        <Button Content="Thêm"
+                        <Button Content="Cập nhật"
                                 Style="{StaticResource MaterialDesignRaisedButton}"
                                 Width="150"
                                 Height="45"

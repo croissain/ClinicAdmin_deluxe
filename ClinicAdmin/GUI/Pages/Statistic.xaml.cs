@@ -107,7 +107,10 @@ namespace ClinicAdmin.GUI.Pages
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            var id = Int32.Parse((sender as Button).Uid);
+            var screen = new ClinicAdmin.GUI.EditPatient(id);
+            screen.ShowDialog();
+            Refresh();
         }
 
         private void BtnRemove_Click(object sender, RoutedEventArgs e)
