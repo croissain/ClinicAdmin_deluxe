@@ -88,6 +88,7 @@
     <Compile Include="BUS\AddMedicineBUS.cs" />
     <Compile Include="BUS\AddPatientBUS.cs" />
     <Compile Include="BUS\AddUserBUS.cs" />
+    <Compile Include="BUS\EditPatientBUS.cs" />
     <Compile Include="BUS\EditUserBUS.cs" />
     <Compile Include="BUS\ReportBUS.cs" />
     <Compile Include="BUS\StatisticBUS.cs" />

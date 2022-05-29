@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClinicAdmin.BUS;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,14 +21,32 @@ namespace ClinicAdmin.GUI
     /// </summary>
     public partial class EditPatient : Window
     {
-        public EditPatient()
+        private EditPatientBUS _editPatientBUS;
+        public EditPatient(int appointmentId)
         {
             InitializeComponent();
+            _editPatientBUS = EditPatientBUS.getInstance();
+            _editPatientBUS.AppointmentId = appointmentId;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            _editPatientBUS.BUSLayer_Loaded();
+            txbFullname.Text = _editPatientBUS.Appointment.Patient.Fullname;
+            txbAge.Text = _editPatientBUS.Appointment.Patient.Age.ToString();
+            txbWeight.Text = _editPatientBUS.Appointment.Patient.Weight.ToString();
+            txbAddress.Text = _editPatientBUS.Appointment.Patient.Address;
+            txbPhone.Text = _editPatientBUS.Appointment.Patient.Phone;
+            dpkDayExam.SelectedDate = _editPatientBUS.Appointment.AppointmentDay;
 
+            if(_editPatientBUS.Appointment.Patient.Gender == "Nam")
+            {
+                rdbtnMale.IsChecked = true;
+            }
+            else
+            {
+                rdbtnFemale.IsChecked = true;
+            }
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -45,6 +64,8 @@ namespace ClinicAdmin.GUI
             string phone = txbPhone.Text;
             DateTime? dayExam = dpkDayExam.SelectedDate;
 
+            _editPatientBUS.UpdateRecord(fullname, gender, address, age, weight, phone, dayExam);
+            this.Close();
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)

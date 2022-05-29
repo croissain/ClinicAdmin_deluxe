@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using ClinicAdmin.DTO;
 namespace ClinicAdmin.DAO
 {
@@ -147,6 +148,33 @@ namespace ClinicAdmin.DAO
                 context.SaveChanges();
             }
             return result;
+        }
+
+        public bool UpdatePatient(PatientDAO patientDAO)
+        {
+            using (ClinicAdminEntities context = new ClinicAdminEntities())
+            {
+                try
+                {
+                    var dbSet = context.Patients.SingleOrDefault(x => x.Id == patientDAO.Id);
+                    if (dbSet != null)
+                    {
+                        dbSet.FullName = patientDAO.Fullname;
+                        dbSet.Address = patientDAO.Address;
+                        dbSet.Phone = patientDAO.Phone;
+                        dbSet.Weight = patientDAO.Weight;
+                        dbSet.Age = patientDAO.Age;
+                        dbSet.Gender = patientDAO.Gender;
+                        context.SaveChanges();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

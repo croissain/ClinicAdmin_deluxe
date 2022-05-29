@@ -173,5 +173,55 @@ namespace ClinicAdmin.DAO
                 }
             }
         }
+
+        public AppointmentDAO GetAppointmentById(int id)
+        {
+            AppointmentDAO result = null;
+            using (ClinicAdminEntities context = new ClinicAdminEntities())
+            {
+                var appointment = context.Appointments.SingleOrDefault(x => x.Id == id);
+                var patient = context.Patients.SingleOrDefault(x => x.Id == appointment.PatientId);
+
+                result = new AppointmentDAO()
+                {
+                    Id = appointment.Id,
+                    AppointmentDay = appointment.AppointmentDay,
+                    Status = appointment.Status,
+                    Patient = new PatientDAO()
+                    {
+                        Id = patient.Id,
+                        Fullname = patient.FullName,
+                        Address = patient.Address,
+                        Age = patient.Age,
+                        Gender = patient.Gender,
+                        Weight = patient.Weight,
+                        Phone = patient.Phone
+                    }
+                };
+            }
+            return result;
+        }
+
+        public bool UpdateAppointment(AppointmentDAO appointmentDAO)
+        {
+            using (ClinicAdminEntities context = new ClinicAdminEntities())
+            {
+                try
+                {
+                    var dbSet = context.Appointments.SingleOrDefault(x => x.Id == appointmentDAO.Id);
+                    if (dbSet != null)
+                    {
+                        dbSet.AppointmentDay = appointmentDAO.AppointmentDay;
+                        context.SaveChanges();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }
