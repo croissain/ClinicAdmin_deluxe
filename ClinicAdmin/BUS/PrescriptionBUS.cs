@@ -1,9 +1,6 @@
 ﻿using ClinicAdmin.DAO;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicAdmin.BUS
 {
@@ -20,15 +17,42 @@ namespace ClinicAdmin.BUS
         private double totalCost;
         private List<Prescription_MedicineDAO> listMedicines;
 
-        public string Symptom { get => symptom; set => symptom = value; }
-        public string Diagnose { get => diagnose; set => diagnose = value; }
-        public string MedicalHistory { get => medicalHistory; set => medicalHistory = value; }
-        public string Note { get => note; set => note = value; }
-        public string DoctorName { get => doctorName; set => doctorName = value; }
-        public string StaffName { get => staffName; set => staffName = value; }
-        public double TotalCost { get => totalCost; set => totalCost = value; }
-        public PatientDAO Patient { get => patient; set => patient = value; }
-        public List<Prescription_MedicineDAO> ListMedicines { get => listMedicines; set => listMedicines = value; }
+        public string Symptom
+        {
+            get => symptom; set => symptom = value;
+        }
+        public string Diagnose
+        {
+            get => diagnose; set => diagnose = value;
+        }
+        public string MedicalHistory
+        {
+            get => medicalHistory; set => medicalHistory = value;
+        }
+        public string Note
+        {
+            get => note; set => note = value;
+        }
+        public string DoctorName
+        {
+            get => doctorName; set => doctorName = value;
+        }
+        public string StaffName
+        {
+            get => staffName; set => staffName = value;
+        }
+        public double TotalCost
+        {
+            get => totalCost; set => totalCost = value;
+        }
+        public PatientDAO Patient
+        {
+            get => patient; set => patient = value;
+        }
+        public List<Prescription_MedicineDAO> ListMedicines
+        {
+            get => listMedicines; set => listMedicines = value;
+        }
 
         public static PrescriptionBUS getInstance()
         {
@@ -41,7 +65,7 @@ namespace ClinicAdmin.BUS
 
         public void BUSLayer_Loaded()
         {
-           
+
         }
 
         public void AddPrescription()
@@ -57,7 +81,7 @@ namespace ClinicAdmin.BUS
                 Staff = StaffName,
             };
             //Them du lieu vao bang Prescription
-            var prescriptMedicine =  PrescriptionDAO.getInstance().AddPrescription(prescriptionDAO);
+            var prescriptMedicine = PrescriptionDAO.getInstance().AddPrescription(prescriptionDAO);
             prescriptionDAO.Id = prescriptMedicine.Id;
 
             //Them du lieu vao bang Prescription_MedicineDAO

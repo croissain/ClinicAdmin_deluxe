@@ -1,9 +1,4 @@
 ﻿using ClinicAdmin.DAO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace ClinicAdmin.BUS
@@ -24,7 +19,7 @@ namespace ClinicAdmin.BUS
         public void UpdateAccount(string username, string fullname, string address, string email, string phone)
         {
             UserDAO user = UserFactory.GetUser(fullname, address, email, phone, username, null, MainWindowBUS.getInstance().userAccount.Role.Id);
-            if(UserFactory.UpdateAccount(user))
+            if (UserFactory.UpdateAccount(user))
             {
                 MessageBox.Show("Cập nhật thành công!");
             }
@@ -32,7 +27,7 @@ namespace ClinicAdmin.BUS
 
         public void ChangePassword(string password, string confirmPass)
         {
-            if(password != confirmPass)
+            if (password != confirmPass)
             {
                 MessageBox.Show("Mật khẩu không trùng khớp!");
                 return;

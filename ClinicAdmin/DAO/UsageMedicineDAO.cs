@@ -1,9 +1,6 @@
 ﻿using ClinicAdmin.DTO;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicAdmin.DAO
 {
@@ -13,8 +10,14 @@ namespace ClinicAdmin.DAO
         private int id;
         private string name;
 
-        public int Id { get => id; set => id = value; }
-        public string Name { get => name; set => name = value; }
+        public int Id
+        {
+            get => id; set => id = value;
+        }
+        public string Name
+        {
+            get => name; set => name = value;
+        }
 
         public static UsageMedicineDAO getInstance()
         {
@@ -40,7 +43,7 @@ namespace ClinicAdmin.DAO
                 {
                     UsageMedicineDAO medicine = new UsageMedicineDAO()
                     {
-                        Id = item.id, 
+                        Id = item.id,
                         Name = item.name
                     };
                     result.Add(medicine);

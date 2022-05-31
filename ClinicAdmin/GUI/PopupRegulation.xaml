@@ -1,4 +1,4 @@
-﻿<Window x:Class="ClinicAdmin.GUI.Regulation"
+﻿<Window x:Class="ClinicAdmin.GUI.PopupRegulation"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -14,7 +14,7 @@
         Title="Thêm bệnh nhân mới"
         Loaded="Window_Loaded"
         Icon="/Assets/Icon/Icon.ico">
-    <Window.Background>
+    <Window.Background >
         <LinearGradientBrush StartPoint="0.5,0"
                              EndPoint="0.5,1">
             <GradientStop Color="#68b2a0"
@@ -23,7 +23,7 @@
                           Offset="1" />
         </LinearGradientBrush>
     </Window.Background>
-    <Grid>
+    <Grid >
         <StackPanel Margin="50">
             <Border Background="White"
                     CornerRadius="5">

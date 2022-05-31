@@ -1,11 +1,7 @@
-﻿using System;
+﻿using ClinicAdmin.DTO;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using ClinicAdmin.DTO;
-using ClinicAdmin.GUI;
 
 namespace ClinicAdmin.DAO
 {
@@ -57,7 +53,9 @@ namespace ClinicAdmin.DAO
             return result;
         }
 
-        public DoctorDAO() { }
+        public DoctorDAO()
+        {
+        }
 
         public DoctorDAO(int id, string userName, string password, string fullname, string address, string email, string phone)
         {

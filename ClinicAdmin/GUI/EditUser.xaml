@@ -22,15 +22,26 @@
                    FontWeight="Bold" />
 
             <Border DockPanel.Dock="Top"
-                    CornerRadius="50"
-                    Width="80"
-                    Height="80"
-                    HorizontalAlignment="Center"
-                    Margin="10">
+                    CornerRadius="10"
+                    Width="60"
+                    Height="60">
                 <Border.Background>
-                    <ImageBrush Stretch="Fill"
-                                    ImageSource="/Assets/Images/Tuan.jpeg" />
+                    <LinearGradientBrush StartPoint="0,0"
+                                         EndPoint="1,2">
+                        <GradientStop Color="#138086"
+                                      Offset="0" />
+                        <GradientStop Color="#534666"
+                                      Offset="1" />
+                    </LinearGradientBrush>
                 </Border.Background>
+                <TextBlock x:Name="txblUserInitial"
+                           Text=""
+                           Foreground="White"
+                           FontSize="22"
+                           FontWeight="SemiBold"
+                           TextAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="0 0 0 3" />
             </Border>
 
             <Grid DockPanel.Dock="Top">

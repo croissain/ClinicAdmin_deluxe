@@ -1,9 +1,4 @@
 ﻿using ClinicAdmin.DAO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace ClinicAdmin.BUS
@@ -14,8 +9,14 @@ namespace ClinicAdmin.BUS
         private int userId;
         private UserDAO user;
 
-        public UserDAO User { get => user; set => user = value; }
-        public int UserId { get => userId; set => userId = value; }
+        public UserDAO User
+        {
+            get => user; set => user = value;
+        }
+        public int UserId
+        {
+            get => userId; set => userId = value;
+        }
 
         public static EditUserBUS getInstance()
         {

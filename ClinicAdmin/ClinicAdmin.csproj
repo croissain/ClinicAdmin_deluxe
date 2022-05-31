@@ -116,6 +116,7 @@
     <Compile Include="BUS\AddMedicineBUS.cs" />
     <Compile Include="BUS\AddPatientBUS.cs" />
     <Compile Include="BUS\AddUserBUS.cs" />
+    <Compile Include="BUS\EditRegulationBUS.cs" />
     <Compile Include="BUS\EditPatientBUS.cs" />
     <Compile Include="BUS\EditUserBUS.cs" />
     <Compile Include="BUS\ReportBUS.cs" />
@@ -203,11 +204,14 @@
     <Compile Include="GUI\EditUser.xaml.cs">
       <DependentUpon>EditUser.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Pages\Regulation.xaml.cs">
+      <DependentUpon>Regulation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Report.xaml.cs">
       <DependentUpon>Report.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Regulation.xaml.cs">
-      <DependentUpon>Regulation.xaml</DependentUpon>
+    <Compile Include="GUI\PopupRegulation.xaml.cs">
+      <DependentUpon>PopupRegulation.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\AddPatient.xaml.cs">
       <DependentUpon>AddPatient.xaml</DependentUpon>
@@ -243,11 +247,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GUI\Pages\Regulation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="GUI\Report.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="GUI\Regulation.xaml">
+    <Page Include="GUI\PopupRegulation.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

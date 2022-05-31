@@ -1,20 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ClinicAdmin.BUS;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Controls.Primitives;
-using ClinicAdmin.GUI;
-using ClinicAdmin.BUS;
+using System.Windows.Input;
 
 namespace ClinicAdmin
 {
@@ -38,7 +26,7 @@ namespace ClinicAdmin
             {
                 if (name[i] == ' ')
                 {
-                    LastIntial = name[i+1].ToString();
+                    LastIntial = name[i + 1].ToString();
                     break;
                 }
             }
@@ -54,7 +42,7 @@ namespace ClinicAdmin
                 {
                     if (result[i] == ' ')
                     {
-                        result = result.Remove(i,1).Insert(i, "\n");
+                        result = result.Remove(i, 1).Insert(i, "\n");
                         break;
                     }
                 }
@@ -147,7 +135,7 @@ namespace ClinicAdmin
                 Header.PopupText.Text = "DS Nhân Viên";
             }
         }
-        
+
         private void btnStaffList_MouseLeave(object sender, MouseEventArgs e)
         {
             Popup.Visibility = Visibility.Collapsed;
@@ -204,6 +192,23 @@ namespace ClinicAdmin
             Popup.Visibility = Visibility.Collapsed;
             Popup.IsOpen = false;
         }
+
+        private void btnRegulation_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if (Tg_Btn.IsChecked == false)
+            {
+                Popup.PlacementTarget = btnStatistic;
+                Popup.Placement = PlacementMode.Right;
+                Popup.IsOpen = true;
+                Header.PopupText.Text = "Quy định";
+            }
+        }
+
+        private void btnRegulation_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Popup.Visibility = Visibility.Collapsed;
+            Popup.IsOpen = false;
+        }
         #endregion
 
         #region Sidebar Tabs Click
@@ -230,6 +235,11 @@ namespace ClinicAdmin
         private void btnStatistic_Click(object sender, RoutedEventArgs e)
         {
             fContainer.Navigate(new System.Uri("GUI/Pages/Statistic.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        private void btnRegulation_Click(object sender, RoutedEventArgs e)
+        {
+            fContainer.Navigate(new System.Uri("GUI/Pages/Regulation.xaml", UriKind.RelativeOrAbsolute));
         }
         #endregion
 

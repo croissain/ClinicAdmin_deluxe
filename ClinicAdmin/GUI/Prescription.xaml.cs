@@ -1,17 +1,7 @@
 ﻿using ClinicAdmin.BUS;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ClinicAdmin.GUI
 {
@@ -32,7 +22,8 @@ namespace ClinicAdmin.GUI
             {
                 this.IsEnabled = false;
                 PrintDialog printDialog = new PrintDialog();
-                if(printDialog.ShowDialog()==true){
+                if (printDialog.ShowDialog() == true)
+                {
                     printDialog.PrintVisual(print, "Prescription");
                 }
             }
@@ -51,7 +42,7 @@ namespace ClinicAdmin.GUI
             txblAddress.Text = _prescriptionBUS.Patient.Address;
             txblDiagnose.Text = _prescriptionBUS.Diagnose;
             lsvMedicines.ItemsSource = HomeBUS.getInstance().listMedicines;
-            txblTotalCost.Text = _prescriptionBUS.TotalCost.ToString() + " VND";
+            txblTotalCost.Text = _prescriptionBUS.TotalCost.ToString() + " VNĐ";
             txblNote.Text = _prescriptionBUS.Note;
             txblStaffName.Text = _prescriptionBUS.StaffName;
             txblDoctorName.Text = _prescriptionBUS.DoctorName;

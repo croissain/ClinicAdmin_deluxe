@@ -1,19 +1,7 @@
-﻿using ClinicAdmin.GUI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ClinicAdmin.BUS;
+using ClinicAdmin.GUI;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using ClinicAdmin.BUS;
 
 namespace ClinicAdmin.Pages
 {
@@ -22,15 +10,32 @@ namespace ClinicAdmin.Pages
     /// </summary>
     public partial class Account : Page
     {
+        private MainWindowBUS _mainWindowBUS;
         private AccountBUS _accountBUS;
         public Account()
         {
             InitializeComponent();
         }
 
+        public string IntialName(string name)
+        {
+            string FirstIntial = name.Substring(0, 1);
+            string LastIntial = "";
+            for (int i = name.Length - 1; i > 0; i--)
+            {
+                if (name[i] == ' ')
+                {
+                    LastIntial = name[i + 1].ToString();
+                    break;
+                }
+            }
+            return FirstIntial + LastIntial;
+        }
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             _accountBUS = AccountBUS.getInstance();
+            _mainWindowBUS = MainWindowBUS.getInstance();
             if (MainWindowBUS.getInstance().userAccount != null)
             {
                 txbUsername.Text = MainWindowBUS.getInstance().userAccount.Username;
@@ -39,6 +44,7 @@ namespace ClinicAdmin.Pages
                 txbAddress.Text = MainWindowBUS.getInstance().userAccount.Address;
                 txbPhone.Text = MainWindowBUS.getInstance().userAccount.Phone;
                 txbRole.Text = MainWindowBUS.getInstance().userAccount.Role.Name;
+                txblUserInitial.Text = IntialName(_mainWindowBUS.userAccount.Fullname);
             }
         }
 

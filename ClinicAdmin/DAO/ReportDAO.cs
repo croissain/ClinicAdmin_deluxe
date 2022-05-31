@@ -1,9 +1,5 @@
 ﻿using ClinicAdmin.DTO;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicAdmin.DAO
 {
@@ -20,16 +16,43 @@ namespace ClinicAdmin.DAO
         private string description;
         private string purpose;
 
-        public int TotalMedicines { get => totalMedicines; set => totalMedicines = value; }
-        public int TotalPatients { get => totalPatients; set => totalPatients = value; }
-        public int TotalInvoice { get => totaInvoice; set => totaInvoice = value; }
-        public double SumProfit { get => sumProfit; set => sumProfit = value; }
-        public double ProfitInDay { get => profitInDay; set => profitInDay = value; }
-        public int PatientInDay { get => patientInDay; set => patientInDay = value; }
-        public string ReportPerson { get => reportPerson; set => reportPerson = value; }
-        public string Description { get => description; set => description = value; }
-        public string Purpose { get => purpose; set => purpose = value; }
-    
+        public int TotalMedicines
+        {
+            get => totalMedicines; set => totalMedicines = value;
+        }
+        public int TotalPatients
+        {
+            get => totalPatients; set => totalPatients = value;
+        }
+        public int TotalInvoice
+        {
+            get => totaInvoice; set => totaInvoice = value;
+        }
+        public double SumProfit
+        {
+            get => sumProfit; set => sumProfit = value;
+        }
+        public double ProfitInDay
+        {
+            get => profitInDay; set => profitInDay = value;
+        }
+        public int PatientInDay
+        {
+            get => patientInDay; set => patientInDay = value;
+        }
+        public string ReportPerson
+        {
+            get => reportPerson; set => reportPerson = value;
+        }
+        public string Description
+        {
+            get => description; set => description = value;
+        }
+        public string Purpose
+        {
+            get => purpose; set => purpose = value;
+        }
+
 
         public static ReportDAO getInstance()
         {

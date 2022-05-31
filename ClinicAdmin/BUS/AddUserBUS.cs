@@ -1,9 +1,5 @@
 ﻿using ClinicAdmin.DAO;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace ClinicAdmin.BUS
@@ -28,7 +24,7 @@ namespace ClinicAdmin.BUS
         {
             RoleDAO role = roleObj as RoleDAO;
 
-            if(pass != confirmPass)
+            if (pass != confirmPass)
             {
                 MessageBox.Show("Mật khẩu không trùng khớp!");
             }
@@ -39,7 +35,7 @@ namespace ClinicAdmin.BUS
             else
             {
                 UserDAO user = UserFactory.GetUser(fullname, address, email, phone, username, pass, role.Id);
-                if(UserFactory.AddUser(user, role.Id))
+                if (UserFactory.AddUser(user, role.Id))
                 {
                     MessageBox.Show("Thêm tài khoản thành công");
                 }
