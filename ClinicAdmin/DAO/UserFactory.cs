@@ -1,10 +1,8 @@
 ﻿using ClinicAdmin.DTO;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace ClinicAdmin.DAO
@@ -40,7 +38,7 @@ namespace ClinicAdmin.DAO
                             Phone = entryPoint.Phone,
                             Password = entryPoint.Password,
                             Username = username,
-                            Role = new RoleDAO() { Id = (int)entryPoint.RoleId, Name= "Quản trị viên"}
+                            Role = new RoleDAO() { Id = (int)entryPoint.RoleId, Name = "Quản trị viên" }
                         };
                     case (int)RoleEnum.DOCTOR:
                         return new DoctorDAO()
@@ -77,8 +75,8 @@ namespace ClinicAdmin.DAO
             switch (role)
             {
                 case (int)RoleEnum.ADMIN:
-                    return new AdminDAO() 
-                    { 
+                    return new AdminDAO()
+                    {
                         Fullname = fullname,
                         Address = address,
                         Email = email,
@@ -113,7 +111,7 @@ namespace ClinicAdmin.DAO
 
         public static UserDAO GetUserById(int id)
         {
-            using(ClinicAdminEntities context = new ClinicAdminEntities())
+            using (ClinicAdminEntities context = new ClinicAdminEntities())
             {
                 var user = context.Users.SingleOrDefault(x => x.Id == id);
                 switch (user.RoleId)
@@ -127,7 +125,7 @@ namespace ClinicAdmin.DAO
                             Phone = user.Phone,
                             Password = user.Password,
                             Username = user.Username,
-                            Role = new RoleDAO() { Id = user.Role.Id, Name = user.Role.Name}
+                            Role = new RoleDAO() { Id = user.Role.Id, Name = user.Role.Name }
                         };
                     case (int)RoleEnum.DOCTOR:
                         return new DoctorDAO()
@@ -186,9 +184,9 @@ namespace ClinicAdmin.DAO
                     context.Users.Add(user);
                     context.SaveChanges();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message );
+                    MessageBox.Show(ex.Message);
                     return false;
                 }
                 return true;
@@ -211,7 +209,7 @@ namespace ClinicAdmin.DAO
                         context.SaveChanges();
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                     return false;
@@ -259,7 +257,7 @@ namespace ClinicAdmin.DAO
 
         public static bool RemoveUser(int id)
         {
-            using(ClinicAdminEntities context = new ClinicAdminEntities())
+            using (ClinicAdminEntities context = new ClinicAdminEntities())
             {
                 var user = new User { Id = id };
                 try
@@ -269,7 +267,7 @@ namespace ClinicAdmin.DAO
                     context.SaveChanges();
                     return true;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("Lỗi:" + ex.Message);
                     return false;

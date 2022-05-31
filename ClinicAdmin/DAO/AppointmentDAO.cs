@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace ClinicAdmin.DAO
@@ -16,10 +14,22 @@ namespace ClinicAdmin.DAO
         private int status;
         private PatientDAO patient;
 
-        public int Id { get => id; set => id = value; }
-        public DateTime AppointmentDay { get => appointmentDay; set => appointmentDay = value; }
-        public int Status { get => status; set => status = value; }
-        public PatientDAO Patient { get => patient; set => patient = value; }
+        public int Id
+        {
+            get => id; set => id = value;
+        }
+        public DateTime AppointmentDay
+        {
+            get => appointmentDay; set => appointmentDay = value;
+        }
+        public int Status
+        {
+            get => status; set => status = value;
+        }
+        public PatientDAO Patient
+        {
+            get => patient; set => patient = value;
+        }
 
         public static AppointmentDAO getInstance()
         {
@@ -142,9 +152,9 @@ namespace ClinicAdmin.DAO
             Appointment result = null;
             using (ClinicAdminEntities context = new ClinicAdminEntities())
             {
-                var appointment = new Appointment() 
-                { 
-                    PatientId = patientId, 
+                var appointment = new Appointment()
+                {
+                    PatientId = patientId,
                     Status = 0,
                     AppointmentDay = dayExam
                 };

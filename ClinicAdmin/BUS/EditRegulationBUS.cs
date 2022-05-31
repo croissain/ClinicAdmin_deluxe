@@ -4,9 +4,9 @@ using System.Windows;
 
 namespace ClinicAdmin.BUS
 {
-    public class EditPatientBUS
+    public class EditRegulationBUS
     {
-        private static EditPatientBUS _instance;
+        private static EditRegulationBUS _instance;
         private int appointmentId;
         private AppointmentDAO appointment;
 
@@ -19,11 +19,11 @@ namespace ClinicAdmin.BUS
             get => appointment; set => appointment = value;
         }
 
-        public static EditPatientBUS getInstance()
+        public static EditRegulationBUS getInstance()
         {
             if (_instance == null)
             {
-                _instance = new EditPatientBUS();
+                _instance = new EditRegulationBUS();
             }
             return _instance;
         }

@@ -1,26 +1,14 @@
-﻿using ClinicAdmin.DAO;
+﻿using ClinicAdmin.BUS;
+using ClinicAdmin.DAO;
+using Microsoft.Office.Interop.Excel;
+using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using ClinicAdmin.BUS;
-using ClinicAdmin.GUI;
-using ClinicAdmin.DTO;
-using Excel = Microsoft.Office.Interop.Excel;
-using Microsoft.Office.Interop.Excel;
-using System.Windows.Forms;
-using OfficeOpenXml;
 using System.IO;
+using System.Linq;
+using System.Windows;
+using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace ClinicAdmin.GUI.Pages
 {
@@ -64,7 +52,9 @@ namespace ClinicAdmin.GUI.Pages
 
         private void btnRegulation_Click(object sender, RoutedEventArgs e)
         {
-
+            var screen = new PopupRegulation();
+            screen.ShowDialog();
+            Refresh();
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
@@ -111,7 +101,7 @@ namespace ClinicAdmin.GUI.Pages
                 purpose
             );
 
-            // Xuất file excel DS Bệnh nhân
+            // Lần lượt xuất file excel DS Bệnh nhân và thuốc tồn
             btnExportPatientsToExcel_Click(sender, e);
             btnExportMedicineToExcel_Click(sender, e);
         }
@@ -295,7 +285,7 @@ namespace ClinicAdmin.GUI.Pages
             if (MainWindowBUS.getInstance().userAccount.CancelAppointment())
             {
                 var id = Int32.Parse((sender as System.Windows.Controls.Button).Uid);
-                _statisticBUS.CancleAppoint(id);
+                _statisticBUS.CancelAppoint(id);
                 Refresh();
             }
         }

@@ -1,10 +1,6 @@
 ﻿using ClinicAdmin.DAO;
-using ClinicAdmin.DTO;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace ClinicAdmin.BUS
@@ -38,7 +34,7 @@ namespace ClinicAdmin.BUS
             UnitMedicineDAO unitDAO = unitObj as UnitMedicineDAO;
             UsageMedicineDAO usageDAO = usageObj as UsageMedicineDAO;
 
-            if(medicineDAO == null)
+            if (medicineDAO == null)
             {
                 MessageBox.Show("Bạn cần chọn thuốc!");
             }
@@ -50,7 +46,7 @@ namespace ClinicAdmin.BUS
             {
                 MessageBox.Show("Bạn cần chọn cách sử dụng!");
             }
-            else if(amount == "")
+            else if (amount == "")
             {
                 MessageBox.Show("Bạn cần nhập số lượng!");
             }

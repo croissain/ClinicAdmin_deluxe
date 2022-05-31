@@ -1,18 +1,8 @@
 ﻿using ClinicAdmin.BUS;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace ClinicAdmin.GUI
 {
@@ -39,7 +29,7 @@ namespace ClinicAdmin.GUI
             txbPhone.Text = _editPatientBUS.Appointment.Patient.Phone;
             dpkDayExam.SelectedDate = _editPatientBUS.Appointment.AppointmentDay;
 
-            if(_editPatientBUS.Appointment.Patient.Gender == "Nam")
+            if (_editPatientBUS.Appointment.Patient.Gender == "Nam")
             {
                 rdbtnMale.IsChecked = true;
             }

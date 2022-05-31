@@ -312,12 +312,24 @@
                                     </Style>
                                 </TextBlock.Style>
                             </TextBlock>
-                            
                         </Grid>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+
+    <Style x:Key="regulationHeader"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="FontWeight"
+                Value="Bold" />
+        <Setter Property="FontSize"
+                Value="20" />
+        <Setter Property="Foreground"
+                Value="{DynamicResource TertiaryIconColor}"/>
+        <Setter Property="Margin"
+                Value="0 12 0 8" />
+    </Style>
+
 
 </ResourceDictionary>

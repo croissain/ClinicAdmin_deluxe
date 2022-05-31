@@ -2,11 +2,7 @@
 using ClinicAdmin.DTO;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Core.Objects;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace ClinicAdmin.BUS
@@ -48,7 +44,7 @@ namespace ClinicAdmin.BUS
         public double SumProfit()
         {
             double result = 0;
-            using(ClinicAdminEntities context = new ClinicAdminEntities())
+            using (ClinicAdminEntities context = new ClinicAdminEntities())
             {
                 result = (double)context.usp_SumProfit().FirstOrDefault().GetValueOrDefault();
             }
@@ -79,7 +75,7 @@ namespace ClinicAdmin.BUS
         public int PatientInDay()
         {
             int result = 0;
-            using(ClinicAdminEntities context = new ClinicAdminEntities())
+            using (ClinicAdminEntities context = new ClinicAdminEntities())
             {
                 result = (int)context.usp_PatientInDay(DateTime.Today).FirstOrDefault().GetValueOrDefault();
             }
@@ -107,10 +103,11 @@ namespace ClinicAdmin.BUS
                 {
                     thisMonthProfit = (double)SumProfitInMonth(12, year);
                     previousMonthProfit = (double)SumProfitInMonth(12, year);
-                } else
+                }
+                else
                 {
                     thisMonthProfit = (double)SumProfitInMonth(month, year);
-                    previousMonthProfit = (double)SumProfitInMonth(month-1, year);
+                    previousMonthProfit = (double)SumProfitInMonth(month - 1, year);
                 }
 
                 result = Math.Round(((thisMonthProfit - previousMonthProfit) / previousMonthProfit) * 100, 2);
@@ -140,7 +137,7 @@ namespace ClinicAdmin.BUS
           string description,
           string purpose)
         {
-            ReportBUS.getInstance().TotalMedicines = TotalMedicines(); 
+            ReportBUS.getInstance().TotalMedicines = TotalMedicines();
             ReportBUS.getInstance().TotalPatients = PatientInMonth();
             ReportBUS.getInstance().TotalInvoice = PatientInMonth();
             ReportBUS.getInstance().SumProfit = sumProfit;
@@ -154,7 +151,7 @@ namespace ClinicAdmin.BUS
             screen.ShowDialog();
         }
 
-        public void CancleAppoint(int id)
+        public void CancelAppoint(int id)
         {
             if (MessageBox.Show("Bạn chắc chắn muốn huỷ lịch hẹn này?", "Xóa lịch hẹn", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
@@ -165,5 +162,9 @@ namespace ClinicAdmin.BUS
             }
         }
 
+        public void ModifyRegulation()
+        {
+
+        }
     }
 }

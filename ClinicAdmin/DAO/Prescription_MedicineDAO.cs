@@ -1,9 +1,4 @@
 ﻿using ClinicAdmin.DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicAdmin.DAO
 {
@@ -17,12 +12,30 @@ namespace ClinicAdmin.DAO
         private MedicineDAO medicine;
         private PrescriptionDAO prescription;
 
-        public int AmountDrug { get => amountDrug; set => amountDrug = value; }
-        public double Cost { get => cost; set => cost = value; }
-        public MedicineDAO Medicine { get => medicine; set => medicine = value; }
-        public PrescriptionDAO Prescription { get => prescription; set => prescription = value; }
-        public UnitMedicineDAO Unit { get => unit; set => unit = value; }
-        public UsageMedicineDAO Usage { get => usage; set => usage = value; }
+        public int AmountDrug
+        {
+            get => amountDrug; set => amountDrug = value;
+        }
+        public double Cost
+        {
+            get => cost; set => cost = value;
+        }
+        public MedicineDAO Medicine
+        {
+            get => medicine; set => medicine = value;
+        }
+        public PrescriptionDAO Prescription
+        {
+            get => prescription; set => prescription = value;
+        }
+        public UnitMedicineDAO Unit
+        {
+            get => unit; set => unit = value;
+        }
+        public UsageMedicineDAO Usage
+        {
+            get => usage; set => usage = value;
+        }
 
         public static Prescription_MedicineDAO getInstance()
         {
@@ -40,12 +53,12 @@ namespace ClinicAdmin.DAO
             {
                 var entry = new Prescription_Medicine()
                 {
-                   PrescriptionId = prescriptionMedicine.Prescription.Id,
-                   MedicineId = prescriptionMedicine.Medicine.Id,
-                   AmountDrug = prescriptionMedicine.AmountDrug,
-                   Cost = prescriptionMedicine.Cost,
-                   Unit = prescriptionMedicine.Unit.Id,
-                   Usage = prescriptionMedicine.Usage.Id
+                    PrescriptionId = prescriptionMedicine.Prescription.Id,
+                    MedicineId = prescriptionMedicine.Medicine.Id,
+                    AmountDrug = prescriptionMedicine.AmountDrug,
+                    Cost = prescriptionMedicine.Cost,
+                    Unit = prescriptionMedicine.Unit.Id,
+                    Usage = prescriptionMedicine.Usage.Id
 
                 };
                 result = context.Prescription_Medicine.Add(entry);

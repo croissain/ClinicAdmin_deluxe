@@ -1,9 +1,5 @@
 ﻿using ClinicAdmin.DTO;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicAdmin.DAO
 {
@@ -16,11 +12,26 @@ namespace ClinicAdmin.DAO
         private DateTime created_at;
         private PrescriptionDAO prescription;
 
-        public double TotalCost { get => totalCost; set => totalCost = value; }
-        public double ExamCost { get => examCost; set => examCost = value; }
-        public double DrugCost { get => drugCost; set => drugCost = value; }
-        public DateTime Created_at { get => created_at; set => created_at = value; }
-        public PrescriptionDAO Prescription { get => prescription; set => prescription = value; }
+        public double TotalCost
+        {
+            get => totalCost; set => totalCost = value;
+        }
+        public double ExamCost
+        {
+            get => examCost; set => examCost = value;
+        }
+        public double DrugCost
+        {
+            get => drugCost; set => drugCost = value;
+        }
+        public DateTime Created_at
+        {
+            get => created_at; set => created_at = value;
+        }
+        public PrescriptionDAO Prescription
+        {
+            get => prescription; set => prescription = value;
+        }
 
         public static InvoiceDAO getInstance()
         {
@@ -38,11 +49,11 @@ namespace ClinicAdmin.DAO
             {
                 var invoice = new Invoice()
                 {
-                   TotalCost = invoiceDAO.TotalCost,
-                   PrescriptionId = invoiceDAO.Prescription.Id,
-                   Created_at = invoiceDAO.Created_at,
-                   ExaminationFee = invoiceDAO.ExamCost,
-                   DrugFee = invoiceDAO.DrugCost
+                    TotalCost = invoiceDAO.TotalCost,
+                    PrescriptionId = invoiceDAO.Prescription.Id,
+                    Created_at = invoiceDAO.Created_at,
+                    ExaminationFee = invoiceDAO.ExamCost,
+                    DrugFee = invoiceDAO.DrugCost
                 };
                 result = context.Invoices.Add(invoice);
                 context.SaveChanges();

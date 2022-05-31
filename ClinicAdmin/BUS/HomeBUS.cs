@@ -1,10 +1,7 @@
-﻿using System;
+﻿using ClinicAdmin.DAO;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using ClinicAdmin.DAO;
 
 namespace ClinicAdmin.BUS
 {
@@ -54,7 +51,7 @@ namespace ClinicAdmin.BUS
 
         public void PatientSearch(string patientName, DateTime? dateFrom, DateTime? dateTo)
         {
-            if(dateFrom > dateTo)
+            if (dateFrom > dateTo)
             {
                 MessageBox.Show("Ngày đến phải lớn hơn ngày từ!", "Lỗi ngày", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -83,7 +80,7 @@ namespace ClinicAdmin.BUS
         public string TotalCost_ToString(List<Prescription_MedicineDAO> medicines)
         {
             double total = 0;
-            foreach(var medicine in medicines)
+            foreach (var medicine in medicines)
             {
                 total += medicine.Cost;
             }
@@ -104,7 +101,7 @@ namespace ClinicAdmin.BUS
             return total;
         }
 
-        public void ExportInvoice(string patientName, string patientGender, string patientAge, string patientAddress, 
+        public void ExportInvoice(string patientName, string patientGender, string patientAge, string patientAddress,
             string symptom, string diagnose, string medicalHistory, string note, string doctorName, string staffName)
         {
             PrescriptionBUS.getInstance().Patient = patient;

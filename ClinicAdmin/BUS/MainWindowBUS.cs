@@ -1,9 +1,4 @@
 ﻿using ClinicAdmin.DAO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicAdmin.BUS
 {
@@ -20,7 +15,7 @@ namespace ClinicAdmin.BUS
                 instance = new MainWindowBUS();
             }
             return instance;
-            
+
         }
 
         public void BUSLayer_Loaded()
