@@ -30,6 +30,21 @@ namespace ClinicAdmin.BUS
             listPatients = AppointmentDAO.getInstance().GetListPatient();
         }
 
+        public int TotalMedicines()
+        {
+            int result = 0;
+            double totalStorage = MedicineDAO.getInstance().GetTotalStorage();
+            result = (int)totalStorage;
+            return result;
+        }
+
+        //public int TotalInvoice()
+        //{
+        //    int result = 0;
+
+        //    return result;
+        //}
+
         public double SumProfit()
         {
             double result = 0;
@@ -125,9 +140,9 @@ namespace ClinicAdmin.BUS
           string description,
           string purpose)
         {
-            ReportBUS.getInstance().TotalMedicines = totalMedicines; 
-            ReportBUS.getInstance().TotalPatients = totalPatients;
-            ReportBUS.getInstance().TotalInvoice = totaInvoice;
+            ReportBUS.getInstance().TotalMedicines = TotalMedicines(); 
+            ReportBUS.getInstance().TotalPatients = PatientInMonth();
+            ReportBUS.getInstance().TotalInvoice = PatientInMonth();
             ReportBUS.getInstance().SumProfit = sumProfit;
             ReportBUS.getInstance().ProfitInDay = profitInDay;
             ReportBUS.getInstance().PatientInDay = patientInDay;

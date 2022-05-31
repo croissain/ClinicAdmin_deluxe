@@ -90,5 +90,35 @@ namespace ClinicAdmin.DAO
             }
             return totalStorage;
         }
+
+        public List<MedicineDAO> MedicineSearch(string drugName)
+        {
+            List<MedicineDAO> result = new List<MedicineDAO>();
+            using (ClinicAdminEntities context = new ClinicAdminEntities())
+            {
+                var entryPoint = (from m in context.Medicines
+                                  where m.DrugName.Contains(drugName)
+                                  select new
+                                  {
+                                      id = m.Id,
+                                      drugName = m.DrugName,
+                                      storage = m.Storage,
+                                      cost = m.Price
+                                  }).ToList();
+                foreach (var item in entryPoint)
+                {
+                    MedicineDAO medicine = new MedicineDAO()
+                    {
+                        Id = item.id,
+                        DrugName = item.drugName,
+                        Storage = item.storage,
+                        Price = item.cost
+                    };
+
+                    result.Add(medicine);
+                }
+            }
+            return result;
+        }
     }
 }

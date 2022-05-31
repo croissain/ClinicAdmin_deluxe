@@ -135,7 +135,8 @@
                                        Foreground="White"
                                        FontSize="26"
                                        FontWeight="Bold"></Label>
-                                <Label Content="15%"
+                                <Label x:Name="lbMonthlyGrowth"
+                                       Content="15%"
                                        Foreground="White"
                                        FontSize="60"
                                        FontWeight="Bold"></Label>
@@ -328,80 +329,81 @@
                             </StackPanel>
                         </DockPanel>
 
-                        <ListView x:Name="lsvPatient"
-                                  Margin="5">
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn Width="Auto"
-                                                    DisplayMemberBinding="{Binding Id}"
+                        <DataGrid x:Name="lsvPatient"
+                                  Margin="15"
+                                  AutoGenerateColumns="False"
+                                  CanUserAddRows="False"
+                                  IsReadOnly="True">
+                            <DataGrid.Columns>
+                                    <DataGridTextColumn Width="Auto"
+                                                    Binding="{Binding Id}"
                                                     Header="#" />
-                                    <GridViewColumn Width="400"
-                                                    DisplayMemberBinding="{Binding Patient.Fullname}"
+                                <DataGridTextColumn Width="400"
+                                                    Binding="{Binding Patient.Fullname}"
                                                     Header="Họ và Tên" />
-                                    <GridViewColumn Width="Auto"
-                                                    DisplayMemberBinding="{Binding Patient.Gender}"
+                                <DataGridTextColumn Width="Auto"
+                                                    Binding="{Binding Patient.Gender}"
                                                     Header="Giới tính" />
-                                    <GridViewColumn Width="Auto"
-                                                    DisplayMemberBinding="{Binding Patient.Age}"
+                                <DataGridTextColumn Width="Auto"
+                                                    Binding="{Binding Patient.Age}"
                                                     Header="Tuổi" />
-                                    <GridViewColumn Width="Auto"
-                                                    DisplayMemberBinding="{Binding Patient.Address}"
+                                <DataGridTextColumn Width="Auto"
+                                                    Binding="{Binding Patient.Address}"
                                                     Header="Địa chỉ" />
-                                    <GridViewColumn Width="Auto"
-                                                    DisplayMemberBinding="{Binding Patient.Phone}"
+                                <DataGridTextColumn Width="Auto"
+                                                    Binding="{Binding Patient.Phone}"
                                                     Header="SĐT" />
-                                    <GridViewColumn Width="Auto"
-                                                    DisplayMemberBinding="{Binding Status}"
+                                <DataGridTextColumn Width="Auto"
+                                                    Binding="{Binding Status}"
                                                     Header="Trạng thái" />
-                                    <GridViewColumn Width="Auto"
-                                                    Header="Hành động">
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <Button Uid="{Binding Patient.Id}"
-                                                            Click="BtnEdit_Click"
-                                                            Style="{StaticResource MaterialDesignRaisedButton}"
-                                                            BorderThickness="0"
-                                                            Padding="12"
-                                                            Margin="0 0 3 0"
-                                                            Width="35"
-                                                            Height="35"
-                                                            Background="#68b2a0"
-                                                            Foreground="White">
-                                                        <StackPanel Orientation="Horizontal">
+                                <DataGridTemplateColumn Width="Auto"
+                                                Header="Hành động">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button Uid="{Binding Patient.Id}"
+                                                        Click="BtnEdit_Click"
+                                                        Style="{StaticResource MaterialDesignRaisedButton}"
+                                                        BorderThickness="0"
+                                                        Padding="12"
+                                                        Margin="0 0 3 0"
+                                                        Width="35"
+                                                        Height="35"
+                                                        Background="#68b2a0"
+                                                        Foreground="White">
+                                                    <StackPanel Orientation="Horizontal">
 
-                                                            <Path Data="{Binding Icon, ElementName=this, FallbackValue={StaticResource pencil}, TargetNullValue={StaticResource DefaultIcon}}"
-                                                                  Margin="{Binding IconMargin, FallbackValue='0,0,20,0', TargetNullValue='20,0,0,0'}"
-                                                                  Stretch="Uniform"
-                                                                  Width="11"
-                                                                  Fill="{DynamicResource PrimaryIconColor}" />
-                                                        </StackPanel>
-                                                    </Button>
-                                                    <Button Uid="{Binding Id}"
-                                                            Click="BtnRemove_Click"
-                                                            Style="{StaticResource MaterialDesignRaisedButton}"
-                                                            BorderThickness="0"
-                                                            Padding="12"
-                                                            Width="35"
-                                                            Height="35"
-                                                            Background="#f0723e"
-                                                            Foreground="White">
-                                                        <StackPanel Orientation="Horizontal">
+                                                        <Path Data="{Binding Icon, ElementName=this, FallbackValue={StaticResource pencil}, TargetNullValue={StaticResource DefaultIcon}}"
+                                                              Margin="{Binding IconMargin, FallbackValue='0,0,20,0', TargetNullValue='20,0,0,0'}"
+                                                              Stretch="Uniform"
+                                                              Width="11"
+                                                              Fill="{DynamicResource PrimaryIconColor}" />
+                                                    </StackPanel>
+                                                </Button>
+                                                <Button Uid="{Binding Id}"
+                                                        Click="BtnRemove_Click"
+                                                        Style="{StaticResource MaterialDesignRaisedButton}"
+                                                        BorderThickness="0"
+                                                        Padding="12"
+                                                        Width="35"
+                                                        Height="35"
+                                                        Background="#f0723e"
+                                                        Foreground="White">
+                                                    <StackPanel Orientation="Horizontal">
 
-                                                            <Path Data="{Binding Icon, ElementName=this, FallbackValue={StaticResource trash}, TargetNullValue={StaticResource DefaultIcon}}"
-                                                                  Margin="{Binding IconMargin, FallbackValue='0,0,20,0', TargetNullValue='20,0,0,0'}"
-                                                                  Stretch="Uniform"
-                                                                  Width="11"
-                                                                  Fill="{DynamicResource PrimaryIconColor}" />
-                                                        </StackPanel>
-                                                    </Button>
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
+                                                        <Path Data="{Binding Icon, ElementName=this, FallbackValue={StaticResource trash}, TargetNullValue={StaticResource DefaultIcon}}"
+                                                              Margin="{Binding IconMargin, FallbackValue='0,0,20,0', TargetNullValue='20,0,0,0'}"
+                                                              Stretch="Uniform"
+                                                              Width="11"
+                                                              Fill="{DynamicResource PrimaryIconColor}" />
+                                                    </StackPanel>
+                                                </Button>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
                         <StackPanel Orientation="Horizontal"
                                     HorizontalAlignment="Right">
                             <Button DockPanel.Dock="Right"

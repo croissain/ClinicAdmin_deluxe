@@ -82,9 +82,21 @@
                             </TextBlock>
                             <TextBlock DockPanel.Dock="Right"
                                        TextAlignment="Right"
-                                       Text="Thành phố Hồ Chí Minh, ngày 20 tháng 04 năm 2022"
                                        FontSize="13"
-                                       FontStyle="Italic" />
+                                       FontStyle="Italic">
+                                Thành phố Hồ Chí Minh, ngày 
+                                <TextBlock x:Name="txblDay">
+                                    
+                                </TextBlock>
+                                tháng 
+                                <TextBlock x:Name="txblMonth">
+                                    
+                                </TextBlock>
+                                năm 
+                                <TextBlock x:Name="txblYear">
+                                    
+                                </TextBlock>
+                            </TextBlock>
 
                         </DockPanel>
                         <TextBlock Text="BÁO CÁO"
@@ -230,7 +242,7 @@
                                     </StackPanel>
                                 </BulletDecorator>
                         </TextBlock>
-                        <TextBlock Text="3 file excel được xuất kèm gồm:"
+                        <TextBlock Text="Báo cáo có đính kèm 2 file excel:"
                                    FontSize="13"></TextBlock>
                         <StackPanel Orientation="Vertical">
                             <TextBlock FontSize="13"
@@ -243,7 +255,7 @@
                                 </BulletDecorator.Bullet>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Padding="10 0"
-                                                   Text="Danh sách bệnh nhân trong ngày" />
+                                                   Text="Danh sách bệnh nhân trong tháng" />
                                     </StackPanel>
                                 </BulletDecorator>
                             </TextBlock>
@@ -258,20 +270,6 @@
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Padding="10 0"
                                                    Text="Danh sách thuốc tồn kho" />
-                                    </StackPanel>
-                                </BulletDecorator>
-                            </TextBlock>
-                            <TextBlock FontSize="13"
-                                       TextWrapping="Wrap">
-                                <BulletDecorator Margin="20 0">
-                                    <BulletDecorator.Bullet>
-                                        <Ellipse Height="5"
-                                                 Width="5"
-                                                 Fill="Black" />
-                                </BulletDecorator.Bullet>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Padding="10 0"
-                                                   Text="Danh sách hóa đơn" />
                                     </StackPanel>
                                 </BulletDecorator>
                             </TextBlock>

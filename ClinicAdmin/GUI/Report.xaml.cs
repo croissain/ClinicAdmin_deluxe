@@ -56,6 +56,9 @@ namespace ClinicAdmin.GUI
             txblTotalInvoices.Text = _reportBUS.TotalInvoice.ToString();
             txblTotalPatients.Text = _reportBUS.TotalPatients.ToString();
             txblTotalMedicines.Text = _reportBUS.TotalMedicines.ToString();
+            txblDay.Text = DateTime.Now.ToString("dd");
+            txblMonth.Text = DateTime.Now.ToString("MM");
+            txblYear.Text = DateTime.Now.ToString("yyyy");
         }
     }
 }
