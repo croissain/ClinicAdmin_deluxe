@@ -44,6 +44,7 @@ namespace ClinicAdmin.Pages
                 lstvMedicines.Items.Clear();
                 lstvMedicines.ItemsSource = _homeBUS.listMedicines;
                 txblTotalCost.Text = _homeBUS.TotalCost_ToString(_homeBUS.listMedicines);
+                txblTotalMedicine.Text = _homeBUS.MedicineCount(_homeBUS.listMedicines).ToString();
             }
             else
             {

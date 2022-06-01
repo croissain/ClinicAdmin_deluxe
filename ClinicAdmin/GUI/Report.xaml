@@ -42,11 +42,13 @@
                                     Margin="0 0 0 4">
                             <TextBlock TextAlignment="Center"
                                        Text="PHÒNG MẠCH TỰ NHIÊN"
-                                       FontSize="13">
+                                       FontSize="13"
+                                       Foreground="{DynamicResource PrimaryTextColor}">
                             </TextBlock>
                             <TextBlock Text="PHÒNG QUẢN LÝ CHẤT LƯỢNG"
                                        FontSize="13"
-                                       FontWeight="Bold" />
+                                       FontWeight="Bold"
+                                       Foreground="{DynamicResource PrimaryTextColor}" />
 
                         </StackPanel>
 
@@ -57,12 +59,14 @@
                             <TextBlock HorizontalAlignment="Center"
                                        Text="CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM"
                                        FontWeight="Bold"
-                                       FontSize="13">
+                                       FontSize="13"
+                                       Foreground="{DynamicResource PrimaryTextColor}">
                             </TextBlock>
                             <TextBlock TextAlignment="Center"
                                        Text="Độc lập - Tự do - Hạnh phúc"
                                        FontSize="13"
-                                       FontWeight="Bold" />
+                                       FontWeight="Bold"
+                                       Foreground="{DynamicResource PrimaryTextColor}" />
                         </StackPanel>
                     </Grid>
                     <Line X1="0"
@@ -78,12 +82,14 @@
                             <TextBlock DockPanel.Dock="Left"
                                        HorizontalAlignment="Center"
                                        Text="Số: 163A/BC-P.QLCL"
-                                       FontSize="13">
+                                       FontSize="13"
+                                       Foreground="{DynamicResource PrimaryTextColor}">
                             </TextBlock>
                             <TextBlock DockPanel.Dock="Right"
                                        TextAlignment="Right"
                                        FontSize="13"
-                                       FontStyle="Italic">
+                                       FontStyle="Italic"
+                                       Foreground="{DynamicResource PrimaryTextColor}">
                                 Thành phố Hồ Chí Minh, ngày 
                                 <TextBlock x:Name="txblDay">
                                     
@@ -103,13 +109,17 @@
                                    HorizontalAlignment="Center"
                                    FontSize="32"
                                    FontWeight="Bold"
-                                   Margin="0 0 0 20" />
+                                   Margin="0 0 0 20"
+                                   Foreground="{DynamicResource PrimaryTextColor}" />
                         <Label Content="1. Mục đích:"
                                FontSize="13"
-                               FontWeight="Bold" />
+                               FontWeight="Bold"
+                               Foreground="{DynamicResource PrimaryTextColor}" />
                         <TextBlock FontSize="13"
                                    LineHeight="20"
-                                   TextWrapping="Wrap">
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Justify"
+                                   Foreground="{DynamicResource PrimaryTextColor}">
                             Đánh giá tình hình hoạt động cung cấp dịch vụ khám chữa bệnh của phòng mạch. Thông tin 
                             trong biểu mẫu, phục vụ tính toán chỉ tiêu đánh giá tình hình mô hình bệnh tật và chăm
                             sóc sức khỏe nhân dân như: Số lần khám bệnh trung bình 1 người 1 năm; tình hình bệnh
@@ -117,17 +127,21 @@
                         </TextBlock>
                         <Label Content="2. Kỳ báo cáo:"
                                FontSize="13"
-                               FontWeight="Bold" />
+                               FontWeight="Bold"
+                               Foreground="{DynamicResource PrimaryTextColor}" />
                         <TextBlock FontSize="13"
-                                   TextWrapping="Wrap">
+                                   TextWrapping="Wrap"
+                                   Foreground="{DynamicResource PrimaryTextColor}">
                             1 tháng
                         </TextBlock>
                         <Label Content="3. Thông tin chi tiết:"
                                FontSize="13"
-                               FontWeight="Bold" />
+                               FontWeight="Bold"
+                               Foreground="{DynamicResource PrimaryTextColor}" />
                         <StackPanel Orientation="Vertical">
                             <TextBlock FontSize="13"
-                                       TextWrapping="Wrap">
+                                       TextWrapping="Wrap"
+                                       Foreground="{DynamicResource PrimaryTextColor}">
                                 <BulletDecorator Margin="20 0">
                                     <BulletDecorator.Bullet>
                                         <Ellipse Height="5"
@@ -136,9 +150,11 @@
                                 </BulletDecorator.Bullet>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Padding="10 0"
-                                                   Text="Lượng bệnh nhân trong tháng:" />
+                                                   Text="Lượng bệnh nhân trong tháng:"
+                                                   Foreground="{DynamicResource PrimaryTextColor}" />
                                         <TextBlock Text="56"
-                                                   x:Name="txblPatientAmount" />
+                                                   x:Name="txblPatientAmount"
+                                                   Foreground="{DynamicResource PrimaryTextColor}" />
                                     </StackPanel>
                                 </BulletDecorator>
                             </TextBlock>
@@ -152,9 +168,11 @@
                                 </BulletDecorator.Bullet>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Padding="10 0"
-                                                   Text="Lợi nhuận trong ngày:" />
+                                                   Text="Lợi nhuận trong ngày:"
+                                                   Foreground="{DynamicResource PrimaryTextColor}" />
                                         <TextBlock Text="56"
-                                                   x:Name="txblDailyProfit" />
+                                                   x:Name="txblDailyProfit"
+                                                   Foreground="{DynamicResource PrimaryTextColor}" />
                                     </StackPanel>
                                 </BulletDecorator>
                             </TextBlock>
@@ -168,9 +186,11 @@
                                 </BulletDecorator.Bullet>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Padding="10 0"
-                                                   Text="Lợi nhuận trong tháng:" />
+                                                   Text="Lợi nhuận trong tháng:"
+                                                   Foreground="{DynamicResource PrimaryTextColor}" />
                                         <TextBlock Text="56"
-                                                   x:Name="txblMonthlyProfit" />
+                                                   x:Name="txblMonthlyProfit"
+                                                   Foreground="{DynamicResource PrimaryTextColor}" />
                                     </StackPanel>
                                 </BulletDecorator>
                             </TextBlock>
@@ -184,16 +204,19 @@
                                 </BulletDecorator.Bullet>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Padding="10 0"
-                                                   Text="Tăng so với tháng trước:" />
+                                                   Text="Tăng so với tháng trước:"
+                                                   Foreground="{DynamicResource PrimaryTextColor}" />
                                         <TextBlock Text="56"
-                                                   x:Name="txblPercent" />
+                                                   x:Name="txblPercent"
+                                                   Foreground="{DynamicResource PrimaryTextColor}" />
                                     </StackPanel>
                                 </BulletDecorator>
                             </TextBlock>
                         </StackPanel>
                         <Label Content="4. Báo cáo dữ liệu bảng:"
                                FontSize="13"
-                               FontWeight="Bold" />
+                               FontWeight="Bold"
+                               Foreground="{DynamicResource PrimaryTextColor}" />
                         <TextBlock FontSize="13"
                                    TextWrapping="Wrap">
                                 <BulletDecorator Margin="20 0">
@@ -204,9 +227,11 @@
                                 </BulletDecorator.Bullet>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Padding="10 0"
-                                                   Text="Tổng số bệnh nhân:" />
+                                                   Text="Tổng số bệnh nhân:"
+                                                   Foreground="{DynamicResource PrimaryTextColor}" />
                                         <TextBlock Text="56"
-                                                   x:Name="txblTotalPatients" />
+                                                   x:Name="txblTotalPatients"
+                                                   Foreground="{DynamicResource PrimaryTextColor}" />
                                     </StackPanel>
                                 </BulletDecorator>
                         </TextBlock>
@@ -220,9 +245,11 @@
                                 </BulletDecorator.Bullet>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Padding="10 0"
-                                                   Text="Lượng thuốc tồn kho:" />
+                                                   Text="Lượng thuốc tồn kho:"
+                                                   Foreground="{DynamicResource PrimaryTextColor}" />
                                         <TextBlock Text="56"
-                                                   x:Name="txblTotalMedicines" />
+                                                   x:Name="txblTotalMedicines"
+                                                   Foreground="{DynamicResource PrimaryTextColor}" />
                                     </StackPanel>
                                 </BulletDecorator>
                         </TextBlock>
@@ -236,14 +263,17 @@
                                 </BulletDecorator.Bullet>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Padding="10 0"
-                                                   Text="Lượng thuốc hóa đơn:" />
+                                                   Text="Lượng thuốc hóa đơn:"
+                                                   Foreground="{DynamicResource PrimaryTextColor}" />
                                         <TextBlock Text="56"
-                                                   x:Name="txblTotalInvoices" />
+                                                   x:Name="txblTotalInvoices"
+                                                   Foreground="{DynamicResource PrimaryTextColor}" />
                                     </StackPanel>
                                 </BulletDecorator>
                         </TextBlock>
                         <TextBlock Text="Báo cáo có đính kèm 2 file excel:"
-                                   FontSize="13"></TextBlock>
+                                   FontSize="13"
+                                   Foreground="{DynamicResource PrimaryTextColor}"></TextBlock>
                         <StackPanel Orientation="Vertical">
                             <TextBlock FontSize="13"
                                        TextWrapping="Wrap">
@@ -255,7 +285,8 @@
                                 </BulletDecorator.Bullet>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Padding="10 0"
-                                                   Text="Danh sách bệnh nhân trong tháng" />
+                                                   Text="Danh sách bệnh nhân trong tháng"
+                                                   Foreground="{DynamicResource PrimaryTextColor}" />
                                     </StackPanel>
                                 </BulletDecorator>
                             </TextBlock>
@@ -269,7 +300,8 @@
                                 </BulletDecorator.Bullet>
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Padding="10 0"
-                                                   Text="Danh sách thuốc tồn kho" />
+                                                   Text="Danh sách thuốc tồn kho"
+                                                   Foreground="{DynamicResource PrimaryTextColor}" />
                                     </StackPanel>
                                 </BulletDecorator>
                             </TextBlock>
@@ -283,8 +315,12 @@
                         </Grid.ColumnDefinitions>
                         <StackPanel>
                             <TextBlock TextAlignment="Center"
-                                       Text="Người điền thông tin"
-                                       FontSize="13" />
+                                       FontSize="13"
+                                       Foreground="{DynamicResource PrimaryTextColor}">
+                                Người điền thông tin
+                                <LineBreak />
+                                <Italic>(ký ghi rõ họ tên)</Italic>
+                            </TextBlock>
                         </StackPanel>
 
                         <StackPanel Grid.Column="1">
@@ -295,7 +331,8 @@
                                        RenderTransformOrigin="0.5,0.5"
                                        Canvas.Left="128"
                                        Canvas.Top="-24"
-                                       Width="132">
+                                       Width="132"
+                                       Opacity="0.7">
                                     <Image.RenderTransform>
                                         <TransformGroup>
                                             <ScaleTransform />
@@ -308,8 +345,12 @@
                             </Canvas>
 
                             <TextBlock TextAlignment="Center"
-                                       Text="Bác sĩ trưởng phòng mạch"
-                                       FontSize="13" />
+                                       FontSize="13"
+                                       Foreground="{DynamicResource PrimaryTextColor}">
+                                Bác sĩ trưởng phòng mạch
+                                <LineBreak />
+                                <Italic>(ký ghi rõ họ tên)</Italic>
+                            </TextBlock>
                         </StackPanel>
                     </Grid>
                 </Grid>

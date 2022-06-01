@@ -539,6 +539,7 @@
                                            HorizontalAlignment="Left"
                                            VerticalAlignment="Center"
                                            FontSize="14"
+                                         Width="200"
                                            Foreground="{DynamicResource TertiaryIconColor}" />
                             </StackPanel>
                             <StackPanel Grid.Row="1"
@@ -636,7 +637,8 @@
                                HorizontalAlignment="Center" />
                         <TextBlock x:Name="txblTotalMedicine"
                                    VerticalAlignment="Center"
-                                   HorizontalAlignment="Center" />
+                                   HorizontalAlignment="Center" 
+                                   Text="0"/>
                     </StackPanel>
                     <Button Grid.Column="1"
                             Style="{StaticResource MaterialDesignRaisedButton}"

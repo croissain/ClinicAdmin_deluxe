@@ -48,12 +48,15 @@
                                         VerticalAlignment="Center">
                                 <TextBlock Text="phòng mạch&#xA;tự nhiên"
                                            FontWeight="Bold"
-                                           FontSize="20">
+                                           FontSize="20"
+                                           Foreground="{DynamicResource PrimaryTextColor}">
                                 </TextBlock>
                                 <TextBlock Text="Phường Linh Trung, Thành Phố Thủ Đức, Thành phố Hồ Chí Minh"
-                                           FontSize="9"></TextBlock>
+                                           FontSize="9"
+                                           Foreground="{DynamicResource PrimaryTextColor}"></TextBlock>
                                 <TextBlock Text="SĐT: 028.38354394"
-                                           FontSize="9"></TextBlock>
+                                           FontSize="9"
+                                           Foreground="{DynamicResource PrimaryTextColor}"></TextBlock>
                             </StackPanel>
                             <Image Source="/Assets/Images/QRCode.png"
                                    Width="90"
@@ -74,38 +77,49 @@
                                    HorizontalAlignment="Center"
                                    FontSize="32"
                                    FontWeight="Bold"
-                                   Margin="0 0 0 20" />
+                                   Margin="0 0 0 20"
+                                   Foreground="{DynamicResource PrimaryTextColor}" />
                         <StackPanel Orientation="Horizontal">
-                            <Label Content="Họ và tên bệnh nhân:" />
+                            <Label Content="Họ và tên bệnh nhân:"
+                                   Foreground="{DynamicResource PrimaryTextColor}" />
                             <TextBlock x:Name="txblFullname"
-                                       VerticalAlignment="Center" />
+                                       VerticalAlignment="Center"
+                                       Foreground="{DynamicResource PrimaryTextColor}" />
                         </StackPanel>
                         <DockPanel>
                             <StackPanel Orientation="Horizontal"
                                         Margin="0 0 50 0">
                                 <Label Content="Giới tính:"
+                                       Foreground="{DynamicResource PrimaryTextColor}"
                                        VerticalAlignment="Center" />
                                 <TextBlock x:Name="txblGender"
-                                           VerticalAlignment="Center" />
+                                           VerticalAlignment="Center"
+                                           Foreground="{DynamicResource PrimaryTextColor}" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <Label Content="Tuổi:"
-                                       VerticalAlignment="Center" />
+                                       VerticalAlignment="Center"
+                                       Foreground="{DynamicResource PrimaryTextColor}" />
                                 <TextBlock x:Name="txblAge"
-                                           VerticalAlignment="Center" />
+                                           VerticalAlignment="Center"
+                                           Foreground="{DynamicResource PrimaryTextColor}" />
                             </StackPanel>
                         </DockPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Địa chỉ:"
-                                   VerticalAlignment="Center" />
+                                   VerticalAlignment="Center"
+                                   Foreground="{DynamicResource PrimaryTextColor}" />
                             <TextBlock x:Name="txblAddress"
-                                       VerticalAlignment="Center" />
+                                       VerticalAlignment="Center"
+                                       Foreground="{DynamicResource PrimaryTextColor}" />
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Chẩn đoán:"
-                                   VerticalAlignment="Center" />
+                                   VerticalAlignment="Center"
+                                   Foreground="{DynamicResource PrimaryTextColor}" />
                             <TextBlock x:Name="txblDiagnose"
-                                       VerticalAlignment="Center" />
+                                       VerticalAlignment="Center"
+                                       Foreground="{DynamicResource PrimaryTextColor}" />
                         </StackPanel>
                     </StackPanel>
 
@@ -115,7 +129,8 @@
                         <TextBlock Text="Chỉ định dùng thuốc"
                                    HorizontalAlignment="Center"
                                    FontSize="16"
-                                   FontWeight="SemiBold" />
+                                   FontWeight="SemiBold"
+                                   Foreground="{DynamicResource PrimaryTextColor}" />
                         <Rectangle Fill="Black"
                                    Height="1" />
                         <ListView x:Name="lsvMedicines"
@@ -146,19 +161,24 @@
                                         <StackPanel Orientation="Vertical"
                                                     Grid.Column="0"
                                                     Grid.Row="0">
-                                            <TextBlock Text="{Binding Medicine.DrugName}" />
-                                            <TextBlock Text="{Binding Usage.Name}" />
+                                            <TextBlock Text="{Binding Medicine.DrugName}"
+                                                       Foreground="{DynamicResource PrimaryTextColor}" />
+                                            <TextBlock Text="{Binding Usage.Name}"
+                                                       Foreground="{DynamicResource PrimaryTextColor}" />
                                         </StackPanel>
                                         <StackPanel Orientation="Horizontal"
                                                     Grid.Column="1"
                                                     Grid.Row="0">
-                                            <TextBlock Text="{Binding AmountDrug}" />
-                                            <TextBlock Text="{Binding Unit.Name}" />
+                                            <TextBlock Text="{Binding AmountDrug}"
+                                                       Foreground="{DynamicResource PrimaryTextColor}" />
+                                            <TextBlock Text="{Binding Unit.Name}"
+                                                       Foreground="{DynamicResource PrimaryTextColor}" />
                                         </StackPanel>
                                         <TextBlock Grid.Column="2"
                                                    Grid.Row="0"
                                                    HorizontalAlignment="Right"
-                                                   Text="{Binding Medicine.Price}" />
+                                                   Text="{Binding Medicine.Price}"
+                                                   Foreground="{DynamicResource PrimaryTextColor}" />
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
@@ -206,15 +226,25 @@
                         <Rectangle Fill="Black"
                                    Height="1" />
 
-                        <StackPanel Orientation="Horizontal"
-                                    HorizontalAlignment="Right">
-                            <Label Content="Tổng tiền:"
-                                   FontSize="24"
-                                   FontWeight="Bold" />
-                            <TextBlock x:Name="txblTotalCost"
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Right">
+                                <Label Content="Tổng tiền:"
                                        FontSize="24"
                                        FontWeight="Bold"
-                                       VerticalAlignment="Center" />
+                                       Foreground="{DynamicResource PrimaryTextColor}" />
+                                <TextBlock x:Name="txblTotalCost"
+                                           FontSize="24"
+                                           FontWeight="Bold"
+                                           VerticalAlignment="Center"
+                                           Foreground="{DynamicResource PrimaryTextColor}" />
+                            </StackPanel>
+                            <TextBlock HorizontalAlignment="Right"
+                                        x:Name="txblExamFee"
+                                       FontSize="13"
+                                       VerticalAlignment="Center"
+                                       Foreground="{DynamicResource PrimaryTextColor}"
+                                       Text="Phí khám bệnh: 30.000 vnđ" />
                         </StackPanel>
                     </StackPanel>
 
@@ -241,8 +271,10 @@
                                         Margin="8">
 
 
-                                <TextBlock Text="Lời dặn" />
-                                <TextBlock x:Name="txblNote" />
+                                <TextBlock Text="Lời dặn"
+                                           Foreground="{DynamicResource PrimaryTextColor}" />
+                                <TextBlock x:Name="txblNote"
+                                           Foreground="{DynamicResource PrimaryTextColor}" />
                             </StackPanel>
                             <StackPanel Orientation="Vertical"
                                         Grid.Column="2"
@@ -255,17 +287,21 @@
                                         Grid.Column="1"
                                         Grid.Row="1"
                                         Margin="8">
-                                <TextBlock Text="Y, BÁC SĨ:" />
+                                <TextBlock Text="Y, BÁC SĨ:"
+                                           Foreground="{DynamicResource PrimaryTextColor}" />
                                 <TextBlock x:Name="txblDoctorName"
-                                           VerticalAlignment="Center" />
+                                           VerticalAlignment="Center"
+                                           Foreground="{DynamicResource PrimaryTextColor}" />
                             </StackPanel>
                             <StackPanel Orientation="Vertical"
                                         Grid.Column="2"
                                         Grid.Row="1"
                                         Margin="8">
-                                <TextBlock Text="NHÂN VIÊN:" />
+                                <TextBlock Text="NHÂN VIÊN:"
+                                           Foreground="{DynamicResource PrimaryTextColor}" />
                                 <TextBlock x:Name="txblStaffName"
-                                           VerticalAlignment="Center" />
+                                           VerticalAlignment="Center"
+                                           Foreground="{DynamicResource PrimaryTextColor}" />
                             </StackPanel>
                         </Grid>
                     </StackPanel>
@@ -273,21 +309,25 @@
                     <StackPanel Grid.Row="4"
                                 Margin="0 40 0 0">
                         <TextBlock Text="Khi đi tái khám nhớ mang theo đơn thuốc này!"
-                                   HorizontalAlignment="Center" />
+                                   HorizontalAlignment="Center"
+                                   Foreground="{DynamicResource PrimaryTextColor}" />
                         <TextBlock Text="***********"
                                    HorizontalAlignment="Center"
                                    FontSize="24"
                                    FontWeight="Bold"
-                                   Height="22" />
+                                   Height="22"
+                                   Foreground="{DynamicResource PrimaryTextColor}" />
                         <TextBlock Text="c ả m ơ n !"
                                    HorizontalAlignment="Center"
                                    FontSize="24"
                                    FontWeight="Bold"
-                                   Height="28" />
+                                   Height="28"
+                                   Foreground="{DynamicResource PrimaryTextColor}" />
                         <TextBlock Text="***********"
                                    HorizontalAlignment="Center"
                                    FontSize="24"
-                                   FontWeight="Bold" />
+                                   FontWeight="Bold"
+                                   Foreground="{DynamicResource PrimaryTextColor}" />
                     </StackPanel>
                 </Grid>
             </Border>

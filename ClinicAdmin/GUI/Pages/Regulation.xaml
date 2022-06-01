@@ -24,8 +24,8 @@
                 </TextBlock>
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="500" />
-                        <ColumnDefinition Width="500" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
                     <Border Grid.Column="0"
@@ -96,7 +96,7 @@
 
                     <StackPanel Grid.Column="1"
                                 Height="Auto"
-                                Margin="12 0 0 0">
+                                Margin="12 0">
                         <TextBlock Style="{DynamicResource regulationHeader}"
                                    TextWrapping="Wrap"
                                    Typography.Capitals="AllSmallCaps">
@@ -192,8 +192,6 @@
 
                             </TextBox>
                         </StackPanel>
-                    </StackPanel>
-                </Grid>
                 <Button Grid.Column="1"
                         Grid.Row="1"
                         HorizontalAlignment="Right"
@@ -205,6 +203,8 @@
                         Click="EditRegulation_Click">
                     <TextBlock Text="Lưu thay đổi" />
                 </Button>
+                    </StackPanel>
+                </Grid>
             </StackPanel>
         </ScrollViewer>
     </Border>

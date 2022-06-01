@@ -50,6 +50,7 @@ namespace ClinicAdmin.BUS
                     Fullname = fullname,
                     Address = address,
                     Age = Int32.Parse(age),
+                    Weight = Int32.Parse(weight),
                     Gender = gender,
                     Phone = phone
                 };

@@ -90,7 +90,17 @@ namespace ClinicAdmin.BUS
             return result;
         }
 
-        public double TotalCost(List<Prescription_MedicineDAO> medicines)
+        public int MedicineCount(List<Prescription_MedicineDAO> medicines)
+        {
+            int count = 0;
+            foreach(var medicine in medicines)
+            {
+                count++;
+            }
+            return count;
+        }
+
+        public double DrugCost(List<Prescription_MedicineDAO> medicines)
         {
             double total = 0;
             foreach (var medicine in medicines)
@@ -112,7 +122,7 @@ namespace ClinicAdmin.BUS
             PrescriptionBUS.getInstance().Note = note;
             PrescriptionBUS.getInstance().DoctorName = doctorName;
             PrescriptionBUS.getInstance().StaffName = staffName;
-            PrescriptionBUS.getInstance().TotalCost = TotalCost(listMedicines);
+            PrescriptionBUS.getInstance().TotalCost = DrugCost(listMedicines);
             PrescriptionBUS.getInstance().AddPrescription();
             var screen = new ClinicAdmin.GUI.Prescription();
             screen.ShowDialog();
