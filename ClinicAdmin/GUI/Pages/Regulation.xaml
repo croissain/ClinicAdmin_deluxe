@@ -166,6 +166,7 @@
                                    FontWeight="SemiBold"
                                    HorizontalAlignment="Left"></Label>
                             <TextBox x:Name="txbMaxPatient"
+                                     PreviewTextInput="NumberValidationTextBox"
                                      Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                      FontSize="20"
                                      Padding="15 10"
@@ -185,6 +186,7 @@
                                    FontWeight="SemiBold"
                                    HorizontalAlignment="Left"></Label>
                             <TextBox x:Name="txbChinicFee"
+                                     PreviewTextInput="NumberValidationTextBox"
                                      Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                      FontSize="20"
                                      Padding="15 10"

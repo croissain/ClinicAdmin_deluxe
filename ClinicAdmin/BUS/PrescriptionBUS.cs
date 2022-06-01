@@ -100,12 +100,13 @@ namespace ClinicAdmin.BUS
             }
 
             //Them du lieu vao bang Invoice
+            double examCost = Double.Parse(RegulationDAO.getInstance().GetExamFee().Value);
             InvoiceDAO invoiceDAO = new InvoiceDAO()
             {
-                TotalCost = TotalCost,
+                TotalCost = TotalCost + examCost,
                 Prescription = prescriptionDAO,
                 Created_at = DateTime.Now,
-                ExamCost = 30000
+                ExamCost = examCost
             };
             InvoiceDAO.getInstance().AddInvoice(invoiceDAO);
         }
