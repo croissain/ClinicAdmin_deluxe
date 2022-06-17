@@ -129,6 +129,7 @@
     <Compile Include="DAO\AdminDAO.cs" />
     <Compile Include="DAO\DoctorDAO.cs" />
     <Compile Include="DAO\InvoiceDAO.cs" />
+    <Compile Include="DAO\RegulationDAO.cs" />
     <Compile Include="DAO\ReportDAO.cs" />
     <Compile Include="DAO\PrescriptionDAO.cs" />
     <Compile Include="DAO\Prescription_MedicineDAO.cs" />

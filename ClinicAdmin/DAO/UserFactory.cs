@@ -50,7 +50,7 @@ namespace ClinicAdmin.DAO
                             Phone = entryPoint.Phone,
                             Password = entryPoint.Password,
                             Username = username,
-                            Role = new RoleDAO() { Id = (int)entryPoint.RoleId, Name = "Quản trị viên" }
+                            Role = new RoleDAO() { Id = (int)entryPoint.RoleId, Name = "Bác sĩ" }
                         };
                     case (int)RoleEnum.STAFF:
                         return new StaffDAO()
@@ -62,7 +62,7 @@ namespace ClinicAdmin.DAO
                             Phone = entryPoint.Phone,
                             Password = entryPoint.Password,
                             Username = username,
-                            Role = new RoleDAO() { Id = (int)entryPoint.RoleId, Name = "Quản trị viên" }
+                            Role = new RoleDAO() { Id = (int)entryPoint.RoleId, Name = "Nhân viên" }
                         };
                 }
             }
